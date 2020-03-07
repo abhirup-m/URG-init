@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage{common}
+\usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0in}
+\newcommand{\C}[2]{\ensuremath{c_{{#1}{#2}}^\dagger}}
+\renewcommand{\c}[2]{\ensuremath{c_{{#1}{#2}}}}
+\begin{document}
+\begin{titlepage}
+
+\begin{center}
+\bf{\Large{.......................}}\\
+\vspace{10mm}
+\bf{\Large{.......................} } \\
+\vspace{5mm}
+\rr{\it{\large{.......................}}} \\
+\vspace{15mm}
+
+\bf{\Large{.......................}}
+\end{center}
+
+\end{titlepage}
+
+\section{Exact diagonalization of the two-site Hubbard model}
+
+\pp[The Hamiltonian]
+\begin{zz}
+\ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow} -\mu \hat{N}
+\end{zz}
+
+I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site.
+
+\subsection{Symmetries of the problem}
+The following operators commute with the Hamiltonian.
+\begin{enumerate}
+\item\bf{Total number operator}:
+\begin{zz}
+\qq{\ham, \hat N}=0
+\end{zz}
+The proof is as follows: The last term in the Hamiltonian is the number operator itself. Ignoring that, there are three terms that I need to individually consider.
+
+\begin{itemize}
+\item \(\C{1}{\sigma}\c{2}{\sigma}\)\\
+
+\begin{zz}
+\qq{\C{1}{\sigma}\c{2}{\sigma}, \hat{N}} &= \sum_{i\sigma^\prime}\qq{\C{1}{\sigma}\c{2}{\sigma},\hat{n}_{i\sigma^\prime}} \\ 
+&= \sum_{i\sigma^\prime}\qq{\C{1}{\sigma}\c{2}{\sigma},\C{i}{\sigma^\prime}\c{i}{\sigma^\prime}} \\
+&= \sum_{i\sigma^\prime}\rr{\C{1}{\sigma} \qq{\c{2}{\sigma},\C{i}{\sigma^\prime}\c{i}{\sigma^\prime}}+\qq{\C{1}{\sigma},\C{i}{\sigma^\prime}\c{i}{\sigma^\prime}}\c{2}{\sigma}}
+\end{zz}
+Because the electrons on different sites are distinguishable, creation and anhillation operators of different sites will commute among themselves.
+\begin{zz}
+\qq{\C{1}{\sigma}\c{2}{\sigma}, \hat{N}} &= \sum_{i\sigma^\prime}\rr{\C{1}{\sigma} \delta_{i,2}\qq{\c{2}{\sigma},\C{2}{\sigma^\prime}\c{2}{\sigma^\prime}}+\delta_{i,1}\qq{\C{1}{\sigma},\C{1}{\sigma^\prime}\c{1}{\sigma^\prime}}\c{2}{\sigma}} \\
+&= \sum_{\sigma^\prime}\rr{\C{1}{\sigma} \cc{\c{2}{\sigma},\C{2}{\sigma^\prime}}\c{2}{\sigma^\prime}-\C{1}{\sigma^\prime}\cc{\c{1}{\sigma^\prime},\C{1}{\sigma}}\c{2}{\sigma}} \\
+&= \sum_{\sigma^\prime}\rr{\C{1}{\sigma} \delta_{\sigma,\sigma^\prime} \c{2}{\sigma^\prime}-\C{1}{\sigma^\prime} \delta_{\sigma,\sigma^\prime} \c{2}{\sigma}} = 0
+\end{zz}
+
+\item \(\C{2}{\sigma}\c{1}{\sigma}\): Since the operator \(\hat{N}\) is symmetric with respect to the site indices 1 and 2, we can go through the last proof again with the site indices 1 and 2 exchanged and since the proof does not depend on the site indices, this commutator will also be zero.
+
+\item \(\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}\):
+\begin{zz}
+\qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}, \hat{N}} &= \sum_{j\sigma}\qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{n}_{j\sigma}} \\
+&= \sum_{\sigma}\qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow},\hat{n}_{i\sigma}} \\
+&= \hat{n}_{i\uparrow}\qq{\hat{n}_{i\downarrow},\hat{n}_{i\uparrow}}+\qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}}\hat{n}_{i\downarrow} = 0
+\end{zz}
+
+\end{itemize}
+
+\item 
+
+\end{enumerate}
+\end{document}

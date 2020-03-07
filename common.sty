@@ -1,0 +1,28 @@
+\ProvidesPackage{common}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,braket,graphicx,enumitem}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\ham}{\mathcal{H}}
+\newcommand{\ii}[1]{\ensuremath{\int_{-\infty}^{\infty}{#1}\:}}
+\newcommand{\uu}[1]{\textsuperscript{#1}}
+\newcommand{\dd}[1]{\textsubscript{#1}}
+\renewcommand{\bf}[1]{\textbf{#1}}
+\renewcommand{\it}[1]{\textit{#1}}
+\newcommand{\rr}[1]{\ensuremath{\left({#1}\right)}}
+\newcommand{\qq}[1]{\ensuremath{\left[{#1}\right]}}
+\newcommand{\cc}[1]{\ensuremath{\left\{{#1}\right\}}}
+\newcommand{\avg}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\nn}{\sum_{\avg{ij}}}
+\newcommand{\vt}[1]{\ensuremath{\vec{#1}}}
+\newcommand{\tf}{\ensuremath\therefore}
+\newcommand{\im}{\ensuremath\implies}
+\newcommand{\ex}[1]{\ensuremath\exp\rr{#1}}
+\newcommand{\fr}[2]{\ensuremath{\frac{#1}{#2}}}
+\newcommand{\pd}[2]{\ensuremath{\frac{\partial{#1}}{\partial{#2}}}}
+\newcommand{\pp}[1][]{\paragraph{#1}}
+\newcommand{\dv}[2]{\ensuremath{\frac{\:d#1}{\:d#2}}}
+\newcommand{\lm}[2]{\ensuremath{\lim_{{#1}\to{#2}}}}
+\newenvironment{zz}
+{\begin{equation*} \begin{aligned}}
+{\end{aligned} \end{equation*}}
+\DeclareMathOperator{\sech}{sech}

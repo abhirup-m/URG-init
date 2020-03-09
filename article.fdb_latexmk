@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1583607290 "article.tex" "article.pdf" "article" 1583607290
+["pdflatex"] 1583654531 "article.tex" "article.pdf" "article" 1583654532
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1572595918 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1572595918 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1572595918 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -48,7 +48,6 @@
   "/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty" 1572595918 5950 e9cdc09d1426cd2e1a36fffb0c90bfa9 ""
   "/usr/share/texmf-dist/tex/latex/braket/braket.sty" 1572592815 3601 193635d942bc4777a5acaaeeffdce692 ""
   "/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty" 1572592815 51697 f8f08183cd2080d9d18a41432d651dfb ""
-  "/usr/share/texmf-dist/tex/latex/geometry/geometry.sty" 1572595918 41645 0653033a985e06c69a2a9cea9a95e31a ""
   "/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1572595918 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def" 1572595918 17334 520b9b85ad8a2a48eda3f643e27a5179 ""
   "/usr/share/texmf-dist/tex/latex/graphics/graphics.sty" 1572595918 16458 1bb0e1418e20f598314cbad8ab796f2f ""
@@ -71,12 +70,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1572595918 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1580917595 334558 251d30f17b3577cdd1466e2c153b195d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1580917581 8044938 8f3b2f623c9371419a91a91d72d81a24 ""
-  "article.aux" 1583607290 2791 b57d2a49fdc3a50a389de8f501476948 "pdflatex"
-  "article.out" 1583607290 933 0e157f46d3d69fed3c10e7c97ae6016c "pdflatex"
-  "article.tex" 1583607290 24573 ee57a710602b588c655fbf3efaea44e3 ""
+  "article.aux" 1583654532 2791 e64244fe9e272410aa11d5468bac8c9c "pdflatex"
+  "article.out" 1583654532 933 0e157f46d3d69fed3c10e7c97ae6016c "pdflatex"
+  "article.tex" 1583654531 24541 72d8219e72b6e013c3ad27e60d82fb95 ""
   "common.sty" 1583605698 1436 bad587ef1aef62c0db79510b3ff07a40 ""
   (generated)
-  "article.out"
-  "article.aux"
-  "article.log"
   "article.pdf"
+  "article.out"
+  "article.log"
+  "article.aux"

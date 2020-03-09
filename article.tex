@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{common}
-\usepackage[margin=1in]{geometry}
+% \usepackage[margin=1in]{geometry}
 \renewcommand\arraystretch{2}
 \begin{document}
 \begin{titlepage}
@@ -30,7 +30,7 @@ I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is 
 \subsection{Symmetries of the problem}
 The following operators commute with the Hamiltonian.
 \begin{enumerate}
-\item\bf{Total number operator \(\hat{N}\)}: \(\qq{\ham, \hat N}=0\).
+\item\bf{Total number operator}: \(\qq{\ham, \hat N}=0\).
 The proof is as follows: The last term in the Hamiltonian is the number operator itself. Ignoring that, there are three terms that I need to individually consider.
 
 \begin{itemize}
@@ -67,7 +67,7 @@ Therefore, \(\qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{N}} = \sum_{j,\si
 
 \end{itemize}
 The total Hamiltonian is just a sum of the three terms; since the number operator commutes individually with these terms, it obviously commutes with the total Hamiltonian. QED
-\item \bf{Magnetization operator \(\hat{S}^z_{tot}\)}: \(\hat{S}^z_{tot} \equiv \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}-\hat{n}_{i\downarrow}}\), \(\qq{\ham, \hat{S}^z_{tot}}=0\).
+\item \bf{Magnetization operator}: \(\hat{S}^z_{tot} \equiv \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}-\hat{n}_{i\downarrow}}\), \(\qq{\ham, \hat{S}^z_{tot}}=0\).
 This proof goes as follows. The magnetization operator can be rewritten as \(\hat{S}^z_{tot} = \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}+\hat{n}_{i\downarrow}-2\hat{n}_{i\downarrow}} = \hat{N} - 2\sum_i\hat{n}_{i\downarrow}\). Since \(\hat{N}\) commutes with \(\ham\), I just need to prove that \(\qq{\ham, \sum_i\hat{n}_{i\downarrow}}\). From eq. \ref{commutator}, 
 \beq
 \qq{\C{1}{\sigma}\c{2}{\sigma},\sum_i\hat{n}_{i\downarrow}} &= \C{1}{\downarrow}\c{1}{\downarrow}\sum_{i=\{1,2\}}\rr{\delta_{i,2} - \delta_{i,1}} = 0
@@ -79,29 +79,28 @@ Using eq. \ref{commutator_2}, \(\qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}, \h
 
 Finally, \(\qq{N, \hat{n}_{i\downarrow}}=\sum_{j\sigma}\qq{\hat{n}_{j\sigma},\hat{n}_{i\downarrow}} = \qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}} = \C{i}{\uparrow}\c{i}{\uparrow}\C{i}{\downarrow}\c{i}{\downarrow}-\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow} = 0\). Since \(\hat{S}^z_{tot}\) commutes with each part individually, it commutes with the total Hamiltonian. QED
 
-\item \bf{Two-site parity operator \(\hat{P}\)}: The action of \(\hat{P}\) is defined as follows. If \(\ket{\psi_{\alpha\beta}}\) is a wavefunction with site indices \(\alpha\) and \(\beta\), 
+\item \bf{Two-site parity operator \(\hat{P}\)}: The action of \(\hat{P}\) is defined as follows. If \(\ket{\Psi_{\alpha\beta}}\) is a wavefunction with site indices \(\alpha\) and \(\beta\), 
 \beq
-\hat{P}\ket{\psi(\alpha,\beta)} = \ket{\psi(\beta,\alpha}
+\hat{P}\ket{\Psi(\alpha,\beta)} = \ket{\Psi(\beta,\alpha)}
 \eeq
-That is, it operates on each electron and reverses it's site indices. I now rewrite the Hamiltonian by explciitly showing the two site indices:
+That is, it operates on each electron and reverses it's site indices. I now rewrite the Hamiltonian by explcitly showing the two site indices:
 \beq
 \ham(\alpha,\beta) = -t\sum_\sigma(\C{\alpha}{\sigma}\c{\beta}{\sigma}+\C{\beta}{\sigma}\c{\alpha}{\sigma}) + U(n_{\alpha\uparrow}n_{\alpha\downarrow}+n_{\beta\uparrow}n_{\beta\downarrow}) - \mu\sum_\sigma(n_{\alpha\sigma}+n_{\beta\sigma})
 \eeq 
-Its obvious that \(\ham\) is symmetric in the site indices: \(\ham(\alpha,\beta) = \ham(\beta,\alpha)\). This means that the eigenvalues also have this symmetry. Let \(\ket{\phi(\alpha,\beta)}\) be an eigenstate of \(\ham(\alpha,\beta)\) with eigenvalue \(E(\alpha,\beta)\). Then,
+Its obvious that \(\ham\) is symmetric in the site indices: \(\ham(\alpha,\beta) = \ham(\beta,\alpha)\). This means that the eigenvalues also have this symmetry. Let \(\ket{\Phi(\alpha,\beta)}\) be an eigenstate of \(\ham(\alpha,\beta)\) with eigenvalue \(E(\alpha,\beta)\). Then,
 \beq
-\hat{P}\ham\ket{\phi(\alpha,\beta)} = E(\alpha,\beta) \hat{P}\ket{\phi(\alpha,\beta)} = E(\beta,\alpha) \ket{\psi(\beta,\alpha} = \ham \ket{\psi(\beta,\alpha} = \ham \hat{P} \ket{\psi(\alpha,\beta}
+\hat{P}\ham\ket{\Phi(\alpha,\beta)} &= E(\alpha,\beta) \hat{P}\ket{\Phi(\alpha,\beta)} = E(\beta,\alpha) \ket{\Phi(\beta,\alpha)} \\
+&= \ham \ket{\Phi(\beta,\alpha)} = \ham \hat{P} \ket{\Phi(\alpha,\beta)} \\
+\implies \ham\hat{P}\ket{\Phi(\alpha,\beta)} &= \hat{P}\ham\ket{\Phi(\alpha,\beta)}
 \eeq
+Since any general wavefunction can be expanded in terms of these wavefunctions and since both the operator are linear, the above result will also hold for a general wavefunction \(\ket{\Psi(\alpha,\beta)}\):
 \beq
-\ham(\alpha,\beta)\hat{P}\ket{\phi(\alpha,\beta)} = \ham(\alpha,\beta)\ket{\phi(\beta,\alpha)}
-\eeq
-Since any general wavefunction can be expanded in terms of these wavefunctions and since both the operator are linear, the above result will also hold for a general wavefunction \(\ket{\psi(\alpha,\beta)}\):
-\beq
-\ham \hat{P} \ket{\psi(\alpha,\beta)} = \hat{P} \ham \ket{\psi(\alpha,\beta)}
+\ham \hat{P} \ket{\Psi(\alpha,\beta)} = \hat{P} \ham \ket{\Psi(\alpha,\beta)}
 \implies [\ham, \hat{P}] = 0
 \eeq
 \end{enumerate}
 \subsection{Partitioning the Hilbert space}
-THe Hamiltonian commutes with the three operators. This means that is possible to simultaneously diagonalize these four operators: \(\ham, \hat{N}, S_z^{tot}, \hat{P}\). I will be able to label the eigenstates of the total Hamiltonian using the eigenvalues of these operatos. First take the total number operator. \(\hat{N}\) can take four values for a two-ste system, 1 through 4. The eigenstates labelled by a particular number, say N=2 will be orthogonal to the eigenstates labelled by another number, say N=4. This means each eigenvalue of \(\hat{N}\) will have a distinct subspace orthogonal to the other values of \(\hat{N}\). I will be able to diagonalize each such subspace independently of each other, because they will not have any overlap. This feature enables us to block-diagonalize the total Hamiltonian into four blocks, each block belonging to each value \(\hat{N}\). 
+THe Hamiltonian commutes with the three operators. This means that is possible to simultaneously diagonalize these four operators: \(\ham, \hat{N}, S_z^{tot}, \hat{P}\). I will be able to label the eigenstates of the total Hamiltonian using the eigenvalues of these operatos. First take the total number operator. \(\hat{N}\) can take four values for a two-site system, 1 through 4. The eigenstates labelled by a particular number, say N=2 will be orthogonal to the eigenstates labelled by another number, say N=4. This means each eigenvalue of \(\hat{N}\) will have a distinct subspace orthogonal to the other values of \(\hat{N}\). I will be able to diagonalize each such subspace independently of each other, because they will not have any overlap. This feature enables us to block-diagonalize the total Hamiltonian into four blocks, each block belonging to each value \(\hat{N}\). 
 
 Inside each block, I will be able to repeat the procedure by next using the eigenvalues of \(S_z^{tot}\). Each block of the Hamiltonian will again break up to smaller blocks for each value of the total magnetization. The eigenvalues of parity operator provide a further partitioning of the blocks of magnetization.
 
@@ -251,7 +250,7 @@ with eigenvalues \(\frac{U\pm\sqrt{U^2+16 t^2}}{2}\) respectively.
 \begin{center}
 \begin{tabular}{@{}ccccc@{}}
 \toprule
-\(\hat{N}\) & \(S_z^{tot}\) & \(\hat{P}\) & \(\ham\) & \\
+\(\hat{N}\) & \(S_z^{tot}\) & \(\hat{P}\) & E & \(\ket{\Phi}\)\\
 \toprule
 \multicolumn{1}{c}{\multirow{4}{*}{1}} & \multirow{2}{*}{-1} & 1  & -t  & \(\frac{\ket{\downarrow,0}+\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
 \multicolumn{1}{c}{}                   &                     & -1 & t   & \(\frac{\ket{\downarrow,0}-\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){2-5}

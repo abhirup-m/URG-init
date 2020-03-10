@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{common}
-% \usepackage[margin=1in]{geometry}
-\renewcommand\arraystretch{2}
+\usepackage[margin=1in]{geometry}
+\renewcommand\arraystretch{2.5}
 \begin{document}
 \begin{titlepage}
 
@@ -246,27 +246,29 @@ This subspace is not automatically diagonal, but is easily diagonalized. The eig
 
 with eigenvalues \(\frac{U\pm\sqrt{U^2+16 t^2}}{2}\) respectively.
 \subsection{The total spectrum}
-\begin{table}[]
+The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
+\begin{table}[htb]
 \begin{center}
 \begin{tabular}{@{}ccccc@{}}
 \toprule
 \(\hat{N}\) & \(S_z^{tot}\) & \(\hat{P}\) & E & \(\ket{\Phi}\)\\
 \toprule
-\multicolumn{1}{c}{\multirow{4}{*}{1}} & \multirow{2}{*}{-1} & 1  & -t  & \(\frac{\ket{\downarrow,0}+\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-\multicolumn{1}{c}{}                   &                     & -1 & t   & \(\frac{\ket{\downarrow,0}-\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){2-5}
-\multicolumn{1}{c}{}                   & \multirow{2}{*}{1}  & 1  & -t  & \(\frac{\ket{\uparrow,0}+\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-\multicolumn{1}{c}{}                   &                     & -1 & t   & \(\frac{\ket{\uparrow,0}-\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \toprule
-\multirow{6}{*}{2}                     & -1                  & 1  & 0   & \(\ket{\downarrow,\downarrow}\)  \\ \cmidrule(l){2-5} 
-                                       & \multirow{4}{*}{0}  & 1  & 0   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & 1  & U   & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)    & \(\frac{1}{N_\pm}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U\pm\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & \(\frac{U-\sqrt{U^2+16 t^2}}{2}\)    & \(\frac{1}{N_-}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U-\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){2-5} 
-                                       & 1                   & 1  & 0   & \(\ket{\uparrow,\uparrow}\) \\ \toprule
-\multirow{4}{*}{3}                     & \multirow{2}{*}{-1} & 1  & U-t & \(\frac{\ket{\uparrow\downarrow,\downarrow}+\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & U+t & \(\frac{\ket{\uparrow\downarrow,\downarrow}-\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){2-5}
-                                       & \multirow{2}{*}{1}  & 1  & U-t & \(\frac{\ket{\uparrow\downarrow,\uparrow}+\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & U+t & \(\frac{\ket{\uparrow\downarrow,\uparrow}-\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \toprule
-4                                      & 0                   & 1  & 2U  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
+0 & - & - & 0 & \(\ket{0,0}\) \\ \toprule
+\multicolumn{1}{c}{\multirow{4}{*}{1}} & \multirow{2}{*}{-1} & 1  & -t-\(\mu\)  & \(\frac{\ket{\downarrow,0}+\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+\multicolumn{1}{c}{}                   &                     & -1 & t-\(\mu\)   & \(\frac{\ket{\downarrow,0}-\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){2-5}
+\multicolumn{1}{c}{}                   & \multirow{2}{*}{1}  & 1  & -t-\(\mu\)  & \(\frac{\ket{\uparrow,0}+\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+\multicolumn{1}{c}{}                   &                     & -1 & t-\(\mu\)   & \(\frac{\ket{\uparrow,0}-\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \toprule
+\multirow{6}{*}{2}                     & -1                  & 1  & 0-\(2\mu\)   & \(\ket{\downarrow,\downarrow}\)  \\ \cmidrule(l){2-5} 
+                                       & \multirow{4}{*}{0}  & 1  & 0-\(2\mu\)   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & 1  & U-\(2\mu\)   & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_\pm}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U\pm\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U-\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_-}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U-\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){2-5} 
+                                       & 1                   & 1  & 0-\(2\mu\)   & \(\ket{\uparrow,\uparrow}\) \\ \toprule
+\multirow{4}{*}{3}                     & \multirow{2}{*}{-1} & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}+\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & U+t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}-\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){2-5}
+                                       & \multirow{2}{*}{1}  & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\uparrow}+\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & U+t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\uparrow}-\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \toprule
+4                                      & 0                   & 1  & 2U-\(4\mu\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
 \toprule
 \end{tabular}
 \end{center}

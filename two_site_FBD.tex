@@ -1,0 +1,480 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+ \newtheorem{theorem}{Theorem}
+ \newtheorem{lemma}{Lemma}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Anirban Mukherjee}
+\title{Fermion Block diagonalization, Example: A two site system}
+\begin{document}
+\maketitle
+\section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis-The main theorem}
+\begin{theorem}
+A fermionic Hamiltonian describing a system of 2N fermionic single particle degrees of freedom defined in the number occupancy basis of $\hat{n}_{j\sigma}=c^{\dagger}_{j\sigma}c_{j\sigma}$ for all $[j\sigma] \in [1,N]\times  [\sigma , -\sigma]$ can be resolved with respect to the fermionic state $N\sigma$ into a sum of diagonal $H_{D,N\sigma}$ and off-diagonal blocks $H_{X,N\sigma}$ that is a block matrix as,
+\begin{eqnarray}
+\hat{H}_{2N} &=& (\hat{n}_{N\sigma}+1-\hat{n}_{N\sigma})\hat{H}_{2N}(\hat{n}_{N\sigma}+1-\hat{n}_{N\sigma})\nonumber\\
+&=&\begin{pmatrix}
+\hat{n}_{N\sigma}\hat{H}_{2N}\hat{n}_{N\sigma} & \hat{n}_{N\sigma}\hat{H}_{2N}(1-\hat{n}_{N\sigma})\\
+(1-\hat{n}_{N\sigma})\hat{H}_{2N}\hat{n}_{N\sigma} & (1-\hat{n}_{N\sigma})\hat{H}_{2N}(1-\hat{n}_{N\sigma})
+\end{pmatrix}\hspace*{0.5cm}
+\end{eqnarray}
+where $\hat{H}_{D,N\sigma}= \hat{n}_{N\sigma}\hat{H}_{2N}\hat{n}_{N\sigma}+(1-\hat{n}_{N\sigma})\hat{H}_{2N}(1-\hat{n}_{N\sigma})$ and  $\hat{H}_{X,N\sigma} = \hat{n}_{N\sigma}\hat{H}_{2N}(1-\hat{n}_{N\sigma})+(1-\hat{n}_{N\sigma})\hat{H}_{2N}\hat{n}_{N\sigma}$.\\
+\textbf{Statement-1}: There exist a unitarily equivalent representation $\hat{U}_{N\sigma}\hat{H}_{2N}\hat{U}^{\dagger}_{N\sigma}$ where $\hat{U}_{N\sigma}\hat{U}^{\dagger}_{N\sigma}=\hat{U}^{\dagger}_{N\sigma}\hat{U}_{N\sigma}=I$, such that the below  given  decoupling condition between states $1_{N\sigma}$ and $0_{N\sigma}$ holds,
+\begin{eqnarray}
+\hat{n}_{N\sigma}\hat{U}_{N\sigma}\hat{H}_{2N}\hat{U}^{\dagger}_{N\sigma}(1-\hat{n}_{N\sigma}) &=& (1-\hat{n}_{N\sigma})\hat{U}_{N\sigma}\hat{H}_{2N}\hat{U}^{\dagger}_{N\sigma}\hat{n}_{N\sigma} \nonumber\\
+&=& 0 ~.\nonumber
+\end{eqnarray}
+This statement is equivalent to stating $[\hat{U}_{N\sigma}\hat{H}_{2N}\hat{U}^{\dagger}_{N\sigma},\hat{n}_{N\sigma}]=0$.\\
+\textbf{Statement-2}: Form of the Unitary operator is given by,
+\begin{eqnarray}
+\hat{U}_{N\sigma}=\exp(\arctan \hspace*{-0.07cm} h(\hat{\eta}_{N\sigma} -\hat{\eta}^{\dagger}_{N\sigma}))~,~\nonumber
+\end{eqnarray}
+where $\hat{\eta}_{N\sigma}$ is a non-hermitian operator given by,
+\begin{eqnarray}
+\hat{\eta}^{\dagger}_{N\sigma} &=& \frac{1}{\hat{E}_{[N\sigma]}-\hat{n}_{N\sigma}\hat{H}_{2N}\hat{n}_{N\sigma}}\hat{n}_{N\sigma}\hat{H}_{2N}(1-\hat{n}_{N\sigma})\nonumber\\
+&=&\hat{n}_{N\sigma}\hat{H}_{2N}(1-\hat{n}_{N\sigma})\frac{1}{\hat{E}_{[N\sigma]} -(1-\hat{n}_{N\sigma})\hat{H}_{2N}(1-\hat{n}_{N\sigma})}~,~\nonumber
+\end{eqnarray}
+having the following properties,
+\begin{eqnarray}
+\lbrace\hat{\eta}^{\dagger}_{N\sigma},\hat{\eta}_{N\sigma}\rbrace =1 ~,~[\hat{\eta}^{\dagger}_{N\sigma},\hat{\eta}_{N\sigma}] =2\hat{n}_{N\sigma}-1~.\nonumber
+\end{eqnarray}
+\end{theorem}
+
+\textbf{Proof:}\\
+\textbf{Case-1} \textbf{Hamiltonian composed of operators containing even number of $c^{\dagger}\text{'}s$ and $c\text{'}s$.}\\
+A Fermionic Hamiltonian  of the size $2^{2N}\times 2^{2N}$ can be written as a block matrix constituting diagonal and off-diagonal blocks of size $2^{2N-1}\times 2^{2N-1}$ in the resolution of the identity $\hat{I}_{N\sigma}=\hat{n}_{N\sigma}+\hat{I}_{N\sigma}-\hat{n}_{N\sigma}$ as,
+\begin{eqnarray}
+\hat{H}_{2N}=H_{N\sigma,e}\hat{n}_{N\sigma}+H_{N\sigma,h}(1-\hat{n}_{N\sigma})+\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}+c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}\nonumber
+\end{eqnarray} 
+where,
+\begin{eqnarray}
+\hat{H}_{N\sigma,e} &=& Tr_{N\sigma}(\hat{H}_{2N}\hat{n}_{N\sigma})~,~ H_{N\sigma,h} = Tr_{N\sigma}(\hat{H}_{2N}(1-\hat{n}_{N\sigma}))\nonumber\\
+\hat{T}^{\dagger}_{N\sigma,e-h} &=& Tr_{N\sigma}(c^{\dagger}_{N\sigma}\hat{H}_{2N})~,~\hat{T}_{N\sigma,e-h} = Tr_{N\sigma}(\hat{H}_{2N}c_{N\sigma})~,\nonumber\label{block_matrix}
+\end{eqnarray}
+where the form of $\hat{T}^{\dagger}_{N\sigma,e-h}$ operator holds true when $H$ contains even number of Fermion operators (see eq\eqref{block_form_even}).
+We ask for a new resolution of the identity $I_{N\sigma}=\hat{P}_{N\sigma}+1-P_{N\sigma}$ corresponding to a new basis in which this matrix attains a block diagonal form i.e.,
+\begin{eqnarray}
+P_{N\sigma}H(1-P_{N\sigma})&=&(1-P_{N\sigma})HP_{N\sigma}=0~,~\nonumber\\
+ P_{N\sigma}HP_{N\sigma} &=& P_{N\sigma}H'P_{N\sigma}~,~\nonumber\\
+ (1-P_{N\sigma})H(1-P_{N\sigma}) &=& (1-P_{N\sigma})H''(1-P_{N\sigma})~,~\nonumber
+\end{eqnarray}
+where $[H',\hat{n}_{N\sigma}]=0~,[H'',\hat{n}_{N\sigma}]=0~$. From the above the block diagonal form equation for the subspace projection operator $P_{N\sigma}$ can be also written as,
+\begin{eqnarray}
+HP_{N\sigma} = H'P_{N\sigma}
+\end{eqnarray}
+using $HP_{N\sigma} = P_{N\sigma}HP_{N\sigma}$ as $(1-P_{N\sigma})HP_{N\sigma}=0$.
+ A form of $\hat{H}'=I_{N\sigma}\otimes\hat{E}_{[N\sigma]} $ satisfies the block diagonal equation,
+\begin{eqnarray}
+\hspace*{-1cm}
+\begin{pmatrix}
+			H_{N\sigma,e}\hat{n}_{N\sigma}								 & c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}\\
+				\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}						& H_{N\sigma,h}(1-\hat{n}_{N\sigma})
+											\end{pmatrix}P_{N\sigma}= I_{N\sigma}\otimes\hat{E}_{[N\sigma]}P_{N\sigma}\label{block_diagonal_eqn}
+\end{eqnarray}
+where $\hat{E}_{[N\sigma]}$ is a matrix of size $2^{2N-1}\times 2^{2N-1}$ and $I_{N\sigma}$ is the $2\times 2$ identity . For this equation we will now implement the Gauss Jordan Block diagonalization procedure as follows, firstly we write a ansatz for $P_{N\sigma}$ as~, 
+\begin{eqnarray}
+P_{N\sigma} &=& \mathcal{N}(1+\eta_{N\sigma}+\eta^{\dagger}_{N\sigma})~,\nonumber\\
+&=&\mathcal{N}(1+\eta_{N\sigma})\hat{n}_{N\sigma}+\mathcal{N}(1+\eta^{\dagger}_{N\sigma})(1-\hat{n}_{N\sigma})~,~\nonumber\\
+&=&\mathcal{N}\begin{pmatrix}
+1 & 0\\
+\eta_{N\sigma} & 0
+\end{pmatrix}+\mathcal{N}\begin{pmatrix}
+0 & \eta^{\dagger}_{N\sigma}\\
+0 & 1
+\end{pmatrix}~,\label{psi_def}
+\end{eqnarray}
+where $\eta_{N\sigma}$~,~$\eta^{\dagger}_{N\sigma}$ are the electron to hole and hole to electron transition operators having the following properties,
+\begin{eqnarray}
+(1-\hat{n}_{N\sigma})\eta_{N\sigma}\hat{n}_{N\sigma}=\eta_{N\sigma}~,~\hat{n}_{N\sigma}\eta_{N\sigma}(1-\hat{n}_{N\sigma})=0~,~\nonumber
+\end{eqnarray}
+and $\eta^{2}_{N\sigma}=0$. In eq\eqref{psi_def} quantity $\mathcal{N}$ is a normalization factor which maintains the idempotent nature of the new projection operator $P_{N\sigma}$, below we will show $\mathcal{N}$ is determined as an outcome of our analysis.
+The properties of $\eta^{\dagger}_{N\sigma}$ follows from above.
+Using the definition eq\eqref{psi_def} and the block diagonalization equation eq\eqref{block_diagonal_eqn} we can write down the following matrix equations,
+\begin{eqnarray}
+\begin{pmatrix}
+H_{N\sigma,e}\hat{n}_{N\sigma} & c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h} \\
+\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} & H_{N\sigma,h}(1-\hat{n}_{N\sigma})
+\end{pmatrix}\begin{pmatrix}
+1 \\ \eta_{N\sigma}
+\end{pmatrix} = \hat{E}_{[N\sigma]} \begin{pmatrix}
+1 \\ \eta_{N\sigma}
+\end{pmatrix}~,~\nonumber\\\begin{pmatrix}
+H_{N\sigma,e}\hat{n}_{N\sigma} & c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h} \\
+\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} & H_{N\sigma,h}(1-\hat{n}_{N\sigma})
+\end{pmatrix}\begin{pmatrix}
+\eta^{\dagger}_{N\sigma} \\ 1 
+\end{pmatrix} =\hat{E}_{[N\sigma]} \begin{pmatrix}
+\eta^{\dagger}_{N\sigma} \\ 1 
+\end{pmatrix}~.\hspace*{0.7cm}\label{matrix_eqn1}
+\end{eqnarray}
+The form of the transition operators $\eta_{N\sigma}~,~ \eta^{\dagger}_{N\sigma}$ that satisfies the matrix equations are, 
+\begin{eqnarray}
+\hat{\eta}_{N\sigma} &=& \hat{G}_{h}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}~,~\nonumber\\
+\hat{\eta}^{\dagger}_{N\sigma} &=& \hat{G}_{e}(\hat{E}_{[N\sigma]})c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}~,~\label{transition operators}
+\end{eqnarray}
+where $\hat{G}_{(h,e)}(\hat{E}_{[N\sigma]})=(\hat{E}_{[N\sigma]}-H_{N\sigma,(h,e)})^{-1}$~.
+The following transition operators lead to the following block diagonal representation of the operator $\hat{E}_{[N\sigma]}$ in the projected space of electron/hole occupancy operator corresponding to state $N\sigma$ ,
+
+\begin{eqnarray}
+\left[H_{N\sigma,e}\hat{n}_{N\sigma}+c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}\hat{G}_{h}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}\right] = \hat{E}_{[N\sigma]}\hat{n}_{N\sigma}~,~\nonumber\\
+\left[H_{N\sigma,h}(1-\hat{n}_{N\sigma})+\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}\hat{G}_{e}(\hat{E}_{[N\sigma]})c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}\right]= \hat{E}_{[N\sigma]}(1-\hat{n}_{N\sigma}). 
+\label{block_diag1}
+\end{eqnarray}
+From the two equations of the transition operators eq\eqref{transition operators} we have the following identity,
+\begin{eqnarray}
+\hat{G}_{h}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} = \hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}\hat{G}_{e}(\hat{E}_{[N\sigma]})~.
+\label{operator_commutivity}
+\end{eqnarray}
+The above operator ordering relation eq\eqref{operator_commutivity} and form of the block diagonal operators eq\eqref{block_diag1} we have,
+\begin{eqnarray}
+&&\eta^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}^{\dagger}c_{N\sigma} =\hat{n}_{N\sigma}\hat{G}^{-1}_{e}(\hat{E}_{[N\sigma]}) \implies \eta^{\dagger}_{N\sigma}\eta_{N\sigma} =\hat{n}_{N\sigma}\nonumber\\
+&&\eta_{N\sigma}c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}=(1-\hat{n}_{N\sigma})\hat{G}^{-1}_{h}(\hat{E}_{[N\sigma]})\nonumber\\
+&&\implies \eta_{N\sigma}\eta^{\dagger}_{N\sigma} =1-\hat{n}_{N\sigma}~.\nonumber
+\end{eqnarray}
+This leads to a canonical commutation and anticommutation relation for the $\eta_{N\sigma}$ operators~,~
+\begin{align}
+[\eta^{\dagger}_{N\sigma},\eta_{N\sigma}]=2\hat{n}_{N\sigma}-1~,~\lbrace\eta^{\dagger}_{N\sigma},\eta_{N\sigma}\rbrace = 1~.\label{eta_algebra}
+\end{align}
+With this constraints eq\eqref{eta_algebra} on the $\eta_{N\sigma}$ and $\eta^{\dagger}_{N\sigma}$ operators one can check that the idempotent nature of the projection operator $P^{2}_{N\sigma}=P_{N\sigma}$ is satisfied for a specific normalization factor,
+\begin{eqnarray}
+\mathcal{N}^{-1} = (1+\eta^{\dagger}_{N\sigma}\eta_{N\sigma}+\eta_{N\sigma}\eta^{\dagger}_{N\sigma})=2~.
+\end{eqnarray} 
+The number $\mathcal{N}^{-1}=2$ can then be seen to be associated with the block matrix dimension of the identity matrix $I_{N\sigma}$ or can be equivalently seen as the number of choices for the single electronic state configuration, i.e. it is either occupied or unoccupied. There is a orthogonal subspace projection operator $1-P_{N\sigma}$,
+\begin{eqnarray}
+1-P_{N\sigma} &=& \mathcal{N}(1-\eta_{N\sigma}-\eta^{\dagger}_{N\sigma})~,~\nonumber\\
+&=&\mathcal{N}(1-\eta^{\dagger}_{N\sigma})(1-\hat{n}_{N\sigma}) + \mathcal{N}(1-\eta_{N\sigma})\hat{n}_{N\sigma} ~,~\nonumber
+\end{eqnarray}
+from the algebra of the $\eta_{N\sigma}$ operators one can check that the above form is consistent with the requirement $P_{N\sigma}(1-P_{N\sigma})=0$~. 
+To get the other blocks of the final block diagonal form we start with the block diagonal equation satisfied by $(1-P_{N\sigma})$ which is given by, 
+\begin{eqnarray}
+&&\hspace*{-1cm}
+\begin{pmatrix}
+H_{N\sigma,e}\hat{n}_{N\sigma} & c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h} \\
+\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} & H_{N\sigma,h}(1-\hat{n}_{N\sigma})
+\end{pmatrix}\begin{pmatrix}
+1 \\ -\eta_{N\sigma}
+\end{pmatrix} = \hat{E}'_{[N\sigma]} \begin{pmatrix}
+1 \\ -\eta_{N\sigma}
+\end{pmatrix}\nonumber\\
+&&\hspace*{-1cm}\begin{pmatrix}
+H_{N\sigma,e}\hat{n}_{N\sigma} & c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h} \\
+\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} & H_{N\sigma,h}(1-\hat{n}_{N\sigma})
+\end{pmatrix}\begin{pmatrix}
+-\eta^{\dagger}_{N\sigma} \\ 1 
+\end{pmatrix} =\hat{E}'_{[N\sigma]} \begin{pmatrix}
+-\eta^{\dagger}_{N\sigma} \\ 1 
+\end{pmatrix}~.~\hspace*{0.5cm}\label{matrix_eqn2}
+\end{eqnarray}
+As above by solving the simultaneous set of equations we have the form of the transition operators,
+\begin{eqnarray}
+&&\hat{\eta}_{N\sigma} = -\hat{G}_{h}(\hat{E}'_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}~,~\nonumber\\
+&&\hat{\eta}^{\dagger}_{N\sigma}= -\hat{G}_{e}(\hat{E}'_{[N\sigma]})c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}~,~\nonumber
+\end{eqnarray}
+which leads to a further consistency condition using eq\eqref{transition operators},
+\begin{eqnarray}
+&&-\hat{G}_{h}(\hat{E}'_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} = \hat{G}_{h}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}~,~\nonumber\\
+&&-\hat{G}_{e}(\hat{E}'_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} = \hat{G}_{e}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}~.~~\label{consistency}
+\end{eqnarray}
+Again replacing this transition operators in the simultaneous equation for both sets we have the following block diagonal representation of the operator $\hat{E}'_{[N\sigma]}$ in the projected space of electron/hole occupancy operator corresponding to state $N\sigma$,
+\begin{eqnarray}
+&&c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}\hat{G}_{h}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}|\Psi^{1}_{N\sigma},1_{N\sigma}\rangle\nonumber\\
+ &=& (H_{N\sigma,e}-\hat{E}'_{[N\sigma]})\hat{n}_{N\sigma}|\Psi^{1}_{N\sigma},1_{N\sigma}\rangle~,~\nonumber\\
+&&\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}\hat{G}_{e}(\hat{E}_{[N\sigma]})c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}|\Psi^{0}_{N\sigma},0_{N\sigma}\rangle\nonumber\\
+& =& (H_{N\sigma,h}-\hat{E}'_{[N\sigma]})(1-\hat{n}_{N\sigma})|\Psi^{0}_{N\sigma},0_{N\sigma}\rangle. 
+\label{block_diag2}
+\end{eqnarray}
+The block diagonal equation can be reconstructed now as,
+\begin{eqnarray}
+\begin{pmatrix}
+\hat{E}_{N\sigma} & 0 \\
+0 & \hat{E}'_{[N\sigma]}
+\end{pmatrix}\begin{pmatrix}
+1 \\ 0 
+\end{pmatrix} = \hat{E}_{[N\sigma]} \begin{pmatrix}
+1 \\ 0 
+\end{pmatrix}~,~\begin{pmatrix}
+\hat{E}_{N\sigma} & 0 \\
+0 & \hat{E}'_{[N\sigma]}
+\end{pmatrix}\begin{pmatrix}
+0 \\ 1 
+\end{pmatrix} = \hat{E}'_{[N\sigma]} \begin{pmatrix}
+0 \\ 1 
+\end{pmatrix}~.\label{block_diag_eqn}
+\end{eqnarray}
+
+
+By identifying the two blocks $\hat{E}_{[N\sigma]}$ and $\hat{E}'_{[N\sigma]}$ using eq\eqref{block_diag1} and eq\eqref{block_diag2}  the block diagonalized Hamiltonian is given by,
+\begin{eqnarray}
+\hspace*{-0.5cm}
+\hat{H}' &=& \hat{E}_{[N\sigma]}\hat{n}_{N\sigma}+\hat{E}'_{[N\sigma]}(1-\hat{n}_{N\sigma})\nonumber\\
+\hspace*{-1.2cm}				&=&\frac{1}{2}Tr_{N\sigma}(\hat{H}_{2N})+\left(\hat{n}_{N\sigma}-\frac{1}{2}\right)\lbrace c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h},\eta_{N\sigma}\rbrace\hspace*{1cm}\label{block_diag_ham}
+\end{eqnarray}
+This proves that there exist a unitary operation $\hat{U}_{N\sigma}$ which puts the matrix into a block diagonal form i.e. $\hat{U}_{N\sigma}\hat{H}\hat{U}^{\dagger}_{N\sigma}=\hat{H}'$, such that $[\hat{H}',\hat{n}_{N\sigma}]=0$, i.e. proof of \textbf{statement-1}.\\
+To find the Unitary operator we write down the block matrix equation  as follows,
+\begin{eqnarray}
+&&\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+			H_{N\sigma,e}\hat{n}_{N\sigma}								 & c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h}\\
+				\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}						& H_{N\sigma,h}
+											\end{pmatrix}\begin{pmatrix}
+											1 & \eta^{\dagger}_{N\sigma}\\
+											\eta_{N\sigma} & 1
+											\end{pmatrix}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix}\nonumber\\
+											&=&\frac{1}{\sqrt{2}}\hat{E}_{[N\sigma]}\begin{pmatrix}
+											1 & \eta^{\dagger}_{N\sigma}\\
+											\eta_{N\sigma} & 1
+											\end{pmatrix}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix}~.
+\end{eqnarray}
+Using the proof of statement-1 we know that there exist some $\hat{U}_{N\sigma}$ such that the above block matrix equation becomes equivalent to ~,~
+\begin{eqnarray}
+&&\begin{pmatrix}
+			\hat{E}_{[N\sigma]}							 & 0\\
+				0					& \hat{E}'_{[N\sigma]}
+											\end{pmatrix}\hat{U}_{N\sigma}\begin{pmatrix}
+											1 & \eta^{\dagger}_{N\sigma}\\
+											\eta_{N\sigma} & 1
+											\end{pmatrix}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix}\nonumber\\
+											&=&\hat{U}_{N\sigma}\hat{E}_{[N\sigma]}U^{\dagger}_{[N\sigma]}U_{[N\sigma]}\begin{pmatrix}
+											1 & \eta^{\dagger}_{N\sigma}\\
+											\eta_{N\sigma} & 1
+											\end{pmatrix}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix}~.
+\end{eqnarray} 
+The requirement of the block diagonal equation eq\eqref{block_diag_eqn} is,
+\begin{eqnarray}
+\hat{U}_{N\sigma}\begin{pmatrix}
+											1 & \eta^{\dagger}_{N\sigma}\\
+											\eta_{N\sigma} & 1
+											\end{pmatrix}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix} = c\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix}~,\label{BD_req}
+\end{eqnarray}
+where $c$ is some constant.
+The Unitary operator $\hat{U}_{N\sigma}$ that fulfills the requirement is uniquely determined and has the form,
+\begin{eqnarray}
+\hat{U}_{N\sigma} = \frac{1}{\sqrt{2}}(1+\eta^{\dagger}_{N\sigma}-\eta_{N\sigma})~.~
+\end{eqnarray}
+That this matrix is unitary $\hat{U}_{N\sigma}\hat{U}^{\dagger}_{N\sigma}= \hat{U}^{\dagger}_{N\sigma}\hat{U}_{N\sigma} =1$ can be checked using eq\eqref{eta_algebra}.
+Below we show the fulfillment of the requirement eq\eqref{BD_req}~,
+\begin{eqnarray}
+\begin{pmatrix}
+1 & \eta^{\dagger}_{N\sigma} \\
+-\eta_{N\sigma} & 1
+\end{pmatrix}\begin{pmatrix}
+1 & \eta^{\dagger}_{N\sigma} \\
+\eta_{N\sigma} & 1
+\end{pmatrix}\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}=2\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}~.
+\end{eqnarray}
+The Unitary operator $\hat{U}_{N\sigma}$ can be written in a exponential form as,
+\begin{eqnarray}
+\hat{U}_{N\sigma} &=&\exp(\text{arctanh}(\eta^{\dagger}_{N\sigma}-\eta_{N\sigma}))= \frac{1+\eta^{\dagger}_{N\sigma}-\eta_{N\sigma}}{\sqrt{1+\eta_{N\sigma}\eta^{\dagger}_{N\sigma}+\eta^{\dagger}_{N\sigma}\eta_{N\sigma}}}=\frac{1}{\sqrt{2}}(1+\eta^{\dagger}_{N\sigma}-\eta_{N\sigma})~,\nonumber\label{unitary_matrix}
+\end{eqnarray}
+where $\eta_{N\sigma}$ is given by,
+\begin{eqnarray}
+\eta^{\dagger}_{N\sigma} = \hat{G}_{e}(\hat{E}_{[N\sigma]})c^{\dagger}_{N\sigma}T_{N\sigma,e-h} = c^{\dagger}_{N\sigma}T_{N\sigma,e-h}\hat{G}_{h}(\hat{E}_{[N\sigma]})~.\nonumber
+\end{eqnarray}
+This proves \textbf{statement-2.}\\
+\textbf{Case 2} \textbf{Hamiltonian constituted of operators containing arbitrary number of $c's$ and $c^{\dagger}\text{'}s$~.}
+In this case due to Fermion signature issues the partial trace decomposed block form Hamiltonian might have non trivial pre-factors to take into account, so it is better suited to write the block diagonalized Hamiltonian and the Unitary operator in the following fashion,
+\begin{eqnarray}
+U_{N\sigma}\hat{H}_{2N}U^{\dagger}_{N\sigma}  =  \begin{pmatrix}
+\hat{E}_{[N\sigma]} & 0\\
+0 & \hat{E}'_{[N\sigma]}
+\end{pmatrix}~.
+\end{eqnarray} 
+where $\hat{U}_{N\sigma}$ and $\hat{E}_{[N\sigma]},\hat{E}'_{[N\sigma]}$ are defined as ,
+\begin{eqnarray}
+\eta^{\dagger}_{N\sigma} &=& \hat{n}_{N\sigma}\hat{H}(1-\hat{n}_{N\sigma})\frac{1}{\hat{E}_{[N\sigma]} - (1-\hat{n}_{N\sigma})\hat{H}_{2N}(1-\hat{n}_{N\sigma})}~,~\nonumber\\
+\hat{U}_{N\sigma} &=& \frac{1}{\sqrt{2}}\left[1+\hat{\eta}_{N\sigma}-\hat{\eta}^{\dagger}_{N\sigma}\right]~,~\nonumber\\
+\hat{E}_{[N\sigma]} &=& \hat{n}_{N\sigma}\hat{H}_{2N}\hat{n}_{N\sigma} + \eta^{\dagger}_{N\sigma}(1-\hat{n}_{N\sigma})\hat{H}_{2N}\hat{n}_{N\sigma}~.
+\end{eqnarray}
+This entire block diagonalization procedure leads to the following corollaries~,\\
+\textbf{Corollaries}: \\
+\begin{itemize}
+\item[1.]\begin{eqnarray}
+&&\begin{pmatrix}
+			\hat{E}_{[N\sigma]}							 & 0\\
+				0					& \hat{E}'_{[N\sigma]}
+											\end{pmatrix}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix}=\hat{U}_{N\sigma}\hat{E}_{[N\sigma]}\hat{U}^{\dagger}_{N\sigma}\begin{pmatrix}
+											1 \\ 0
+											\end{pmatrix} \nonumber\\
+											&&\implies  \hat{U}_{N\sigma}\hat{E}_{[N\sigma]}\hat{U}^{\dagger}_{N\sigma}=\hat{E}_{[N\sigma]}~.\label{corollary_Unitary}
+\end{eqnarray}
+\item[2.]\begin{eqnarray}
+&& \begin{pmatrix}0 & 1\end{pmatrix} \hat{E}_{N\sigma} \begin{pmatrix}
+1  \\ 0
+\end{pmatrix}  = 0 \implies \begin{pmatrix}
+ 1 & 0
+\end{pmatrix}U^{\dagger}_{N\sigma}\hat{E}_{N\sigma}U_{N\sigma} \begin{pmatrix}
+ 0 \\ 1
+\end{pmatrix} =\hat{E}_{N\sigma}\nonumber\\
+&&\implies \begin{pmatrix} \eta_{N\sigma} & 1\end{pmatrix}\hat{E}_{N\sigma}\begin{pmatrix}
+1 \\ -\eta_{N\sigma}
+\end{pmatrix} =\hat{E}_{N\sigma} \to [\hat{E}_{[N\sigma]},\eta_{N\sigma}]=0\hspace*{0.5cm}~~~~\label{commutation_block_ham_transition_op}
+\end{eqnarray}
+\item[3.] \textbf{Prove}:$[\hat{E}_{N\sigma},\hat{G}_{e}(\hat{E}_{N\sigma})] = 0$\\
+Let us first rewrite $\hat{E}_{N\sigma}\eta_{N\sigma}$ as,
+\begin{eqnarray}
+\hat{E}_{N\sigma}\eta_{N\sigma} &= &\hat{E}_{N\sigma}\hat{G}_{h}(\hat{E}_{N\sigma})T^{\dagger}_{N\sigma,e-h}c_{N\sigma}\nonumber\\
+ &=& \left(1+Tr_{N\sigma}(H(1-\hat{n}_{N\sigma}))\hat{G}_{h}(\hat{E}_{N\sigma})\right)\nonumber\\
+ &&\times T^{\dagger}_{N\sigma,e-h}c_{N\sigma}~.~~~~~
+\end{eqnarray}
+As eq\eqref{operator_commutivity} i.e. $\hat{G}_{h}(\hat{E}_{[N\sigma]})\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma} = \hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}\hat{G}_{e}(\hat{E}_{[N\sigma]})$ for all $\hat{E}_{N\sigma}$ satisfying the block equation eq\eqref{block_diagonal_eqn} therefore,
+\begin{eqnarray}
+&&Tr_{N\sigma}(H(1-\hat{n}_{N\sigma}))\hat{G}_{h}(\hat{E}_{N\sigma})T^{\dagger}_{N\sigma,e-h}c_{N\sigma}\nonumber\\
+& =&T^{\dagger}_{N\sigma,e-h}c_{N\sigma}Tr_{N\sigma}(H\hat{n}_{N\sigma}) \hat{G}_{e}(\hat{E}_{N\sigma})~.\label{operator_taking across}
+\end{eqnarray}
+Using eq\eqref{operator_taking across} we have the transition operator rearrangement  relation,
+\begin{eqnarray}
+&&\left(1+Tr_{N\sigma}(H(1-\hat{n}_{N\sigma}))\hat{G}_{h}(\hat{E}_{N\sigma})\right)T^{\dagger}_{N\sigma,e-h}c_{N\sigma} \nonumber\\
+&=&T^{\dagger}_{N\sigma,e-h}c_{N\sigma}\left(1+Tr_{N\sigma}(H\hat{n}_{N\sigma})\hat{G}_{e}(\hat{E}_{N\sigma})\right),~\nonumber\\
+\hat{E}_{N\sigma}\eta_{N\sigma}&=&T^{\dagger}_{N\sigma,e-h}c_{N\sigma}\hat{E}_{N\sigma}G_{e}(\hat{E}_{N\sigma})~.
+\end{eqnarray}
+From eq\eqref{commutation_block_ham_transition_op} we have  $[\hat{E}_{[N\sigma]},\eta_{N\sigma}]=0$ this implies,
+\begin{eqnarray}
+T^{\dagger}_{N\sigma,e-h}c_{N\sigma}\hat{E}_{N\sigma}G_{e}(\hat{E}_{N\sigma}) &=& \eta_{N\sigma}\hat{E}_{N\sigma}\nonumber\\
+T^{\dagger}_{N\sigma,e-h}c_{N\sigma}[\hat{E}_{N\sigma},G_{e}(\hat{E}_{N\sigma})]=0~.\label{rel-prop_eff_ham}
+\end{eqnarray}
+Using the form of the electron-hole transition operator $\eta_{N\sigma} =  T^{\dagger}_{N\sigma,e-h}c_{N\sigma}G_{e}(\hat{E}_{N\sigma})$ and eq\eqref{rel-prop_eff_ham} we prove our assertion, 
+\begin{eqnarray}
+T^{\dagger}_{N\sigma,e-h}c_{N\sigma}[\hat{E}_{N\sigma},G_{e}(\hat{E}_{N\sigma})] &=&0,\nonumber\\
+c^{\dagger}_{N\sigma}T_{N\sigma,e-h}G_{h}(\hat{E}_{N\sigma})T^{\dagger}_{N\sigma,e-h}c_{N\sigma}[\hat{E}_{N\sigma},G_{e}(\hat{E}_{N\sigma})] &=&0\nonumber\\
+\hat{G}^{-1}_{e}(\hat{E}_{N\sigma})\eta^{\dagger}_{N\sigma}\eta_{N\sigma}[\hat{E}_{N\sigma},G_{e}(\hat{E}_{N\sigma})] &=&0\nonumber\\
+\implies [\hat{E}_{N\sigma},G_{e}(\hat{E}_{N\sigma})] &=& 0~.~~~~~\label{commutation of prop and eff ham}
+\end{eqnarray}
+\end{itemize}
+\section{An example}
+Let us consider a two site Hamiltonian,
+\begin{eqnarray}
+\hat{H} = -t(c^{\dagger}_{1}c_{2}+h.c.)+V\hat{n}_{1}\hat{n}_{2}-\mu(n_{1}+n_{2})~,
+\end{eqnarray}
+where $\hat{n}_{1,2}=c^{\dagger}_{1,2}c_{1,2}$.
+First step is to represent this Hamiltonian in a block form in the occupancy basis of site 1 which are eigenstates of number operator $\hat{n}_{1}$,
+\begin{eqnarray}
+\hat{H} = 
+\begin{pmatrix}
+			(V-\mu)\hat{n}_{1}\hat{n}_{2}-\mu\hat{n}_{1}							 & -tc^{\dagger}_{1}c_{2}\\
+				-tc^{\dagger}_{2}c_{1}						& -\mu\hat{n}_{2}(1-\hat{n}_{1})
+											\end{pmatrix}\label{block_matrix}
+\end{eqnarray}
+Let us note that the quantum fluctuations in the number occupancy basis has its source in the off-diagonal blocks of the above matrix leading to $[\hat{H},\hat{n}_{1}]\neq 0$. We ask for a new resolution of the identity $I_{1}=\hat{P}_{1}+1-P_{1}$ corresponding to a new basis in which this matrix attains a block diagonal form i.e.,
+\begin{eqnarray}
+P_{1}H(1-P_{1})&=&(1-P_{1})HP_{1}=0~,~P_{1}HP_{1} = P_{1}H'P_{1}~,~\nonumber\\
+ (1-P_{1})H(1-P_{1}) &=& (1-P_{1})H''(1-P_{1})~,~\nonumber
+\end{eqnarray}
+where $[H',\hat{n}_{1}]=0~,[H'',\hat{n}_{1}]=0~$. From the above the block diagonal form equation for the subspace projection operator $P_{1}$ can be also written as,
+\begin{eqnarray}
+HP_{1} = H'P_{1}
+\end{eqnarray}
+ A form of $\hat{H}'=I_{1}\otimes\hat{E}_{[1]} $ satisfies the above block diagonal equation,
+\begin{eqnarray}
+\hspace*{-1cm}
+\begin{pmatrix}
+			(V-\mu)\hat{n}_{1}\hat{n}_{2}-\mu\hat{n}_{1}							 & -tc^{\dagger}_{1}c_{2}\\
+				-tc^{\dagger}_{2}c_{1}						& -\mu\hat{n}_{2}(1-\hat{n}_{1})
+											\end{pmatrix}P_{1}= I_{1}\otimes\hat{E}_{[1]}P_{1}\label{block_diagonal_eqn}
+\end{eqnarray}
+where $\hat{E}_{[1]}$ is a matrix of size $2\times 2$ and $I_{1}$ is the $2\times 2$ identity . For this equation we will now implement the Gauss Jordan Block diagonalization procedure as follows, firstly we write a ansatz for $P_{1}$ as~, 
+\begin{eqnarray}
+P_{1} &=& \mathcal{N}(1+\eta_{1}+\eta^{\dagger}_{1})~,\nonumber\\
+&=&\mathcal{N}(1+\eta_{1})\hat{n}_{1}+\mathcal{N}(1+\eta^{\dagger}_{1})(1-\hat{n}_{1})~,~\nonumber\\
+&=&\mathcal{N}\begin{pmatrix}
+1 & 0\\
+\eta_{1} & 0
+\end{pmatrix}+\mathcal{N}\begin{pmatrix}
+0 & \eta^{\dagger}_{1}\\
+0 & 1
+\end{pmatrix}~,\label{psi_def}
+\end{eqnarray}
+where $\eta_{1}$~,~$\eta^{\dagger}_{1}$ are the electron to hole and hole to electron transition operators having the following properties,
+\begin{eqnarray}
+(1-\hat{n}_{1})\eta_{1}\hat{n}_{1}=\eta_{1}~,~\hat{n}_{1}\eta_{1}(1-\hat{n}_{1})=0~,~\nonumber
+\end{eqnarray}
+and $\eta^{2}_{1}=0$.In eq\eqref{psi_def} quantity $\mathcal{N}$ is a normalization factor which maintains the idempotent nature of the new projection operator $P_{1}$, below we will show $\mathcal{N}$ is determined as an outcome of our analysis.
+The properties of $\eta^{\dagger}_{N\sigma}$ follows from above.
+Using the definition eq\eqref{psi_def} and the block diagonalization equation eq\eqref{block_diagonal_eqn} we can write down the following matrix equations,
+\begin{eqnarray}
+\begin{pmatrix}
+			(V-\mu)\hat{n}_{1}\hat{n}_{2}-\mu\hat{n}_{1}							 & -tc^{\dagger}_{1}c_{2}\\
+				-tc^{\dagger}_{2}c_{1}						& -\mu\hat{n}_{2}
+											\end{pmatrix}\begin{pmatrix}
+1 \\ \eta_{1}
+\end{pmatrix} = \hat{E}_{[1]} \begin{pmatrix}
+1 \\ \eta_{1}
+\end{pmatrix}~,~\begin{pmatrix}
+			(V-\mu)\hat{n}_{1}\hat{n}_{2}-\mu\hat{n}_{1}							 & -tc^{\dagger}_{1}c_{2}\\
+				-tc^{\dagger}_{2}c_{1}						& -\mu\hat{n}_{2}
+											\end{pmatrix}\begin{pmatrix}
+\eta^{\dagger}_{1} \\ 1
+\end{pmatrix} = \hat{E}_{[1]} \begin{pmatrix}
+\eta^{\dagger}_{1} \\ 1
+\end{pmatrix}~.\hspace*{0.2cm}\label{matrix_eqn1}
+\end{eqnarray}
+The form of the transition operators $\eta_{1}~,~ \eta^{\dagger}_{1}$ that satisfies the matrix equations are, 
+\begin{eqnarray}
+\hat{\eta}^{\dagger}_{1} &=& -\frac{t}{\hat{\omega}-(V-\mu)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{1}}c^{\dagger}_{1}c_{2}~,~\hat{\eta}_{1} = -\frac{t}{\hat{\omega}-(V-\mu)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{2}}c^{\dagger}_{2}c_{1}~.\label{transition operators}
+\end{eqnarray}
+The following transition operators lead to the following block diagonal representation of the operator $\hat{E}_{[N\sigma]}$ in the projected space of electron/hole occupancy operator corresponding to state $N\sigma$ ,
+\begin{eqnarray}
+\left[(V-\mu)\hat{n}_{1}\hat{n}_{2}-\mu\hat{n}_{1} +c^{\dagger}_{1}c_{2}\frac{t^{2}}{\hat{\omega}-(V-\mu)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{2}}c^{\dagger}_{2}c_{1}\right] = \hat{E}_{[1]}\hat{n}_{1}~,~
+\label{block_diag1}
+\end{eqnarray}
+From the block diagonal operators eq\eqref{block_diag1} and the transition operator definitions  eq\eqref{transition operators} we have 
+\begin{eqnarray}
+\eta^{\dagger}_{1}\eta_{1}=\hat{n}_{1},\label{op_rel}
+\end{eqnarray}
+similarly using the block equations eq\eqref{matrix_eqn1} one can arrive at $\eta_{1}\eta^{\dagger}_{1}=1-\hat{n}_{1}$. The relation eq\eqref{op_rel} is equivalent to,
+\begin{eqnarray}
+\hat{n}_{1}(\hat{\omega} -(\mu+V)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{1})= t^{2}\hat{n}_{1}(1-\hat{n}_{2})~,
+\end{eqnarray}
+satisfied by the form of $\hat{\omega}$,
+\begin{equation}
+\hat{\omega}\hat{n}_{1} = (t-\mu)(1-\hat{n}_{2})\hat{n}_{1}+(V-2\mu)\hat{n}_{1}\hat{n}_{2}~.
+\end{equation}
+The block diagonal form of the Hamiltonian H is given by,
+\begin{eqnarray}
+U_{1}HU^{\dagger}_{1} =\begin{pmatrix}
+\hat{\omega} & 0\\
+0 & \hat{\omega}'
+\end{pmatrix}
+\end{eqnarray}
+where the form of the block $\hat{\omega}'$ is constrained from the partial trace preservation condition seen in equation eq\eqref{block_diag_ham},
+\begin{eqnarray}
+ \hat{\omega}\hat{n}_{1} + \hat{\omega}'(1-\hat{n}_{1}) &=& (V-2\mu)\hat{n}_{1}\hat{n}_{2} + (t-\mu)\hat{n}_{1}(1-\hat{n}_{2})+(-t-\mu)\hat{n}_{2}(1-\hat{n}_{1})\nonumber\\
+ \hat{\omega}'&=& (-t-\mu)\hat{n}_{2}(1-\hat{n}_{1})~,
+\end{eqnarray}
+and $U_{1}$ is the unitary operator that takes the matrix to a block diagonal form.
+The form of the unitary operator is given by, $U_{1} =\frac{1}{\sqrt{2}}[1+\eta_{1}-\eta^{\dagger}_{1}]$. If one directly diagonalizes the $4\times 4$ matrix then the eigen values obtained are,
+\begin{eqnarray}
+U_{1}\begin{pmatrix}
+ V-2\mu & 0 & 0 &0\\
+ 0 & 0 &0 &0 \\
+ 0 & 0 & -\mu & -t\\
+ 0 & 0 & -t & -\mu 
+\end{pmatrix}U_{1}^{\dagger}\rightarrow  \begin{pmatrix}
+ V-2\mu & 0 & 0 &0\\
+ 0 & 0 &0 &0 \\
+ 0 & 0 & t-\mu & 0\\
+ 0 & 0 & 0 & -t-\mu 
+\end{pmatrix}
+\end{eqnarray}
+where this matrix is represented in the basis (starting from top row) $|1_{1}1_{2}\rangle, |0_{1}0_{2}\rangle , |1_{1}0_{2}\rangle, |0_{1}1_{2}\rangle$ in the number occupancy basis.
+\end{document}

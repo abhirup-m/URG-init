@@ -1,0 +1,4 @@
+- do the traces and $c^{+}$ commute
+- the diagonal form of H' is in basis of n right, and not P?
+- dimension of $\eta$
+- formula for Hbar or Hprime, I don't know

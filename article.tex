@@ -31,8 +31,8 @@ I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is 
 The following operators commute with the Hamiltonian.
 \begin{enumerate}
 \item\bf{Total number operator}: \(\qq{\ham, \hat N}=0\).
-The proof is as follows: The last term in the Hamiltonian is the number operator itself. Ignoring that, there are three terms that I need to individually consider.
-
+\begin{proof}
+The last term in the Hamiltonian is the number operator itself. Ignoring that, there are three terms that I need to individually consider.
 \begin{itemize}
 \item \(\C{1}{\sigma}\c{2}{\sigma}\)
 \beq[commutator]
@@ -66,9 +66,11 @@ Therefore, \(\qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{N}} = \sum_{j,\si
 % \eeq
 
 \end{itemize}
-The total Hamiltonian is just a sum of the three terms; since the number operator commutes individually with these terms, it obviously commutes with the total Hamiltonian. QED
+The total Hamiltonian is just a sum of the three terms; since the number operator commutes individually with these terms, it obviously commutes with the total Hamiltonian.
+\end{proof}
 \item \bf{Magnetization operator}: \(\hat{S}^z_{tot} \equiv \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}-\hat{n}_{i\downarrow}}\), \(\qq{\ham, \hat{S}^z_{tot}}=0\).
-This proof goes as follows. The magnetization operator can be rewritten as \(\hat{S}^z_{tot} = \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}+\hat{n}_{i\downarrow}-2\hat{n}_{i\downarrow}} = \hat{N} - 2\sum_i\hat{n}_{i\downarrow}\). Since \(\hat{N}\) commutes with \(\ham\), I just need to prove that \(\qq{\ham, \sum_i\hat{n}_{i\downarrow}}\). From eq. \ref{commutator}, 
+\begin{proof}
+The magnetization operator can be rewritten as \(\hat{S}^z_{tot} = \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}+\hat{n}_{i\downarrow}-2\hat{n}_{i\downarrow}} = \hat{N} - 2\sum_i\hat{n}_{i\downarrow}\). Since \(\hat{N}\) commutes with \(\ham\), I just need to prove that \(\qq{\ham, \sum_i\hat{n}_{i\downarrow}}\). From eq. \ref{commutator}, 
 \beq
 \qq{\C{1}{\sigma}\c{2}{\sigma},\sum_i\hat{n}_{i\downarrow}} &= \C{1}{\downarrow}\c{1}{\downarrow}\sum_{i=\{1,2\}}\rr{\delta_{i,2} - \delta_{i,1}} = 0
 \eeq
@@ -77,13 +79,16 @@ Again using the symmetry of the magnetization operator with the exchange of indi
 
 Using eq. \ref{commutator_2}, \(\qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}, \hat{n}_{i\downarrow}} = 0\).
 
-Finally, \(\qq{N, \hat{n}_{i\downarrow}}=\sum_{j\sigma}\qq{\hat{n}_{j\sigma},\hat{n}_{i\downarrow}} = \qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}} = \C{i}{\uparrow}\c{i}{\uparrow}\C{i}{\downarrow}\c{i}{\downarrow}-\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow} = 0\). Since \(\hat{S}^z_{tot}\) commutes with each part individually, it commutes with the total Hamiltonian. QED
+Finally, \(\qq{N, \hat{n}_{i\downarrow}}=\sum_{j\sigma}\qq{\hat{n}_{j\sigma},\hat{n}_{i\downarrow}} = \qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}} = \C{i}{\uparrow}\c{i}{\uparrow}\C{i}{\downarrow}\c{i}{\downarrow}-\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow} = 0\). Since \(\hat{S}^z_{tot}\) commutes with each part individually, it commutes with the total Hamiltonian.
+\end{proof}
 
 \item \bf{Two-site parity operator \(\hat{P}\)}: The action of \(\hat{P}\) is defined as follows. If \(\ket{\Psi_{\alpha\beta}}\) is a wavefunction with site indices \(\alpha\) and \(\beta\), 
 \beq
 \hat{P}\ket{\Psi(\alpha,\beta)} = \ket{\Psi(\beta,\alpha)}
 \eeq
-That is, it operates on each electron and reverses it's site indices. I now rewrite the Hamiltonian by explcitly showing the two site indices:
+That is, it operates on each electron and reverses it's site indices. 
+\begin{proof}
+I now rewrite the Hamiltonian by explcitly showing the two site indices:
 \beq
 \ham(\alpha,\beta) = -t\sum_\sigma(\C{\alpha}{\sigma}\c{\beta}{\sigma}+\C{\beta}{\sigma}\c{\alpha}{\sigma}) + U(n_{\alpha\uparrow}n_{\alpha\downarrow}+n_{\beta\uparrow}n_{\beta\downarrow}) - \mu\sum_\sigma(n_{\alpha\sigma}+n_{\beta\sigma})
 \eeq 
@@ -98,6 +103,7 @@ Since any general wavefunction can be expanded in terms of these wavefunctions a
 \ham \hat{P} \ket{\Psi(\alpha,\beta)} = \hat{P} \ham \ket{\Psi(\alpha,\beta)}
 \implies [\ham, \hat{P}] = 0
 \eeq
+\end{proof}
 \end{enumerate}
 \subsection{Partitioning the Hilbert space}
 THe Hamiltonian commutes with the three operators. This means that is possible to simultaneously diagonalize these four operators: \(\ham, \hat{N}, S_z^{tot}, \hat{P}\). I will be able to label the eigenstates of the total Hamiltonian using the eigenvalues of these operatos. First take the total number operator. \(\hat{N}\) can take four values for a two-site system, 1 through 4. The eigenstates labelled by a particular number, say N=2 will be orthogonal to the eigenstates labelled by another number, say N=4. This means each eigenvalue of \(\hat{N}\) will have a distinct subspace orthogonal to the other values of \(\hat{N}\). I will be able to diagonalize each such subspace independently of each other, because they will not have any overlap. This feature enables us to block-diagonalize the total Hamiltonian into four blocks, each block belonging to each value \(\hat{N}\). 

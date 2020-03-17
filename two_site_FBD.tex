@@ -6,7 +6,7 @@
  \newtheorem{lemma}{Lemma}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
+\usepackage{graphicx,xcolor,tcolorbox}
 \author{Anirban Mukherjee}
 \title{Fermion Block diagonalization, Example: A two site system}
 \begin{document}
@@ -58,8 +58,8 @@ where the form of $\hat{T}^{\dagger}_{N\sigma,e-h}$ operator holds true when $H$
 We ask for a new resolution of the identity $I_{N\sigma}=\hat{P}_{N\sigma}+1-P_{N\sigma}$ corresponding to a new basis in which this matrix attains a block diagonal form i.e.,
 \begin{eqnarray}
 P_{N\sigma}H(1-P_{N\sigma})&=&(1-P_{N\sigma})HP_{N\sigma}=0~,~\nonumber\\
- P_{N\sigma}HP_{N\sigma} &=& P_{N\sigma}H'P_{N\sigma}~,~\nonumber\\
- (1-P_{N\sigma})H(1-P_{N\sigma}) &=& (1-P_{N\sigma})H''(1-P_{N\sigma})~,~\nonumber
+P_{N\sigma}HP_{N\sigma} &=& \textcolor{red}{P_{N\sigma}H'P_{N\sigma}}~,~\nonumber\\
+(1-P_{N\sigma})H(1-P_{N\sigma}) &=& (1-P_{N\sigma})H''(1-P_{N\sigma})~,~\nonumber
 \end{eqnarray}
 where $[H',\hat{n}_{N\sigma}]=0~,[H'',\hat{n}_{N\sigma}]=0~$. From the above the block diagonal form equation for the subspace projection operator $P_{N\sigma}$ can be also written as,
 \begin{eqnarray}
@@ -78,10 +78,10 @@ where $\hat{E}_{[N\sigma]}$ is a matrix of size $2^{2N-1}\times 2^{2N-1}$ and $I
 \begin{eqnarray}
 P_{N\sigma} &=& \mathcal{N}(1+\eta_{N\sigma}+\eta^{\dagger}_{N\sigma})~,\nonumber\\
 &=&\mathcal{N}(1+\eta_{N\sigma})\hat{n}_{N\sigma}+\mathcal{N}(1+\eta^{\dagger}_{N\sigma})(1-\hat{n}_{N\sigma})~,~\nonumber\\
-&=&\mathcal{N}\begin{pmatrix}
+&=&\mathcal{N}\textcolor{red}{\begin{pmatrix}
 1 & 0\\
 \eta_{N\sigma} & 0
-\end{pmatrix}+\mathcal{N}\begin{pmatrix}
+\end{pmatrix}}+\mathcal{N}\begin{pmatrix}
 0 & \eta^{\dagger}_{N\sigma}\\
 0 & 1
 \end{pmatrix}~,\label{psi_def}
@@ -186,6 +186,9 @@ Again replacing this transition operators in the simultaneous equation for both 
 & =& (H_{N\sigma,h}-\hat{E}'_{[N\sigma]})(1-\hat{n}_{N\sigma})|\Psi^{0}_{N\sigma},0_{N\sigma}\rangle. 
 \label{block_diag2}
 \end{eqnarray}
+\begin{tcolorbox}
+Is the following equation same as \(\bar{H}| 1>=E| 1>\) and \(\bar{H}| 0>=E'| 0>\)?
+\end{tcolorbox}
 The block diagonal equation can be reconstructed now as,
 \begin{eqnarray}
 \begin{pmatrix}
@@ -207,11 +210,14 @@ The block diagonal equation can be reconstructed now as,
 
 
 By identifying the two blocks $\hat{E}_{[N\sigma]}$ and $\hat{E}'_{[N\sigma]}$ using eq\eqref{block_diag1} and eq\eqref{block_diag2}  the block diagonalized Hamiltonian is given by,
+\begin{tcolorbox}
 \begin{eqnarray}
 \hspace*{-0.5cm}
 \hat{H}' &=& \hat{E}_{[N\sigma]}\hat{n}_{N\sigma}+\hat{E}'_{[N\sigma]}(1-\hat{n}_{N\sigma})\nonumber\\
 \hspace*{-1.2cm}				&=&\frac{1}{2}Tr_{N\sigma}(\hat{H}_{2N})+\left(\hat{n}_{N\sigma}-\frac{1}{2}\right)\lbrace c^{\dagger}_{N\sigma}\hat{T}_{N\sigma,e-h},\eta_{N\sigma}\rbrace\hspace*{1cm}\label{block_diag_ham}
 \end{eqnarray}
+\end{tcolorbox}
+
 This proves that there exist a unitary operation $\hat{U}_{N\sigma}$ which puts the matrix into a block diagonal form i.e. $\hat{U}_{N\sigma}\hat{H}\hat{U}^{\dagger}_{N\sigma}=\hat{H}'$, such that $[\hat{H}',\hat{n}_{N\sigma}]=0$, i.e. proof of \textbf{statement-1}.\\
 To find the Unitary operator we write down the block matrix equation  as follows,
 \begin{eqnarray}
@@ -429,9 +435,11 @@ Using the definition eq\eqref{psi_def} and the block diagonalization equation eq
 \end{pmatrix}~.\hspace*{0.2cm}\label{matrix_eqn1}
 \end{eqnarray}
 The form of the transition operators $\eta_{1}~,~ \eta^{\dagger}_{1}$ that satisfies the matrix equations are, 
+\begin{tcolorbox}
 \begin{eqnarray}
 \hat{\eta}^{\dagger}_{1} &=& -\frac{t}{\hat{\omega}-(V-\mu)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{1}}c^{\dagger}_{1}c_{2}~,~\hat{\eta}_{1} = -\frac{t}{\hat{\omega}-(V-\mu)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{2}}c^{\dagger}_{2}c_{1}~.\label{transition operators}
 \end{eqnarray}
+\end{tcolorbox}
 The following transition operators lead to the following block diagonal representation of the operator $\hat{E}_{[N\sigma]}$ in the projected space of electron/hole occupancy operator corresponding to state $N\sigma$ ,
 \begin{eqnarray}
 \left[(V-\mu)\hat{n}_{1}\hat{n}_{2}-\mu\hat{n}_{1} +c^{\dagger}_{1}c_{2}\frac{t^{2}}{\hat{\omega}-(V-\mu)\hat{n}_{1}\hat{n}_{2}+\mu\hat{n}_{2}}c^{\dagger}_{2}c_{1}\right] = \hat{E}_{[1]}\hat{n}_{1}~,~

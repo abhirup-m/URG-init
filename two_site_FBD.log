@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.3.9)  17 MAR 2020 13:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.3.9)  17 MAR 2020 15:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -546,12 +546,12 @@ LaTeX Warning: Reference `block_form_even' on page 1 undefined on input line 57
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 312--315
+Underfull \hbox (badness 10000) in paragraph at lines 314--317
 
  []
 
 [5] [6]
-Overfull \hbox (31.97766pt too wide) in alignment at lines 420--436
+Overfull \hbox (31.97766pt too wide) in alignment at lines 422--438
  [][][] []
  []
 
@@ -564,13 +564,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12992 strings out of 492167
- 248399 string characters out of 6131559
- 318049 words of memory out of 5000000
- 17112 multiletter control sequences out of 15000+600000
+ 12994 strings out of 492167
+ 248433 string characters out of 6131559
+ 317049 words of memory out of 5000000
+ 17114 multiletter control sequences out of 15000+600000
  13423 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,13n,75p,841b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,15n,75p,841b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/pub
@@ -581,7 +581,7 @@ dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pf
 b>
-Output written on two_site_FBD.pdf (8 pages, 153540 bytes).
+Output written on two_site_FBD.pdf (8 pages, 153933 bytes).
 PDF statistics:
  78 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream

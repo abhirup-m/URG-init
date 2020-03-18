@@ -58,7 +58,7 @@ where the form of $\hat{T}^{\dagger}_{N\sigma,e-h}$ operator holds true when $H$
 We ask for a new resolution of the identity $I_{N\sigma}=\hat{P}_{N\sigma}+1-P_{N\sigma}$ corresponding to a new basis in which this matrix attains a block diagonal form i.e.,
 \begin{eqnarray}
 P_{N\sigma}H(1-P_{N\sigma})&=&(1-P_{N\sigma})HP_{N\sigma}=0~,~\nonumber\\
-P_{N\sigma}HP_{N\sigma} &=& \textcolor{red}{P_{N\sigma}H'P_{N\sigma}}~,~\nonumber\\
+P_{N\sigma}HP_{N\sigma} &=& P_{N\sigma}H'P_{N\sigma}~,~\nonumber\\
 (1-P_{N\sigma})H(1-P_{N\sigma}) &=& (1-P_{N\sigma})H''(1-P_{N\sigma})~,~\nonumber
 \end{eqnarray}
 where $[H',\hat{n}_{N\sigma}]=0~,[H'',\hat{n}_{N\sigma}]=0~$. From the above the block diagonal form equation for the subspace projection operator $P_{N\sigma}$ can be also written as,
@@ -74,18 +74,20 @@ using $HP_{N\sigma} = P_{N\sigma}HP_{N\sigma}$ as $(1-P_{N\sigma})HP_{N\sigma}=0
 				\hat{T}^{\dagger}_{N\sigma,e-h}c_{N\sigma}						& H_{N\sigma,h}(1-\hat{n}_{N\sigma})
 											\end{pmatrix}P_{N\sigma}= I_{N\sigma}\otimes\hat{E}_{[N\sigma]}P_{N\sigma}\label{block_diagonal_eqn}
 \end{eqnarray}
-where $\hat{E}_{[N\sigma]}$ is a matrix of size $2^{2N-1}\times 2^{2N-1}$ and $I_{N\sigma}$ is the $2\times 2$ identity . For this equation we will now implement the Gauss Jordan Block diagonalization procedure as follows, firstly we write a ansatz for $P_{N\sigma}$ as~, 
+where $\hat{E}_{[N\sigma]}$ is a matrix of size $2^{2N-1}\times 2^{2N-1}$ and $I_{N\sigma}$ is the $2\times 2$ identity . For this equation we will now implement the Gauss Jordan Block diagonalization procedure as follows, firstly we write a ansatz for $P_{N\sigma}$ as~,
+\begin{tcolorbox}
 \begin{eqnarray}
 P_{N\sigma} &=& \mathcal{N}(1+\eta_{N\sigma}+\eta^{\dagger}_{N\sigma})~,\nonumber\\
 &=&\mathcal{N}(1+\eta_{N\sigma})\hat{n}_{N\sigma}+\mathcal{N}(1+\eta^{\dagger}_{N\sigma})(1-\hat{n}_{N\sigma})~,~\nonumber\\
-&=&\mathcal{N}\textcolor{red}{\begin{pmatrix}
+&=&\mathcal{N}\begin{pmatrix}
 1 & 0\\
 \eta_{N\sigma} & 0
-\end{pmatrix}}+\mathcal{N}\begin{pmatrix}
+\end{pmatrix}+\mathcal{N}\begin{pmatrix}
 0 & \eta^{\dagger}_{N\sigma}\\
 0 & 1
 \end{pmatrix}~,\label{psi_def}
 \end{eqnarray}
+\end{tcolorbox}
 where $\eta_{N\sigma}$~,~$\eta^{\dagger}_{N\sigma}$ are the electron to hole and hole to electron transition operators having the following properties,
 \begin{eqnarray}
 (1-\hat{n}_{N\sigma})\eta_{N\sigma}\hat{n}_{N\sigma}=\eta_{N\sigma}~,~\hat{n}_{N\sigma}\eta_{N\sigma}(1-\hat{n}_{N\sigma})=0~,~\nonumber
@@ -187,7 +189,7 @@ Again replacing this transition operators in the simultaneous equation for both 
 \label{block_diag2}
 \end{eqnarray}
 \begin{tcolorbox}
-Is the following equation same as \(\bar{H}| 1>=E| 1>\) and \(\bar{H}| 0>=E'| 0>\)?
+Is the following equation same as \(\bar{H}| 1>=E| 1>\) and \(\bar{H}| 0>=E'| 0>\) Why act on the vectors in the previous step? Why not directly write them from the equations?
 \end{tcolorbox}
 The block diagonal equation can be reconstructed now as,
 \begin{eqnarray}

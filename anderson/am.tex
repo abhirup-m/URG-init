@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage{common}
+\usepackage[margin=1in]{geometry}
+\renewcommand\arraystretch{2.5}
+\begin{document}
+\begin{titlepage}
+
+\begin{center}
+\bf{\Large{Anderson Molecule}}\\
+\end{center}
+
+\end{titlepage}
+
+\section{Exact diagonalization of the Anderson Molecule}
+
+\pp[The Hamiltonian]
+\beq
+\ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\hat{n}_{1\uparrow}\hat{n}_{1\downarrow} + \epsilon_s\sum_\sigma\hat n_{2\sigma} + \epsilon_d\sum_\sigma\hat n_{1\sigma}
+\eeq
+
+I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site. The model has on-site repulsion only for the first site. The sites have energies of \(\epsilon_s\) and \(\epsilon_s\) respectively.
+
+\subsection{Symmetries of the problem}
+The following operators commute with the Hamiltonian.
+\begin{enumerate}
+\item\bf{Total number operator}: \(\qq{\ham, \hat N}=0\).
+\item \bf{Magnetization operator}: \(\qq{\ham, \hat{S}^z_{tot}}=0\).
+\item \bf{Total Spin Operator}: Total spin angular momentum operator,
+\beq
+\hat S^2_{tot} = \hat (S^x_{tot})^2 + \hat (S^y_{tot})^2 + \hat (S^z_{tot})^2 = S_{tot}^+S_{tot}^- - \hbar S_{tot}^z + (S_{tot}^z)^2
+\eeq
+Since all the terms in the Hamiltonian are spin-preserving (all events conserve the number of particles having a definite spin \(\sigma\)), total angular momentum will be conserved. It's obvious that the number operator term do so. The hopping term does so as well; \(c^\dagger_{i\sigma}c_{j\sigma}\) destroys a particle of spin \(\sigma\) and creates a particle of the same spin; the total angular momentum remain conserved in the process, although the number of particles at a particular site is not conserved. Thus, \(\qq{\hat S^2_{tot}, \ham}=0\).
+\end{enumerate}
+
+\subsection{N = 1}
+\begin{itemize}
+\item \(S_{tot}^z = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
+\end{itemize}
+\subsubsection{\(S_{tot}^z = -1\)}
+Let us first see the action of the Hamiltonian on the eigenfunctions with \(S_{tot}^z = -1\).
+\beq
+\ham\ket{\downarrow,0} = \epsilon_d\ket{\downarrow,0}-t\ket{0,\downarrow} \\
+\ham\ket{0,\downarrow} = \epsilon_s\ket{0,\downarrow}-t\ket{\downarrow,0} \\
+\eeq
+We get the following matrix for this tiny subspace of the Hamiltonian:
+\beq
+\bordermatrix{~ & \ket{\downarrow,0} & \ket{0,\downarrow} \cr
+              \ket{\downarrow,0} & \epsilon_d\ & -t \cr \\
+              \ket{0,\downarrow} & -t & \epsilon_s \cr}
+\eeq
+Eigenvalues: \(\fr{1}{2}\qq{\epsilon_d+\epsilon_s \pm \sqrt{(\epsilon_d-\epsilon_s)^2+4t^2}}\). For \(\epsilon_s = \epsilon_d + \fr{U}{2}\) and \(\Delta = \sqrt{U^2+16t^2}\), \\ eigenvalues, \(\lambda_\pm = \epsilon_d + \fr{1}{4}(U\pm\Delta)\). \\
+The eigenvectors are \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\), where \(N_\pm^2 = t^2 + (\fr{U\pm\Delta}{4})^2\)
+\subsubsection{\(S_{tot}^z = +1\)}
+\beq
+\ham\ket{\uparrow,0} = \epsilon_d\ket{\uparrow,0}-t\ket{0,\uparrow} \\
+\ham\ket{0,\uparrow} = \epsilon_s\ket{0,\uparrow}-t\ket{\uparrow,0} \\
+\eeq
+Clearly, this gives the same matrix as the spin-down states. So, the eigenvalues will be exactly the same, and the eigenvectors will be correspondingly modified in the new basis. \\
+eigenvectors : \(\fr{1}{N_\pm}\rr{t\ket{\uparrow,0}+(\epsilon_d-\lambda_\pm)\ket{0,\uparrow}}\)
+\subsection{N=3}
+\begin{itemize}
+\item \(S_{tot}^z = -1\): \(\ket{\uparrow\downarrow,\downarrow}, \ket{\downarrow,\uparrow\downarrow}\)
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
+\end{itemize}
+\subsubsection{\(S_{tot}^z = -1\)}
+\beq
+\ham \ket{\uparrow\downarrow,\downarrow} = -t\ket{\downarrow,\uparrow\downarrow} + (2\epsilon_d + \epsilon_s + U)\ket{\uparrow\downarrow,\downarrow} \\
+\ham \ket{\downarrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\downarrow} + (2\epsilon_s + \epsilon_d)\ket{\downarrow,\uparrow\downarrow}
+\eeq
+\beq
+\bordermatrix{~ & \ket{\uparrow\downarrow,\downarrow} & \ket{\downarrow,\uparrow\downarrow} \cr
+              \ket{\uparrow\downarrow,\downarrow} & 2\epsilon_d + \epsilon_s + U & -t \cr \\
+              \ket{\downarrow,\uparrow\downarrow} & -t & 2\epsilon_s + \epsilon_d \cr}
+\eeq
+Again setting \(\epsilon_s = \epsilon_d + \fr{U}{2}\), eigenvalues: \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\). \\ Corresponding eigenvectors \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\)
+
+\subsubsection{\(S_{tot}^z = +1\)}
+\beq
+\ham \ket{\uparrow\downarrow,\uparrow} = -t\ket{\uparrow,\uparrow\downarrow} + (2\epsilon_d + \epsilon_s + U)\ket{\uparrow\downarrow,\uparrow} \\
+\ham \ket{\uparrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\uparrow} + (2\epsilon_s + \epsilon_d)\ket{\uparrow,\uparrow\downarrow}
+\eeq
+Again the same matrix. Hence the eigenvalues are same. Eigenvectors are
+\(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\uparrow}-\fr{1}{4}(U\pm\Delta)\ket{\uparrow,\uparrow\downarrow})\)
+
+\subsection{N=2}
+This is the eigenvalue that has the largest subspace.
+\begin{itemize}
+\item \(S_{tot}^z = -1\): \(\ket{\downarrow,\downarrow}\)
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow,\uparrow}\)
+\item \(S_{tot}^z = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
+\end{itemize}
+
+\subsubsection{\(S_{tot}^z = \pm 1\)}
+These two subspaces have a single state each, so theya are obviously eigenstates. Since they both have identical spins on both sites, the hopping term is 0, and the \(U\)-term is also zero because of single occupation. As a result, they both have zero eigenvalue
+\beq
+\ham \ket{\downarrow,\downarrow} = \ham \ket{\uparrow,\uparrow} = \epsilon_s + \epsilon_d
+\eeq
+\subsubsection{\(S_{tot}^z = 0\)}
+This subspace has four eigenvectors,
+\beq
+\ket{\uparrow,\downarrow},\;\:\;\:\;\:\ket{\downarrow,\uparrow},\;\:\;\:\;\:\ket{0,\uparrow\downarrow},\;\:\;\:\;\:\ket{\uparrow\downarrow,0}
+\eeq
+so it is easier to first find eigenstates of \(S^2_{tot}\). Since these are states with zero \(S^z\), \(S^2_{tot}\) for these states is just \(S^+S^-\)
+\beq
+&S^+S^-\ket{\uparrow,\downarrow} = S^+S^-\ket{\downarrow,\uparrow} = \ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow} \\
+&S^+S^-\ket{\uparrow\downarrow,0} = S^+S^-\ket{0,\uparrow\downarrow} = 0 \\
+\eeq
+The eigenstates are
+\beq
+\fr{\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}}{\sqrt 2} (S^2_{tot}=1), \;\;\;\;\cc{\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}, \ket{\uparrow\downarrow,0}, \ket{0,\uparrow\downarrow}} (S^2_{tot}=0) \\
+\eeq
+\(S^2_{tot}=1\) immediately delivers an eigenstate:
+\beq
+\ham\fr{\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}}{\sqrt 2} = (\epsilon_d+\epsilon_s)\rr{\fr{\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}}{\sqrt 2}}
+\eeq
+Next I diagonalize the subspace \(S^2_{tot}=0\). 
+\beq
+\ham\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2} &= (\epsilon_d+\epsilon_s)\rr{\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}} + \sqrt{2}t(\ket{\uparrow\downarrow,0} - \ket{0,\uparrow\downarrow}) \\
+\ham\ket{\uparrow\downarrow,0} &= (2\epsilon_d+U)\ket{\uparrow\downarrow,0} + \sqrt{2}t\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2} \\
+\ham\ket{0,\uparrow\downarrow} &= (2\epsilon_d+U)\ket{0,\uparrow\downarrow} - \sqrt{2}t\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}
+\eeq
+We get the following matrix
+\beq
+\begin{pmatrix}
+	2\epsilon_d+\fr{U}{2} & \sqrt{2}t & -\sqrt{2}t \\
+	\sqrt{2}t & 2\epsilon_d+U & 0 \\
+	-\sqrt{2}t & 0 & 2\epsilon_d+U
+\end{pmatrix}
+\eeq
+The eigenvectors are
+\begin{itemize}
+	\item \(\ket{\uparrow\downarrow,0} - \ket{0,\uparrow\downarrow}: 2\epsilon_d+U\)
+	\item \(\fr{U-\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}: 2\epsilon_d+\fr{3}{4}U+\fr{1}{2}\Delta(\fr{U}{2},t)\)
+	\item \(\fr{U+\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}: 2\epsilon_d+\fr{3}{4}U-\fr{1}{2}\Delta(\fr{U}{2},t)\)
+\end{itemize}
+
+
+\subsection{The total spectrum}
+The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+\(\hat{N}\) & \(S_{tot}^z\) & E & \(\ket{\Phi}\)\\
+\toprule
+0 & - & 0 & \(\ket{0,0}\) \\ \toprule
+\multirow{2}{*}{1} & -1 & \(\epsilon_d + \fr{1}{4}(U\pm\Delta)\)  & \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\) \\
+
+ \cmidrule(l){2-4}
+
+& 1 & \(\epsilon_d + \fr{1}{4}(U\pm\Delta)\)  & \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\) \\
+ \toprule
+
+\multirow{6}{*}{2}                     & -1                  & \(2\epsilon_d+\fr{U}{2}\)   & \(\ket{\downarrow,\downarrow}\)  \\
+ \cmidrule(l){2-4} 
+                                       & 1                   & \(2\epsilon_d+\fr{U}{2}\)   & \(\ket{\uparrow,\uparrow}\) \\
+                                       \cmidrule(l){2-4} 
+                                       & \multirow{3}{*}{0}  & \(2\epsilon_d+\fr{U}{2}\)   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\
+                                        \cmidrule(l){3-4} 
+
+                                       &                     & \(2\epsilon_d+U\)  & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\
+                                        \cmidrule(l){3-4} 
+
+                                       &                     & \(2\epsilon_d+\fr{3}{4}U\pm\fr{1}{2}\Delta(\fr{U}{2},t)\)    & \(\fr{U\mp\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}\)  \\
+                                     
+                                        \toprule
+
+\multirow{2}{*}{3} & -1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
+
+ \cmidrule(l){2-4}
+
+& 1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
+ \toprule
+
+4                                      & 0                   & 2(\(\epsilon_s+\epsilon_d)+U\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
+
+
+\toprule
+\end{tabular}
+\end{center}
+\end{table}
+\end{document}
+

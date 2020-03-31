@@ -1,0 +1,1142 @@
+\documentclass[12pt]{article}
+\usepackage{common}
+\setlength{\parindent}{0in}
+\renewcommand\arraystretch{2.5}
+\newcommand{\un}{\ensuremath{\hat{U}_{N\sigma}}}
+\newcommand{\no}{\ensuremath{\hat{n}_{N\sigma}}}
+\newcommand{\hml}{\ensuremath{\ham_{2N}}}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\bf{\Large{Title}}\\
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Exact diagonalization of the two-site Hubbard model}
+
+\pp[The Hamiltonian]
+\beq
+\ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow} -\mu \hat{N}
+\eeq
+\(a_a\)
+I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site.
+
+\subsection{Symmetries of the problem}
+The following operators commute with the Hamiltonian.
+\begin{enumerate}
+\item\bf{Total number operator}: \(\qq{\ham, \hat N}=0\).
+\begin{proof}
+The last term in the Hamiltonian is the number operator itself. Ignoring that, there are three terms that I need to individually consider.
+\begin{itemize}
+\item \(\C{1}{\sigma}\c{2}{\sigma}\)
+\beq[commutator]
+\qq{\C{1}{\sigma}\c{2}{\sigma},\hat{n}_{i\sigma^\prime}} &= \qq{\C{1}{\sigma}\c{2}{\sigma},\C{i}{\sigma^\prime}\c{i}{\sigma^\prime}} \\
+&= \C{1}{\sigma} \qq{\c{2}{\sigma},\C{i}{\sigma^\prime}\c{i}{\sigma^\prime}}+\qq{\C{1}{\sigma},\C{i}{\sigma^\prime}\c{i}{\sigma^\prime}}\c{2}{\sigma} \\
+&= \delta_{i,2}\:\C{1}{\sigma} \qq{\c{2}{\sigma},\C{2}{\sigma^\prime}\c{2}{\sigma^\prime}}+\delta_{i,1}\qq{\C{1}{\sigma},\C{1}{\sigma^\prime}\c{1}{\sigma^\prime}}\c{2}{\sigma} \\
+&= \delta_{i,2}\:\C{1}{\sigma} \cc{\c{2}{\sigma},\C{2}{\sigma^\prime}}\c{2}{\sigma^\prime} - \delta_{i,1}\C{1}{\sigma^\prime}\cc{\c{1}{\sigma^\prime},\C{1}{\sigma}}\c{2}{\sigma} \\
+&= \delta_{\sigma,\sigma^\prime}\C{1}{\sigma}\c{1}{\sigma}\rr{\delta_{i,2} - \delta_{i,1}}
+\eeq
+The third line follows because the electrons on different sites are distinguishable and hence, the \it{creation and anhillation operators of different sites will commute among themselves}. Therefore,
+\beq
+\qq{\C{1}{\sigma}\c{2}{\sigma}, \hat{N}} &= \sum_{i\sigma^\prime}\qq{\C{1}{\sigma}\c{2}{\sigma},\hat{n}_{i\sigma^\prime}} = \C{1}{\sigma}\c{1}{\sigma}\sum_{i=\{1,2\}}\rr{\delta_{i,2} - \delta_{i,1}} = 0
+\eeq
+
+\item \(\C{2}{\sigma}\c{1}{\sigma}\): Since the operator \(\hat{N}\) is symmetric with respect to the site indices 1 and 2, I can go through the last proof again with the site indices 1 and 2 exchanged and since the proof does not depend on the site indices, this commutator will also be zero.
+
+\item \(\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}\):
+\beq[commutator_2]
+\qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{n}_{j\sigma}} &= \hat{n}_{i\uparrow}\qq{\hat{n}_{i\downarrow},\hat{n}_{j\sigma}} - \qq{\hat{n}_{i\uparrow},\hat{n}_{j\sigma}}\hat{n}_{i\downarrow} \\
+&= \delta_{ij}\rr{\hat{n}_{i\uparrow}\qq{\hat{n}_{i\downarrow},\hat{n}_{i\sigma}} - \qq{\hat{n}_{i\uparrow},\hat{n}_{i\sigma}}\hat{n}_{i\downarrow}} \\
+&= \delta_{ij}\rr{\delta_{\sigma\uparrow}\hat{n}_{i\uparrow}\qq{\hat{n}_{i\downarrow},\hat{n}_{i\uparrow}} - \delta_{\sigma\downarrow}\qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}}\hat{n}_{i\downarrow}} \\
+&= \delta_{ij} \rr{\delta_{\sigma\downarrow}\hat{n}_{i\downarrow} - \delta_{\sigma\uparrow}\hat{n}_{i\uparrow}} \qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}} \\
+&= \delta_{ij} \rr{\delta_{\sigma\downarrow}\hat{n}_{i\downarrow} - \delta_{\sigma\uparrow}\hat{n}_{i\uparrow}} \rr{\C{i}{\uparrow}\c{i}{\uparrow}\C{i}{\downarrow}\c{i}{\downarrow}-\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow}}\\
+&= \delta_{ij} \rr{\delta_{\sigma\downarrow}\hat{n}_{i\downarrow} - \delta_{\sigma\uparrow}\hat{n}_{i\uparrow}} \rr{\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow}-\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow}} = 0
+\eeq
+Therefore, \(\qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{N}} = \sum_{j,\sigma} \qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{n}_{j\sigma}} = 0\)
+% \beq
+% \qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}, \hat{N}} &= \sum_{j\sigma}\qq{\hat{n}_{i\uparrow}\hat{n}_{j\downarrow},\hat{n}_{j\sigma}} \\
+% &= \sum_{\sigma}\qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow},\hat{n}_{i\sigma}} \\
+% &= \hat{n}_{i\uparrow}\qq{\hat{n}_{i\downarrow},\hat{n}_{i\uparrow}}+\qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}}\hat{n}_{i\downarrow} = 0
+% \eeq
+
+\end{itemize}
+The total Hamiltonian is just a sum of the three terms; since the number operator commutes individually with these terms, it obviously commutes with the total Hamiltonian.
+\end{proof}
+\item \bf{Magnetization operator}: \(\hat{S}^z_{tot} \equiv \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}-\hat{n}_{i\downarrow}}\), \(\qq{\ham, \hat{S}^z_{tot}}=0\).
+\begin{proof}
+The magnetization operator can be rewritten as \(\hat{S}^z_{tot} = \frac{1}{2}\sum_i\rr{\hat{n}_{i\uparrow}+\hat{n}_{i\downarrow}-2\hat{n}_{i\downarrow}} = \hat{N} - 2\sum_i\hat{n}_{i\downarrow}\). Since \(\hat{N}\) commutes with \(\ham\), I just need to prove that \(\qq{\ham, \sum_i\hat{n}_{i\downarrow}}\). From eq. \ref{commutator}, 
+\beq
+\qq{\C{1}{\sigma}\c{2}{\sigma},\sum_i\hat{n}_{i\downarrow}} &= \C{1}{\downarrow}\c{1}{\downarrow}\sum_{i=\{1,2\}}\rr{\delta_{i,2} - \delta_{i,1}} = 0
+\eeq
+Again using the symmetry of the magnetization operator with the exchange of indices, its obvious that
+\qq{\C{2}{\sigma}\c{1}{\sigma},\sum_i\hat{n}_{i\downarrow}} = 0
+
+Using eq. \ref{commutator_2}, \(\qq{\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}, \hat{n}_{i\downarrow}} = 0\).
+
+Finally, \(\qq{N, \hat{n}_{i\downarrow}}=\sum_{j\sigma}\qq{\hat{n}_{j\sigma},\hat{n}_{i\downarrow}} = \qq{\hat{n}_{i\uparrow},\hat{n}_{i\downarrow}} = \C{i}{\uparrow}\c{i}{\uparrow}\C{i}{\downarrow}\c{i}{\downarrow}-\C{i}{\downarrow}\c{i}{\downarrow}\C{i}{\uparrow}\c{i}{\uparrow} = 0\). Since \(\hat{S}^z_{tot}\) commutes with each part individually, it commutes with the total Hamiltonian.
+\end{proof}
+
+\item \bf{Two-site parity operator \(\hat{P}\)}: The action of \(\hat{P}\) is defined as follows. If \(\ket{\Psi_{\alpha\beta}}\) is a wavefunction with site indices \(\alpha\) and \(\beta\), 
+\beq
+\hat{P}\ket{\Psi(\alpha,\beta)} = \ket{\Psi(\beta,\alpha)}
+\eeq
+That is, it operates on each electron and reverses it's site indices. 
+\begin{proof}
+I now rewrite the Hamiltonian by explcitly showing the two site indices:
+\beq
+\ham(\alpha,\beta) = -t\sum_\sigma(\C{\alpha}{\sigma}\c{\beta}{\sigma}+\C{\beta}{\sigma}\c{\alpha}{\sigma}) + U(n_{\alpha\uparrow}n_{\alpha\downarrow}+n_{\beta\uparrow}n_{\beta\downarrow}) - \mu\sum_\sigma(n_{\alpha\sigma}+n_{\beta\sigma})
+\eeq 
+Its obvious that \(\ham\) is symmetric in the site indices: \(\ham(\alpha,\beta) = \ham(\beta,\alpha)\). This means that the eigenvalues also have this symmetry. Let \(\ket{\Phi(\alpha,\beta)}\) be an eigenstate of \(\ham(\alpha,\beta)\) with eigenvalue \(E(\alpha,\beta)\). Then,
+\beq
+\hat{P}\ham\ket{\Phi(\alpha,\beta)} &= E(\alpha,\beta) \hat{P}\ket{\Phi(\alpha,\beta)} = E(\beta,\alpha) \ket{\Phi(\beta,\alpha)} \\
+&= \ham \ket{\Phi(\beta,\alpha)} = \ham \hat{P} \ket{\Phi(\alpha,\beta)} \\
+\implies \ham\hat{P}\ket{\Phi(\alpha,\beta)} &= \hat{P}\ham\ket{\Phi(\alpha,\beta)}
+\eeq
+Since any general wavefunction can be expanded in terms of these wavefunctions and since both the operator are linear, the above result will also hold for a general wavefunction \(\ket{\Psi(\alpha,\beta)}\):
+\beq
+\ham \hat{P} \ket{\Psi(\alpha,\beta)} = \hat{P} \ham \ket{\Psi(\alpha,\beta)}
+\implies [\ham, \hat{P}] = 0
+\eeq
+\end{proof}
+\end{enumerate}
+\subsection{Partitioning the Hilbert space}
+THe Hamiltonian commutes with the three operators. This means that is possible to simultaneously diagonalize these four operators: \(\ham, \hat{N}, S_z^{tot}, \hat{P}\). I will be able to label the eigenstates of the total Hamiltonian using the eigenvalues of these operatos. First take the total number operator. \(\hat{N}\) can take four values for a two-site system, 1 through 4. The eigenstates labelled by a particular number, say N=2 will be orthogonal to the eigenstates labelled by another number, say N=4. This means each eigenvalue of \(\hat{N}\) will have a distinct subspace orthogonal to the other values of \(\hat{N}\). I will be able to diagonalize each such subspace independently of each other, because they will not have any overlap. This feature enables us to block-diagonalize the total Hamiltonian into four blocks, each block belonging to each value \(\hat{N}\). 
+
+Inside each block, I will be able to repeat the procedure by next using the eigenvalues of \(S_z^{tot}\). Each block of the Hamiltonian will again break up to smaller blocks for each value of the total magnetization. The eigenvalues of parity operator provide a further partitioning of the blocks of magnetization.
+
+From this point, all the states I will work with will necessarily be eigenfunctions of \(\hat{N}\), so it doesn't make sense to keep the last term in the Hamiltonian, \(\mu \hat{N}\). I redefine the Hamiltonian by absorbing this term: \(\ham \rightarrow \ham + \mu \hat{N} = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}\). This will keep the eigenvectors unaltered, but will increase the eigenvalues by \(\mu N\), where N is the number of particles in the eigenstate I are considering.
+
+\subsection{N = 1}
+For writing the state kets, I use the following notation: \(\ket{\uparrow,\downarrow}\) means electron on site 1 has spin up and that on site 2 has spin-down. \(\ket{\downarrow, 0}\) means electron on site 1 has spin-down and there is no electron on site 2. 
+\pp For one electron on two lattice sites, I start by writing down the eigenstates of \(S_z^{tot}\). For odd number of electrons, zero magnetization is not possible. So,
+\begin{itemize}
+\item \(S_z^{tot} = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
+\item \(S_z^{tot} = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
+\end{itemize}
+Each eigenvalue will have a separate subspace and can be separately diagonalized. I need to find the matrix elements of \(\ham\) in these eigenkets. Since there is no possibility of two electrons occupying same site, I ignore the \(U\)-term for the time being. 
+\subsubsection{\(S_z^{tot} = -1\)}
+Let us first see the action of the Hamiltonian on the eigenfunctions with \(S_z^{tot} = -1\).
+\beq
+\ham\ket{\downarrow,0} = -t \C{2}{\downarrow}\c{1}{\downarrow}\ket{\downarrow,0} = -t\ket{0,\downarrow} \\
+\ham\ket{0,\downarrow} = -t \C{1}{\downarrow}\c{2}{\downarrow}\ket{0,\downarrow} = -t\ket{\downarrow,0} \\
+\eeq
+We get the following matrix for this tiny subspace of the Hamiltonian:
+\beq
+\bordermatrix{~ & \ket{\downarrow,0} & \ket{0,\downarrow} \cr
+              \ket{\downarrow,0} & 0 & -t \cr \\
+              \ket{0,\downarrow} & -t & 0 \cr}
+\eeq
+
+The eigenvalues and eigenvectors of this matrix are \(\frac{\ket{\downarrow,0} \pm \ket{0,\downarrow}}{\sqrt{2}}\), with eigenvalues \(\mp t\). These are also the eigenvalues of the parity operator, as expected.
+\beq
+\hat{P}\rr{\ket{\downarrow,0} + \ket{0,\downarrow}} = \ket{0,\downarrow} + \ket{\downarrow,0} \implies \hat{P} = 1 \\
+\hat{P}\rr{\ket{\downarrow,0} - \ket{0,\downarrow}} = \ket{0,\downarrow} - \ket{\downarrow,0} \implies \hat{P} = -1
+\eeq
+\subsubsection{\(S_z^{tot} = +1\)}
+Now I look at the spin-up states.
+\beq
+\ham\ket{\uparrow,0} = -t \C{2}{\uparrow}\c{1}{\uparrow}\ket{\uparrow,0} = -t\ket{0,\uparrow} \\
+\ham\ket{0,\uparrow} = -t \C{1}{\uparrow}\c{2}{\uparrow}\ket{0,\uparrow} = -t\ket{\uparrow,0} \\
+\eeq
+Clearly, this gives the same matrix as the spin-down states:
+\beq
+\bordermatrix{~ & \ket{\uparrow,0} & \ket{0,\uparrow} \cr
+              \ket{\uparrow,0} & 0 & -t \cr \\
+              \ket{0,\uparrow} & -t & 0 \cr}
+\eeq
+and hence similar eigenfunctions: \(\frac{\ket{\uparrow,0} \pm \ket{0,\uparrow}}{\sqrt{2}}\), with eigenvalues \(\mp t\).
+\subsection{N=3}
+I once again write down the eigenstates of \(S_z^{tot}\), this time with three electrons.
+\begin{itemize}
+\item \(S_z^{tot} = -1\): \(\ket{\uparrow\downarrow,\downarrow}, \ket{\downarrow,\uparrow\downarrow}\)
+\item \(S_z^{tot} = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
+\subsubsection{\(S_z^{tot} = -1\)}
+\beq
+\ham \ket{\uparrow\downarrow,\downarrow} = -t \C{2}{\uparrow}\c{1}{\uparrow}\ket{\uparrow\downarrow,\downarrow} + U\ket{\uparrow\downarrow,\downarrow} = -t\ket{\downarrow,\uparrow\downarrow} + U\ket{\uparrow\downarrow,\downarrow} \\
+\ham \ket{\downarrow,\uparrow\downarrow} = -t \C{1}{\uparrow}\c{2}{\uparrow}\ket{\downarrow,\uparrow\downarrow} + U\ket{\downarrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\downarrow} + U\ket{\downarrow,\uparrow\downarrow}
+\eeq
+\beq
+\bordermatrix{~ & \ket{\uparrow\downarrow,\downarrow} & \ket{\downarrow,\uparrow\downarrow} \cr
+              \ket{\uparrow\downarrow,\downarrow} & U & -t \cr \\
+              \ket{\downarrow,\uparrow\downarrow} & -t & U \cr}
+\eeq
+This matrix has eigenvalues \(U \mp t\), and corresponding eigenvectors \(\frac{\ket{\uparrow\downarrow,\downarrow} \pm \ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\)
+
+\subsubsection{\(S_z^{tot} = +1\)}
+\beq
+\ham \ket{\uparrow\downarrow,\uparrow} = -t \C{2}{\downarrow}\c{1}{\downarrow}\ket{\uparrow\downarrow,\uparrow} + U\ket{\uparrow\downarrow,\uparrow} = t \C{2}{\downarrow}\c{1}{\downarrow}\ket{\downarrow\uparrow,\uparrow} + U\ket{\uparrow\downarrow,\uparrow} \\
+=t \ket{\uparrow,\downarrow\uparrow} + U\ket{\uparrow\downarrow,\uparrow} = -t \ket{\uparrow,\uparrow\downarrow} + U\ket{\uparrow\downarrow,\uparrow}\\
+\ham \ket{\uparrow,\uparrow\downarrow} = -t \C{1}{\downarrow}\c{2}{\downarrow}\ket{\uparrow,\uparrow\downarrow} + U\ket{\uparrow,\uparrow\downarrow} = t \C{1}{\downarrow}\c{2}{\downarrow}\ket{\uparrow,\downarrow\uparrow} + U\ket{\uparrow,\uparrow\downarrow} \\
+=t \ket{\downarrow\uparrow,\uparrow} + U\ket{\uparrow,\uparrow\downarrow} = -t \ket{\uparrow\downarrow,\uparrow} + U\ket{\uparrow,\uparrow\downarrow}\\
+\eeq
+\beq
+\bordermatrix{~ & \ket{\uparrow\downarrow,\uparrow} & \ket{\uparrow,\uparrow\downarrow} \cr
+              \ket{\uparrow\downarrow,\uparrow} & U & -t \cr \\
+              \ket{\uparrow,\uparrow\downarrow} & -t & U \cr}
+\eeq
+\end{itemize}
+This matrix has eigenvalues \(U \mp t\), and corresponding eigenvectors \(\frac{\ket{\uparrow\downarrow,\uparrow} \pm \ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\)
+\subsection{N=4}
+With four electrons, the only possible state is \(\ket{\uparrow\downarrow,\uparrow\downarrow}\). Its easy to find the eigenvalue. Since all states are filled, no hopping can take place, so the hopping term is zero. Therefore,
+\beq
+\ham \ket{\uparrow\downarrow,\uparrow\downarrow} = 2U \ket{\uparrow\downarrow,\uparrow\downarrow}
+\eeq
+So, \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) is an eigenvector with eigenvalue \(2U\).
+\subsection{N=2}
+This is the eigenvalue that has the largest subspace.
+\begin{itemize}
+\item \(S_z^{tot} = -1\): \(\ket{\downarrow,\downarrow}\)
+\item \(S_z^{tot} = +1\): \(\ket{\uparrow,\uparrow}\)
+\item \(S_z^{tot} = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
+\end{itemize}
+
+\subsubsection{\(S_z^{tot} = \pm 1\)}
+These two subspaces have a single state each, so theya are obviously eigenstates. Since they both have identical spins on both sites, the hopping term is 0, and the \(U\)-term is also zero because of single occupation. As a result, they both have zero eigenvalue
+\beq
+\ham \ket{\downarrow,\downarrow} = \ham \ket{\uparrow,\uparrow} = 0
+\eeq
+\subsubsection{\(S_z^{tot} = 0\)}
+This subspace has four eigenvectors,
+\beq
+\ket{\uparrow,\downarrow},\;\:\;\:\;\:\ket{\downarrow,\uparrow},\;\:\;\:\;\:\ket{0,\uparrow\downarrow},\;\:\;\:\;\:\ket{\uparrow\downarrow,0}
+\eeq
+so it is not possible to directly diagonalize this subspace. First we organize these states into eigenstates of parity. It is easy by inspection.
+\beq
+\hat{P}\rr{\ket{\uparrow,\downarrow}\pm\ket{\downarrow,\uparrow}} &= \pm \rr{\ket{\uparrow,\downarrow}\pm\ket{\downarrow,\uparrow}} \\
+\hat{P}\rr{\ket{\uparrow\downarrow,0}\pm\ket{0,\uparrow\downarrow}} &= \pm \rr{\ket{\uparrow\downarrow,0}\pm\ket{0,\uparrow\downarrow}}
+\eeq
+I have the parity eigenstates for this subspace, so its most convenient to work in the basis of these eigenstates
+\begin{itemize}
+\item \(\hat{P} = 1: \frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}},\;\:\;\:\;\:\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)
+\item \(\hat{P} = -1: \frac{\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow}}{\sqrt{2}},\;\:\;\:\;\:\frac{\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow}}{\sqrt{2}}\) 
+\end{itemize}
+Each eigenvalue subspace can now be diagonalized separately. First I look at the eigenstates of \(\hat{P} = 1\). I find the matrix of \(\ham\) in the subspace spanned by these two vectors and then diagonalize that subspace.
+\beq
+\ham\:\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}} &= -\frac{t}{\sqrt{2}} \cc{\rr{\C{1}{\downarrow}\c{2}{\downarrow}+\C{2}{\uparrow}\c{1}{\uparrow}}\ket{\uparrow,\downarrow} +\rr{\C{1}{\uparrow}\c{2}{\uparrow}+\C{2}{\downarrow}\c{1}{\downarrow}}\ket{\downarrow,\uparrow}} \\
+&= -\frac{t}{\sqrt{2}}\cc{\ket{\downarrow\uparrow,0}+\ket{0,\uparrow\downarrow}+\ket{\uparrow\downarrow,0}+\ket{0,\downarrow\uparrow}} = 0 \\
+\ham\:\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} &= -\frac{t}{\sqrt{2}} \cc{\rr{\C{2}{\uparrow}\c{1}{\uparrow}+\C{2}{\downarrow}\c{1}{\downarrow}}\ket{\uparrow\downarrow,0} + \rr{\C{1}{\uparrow}\c{2}{\uparrow}+\C{1}{\downarrow}\c{2}{\downarrow}}\ket{0,\uparrow\downarrow}} +U\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} \\
+&= -\frac{t}{\sqrt{2}}\cc{\ket{\downarrow,\uparrow}-\ket{\uparrow,\downarrow}+\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow}} +U\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} = U\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}
+\eeq
+We get the following matrix
+\beq
+\bordermatrix{~ & \frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}} & \frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} \cr
+              \frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}} & 0 & 0 \cr \\
+              \frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} & 0 & U \cr}
+\eeq
+As it appears, the subspace is already diagonal in the eigenbasis of \(\hat{P}\). The \(\hat{P} = 1\) eigenstates are eigenstates of \(\ham\), with eigenvalues 0 and \(U\). Next I look at the eigenstates of \(\hat{P}=-1\).
+
+\beq
+\ham\:\frac{\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow}}{\sqrt{2}} &= -\frac{t}{\sqrt{2}} \cc{\rr{\C{1}{\downarrow}\c{2}{\downarrow}\C{2}{\uparrow}\c{1}{\uparrow}}\ket{\uparrow,\downarrow} -\rr{\C{1}{\uparrow}\c{2}{\uparrow}+\C{2}{\downarrow}\c{1}{\downarrow}}\ket{\downarrow,\uparrow}} \\
+&= -\frac{t}{\sqrt{2}}\cc{\ket{\downarrow\uparrow,0}+\ket{0,\uparrow\downarrow}-\ket{\uparrow\downarrow,0}-\ket{0,\downarrow\uparrow}} \\
+&= 2t\frac{\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow}}{\sqrt{2}} \\
+\ham\:\frac{\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow}}{\sqrt{2}} &= -\frac{t}{\sqrt{2}} \cc{\rr{\C{2}{\uparrow}\c{1}{\uparrow}+\C{2}{\downarrow}\c{1}{\downarrow}}\ket{\uparrow\downarrow,0} - \rr{\C{1}{\uparrow}\c{2}{\uparrow}+\C{1}{\downarrow}\c{2}{\downarrow}}\ket{0,\uparrow\downarrow}} +U\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} \\
+&= -\frac{t}{\sqrt{2}}\cc{\ket{\downarrow,\uparrow}-\ket{\uparrow,\downarrow}-\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}} +U\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}} \\
+&= 2t\frac{\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow}}{2} + U\frac{\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow}}{\sqrt{2}}
+\eeq
+\beq
+\bordermatrix{~ & \frac{\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow}}{\sqrt{2}} & \frac{\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow}}{\sqrt{2}} \cr
+              \frac{\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow}}{\sqrt{2}} & 0 & 2t \cr \\
+              \frac{\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow}}{\sqrt{2}} & 2t & U \cr}
+\eeq
+This subspace is not automatically diagonal, but is easily diagonalized. The eigenvectors are 
+\beq
+&\frac{1}{N_\pm}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U\pm\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}} \\
+&N_{\pm} = \cc{\frac{U}{2}\qq{U\pm\sqrt{U^2+16t^2}}+16t^2}^\frac{1}{2}
+\eeq
+
+with eigenvalues \(\frac{U\pm\sqrt{U^2+16 t^2}}{2}\) respectively.
+\subsection{The total spectrum}
+The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+\multicolumn{5}{c}{\bf{Exact Diagonalization of Hubbard Dimer}} \\
+\toprule
+\(\hat{N}\) & \(S_z^{tot}\) & \(\hat{P}\) & E & \(\ket{\Phi}\)\\
+\toprule
+0 & - & - & 0 & \(\ket{0,0}\) \\ \toprule
+\multicolumn{1}{c}{\multirow{4}{*}{1}} & \multirow{2}{*}{-1} & 1  & -t-\(\mu\)  & \(\frac{\ket{\downarrow,0}+\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+\multicolumn{1}{c}{}                   &                     & -1 & t-\(\mu\)   & \(\frac{\ket{\downarrow,0}-\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){2-5}
+\multicolumn{1}{c}{}                   & \multirow{2}{*}{1}  & 1  & -t-\(\mu\)  & \(\frac{\ket{\uparrow,0}+\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+\multicolumn{1}{c}{}                   &                     & -1 & t-\(\mu\)   & \(\frac{\ket{\uparrow,0}-\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \toprule
+\multirow{6}{*}{2}                     & -1                  & 1  & 0-\(2\mu\)   & \(\ket{\downarrow,\downarrow}\)  \\ \cmidrule(l){2-5} 
+                                       & \multirow{4}{*}{0}  & 1  & 0-\(2\mu\)   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & 1  & U-\(2\mu\)   & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_\pm}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U\pm\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U-\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_-}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U-\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){2-5} 
+                                       & 1                   & 1  & 0-\(2\mu\)   & \(\ket{\uparrow,\uparrow}\) \\ \toprule
+\multirow{4}{*}{3}                     & \multirow{2}{*}{-1} & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}+\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & U+t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}-\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){2-5}
+                                       & \multirow{2}{*}{1}  & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\uparrow}+\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & U+t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\uparrow}-\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \toprule
+4                                      & 0                   & 1  & 2U-\(4\mu\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
+\toprule
+\end{tabular}
+\end{center}
+\end{table}
+\section{Exact diagonalization of the Anderson molecule}
+
+\pp[The Hamiltonian]
+\beq
+\ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\hat{n}_{1\uparrow}\hat{n}_{1\downarrow} + \epsilon_s\sum_\sigma\hat n_{2\sigma} + \epsilon_d\sum_\sigma\hat n_{1\sigma}
+\eeq
+
+I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site. The model has on-site repulsion only for the first site. The sites have energies of \(\epsilon_s\) and \(\epsilon_s\) respectively.
+
+\subsection{Symmetries of the problem}
+The following operators commute with the Hamiltonian.
+\begin{enumerate}
+\item\bf{Total number operator}: \(\qq{\ham, \hat N}=0\).
+\item \bf{Magnetization operator}: \(\qq{\ham, \hat{S}^z_{tot}}=0\).
+\item \bf{Total Spin Operator}: Total spin angular momentum operator,
+\beq
+\hat S^2_{tot} = \hat (S^x_{tot})^2 + \hat (S^y_{tot})^2 + \hat (S^z_{tot})^2 = S_{tot}^+S_{tot}^- - \hbar S_{tot}^z + (S_{tot}^z)^2
+\eeq
+Since all the terms in the Hamiltonian are spin-preserving (all events conserve the number of particles having a definite spin \(\sigma\)), total angular momentum will be conserved. It's obvious that the number operator term do so. The hopping term does so as well; \(c^\dagger_{i\sigma}c_{j\sigma}\) destroys a particle of spin \(\sigma\) and creates a particle of the same spin; the total angular momentum remain conserved in the process, although the number of particles at a particular site is not conserved. Thus, \(\qq{\hat S^2_{tot}, \ham}=0\).
+\end{enumerate}
+
+\subsection{N = 1}
+\begin{itemize}
+\item \(S_{tot}^z = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
+\end{itemize}
+\subsubsection{\(S_{tot}^z = -1\)}
+Let us first see the action of the Hamiltonian on the eigenfunctions with \(S_{tot}^z = -1\).
+\beq
+\ham\ket{\downarrow,0} = \epsilon_d\ket{\downarrow,0}-t\ket{0,\downarrow} \\
+\ham\ket{0,\downarrow} = \epsilon_s\ket{0,\downarrow}-t\ket{\downarrow,0} \\
+\eeq
+We get the following matrix for this tiny subspace of the Hamiltonian:
+\beq
+\bordermatrix{~ & \ket{\downarrow,0} & \ket{0,\downarrow} \cr
+              \ket{\downarrow,0} & \epsilon_d\ & -t \cr \\
+              \ket{0,\downarrow} & -t & \epsilon_s \cr}
+\eeq
+Eigenvalues: \(\fr{1}{2}\qq{\epsilon_d+\epsilon_s \pm \sqrt{(\epsilon_d-\epsilon_s)^2+4t^2}}\). For \(\epsilon_s = \epsilon_d + \fr{U}{2}\) and \(\Delta = \sqrt{U^2+16t^2}\), \\ eigenvalues, \(\lambda_\pm = \epsilon_d + \fr{1}{4}(U\pm\Delta)\). \\
+The eigenvectors are \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\), where \(N_\pm^2 = t^2 + (\fr{U\pm\Delta}{4})^2\)
+\subsubsection{\(S_{tot}^z = +1\)}
+\beq
+\ham\ket{\uparrow,0} = \epsilon_d\ket{\uparrow,0}-t\ket{0,\uparrow} \\
+\ham\ket{0,\uparrow} = \epsilon_s\ket{0,\uparrow}-t\ket{\uparrow,0} \\
+\eeq
+Clearly, this gives the same matrix as the spin-down states. So, the eigenvalues will be exactly the same, and the eigenvectors will be correspondingly modified in the new basis. \\
+eigenvectors : \(\fr{1}{N_\pm}\rr{t\ket{\uparrow,0}+(\epsilon_d-\lambda_\pm)\ket{0,\uparrow}}\)
+\subsection{N=3}
+\begin{itemize}
+\item \(S_{tot}^z = -1\): \(\ket{\uparrow\downarrow,\downarrow}, \ket{\downarrow,\uparrow\downarrow}\)
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
+\end{itemize}
+\subsubsection{\(S_{tot}^z = -1\)}
+\beq
+\ham \ket{\uparrow\downarrow,\downarrow} = -t\ket{\downarrow,\uparrow\downarrow} + (2\epsilon_d + \epsilon_s + U)\ket{\uparrow\downarrow,\downarrow} \\
+\ham \ket{\downarrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\downarrow} + (2\epsilon_s + \epsilon_d)\ket{\downarrow,\uparrow\downarrow}
+\eeq
+\beq
+\bordermatrix{~ & \ket{\uparrow\downarrow,\downarrow} & \ket{\downarrow,\uparrow\downarrow} \cr
+              \ket{\uparrow\downarrow,\downarrow} & 2\epsilon_d + \epsilon_s + U & -t \cr \\
+              \ket{\downarrow,\uparrow\downarrow} & -t & 2\epsilon_s + \epsilon_d \cr}
+\eeq
+Again setting \(\epsilon_s = \epsilon_d + \fr{U}{2}\), eigenvalues: \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\). \\ Corresponding eigenvectors \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\)
+
+\subsubsection{\(S_{tot}^z = +1\)}
+\beq
+\ham \ket{\uparrow\downarrow,\uparrow} = -t\ket{\uparrow,\uparrow\downarrow} + (2\epsilon_d + \epsilon_s + U)\ket{\uparrow\downarrow,\uparrow} \\
+\ham \ket{\uparrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\uparrow} + (2\epsilon_s + \epsilon_d)\ket{\uparrow,\uparrow\downarrow}
+\eeq
+Again the same matrix. Hence the eigenvalues are same. Eigenvectors are
+\(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\uparrow}-\fr{1}{4}(U\pm\Delta)\ket{\uparrow,\uparrow\downarrow})\)
+
+\subsection{N=2}
+This is the eigenvalue that has the largest subspace.
+\begin{itemize}
+\item \(S_{tot}^z = -1\): \(\ket{\downarrow,\downarrow}\)
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow,\uparrow}\)
+\item \(S_{tot}^z = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
+\end{itemize}
+
+\subsubsection{\(S_{tot}^z = \pm 1\)}
+These two subspaces have a single state each, so theya are obviously eigenstates. Since they both have identical spins on both sites, the hopping term is 0, and the \(U\)-term is also zero because of single occupation. As a result, they both have zero eigenvalue
+\beq
+\ham \ket{\downarrow,\downarrow} = \ham \ket{\uparrow,\uparrow} = \epsilon_s + \epsilon_d
+\eeq
+\subsubsection{\(S_{tot}^z = 0\)}
+This subspace has four eigenvectors,
+\beq
+\ket{\uparrow,\downarrow},\;\:\;\:\;\:\ket{\downarrow,\uparrow},\;\:\;\:\;\:\ket{0,\uparrow\downarrow},\;\:\;\:\;\:\ket{\uparrow\downarrow,0}
+\eeq
+so it is easier to first find eigenstates of \(S^2_{tot}\). Since these are states with zero \(S^z\), \(S^2_{tot}\) for these states is just \(S^+S^-\)
+\beq
+&S^+S^-\ket{\uparrow,\downarrow} = S^+S^-\ket{\downarrow,\uparrow} = \ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow} \\
+&S^+S^-\ket{\uparrow\downarrow,0} = S^+S^-\ket{0,\uparrow\downarrow} = 0 \\
+\eeq
+The eigenstates are
+\beq
+\fr{\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}}{\sqrt 2} (S^2_{tot}=1), \;\;\;\;\cc{\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}, \ket{\uparrow\downarrow,0}, \ket{0,\uparrow\downarrow}} (S^2_{tot}=0) \\
+\eeq
+\(S^2_{tot}=1\) immediately delivers an eigenstate:
+\beq
+\ham\fr{\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}}{\sqrt 2} = (\epsilon_d+\epsilon_s)\rr{\fr{\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}}{\sqrt 2}}
+\eeq
+Next I diagonalize the subspace \(S^2_{tot}=0\). 
+\beq
+\ham\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2} &= (\epsilon_d+\epsilon_s)\rr{\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}} + \sqrt{2}t(\ket{\uparrow\downarrow,0} - \ket{0,\uparrow\downarrow}) \\
+\ham\ket{\uparrow\downarrow,0} &= (2\epsilon_d+U)\ket{\uparrow\downarrow,0} + \sqrt{2}t\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2} \\
+\ham\ket{0,\uparrow\downarrow} &= (2\epsilon_d+U)\ket{0,\uparrow\downarrow} - \sqrt{2}t\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}
+\eeq
+We get the following matrix
+\beq
+\begin{pmatrix}
+	2\epsilon_d+\fr{U}{2} & \sqrt{2}t & -\sqrt{2}t \\
+	\sqrt{2}t & 2\epsilon_d+U & 0 \\
+	-\sqrt{2}t & 0 & 2\epsilon_d+U
+\end{pmatrix}
+\eeq
+The eigenvectors are
+\begin{itemize}
+	\item \(\ket{\uparrow\downarrow,0} - \ket{0,\uparrow\downarrow}: 2\epsilon_d+U\)
+	\item \(\fr{U-\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}: 2\epsilon_d+\fr{3}{4}U+\fr{1}{2}\Delta(\fr{U}{2},t)\)
+	\item \(\fr{U+\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}: 2\epsilon_d+\fr{3}{4}U-\fr{1}{2}\Delta(\fr{U}{2},t)\)
+\end{itemize}
+\subsection{The total spectrum}
+The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
+\begin{table}
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+\multicolumn{4}{c}{\bf{Exact Diagonalization of Anderson Molecule}} \\
+\toprule
+\(\hat{N}\) & \(S_{tot}^z\) & E & \(\ket{\Phi}\)\\
+\toprule
+0 & - & 0 & \(\ket{0,0}\) \\ \toprule
+\multirow{2}{*}{1} & -1 & \(\epsilon_d + \fr{1}{4}(U\pm\Delta)\)  & \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\) \\
+
+ \cmidrule(l){2-4}
+
+& 1 & \(\epsilon_d + \fr{1}{4}(U\pm\Delta)\)  & \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\) \\
+ \toprule
+
+\multirow{6}{*}{2}                     & -1                  & \(2\epsilon_d+\fr{U}{2}\)   & \(\ket{\downarrow,\downarrow}\)  \\
+ \cmidrule(l){2-4} 
+                                       & 1                   & \(2\epsilon_d+\fr{U}{2}\)   & \(\ket{\uparrow,\uparrow}\) \\
+                                       \cmidrule(l){2-4} 
+                                       & \multirow{3}{*}{0}  & \(2\epsilon_d+\fr{U}{2}\)   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\
+                                        \cmidrule(l){3-4} 
+
+                                       &                     & \(2\epsilon_d+U\)  & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\
+                                        \cmidrule(l){3-4} 
+
+                                       &                     & \(2\epsilon_d+\fr{3}{4}U\pm\fr{1}{2}\Delta(\fr{U}{2},t)\)    & \(\fr{U\mp\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}\)  \\
+                                     
+                                        \toprule
+
+\multirow{2}{*}{3} & -1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
+
+ \cmidrule(l){2-4}
+
+& 1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
+ \toprule
+
+4                                      & 0                   & 2(\(\epsilon_s+\epsilon_d)+U\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
+
+
+\toprule
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}
+\subsection{The Problem} You have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a fermi gas). Equivalenty, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
+\btm
+This Hamiltonian can be transformed using a certain unitary transformation \un, into \(\overline{\ham} = \un \ham \un^\dagger\) such that this transformed Hamiltonian is diagonal in the occupancy basis of \(\hat{n}_{N\sigma}\). A rephrased statement is, there exists a unitary operator \(\un\) such that \(\qq{\un \hml \un^\dagger, \no}=0\).
+\etm
+\subsection{Warming Up - Writing the Hamiltonian as blocks}
+The Hamiltonian \(\hml\) in general has off-diagonal terms and can be written as the following general matrix in the occupancy basis of \(N\sigma\):
+\beq
+\hml = \bordermatrix{~ & \ket{1} & \ket{0} \cr
+              \bra{1} & H_1 & H_2 \cr \\
+              \bra{0} & H_3 & H_4 \cr}
+\eeq
+where \(\ket{1} \equiv \ket{\no=1}\) (occupied). Note that the \(H_i\) are not scalars but matrices(blocks), of dimension half that of \(\hml\), that is \(2^{2N-1}\). Its clear that since, for example, \(H_2 = \bra{1}\hml\ket{0}\), we have
+\beq[ham-martix]
+\hml = H_1 \no + c_{N\sigma}^\dagger H_2 + H_3 c_{N\sigma} +H_4(1-\no)
+\eeq
+Its trivial to check that this definition of \(\hml\) indeed gives back the mentioned matrix elements. The expression for these matrix elements is quite easy to calculate. First, we define the partial trace over the subspace \(N\sigma\)
+\beq
+Tr_{N\sigma} \rr{\hml} \equiv \sum_{\ket{N\sigma}}\bra{N\sigma}\hml\ket{N\sigma} 
+\eeq
+The sum is over the possible states of \(N\sigma\), that is, \(\no=0\) and \(\no=1\). Applying this partial trace to equation \ref{ham-martix}, after multiplying throughout with \(\no\) from the right, gives
+\beq
+Tr_{N\sigma} \rr{\hml\no} = Tr_{N\sigma} \qq{H_1 \no \no + c_{N\sigma}^\dagger H_2\no + H_3 c_{N\sigma}\no +H_4(1-\no)\no}
+\eeq
+Recall the following: \(\no^2=\no\), \((1-\no)\no=0\). \\\\
+Also, since \(H_i\) are matrix elements with respect to \no, they will commute with the creation and annihilation operators. Hence, \(Tr_{N\sigma}(c_{N\sigma}^\dagger H_2\no) = H_2 Tr_{N\sigma}(c_{N\sigma}^\dagger\no) = 0\), because \(c_{N\sigma}^\dagger\no = 0\). \\\\
+Lastly, \(Tr_{N\sigma}(H_3c_{N\sigma}\no) = H_3 Tr_{N\sigma}(c_{N\sigma}\no) = H_3 Tr_{N\sigma}(\no c_{N\sigma}) = 0\), because \(\no c_{N\sigma} = 0\). So,
+\beq
+Tr_{N\sigma} \rr{\hml\no} = Tr_{N\sigma} \qq{H_1 \no} = H_1 Tr_{N\sigma}\no = H_1
+\eeq
+This gives the expression for \(H_1\). Similarly, by taking partial trace of \(\ham (1-\no)\), \(\ham c_{N\sigma}\) and \(c_{N\sigma}^\dagger\ham\), we get the expressions for all the blocks. They are listed here.
+\beq 
+H_1 &\equiv \hat{H}_{N\sigma,e} = Tr_{N\sigma} \qq{\hml\no}\\
+H_2 &\equiv \hat T_{N\sigma,e-h} = Tr_{N\sigma} \qq{\hml c_{N\sigma}} \\
+H_3 &\equiv T^\dagger_{N\sigma,e-h} = Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} \\
+H_4 &\equiv \hat{H}_{N\sigma,h} = Tr_{N\sigma} \qq{\hml(1-\no)}\\
+\eeq
+We get the following block decomposition of the Hamiltonian.
+\beq[h]
+\hml = \bordermatrix{~ & \ket{1} & \ket{0} \cr
+              \bra{1} & \hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h} \cr \\
+              \bra{0} & T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h} \cr}
+	=\bordermatrix{~ & \ket{1} & \ket{0} \cr
+              \bra{1} & Tr_{N\sigma} \qq{\hml\no} & Tr_{N\sigma} \qq{\hml c_{N\sigma}} \cr \\
+              \bra{0} & Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} & Tr_{N\sigma} \qq{\hml(1-\no)} \cr} \\
+\eeq
+\beq
+\hml= Tr_{N\sigma} \qq{\hml\no} \no + c_{N\sigma}^\dagger Tr_{N\sigma} \qq{\hml c_{N\sigma}} + Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} c_{N\sigma} \\ + Tr_{N\sigma} \qq{\hml(1-\no)}(1-\no)
+\eeq
+\subsection{Proof of the theorem}
+Define an operator \(\hat{P_{N\sigma}} = \un^\dagger \no \un\). This is the roated version of the number operator. What this does will be apparent from the following demonstration.
+\beq
+\qq{\hml, \hat{P_{N\sigma}}} &= \qq{\hml,\un^\dagger \no \un} = \hml\un^\dagger \no \un - \un^\dagger \no \un \hml \\
+&= \un^\dagger \overline{\hml}\no\un - \un^\dagger \no \overline{\hml} \un = \un^\dagger \qq{\hml, \no} \un \\
+&= 0 
+\eeq
+We see that \(\hat{P_{N\sigma}}\) is the operator that commutes with the original Hamiltonian. Note that here we are not transforming the Hamiltonian. Instead we are changing the single particle basis; \(\hat{P_{N\sigma}}\) is not the single-particle occupation basis \(\no\), rather a unitarily transformed version of that.This operator projects out the eigensubspaces of the diagonal Hamlitonian. \(\no\hml\no\) will project out the subspace of the Hamiltonian in which the particle states are occupied, but since the \(\hml\) is not diagonal, these will not be the eigensubspace. Instead, \(\hat{P_{N\sigma}}\hml\hat{P_{N\sigma}}\) will project out the eigensubspace.
+
+Both the approaches are mathematically equivalent; the matrix of \hml in the basis of \(\hat{P_{N\sigma}}\) and the matrix of \(\overline{\hml}\) in the basis of \(\no\) will be identical; they will both be block-diagonal with the same blocks in the diagonal. 
+\\  \\
+\(\hat{P_{N\sigma}}\) also has the following properties:
+\begin{itemize}
+\item \(\hat{P_{N\sigma}}^2 = \un^\dagger \no^2 \un = \un^\dagger \no \un = \hat{P_{N\sigma}}\) \\
+\item \(\hat{P_{N\sigma}}(1-\hat{P_{N\sigma}}) = \un^\dagger \no(1-\no) \un = 0\)
+\end{itemize}
+Let the block-diagonal form of the Hamiltonian be 
+\beq
+\overline{\hml} = 	\begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix}
+\eeq
+The block diagonal equations for \(\overline\hml\) are then, very simply,:
+\beq[Hdiag]
+\overline\hml \ket{1} = \hat{E_{N\sigma}} \ket{1} \\
+\overline\hml \ket{0} = \hat{E^\prime_{N\sigma}} \ket{0}
+\eeq
+\(\ket{1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\) is the eigenstate of \no for the occupied state. Similarly, \(\ket{0}\) is the vacant eigenstate. The goal is to construct expressions for the blocks \(\hat{E_{N\sigma}}\) and \(\hat{E^\prime_{N\sigma}}\). \\ \\
+Its easy to see that if any matrix \(\hat{A}\) is written in the basis of some operator \(\hat{m}\), \(\hat{m}\hat{A}\hat{m}\) returns the upper diagonal element of \(\hat{A}\) and \((1-\hat{m})\hat{A}(1-\hat{m})\) returns the lower diagonal element. For example, to get the upper diagonal element,
+\beq 
+\hat{A} = \begin{pmatrix} 1 & -1 \\ 2 & 0 \end{pmatrix} \implies \hat{m}\hat{A}\hat{m} = \begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix} \times \begin{pmatrix} 1 & -1 \\ 2 & 0 \end{pmatrix} \times \begin{pmatrix} 1 & 0\\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+\eeq
+Similarly,
+\beq
+\hat{m}\hat{A}(1-\hat{m}) = \begin{pmatrix} 0 & -1 \\ 0 & 0 \end{pmatrix},(1-\hat{m})\hat{A}\hat{m} = \begin{pmatrix} 0 & 0 \\ 2 & 0 \end{pmatrix},(1-\hat{m})\hat{A}(1-\hat{m}) = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}
+\eeq
+We hence have the equation
+\beq
+\no\overline{\hml}\no = \hat{P_{N\sigma}}\hml\hat{P_{N\sigma}} = \begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & 0 \\
+					\end{pmatrix} \\
+(1-\no)\overline{\hml}(1-\no) = (1-\hat{P_{N\sigma}})\hml(1-\hat{P_{N\sigma}}) = \begin{pmatrix} 
+					0 & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix}
+\eeq
+Here, we have used the fact that the diagonal blocks remain invariant under unitary transformations. \\ \\
+Define two matrices diagonal in \no:
+\beq[hp]
+\ham^\prime = \hat{E_{N\sigma}} \otimes \bf{I} = \begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & \hat{E_{N\sigma}} \\
+					\end{pmatrix} \\
+\eeq
+\beq[hpp]
+\ham^{\prime\prime} = \hat{E^\prime_{N\sigma}} \otimes \bf{I} = \begin{pmatrix} 
+					\hat{E^\prime_{N\sigma}} & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix} \\
+\eeq
+This enables us to derive the following equation between \(\hml\) and \(\ham^\prime\):
+\beq
+\hml\hat{P_{N\sigma}} &= \hml \un^\dagger \no \un = \un^\dagger \overline\hml \no \un = \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un \\
+&= \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & \hat{E_{N\sigma}} \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un = \un^\dagger \hat{E_{N\sigma}} \otimes \mathbb{I}\;\no \un = \hat{E_{N\sigma}} \otimes \mathbb{I}\;\un^\dagger \no \un = \ham^\prime \hat{P_{N\sigma}} 
+\eeq
+\beq[eq1]
+\tf \hml\hat{P_{N\sigma}} &= \ham^\prime \hat{P_{N\sigma}}
+\eeq
+Similar;y, performing the calculation with \(\ham^{\prime\prime}\) gives
+\beq[eq2]
+\tf \hml(1-\hat{P_{N\sigma}}) &= \ham^{\prime\prime} (1-\hat{P_{N\sigma}})
+\eeq
+\\ \\
+A general unitary matrix \(\un\) has the form (in basis of \(\no\))
+\beq
+\un = \begin{bmatrix}
+		e^{\iota\phi_1}\cos{\theta} & e^{\iota\phi_2}\sin{\theta} \\
+		-e^{-\iota\phi_2}\sin{\theta} & e^{-\iota\phi_1}\cos{\theta} \\
+		\end{bmatrix}
+\eeq
+This provides a form for the matrix of the projection operator in the basis of \(\no\):
+\beq
+\hat{P_{N\sigma}} = \un^\dagger \no \un &= \begin{bmatrix}
+		e^{-\iota\phi_1}\cos{\theta} & -e^{\iota\phi_2}\sin{\theta} \\
+		e^{-\iota\phi_2}\sin{\theta} & e^{\iota\phi_1}\cos{\theta} \\
+		\end{bmatrix}
+		\times 
+		\begin{bmatrix}
+		1 & 0 \\
+		0 & 0 \\
+		\end{bmatrix}
+		\times
+		\begin{bmatrix}
+		e^{\iota\phi_1}\cos{\theta} & e^{\iota\phi_2}\sin{\theta} \\
+		-e^{-\iota\phi_2}\sin{\theta} & e^{-\iota\phi_1}\cos{\theta} \\
+		\end{bmatrix} \\
+		&=\begin{bmatrix}
+		\cos^2\theta & \cos\theta\sin\theta e^{-\iota(\phi_1-\phi_2)} \\
+		\cos\theta\sin\theta e^{\iota(\phi_1-\phi_2)} & \sin^2\theta \\
+		\end{bmatrix}
+\eeq
+The diagonal terms represent the particle(occupied) and hole(vacant) contributions; owing to symmetry, we set them equal \(\cos^2\theta=\sin^2\theta=\fr{1}{2}\). Call the off-diagonal elements \(\hat{\eta}_{01}\) and \(\hat{\eta}^\dagger_{01}\). The final form becomes
+\beq[P]
+\hat{P_{N\sigma}} = \fr{1}{2}\begin{bmatrix}
+		1 & \hat{\eta}^\dagger_{01} \\
+		\hat{\eta}_{01} & 1 \\
+		\end{bmatrix}
+		= \fr{1}{2} \rr{\bf{I}+\eta_{N\sigma}+\eta_{N\sigma}^\dagger} \\
+\eeq
+\beq[1-P]
+\bf{I} - \hat{P_{N\sigma}} = \fr{1}{2}\begin{bmatrix}
+		1 & -\hat{\eta}^\dagger_{01} \\
+		-\hat{\eta}_{01} & 1 \\
+		\end{bmatrix}
+		= \fr{1}{2} \rr{\bf{I}-\eta_{N\sigma}-\eta_{N\sigma}^\dagger}
+\eeq
+\(\hat\eta_{N\sigma} = \hat{\eta}_{01} c_{N\sigma}\) is the electron to hole transition operator. \(\hat\eta_{N\sigma}^\dagger = \hat{\eta}^\dagger_{01} c_{N\sigma}\) is the hole to electron transition operator. Hence, they are defined to have some pretty obvious properties.
+\begin{enumerate}
+	\item \(\hat\eta_{N\sigma}^2 = \hat{\eta_{N\sigma}^\dagger}^2 = 0\) : once an electron or hole has undergone transition, there is no other to transition.
+	\item \((1-\no)\hat\eta_{N\sigma}\no=\eta_{N\sigma}\) : this is expected from the fact that \(\hat \eta_{N\sigma}\) acts with non-zero result only states of particle-number 1, and hence, \(\no\) will just give 1; after the action of \(\hat\eta_{N\sigma}\), we will get a state with hole (particle-number zero), so \((1-\no)\) will just give 1.
+	\item \(\no\hat\eta_{N\sigma}(1-\no)=0\) : this is expected because \(1-\no\) will give non-zero result only on hole states, but those states will give zero when acted upon by \(\hat\eta_{N\sigma}\), because there won't be any electron to transition from. 
+\end{enumerate}
+These defining properties have many corrolaries in terms of properties of \(\hat \eta_{N\sigma}\):
+\begin{itemize}
+	\item \(\no\hat\eta_{N\sigma} = \hat\eta_{N\sigma}^\dagger\no = 0\) : act with \(\no\) from left on property 2.
+	\item \(\hat\eta_{N\sigma}(1-\no) = (1-\no)\hat\eta_{N\sigma}^\dagger = 0\) : act with \(1-\no\) from right on property 2.
+	\item \(\hat\eta_{N\sigma}\no = (1-\no)\hat\eta_{N\sigma} = \eta_{N\sigma}\) : act with \(\no\) from right on property 2.
+\end{itemize}
+Using \ref{eq1} and the matrix form of \(\hat{P_{N\sigma}}\), \(\hml\) and \(\ham^\prime\) (\ref{P}, \ref{h} and \ref{hp}), we get
+\beq
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h}\\
+    T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}
+\end{pmatrix}
+\begin{pmatrix}
+	1 & \hat{\eta}^\dagger_{01} \\
+	\hat{\eta}_{01} & 1 \\
+\end{pmatrix}
+&=\hat{E}_{N\sigma}\bf{I}
+\begin{pmatrix}
+	1 & \hat{\eta}^\dagger_{01} \\
+	\hat{\eta}_{01} & 1 \\
+\end{pmatrix} \\
+\implies 
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01} & \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h}\\
+    \hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
+\end{pmatrix}
+&= \begin{pmatrix}
+	\hat{E}_{N\sigma} & \hat{E}_{N\sigma}\hat{\eta}^\dagger_{01} \\
+	\hat{E}_{N\sigma}\hat{\eta}_{01} & \hat{E}_{N\sigma} \\
+\end{pmatrix} \\
+\eeq
+The off-diagonal equations give expressions for the \(\hat\eta_{N\sigma}\).
+\beq[eta]
+\hat E_{N\sigma}\hat{\eta}^\dagger_{01} = \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h} \implies \hat{\eta}^\dagger_{01} = \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,e}}\hat T_{N\sigma,e-h} = \hat G_e(\hat E_{N\sigma}) \hat T_{N\sigma,e-h} \\ \implies \hat \eta_{N\sigma}^\dagger = c_{N\sigma}^\dagger \hat{\eta}^\dagger_{01} = c_{N\sigma}^\dagger \hat G_e(\hat E_{N\sigma}) \hat T_{N\sigma,e-h}\\
+\eeq
+\beq[etadag]
+\hat E_{N\sigma}\hat{\eta}_{01} = \hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} \implies \hat{\eta}_{01} = \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,h}}T^\dagger_{N\sigma,e-h} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h} \\
+\implies \hat \eta_{N\sigma} = \hat{\eta}_{01}c_{N\sigma} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h}c_{N\sigma}
+\eeq
+where
+\beq
+\hat G_e(\hat E_{N\sigma}) \equiv \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,e}}. \; \hat G_h(\hat E_{N\sigma}) \equiv \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,h}}
+\eeq
+Comparing the definitions of \(\hat \eta_{N\sigma}\) and \(\hat \eta_{N\sigma}^\dagger\), \ref{eta} and \ref{etadag}, gives us a consistency equation:
+\beq[cons]
+\hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h} = T^\dagger_{N\sigma,e-h} \hat G_e(\hat E_{N\sigma}) 
+\eeq
+The diagonal equations gives an equation for \(\hat{E}_{N\sigma}\):
+\beq[E1]
+\hat{E}_{N\sigma} = \hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}
+\eeq
+\beq[E2]
+\hat{E}_{N\sigma} = \hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
+\eeq
+These equations provide the commutator and anticommutator of the \(\hat\eta_{N\sigma}\) and \(\hat\eta^\dagger_{N\sigma}\). From eq \ref{E1},
+\beq[scomm1]
+\hat{E}_{N\sigma} - \hat{H}_{N\sigma,e} = \hat T_{N\sigma,e-h}\hat\eta_{01} &\implies \hat G_e(\hat E_{N\sigma})^{-1} = \hat T_{N\sigma,e-h}\hat\eta_{01} \\ &\implies \bf{1} = \hat G_e(\hat E_{N\sigma})\hat T_{N\sigma,e-h}\hat\eta_{01} = \hat\eta_{01}^\dagger\hat\eta_{01} \\
+\eeq
+\beq[bcomm1]
+\hat\eta^\dagger \hat\eta = c^\dagger_{N\sigma} \hat\eta_{01}^\dagger\hat\eta_{01} c_{N\sigma} = c^\dagger_{N\sigma} c_{N\sigma} = \no
+\eeq
+From \ref{E2},
+\beq[scomm2]
+\hat{E}_{N\sigma} - \hat{H}_{N\sigma,h} = T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} &\implies \hat G_h(\hat E_{N\sigma})^{-1} = T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} \\ &\implies \bf{1} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} = \hat\eta_{01}\hat\eta_{01}^\dagger \\
+\eeq
+\beq[bcomm2]
+\hat\eta \hat\eta^\dagger = c_{N\sigma} \hat\eta_{01}\hat\eta_{01}^\dagger c^\dagger_{N\sigma} = c_{N\sigma}c^\dagger_{N\sigma} = 1-\no
+\eeq
+Combining equations \ref{bcomm1} and \ref{bcomm2},
+\beq
+\qq{\hat\eta,\hat\eta^\dagger} &= 1- 2\no\\\cc{\hat\eta,\hat\eta^\dagger} &= 1
+\eeq
+\\
+Equation \ref{E1} provides an expression for the upper block of the diagonalised Hamiltonian,
+\begin{tcolorbox}
+\beq[e]
+\hat{E}_{N\sigma} = \hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}
+\eeq
+\end{tcolorbox}
+This expression has \(\hat{E}_{N\sigma}\) on both sides, so it has to be solved using the consistency equations.
+The goal of this exercise was to show that it is possible to consistently construct an expression for the diagonalised Hamiltonian purely from the blocks of the original Hamiltonian, namely \(\hat{H}_{N\sigma,h}\), \(\hat{H}_{N\sigma,e}\), \(\hat T_{N\sigma,e-h}\) and \(T^\dagger_{N\sigma,e-h}\). We have shown that for the upper block.\\\\
+The lower block can be constructed similarly, starting from \ref{eq2}. We again write the matrices in the basis of \(\no\) (using \ref{h}, \ref{1-P}, \ref{hpp}) and compare the matrix elements.
+\beq[lowblock]
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h}\\
+    T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}
+\end{pmatrix}
+\begin{pmatrix}
+	1 & -\hat{\eta}^\dagger_{01} \\
+	-\hat{\eta}_{01} & 1 \\
+\end{pmatrix}
+&=\hat{E^\prime}_{N\sigma}\bf{I}
+\begin{pmatrix}
+	1 & -\hat{\eta}^\dagger_{01} \\
+	-\hat{\eta}_{01} & 1 \\
+\end{pmatrix} \\
+\implies 
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01} & -\hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h}\\
+    -\hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}-T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
+\end{pmatrix}
+&= \begin{pmatrix}
+	\hat{E^\prime}_{N\sigma} & -\hat{E^\prime}_{N\sigma}\hat{\eta}^\dagger_{01} \\
+	-\hat{E^\prime}_{N\sigma}\hat{\eta}_{01} & \hat{E^\prime}_{N\sigma} \\
+\end{pmatrix}
+\eeq
+The off-diagonal equations again give expressions for \(\hat \eta_{N\sigma}\) and \(\hat \eta^\dagger_{N\sigma}\) which when compared with the previous expressions will give two more consistency equations.
+\beq[3]
+\hat{E^\prime}_{N\sigma}\hat{\eta}^\dagger_{01} = \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}-\hat T_{N\sigma,e-h} \implies \hat{\eta}^\dagger_{01} = \fr{-1}{\hat{E^\prime}_{N\sigma}-\hat{H}_{N\sigma,e}}\hat T_{N\sigma,e-h} = -\hat G_e\rr{\hat E^\prime_{N\sigma}}\hat T_{N\sigma,e-h}
+\eeq
+\beq[4]
+\hat{E^\prime}_{N\sigma}\hat{\eta}_{01} = \hat{H}_{N\sigma,h}\hat{\eta}_{01}-T^\dagger_{N\sigma,e-h} \implies \hat{\eta}_{01} = \fr{-1}{\hat{E^\prime}_{N\sigma}-\hat{H}_{N\sigma,h}}T^\dagger_{N\sigma,e-h} = -\hat G_h\rr{\hat E^\prime_{N\sigma}}T^\dagger_{N\sigma,e-h}
+\eeq
+Comparing equation \ref{3} to equation \ref{eta} and equation \ref{4} to equation \ref{etadag}, we get the following consistency equations:
+\beq
+-\hat G_e\rr{\hat E^\prime_{N\sigma}}\hat T_{N\sigma,e-h} = \hat G_e\rr{\hat E_{N\sigma}}\hat T_{N\sigma,e-h} \\
+-\hat G_h\rr{\hat E^\prime_{N\sigma}}T^\dagger_{N\sigma,e-h} = \hat G_h\rr{\hat E_{N\sigma}}T^\dagger_{N\sigma,e-h}
+\eeq
+The diagonal element gives an expression for the lower block of \(\overline \hml\).
+\begin{tcolorbox}
+\beq[eprime]
+\hat E^\prime_{N\sigma} = \hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01}
+\eeq
+\end{tcolorbox}
+Looking at equations \ref{e} and \ref{eprime}, we can write down the diagonalised Hamiltonian in the basis of \no:
+\beq
+\overline \hml 	= \un \hml \un^\dagger &= \begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix} \\
+				&= \begin{pmatrix} 
+					\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01} & 0 \\
+					0 & \hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01} \\
+					\end{pmatrix}
+\eeq
+This concludes the construction of the diagonalised Hamiltonian. 
+\subsection{Determining the \un}
+The starting equation for the above construction was equation \ref{eq1}. That will also provide an expression for the \un. Operating equation \ref{eq1} to the right of \(\ket{1}\) (occupied eigenstate of \no) gives 
+\beq
+& \hml\hat P_{N\sigma}\ket{1} = \hat E_{N\sigma} \otimes\bf{I}\;\hat P_{N\sigma} \hml \ket{1} = \hat E_{N\sigma} \hat P_{N\sigma} \ket{1} \\
+&\implies \hml \un^\dagger \no \un \ket{1} = \hat E_{N\sigma} \un^\dagger \no \un \ket{1} && \rr{\text{substituting expression of \(\hat P_{N\sigma}\)}}\\
+&\implies \un \hml \un^\dagger \no \un \ket{1} = \un \hat E_{N\sigma} \un^\dagger \no \un \ket{1} && \rr{\text{operating \(\un\) from left}}\\
+&\implies \overline \hml \no \un \ket{1} = \un \hat E_{N\sigma} \un^\dagger \no \un \ket{1}
+\eeq
+Compare the last equation with \ref{Hdiag}. In order to satisfy the first equation of \ref{Hdiag}, we need the following two equations,
+\beq[ucond]
+\no \un \ket{1} &\propto \ket{1} \\
+\un \hat E_{N\sigma} \un^\dagger &=  E_{N\sigma}
+\eeq
+The second equations says 
+\beq[Ecomm]
+\qq{E_{N\sigma},\un}=0
+\eeq
+The \(\un\) that satisfies the first equation is \(\un = \kappa\rr{1-\hat\eta+\hat\eta^\dagger}\). \(\kappa\) is a constant determined by the unitarity condition \(\un\un^\dagger=\bf{I}\). To check that this satisfies \ref{ucond},
+\beq
+\no \un \ket{1} &= 	\begin{pmatrix} \bf{I} & 0 \\ 0 & 0 \end{pmatrix}
+					\kappa
+					\begin{pmatrix} \bf{I} & \eta^\dagger_{01} \\ -\eta_{01} & \bf{I} \end{pmatrix}
+					\begin{pmatrix} \bf{I} \\ 0 \end{pmatrix} \\
+				&= \kappa \begin{pmatrix} \bf{I} \\ 0 \end{pmatrix} \propto \ket{1}
+\eeq
+To find \(\kappa\),
+\beq
+\un\un^\dagger 	&= \kappa^2
+				\begin{pmatrix} \bf{I} & \eta^\dagger_{01} \\ -\eta_{01} & \bf{I} \end{pmatrix} 
+				\begin{pmatrix} \bf{I} & -\eta^\dagger_{01} \\ \eta_{01} & \bf{I} \end{pmatrix}
+				= \kappa^2
+				\begin{pmatrix} \bf{I} + \eta^\dagger_{01}\eta_{01} & 0 \\ 0 & \bf{I} + \eta^\dagger_{01}\eta_{01} \end{pmatrix} \\
+				&= \kappa^2
+				\begin{pmatrix} \bf{I} + \eta^\dagger_{01}\eta_{01} & 0 \\ 0 & \bf{I} + \eta^\dagger_{01}\eta_{01} \end{pmatrix}
+				= 2\kappa^2
+				\begin{pmatrix} \bf{I} & 0 \\ 0 & \bf{I}\end{pmatrix} \rr{\text{check \ref{scomm1},\ref{scomm2} for \(\eta^\dagger_{01}\eta_{01}\),\(\eta_{01}\eta^\dagger_{01}\)}} \\
+\implies \kappa=\fr{1}{\sqrt{2}}
+\eeq
+\begin{tcolorbox} 
+\beq[uni]
+\un = \fr{1}{\sqrt{2}}\rr{1-\hat\eta+\hat\eta^\dagger}
+\eeq
+\end{tcolorbox}
+\subsection{A corrolary: \(\qq{\hat G_e(\hat E_{N\sigma}), \hat E_{N\sigma}}=0\)}
+First note,
+\beq[init]
+\hat T^\dagger_{N\sigma,e-h}\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} &= T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) - T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})\hat E_{N\sigma}
+\eeq
+Now,
+\beq[part1]
+T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})\hat E_{N\sigma} &= \hat \eta_{01} \hat E_{N\sigma}
+\eeq
+Also,
+\beq[part2]
+T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) &= T^\dagger_{N\sigma,e-h}\qq{\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}}\hat G_e(\hat E_{N\sigma}) \\
+&=T^\dagger_{N\sigma,e-h}\qq{\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+\hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})} \\
+&=T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+\eeq
+The last line follows because \(\hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})=\bf{1}\). From \ref{E1}, we have
+\beq[unity]
+\hat{E}_{N\sigma}-\hat{H}_{N\sigma,e}=\hat T_{N\sigma,e-h}\hat\eta_{01}&\implies \hat G_e^{-1}(\hat E_{N\sigma}) = \hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h} \\
+&\implies \bf{1} = \hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})
+\eeq
+Continuing from \ref{part2},
+\beq[part3]
+T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) &=
+T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+&=\hat{H}_{N\sigma,h}T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+\eeq
+The last line follows from equation \ref{cons}:
+\beq
+&\hat T^\dagger_{N\sigma,e-h} \hat G_e(\hat E_{N\sigma}) = \hat G_h(\hat E_{N\sigma}) \hat T^\dagger_{N\sigma,e-h} \\
+&\implies (\hat{E}_{N\sigma}-\hat{H}_{N\sigma,h})\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}(\hat{E}_{N\sigma}-\hat{H}_{N\sigma,e}) \\
+&\implies \hat{E}_{N\sigma}\hat T^\dagger_{N\sigma,e-h}-\hat{H}_{N\sigma,h}\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}\hat{E}_{N\sigma}-\hat T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e} \\
+&\implies \hat{H}_{N\sigma,h}\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\;\;\;\;\;\;\;\;\;\rr{\because\hat{E}_{N\sigma}\hat T^\dagger_{N\sigma,e-h}=\hat T^\dagger_{N\sigma,e-h}\hat{E}_{N\sigma}}
+\eeq
+Again continuing from \ref{part3},
+\beq
+&T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) = \hat{H}_{N\sigma,h}T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+&= \hat{H}_{N\sigma,h}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h}+T^\dagger_{N\sigma,e-h} && \rr{\text{from eq \ref{cons}}} \\
+&= \hat{H}_{N\sigma,h}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h}+T^\dagger_{N\sigma,e-h}G_e(\hat E_{N\sigma})T_{N\sigma,e-h}G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} && \rr{\text{from eq \ref{unity}}} \\
+&=\rr{\hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}G_e(\hat E_{N\sigma})T_{N\sigma,e-h}}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
+&=\rr{\hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat \eta^\dagger_{01}}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
+&=\hat E_{N\sigma}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
+&=\hat E_{N\sigma}\hat\eta_{01}
+\eeq
+Therefore,
+\beq[final]
+T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) = \hat E_{N\sigma}\hat\eta_{01}
+\eeq
+Substituting equations \ref{part1} and \ref{final} in equation \ref{init}, we have
+\beq
+\hat T^\dagger_{N\sigma,e-h}\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} &= \hat E_{N\sigma}\hat\eta_{01} - \hat\eta_{01}\hat E_{N\sigma} = \qq{\hat E_{N\sigma},\hat\eta_{01}} \\
+&= 0 && \rr{\text{from equation \ref{Ecomm}}} \\
+\eeq
+Therefore,
+\begin{tcolorbox}
+\beq
+\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} = 0 
+\eeq
+\end{tcolorbox}
+\subsection{A Simple Example}
+\beq
+\ham = -t\rr{c^\dagger_2c_1+c^\dagger_1c_2}+V\hat n_1\hat n_2-\mu(\hat n_1+\hat n_2) && \hat n_i = c^\dagger_i c_i = \begin{pmatrix} V-2\mu & 0 & 0 & 0 \\
+0 & -\mu & -t & 0 \\ 0 & -t & \mu & 0 \\ 0 & 0 & 0 & 0 \\
+\end{pmatrix}
+\eeq
+For this problem, we take \(N\sigma\equiv1\). 1 refers to the first site. First step is to represent the Hamiltonian in block matrix form (equation \ref{h}).
+\beq
+\hat H_{1,e} &= Tr_1[\ham\hat n_1] \\
+&= Tr_1[V\hat n_1\hat n_2-\mu(\hat n_1+\hat n_2)] && \rr{\text{\(c\) and \(c^\dagger\) will not conserve the eigenvalue of \(\hat n\)}} \\
+&= V\hat n_2 -\mu(1+\hat n_2) &&\rr{Tr_1[V\hat n_1 \hat n_2]=VTr_1[\hat n_1]\hat n_2=V\hat n_2}
+\eeq
+Next is calculation of \(\hat H_{1,h}\):
+\beq
+\hat H_{1,h} &= Tr_1[\ham(1-\hat n_1)] = -\mu\hat n_2\\
+\eeq
+Next is calculation of \(T_{1,e-h}\).
+\beq
+T_{1,e-h} &= Tr_1[\ham c_1] \\  
+&= Tr_1[-tc^\dagger_1c_2c_1] = -tc_2 && \rr{\text{the only term that conserves eigenvalue of \(\hat n\)}}
+\eeq
+Therefore, \(T^\dagger_{1,e-h} = -tc^\dagger_2\). The block matrix form becomes 
+\beq[bmf]
+\ham = 	\begin{pmatrix}
+		V\hat n_2 -\mu(1+\hat n_2) & -tc_2 \\
+		-tc^\dagger_2 & -\mu\hat n_2 \\
+		\end{pmatrix}
+\eeq
+The block-diagonal form is, as usual, \(\overline\ham = \begin{pmatrix}
+		\hat E_1 & 0 \\
+		0 & \hat E^\prime_1 \\
+		\end{pmatrix} \) \\
+From equations \ref{eta} and \ref{etadag}, \(\hat \eta^\dagger_{01} = \hat G_e \hat T_{1,e-h}\) and \(\hat \eta_{01} = \hat G_h \hat T^\dagger_{1,e-h}\). Equation \ref{scomm1} gives 
+\beq[commprob]
+\hat\eta^\dagger_{01}\hat\eta_{01} = 1 \implies \hat G_e \hat T_{1,e-h}\hat G_h \hat T^\dagger_{1,e-h}=1
+\eeq
+Again, from equation \ref{cons}, \(\hat G_h \hat T^\dagger_{1,e-h} = \hat T^\dagger_{1,e-h}\hat G_e \). With this modification, equation \ref{commprob} becomes
+\beq[getE]
+\hat G_e \hat T_{1,e-h}\hat T^\dagger_{1,e-h}\hat G_e =1 \implies \hat T_{1,e-h}\hat T^\dagger_{1,e-h} = \rr{\hat G_e^{-1}}^2
+\eeq
+For this problem,
+\beq
+&\hat T_{1,e-h}\hat T^\dagger_{1,e-h} = t^2c_2c^\dagger_2 = t^2(1-\hat n_2) = t^2(1-\hat n_2)^2\\
+&\rr{\hat G_e^{-1}}^2 = \rr{\hat E_1 - \hat H_{1,e}}^2 = \rr{\hat E_1 - V\hat n_2 +\mu(1+\hat n_2)}^2
+\eeq
+Substituting these expressions in equation \ref{getE},
+\beq[first]
+t^2\rr{1-\hat n_2}^2 = \rr{\hat E_1 - V\hat n_2 +\mu(1+\hat n_2)}^2
+\eeq
+This has a solution, \(\hat E_1 - V\hat n_2 +\mu(1+\hat n_2) = t\rr{1-\hat n_2}\), that is,
+\begin{tcolorbox}
+\beq
+\hat E_1 = V\hat n_2 -\mu(1+\hat n_2) +t\rr{1-\hat n_2} = (V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2)
+\eeq
+\end{tcolorbox}
+The lower diagonal block \(\hat E^\prime\)can be determined as follows. First note that in the original Hamiltonian, only the upper \(3\times3\) portion is interacting among themselves, the 4\uu{th} row and 4\uu{th} column of the Hamiltonian do not interact with the rest. This means that the lower element of \(\hat E^\prime\) is zero. Also note that the unitary transformations do not alter the partial trace of the matrix. Specifically,
+\beq
+Tr_1\rr{\overline \ham} = Tr_1\rr{\un \ham \un^\dagger} = Tr_1\rr{\un^\dagger \un \ham} = Tr_1\rr{\ham}
+\eeq
+Since we know the expression of \(\hat E_1\) and the structure of \(\hat E^\prime_1\), we can write down the structure of \(\overline \ham\):
+\beq
+\overline \ham = 
+\begin{pmatrix}
+        V-2\mu  &       &       & \\
+                & t-\mu &       & \\
+                &       & \hat E^\prime_1 & \\
+                &       &       &       0
+\end{pmatrix}
+\eeq
+Therefore, 
+% \(Tr_1\overline \ham = (V-2\mu)\hat n_2 + (t-\mu)(1-\hat n_2) + \hat E^\prime_1\hat n_2\). From equation \ref{bmf}, \(Tr_1\rr{\ham} = V\hat n_2 - \mu(1+\hat n_2) - \mu \hat n_2\). Equating the two traces, we get an expression for the lower block:
+
+\beq
+\hat E_1^\prime\hat n_2 = -(\mu+t)\hat n_2
+\eeq
+
+This gives nothing
+\beq
+\overline \ham &= \bordermatrix{
+				~ & \ket{\hat n_1=1} & \ket{\hat n_1=0} \cr
+               	& (V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2) & 0 \cr \\
+               	& 0 & -(\mu+t)\hat n_2 \cr
+               	} \\
+               &= \bordermatrix{
+               	~ & \ket{11} & \ket{10} & \ket{01} & \ket{00} \cr
+               	& (V-2\mu) & 0 & 0 & 0 \cr \\
+               	& 0 & (t-\mu) & 0 & 0 \cr \\
+               	& 0 & 0 & -(\mu+t) & 0 \cr \\
+               	& 0 & 0 & 0 & 0 \cr
+               	}
+\eeq
+\subsubsection{The Eigenstates}
+The unitarily transformed Hamiltonian, \(\overline \ham\) is diagonal in the basis of \(\hat n\). This implies that the eigenstates of the original Hamiltonian \(\ham\) are the unitarily transformed versions of the eigenkets of \(\hat n\):
+\beq
+\ham (\un^\dagger \ket{n_1,n_2}) = \un^\dagger \overline \ham \ket{n_1,n_2} = \un^\dagger E_{n_1,n_2}\ket{n_1,n_2} = E_{n_1,n_2}(\un^\dagger\ket{n_1,n_2})
+\eeq
+To find the eigenvectors \(\un^\dagger\ket{n_1,n_2}\), we need to find the \(\un\). From equation \ref{uni}, we have \(\un = \fr{1}{\sqrt 2}\rr{1+\hat \eta^\dagger - \hat \eta}\). Again, \(\hat \eta_{1} = G_h T^\dagger c_1\), and \(\hat \eta^\dagger_{1} = c^\dagger_1 G_e T\) Using the expression of \(\hat E_1\). this simplifies as:
+\beq
+        \eta &= \fr{1}{\hat E_1 - H_h}(-tc^\dagger_2)c_1 = \fr{-t}{(V-2\mu)\hat n_2 + (t-\mu)(1-\hat n_2)+\mu \hat n_2}c_1c_2^\dagger = \fr{-t}{V-\mu}c_1 c^\dagger_2 \\
+        \eta^\dagger &= c_1^\dagger \fr{1}{(V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2)-(V-2\mu)\hat n_2 + \mu(1-\hat n_2)}(-tc_2) = - c_1^\dagger c_2
+\eeq
+\begin{tcolorbox}
+        QUESTION: How can the \(\eta\) in the previous equation be conjugates of each other? Where's the problem? This question boils down to the following. In order for \(\eta\) and \(\eta^\dagger\) to be conjugates of each other, the consistency equation \(G_h T^\dagger = T^\dagger G_e\) needs to be satisfied. That comes down to \(c^\dagger_2\{t(1-\hat n_2)-4\mu\hat n_2\} = \{(V-\mu)n^\dagger_2+(t-\mu)(1-\hat n_2)\}c^\dagger_2\), or, \textbf{\(tc^\dagger_2 = (V-\mu)c^\dagger_2\)}. Why should this work out in general?
+\end{tcolorbox}
+\beq
+        \tf \un &= \fr{1}{\sqrt 2} \qq{1+\fr{t}{V-\mu}c_1 c^\dagger_2-c_1^\dagger c_2}, \un^\dagger = \fr{1}{\sqrt 2}\qq{1+\fr{t}{V-\mu}c_1^\dagger c_2 - c_2 c^\dagger_1}
+\eeq
+To get the eigenstates, I act on the eigenstates (\(\ket{n_1,n_2}\)):
+\beq
+        \un ^\dagger \ket{11} \sim \ket{11}&, \un ^\dagger \ket{00} \sim \ket{00}, \\
+        \un ^\dagger \ket{10} \sim \ket{10}+\fr{t}{V-\mu}\ket{01}&, \un^\dagger\ket{01} \sim \ket{01}-\ket{10}
+\eeq
+The eigenstates come out to be (upto a normalizaiton):
+\beq
+        \ket{00} &,\ket{11} \\
+        \ket{01} &- \ket{10} \\
+        \ket{10} &+ \fr{t}{V-\mu}\ket{01}
+\eeq
+\begin{tcolorbox}
+        QUESTION: The fourth eigenstate, when acted on the Hamiltonin, does not turn out to be an eigenstate.
+\end{tcolorbox}
+\beq
+\ham (\ket{10}+\fr{t}{V-\mu}\ket{01}) = 
+        \begin{pmatrix} 
+                V-2\mu&0&0&0 \\
+                0&-\mu&-t&0\\
+                0&-t&-\mu&0\\
+                0&0&0&0\\
+        \end{pmatrix}
+        \begin{pmatrix} 0 \\ 1 \\ \fr{t}{V-\mu} \\ 0 \end{pmatrix}
+        =
+        \begin{pmatrix} 0 \\ -\mu-\fr{t^2}{V-\mu} \\ -t - \fr{\mu t}{V-\mu} \\ 0 \end{pmatrix}
+\eeq
+\subsection{Applying the RG on the Hubbard dimer}
+\beq
+\ham &= -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\rr{\na\nb+\nc\nd} \\
+H_e &= Tr_{\na}(\ham\na) = U(\nb+\nc\nd)-t(\cb^\dagger\ce+\ce^\dagger\cb) \\  
+H_h &= Tr_{\na}(\ham(1-\na)) = U\nc\nd - t(\cb^\dagger\ce+\ce^\dagger\cb) \\
+T &= Tr_{\na}(\ham\ca) = -t\cd\\
+T^\dagger &= Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger\\
+\eta^\dagger_{01} &= G_e T = \fr{1}{E_{1\uparrow}-H_e}(-t\cd) \\
+\eta_{01} &= (\eta^\dagger_{01})^\dagger = -t\cd^\dagger \fr{1}{E_{1\uparrow}-H_e} \\
+\eta_{01}^\dagger\eta_{01} &= 1 \implies t^2(1-\nc) = (E_{1\uparrow}-H_e)^2 \implies E_{1\uparrow} = H_e + t(1-\nc)
+\eeq
+\begin{tcolorbox}
+\beq
+E_{1\uparrow} = U(\nc\nd+\nb) + t(1-\nc-\cb^\dagger\ce-\cb\ce^\dagger)
+\eeq
+\end{tcolorbox}
+The upper block is not diagonal, and has to be further diagonalised. \\\\
+\btc
+QUESTION: To find \(E_{1\uparrow}\), I could also have done the following.
+\beq
+                           &\eta_{01} = G_h T^\dagger = \fr{-t}{E_{1\uparrow}-H_h}\cd^\dagger \implies \eta^\dagger_{01} = \cd\fr{-t}{E_{1\uparrow}-H_h} \\
+\tf &\eta_{o1}\eta^\dagger_{01}=1 \implies E_{1\uparrow} = U\nc\nd+t(1-\nc-\cb^\dagger\ce-\cb\ce^\dagger)
+\eeq
+This gives a distinctively different answer. The difference is \(U\).
+\etc
+From the formalism, we have this expression for the lower block
+\beq
+E^\prime_{1\uparrow} = H_e - T\eta_{01} = H_e - t^2(1-\nc)\fr{1}{E_{1\uparrow}-H_e} = H_e - t^2(1-\nc)\fr{1}{t(1-\nc)}
+\eeq
+\btc
+\beq
+E^\prime_{1\uparrow} = U(\nb+\nc\nd) -t
+\eeq
+\etc
+The lower block is diagonal, and the eigenvalues can be read off directly, after bringing it to the following form:
+\beq[Eprime]
+E^\prime_{1\uparrow} = \begin{pmatrix} 
+                        U-t&&&&&&& \\
+                        &U-t&&&&&& \\
+                        &&U-t&&&&& \\
+                        &&&U-t&&&& \\
+                        &&&&U-t&&& \\
+                        &&&&&-t&& \\
+                        &&&&&&-t& \\
+                        &&&&&&&-t \\
+                \end{pmatrix}
+\eeq
+To calculate the eigenvalues of the upper block, we take \(E_{1\uparrow}\) as the new Hamiltonian and this time trace out \(\nb\).
+\beq
+H_e &= Tr_{\nb}(E_{1\na}\nb) = U\nc\nd + U + t(1-\nc) \\
+H_h &= Tr_{\nb}(E_{1\na}(1-\nb)) = H_e \\
+T &= Tr_{\nb}(E_{1\na}\cb) = -t\ce \\
+T^\dagger &= Tr_{\nb}(\cb^\dagger E_{1\na}) = -t\ce^\dagger \\
+\eta_{01}^\dagger\eta_{01}=1 &\implies E_{\nb} = H_e + t(1-\nd)
+\eeq
+\btc
+\beq
+E_{\nb} = U(\nc\nd + 1) + t(1-\nc)+t(1 -\nd)
+\eeq
+\etc
+This block is diagonal.
+\beq
+E_{1\nb} =
+\begin{pmatrix}
+        2U-t & & & \\
+             & U+t & & \\
+             & & U+t & \\
+             & & & U+2t 
+\end{pmatrix}
+\eeq
+The lower block of \(E_{1\uparrow}\), that is, \(E^\prime_{1\downarrow}\), can again be determined using the formula for the lower blocks.
+\beq
+E^\prime_{1\downarrow} = H_e - T\eta_{01} = H_e - (-t\ce)(-t\ce^\dagger)\fr{1}{E_{1\downarrow}-H_e} = H_e - t^2(1-\nd) = H_e - t
+\eeq
+\btc
+\beq
+E^\prime_{1\nb} = U(\nc\nd + 1)-t\nd
+\eeq
+\etc
+\beq
+E^\prime_{1\nb} = 
+\begin{pmatrix}
+        2U-t & & & \\
+             & U-t & & \\
+             & & U & \\
+             & & & U 
+\end{pmatrix}
+\eeq
+\subsubsection{Eigenvectors}
+To find the eigenvectors, I first find the unitary for the lower block
+\(\na\), and use it to diagonalise the shallowest Hamiltonian.
+\beq
+\eta^\dagger_{1\uparrow} &= \ca^\dagger G_e T = \ca^\dagger \fr{1}{t(1-\nc)}(-t\cd) = -\ca^\dagger\cd \\
+\implies \eta_{1\uparrow} &= -\ca\cd^\dagger \\
+\implies U_{1\uparrow}^\dagger &= \fr{1}{\sqrt 2}(1+\eta_{1\uparrow}-\eta^\dagger_{1\uparrow}) = \fr{1}{\sqrt 2}(1+\ca^\dagger\cd-\ca\cd^\dagger)
+\eeq
+This \(U^\dagger_{1\uparrow}\) will block-diagonalise the shallowest Hamiltonian into two subspaces, \(\na=1\) and \(\na=0\). The latter block is internally diagonal, as seen from the form of \(\hat E_{1\uparrow}^\prime\), equation \ref{Eprime}. These 8 eigenstates are thus:
+\beq
+U^\dagger_{1\uparrow}\ket{\na=0,\nb\nc\nd} \sim (1+\ca^\dagger\cd-\ca\cd^\dagger)\ket{\na=0,\nb,\nc,\nd} 
+\eeq
+For various values of \(\nb,\nc,\text{ and }\nd\), we get the following eigenstates
+\beq
+U^\dagger_{1\uparrow}\ket{\na=0,\nb\nc\nd} \sim 
+        \begin{cases}
+                \text{Eigenvector} & \text{Eigenvalue} \\
+                \ket{\da,\ua\da}+\ket{\ua\da,\da} & -t + U\\
+                \ket{\da,\ua}+\ket{\ua\da,0} & -t + U\\
+                \ket{\da,\da} & -t + U\\
+                \ket{\da,0} & -t + U\\
+                \ket{0,\ua\da}+\ket{0,\da} & -t + U\\
+                \ket{0,\ua}+\ket{0,0} & -t \\
+                \ket{0,\da} & -t \\
+                \ket{0,0} & -t \\
+        \end{cases}
+\eeq
+The upper block, \(\na=1\), is  not internally diagonal, so it has to be diagonalised again, using \(U_{1\downarrow}\).
+\beq
+\eta^\dagger_{1\da} &= \cb^\dagger G_e T = -\cb^\dagger\ce \\
+\eta_{1\da} &= -\cb\ce^\dagger \\
+U^\dagger_{1\downarrow} &= \fr{1}{\sqrt 2}(1 - \cb\ce^\dagger + \cb^\dagger\ce)
+\eeq
+Applying \(U_{1\ua}\) on \(\ket{\na=1,\nb,\nc,\nd}\) will produce the eigenblock corresponding to \(\na=1\). Applying \(U_{1\da}\) on this block will then produce the 8 eigenstates corresponding to \(\na=1\). Representing \(\ket{\na=1,\nb,\nc,\nd}\) as \(\ket{\na=1}\),
+\beq
+\ket{\na=1} &\xrightarrow{U_{1\ua}} \fr{1}{\sqrt 2}(\ket{\ua\nb\nc\nd}-\cd^\dagger\ket{0\nb\nc\nd})\\
+            &= \begin{cases}
+                \ket{\ua\da,\ua\da} \\
+                \ket{\ua\da,\ua} \\
+                \ket{\ua\da,\da}-\ket{\da,\ua\da} \\
+                \ket{\ua\da,0}-\ket{\da,\ua} \\
+                \ket{\ua,\ua\da} \\
+                \ket{\ua,\ua} \\
+                \ket{\ua,\da}-\ket{0,\ua\da} \\
+                \ket{\ua,0}-\ket{0,\ua} \\
+            \end{cases} \\
+                    &\xrightarrow{U_{1\da}}
+            \begin{cases}
+                \text{Eigenvectors} & \text{Eigenvalues} \\
+                \ket{\ua\da,\ua\da} & 2U-t \\
+                \ket{\ua\da,\ua}-\ket{\ua,\ua\da} & U+t \\
+                \ket{\ua\da,\da}+\ket{\ua,\da}-\ket{0,\ua\da} & U+t \\
+                \ket{\ua\da,0}-\ket{\da,\ua} -\ket{0,\ua\da}& U+2t \\
+                \ket{\ua,\ua\da}+\ket{\ua\da,\ua}& 2U-t \\
+                \ket{\ua,\ua}& U-t \\
+                \ket{\ua,\da}-\ket{0,\ua\da}-\ket{\ua\da,0}+\ket{\da,\ua}& U \\
+                \ket{\ua,0}-\ket{0,\ua} & U \\
+            \end{cases}
+\eeq
+\end{document}

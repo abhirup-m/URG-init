@@ -1,0 +1,510 @@
+\documentclass{article}
+\usepackage{common}
+\renewcommand\arraystretch{2.5}
+\newcommand{\un}{\ensuremath{\hat{U}_{N\sigma}}}
+\newcommand{\no}{\ensuremath{\hat{n}_{N\sigma}}}
+\newcommand{\hml}{\ensuremath{\ham_{2N}}}
+\begin{document}
+\begin{center}
+\bf{\Large{Unitary Renormalization Group}}\\
+\vspace{5mm}
+\bf{\Large{Anirban Mukherjee} } \\
+\bf{\it{\large{(edited by Abhirup Mukherjee)}}} \\
+\vspace{5mm}
+\end{center}
+\section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}
+\subsection{The Problem} You have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a fermi gas). Equivalenty, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
+\btm
+This Hamiltonian can be transformed using a certain unitary transformation \un, into \(\overline{\ham} = \un \ham \un^\dagger\) such that this transformed Hamiltonian is diagonal in the occupancy basis of \(\hat{n}_{N\sigma}\). A rephrased statement is, there exists a unitary operator \(\un\) such that \(\qq{\un \hml \un^\dagger, \no}=0\).
+\etm
+\subsection{Warming Up - Writing the Hamiltonian as blocks}
+The Hamiltonian \(\hml\) in general has off-diagonal terms and can be written as the following general matrix in the occupancy basis of \(N\sigma\):
+\beq
+\hml = \bordermatrix{~ & \ket{1} & \ket{0} \cr
+              \bra{1} & H_1 & H_2 \cr \\
+              \bra{0} & H_3 & H_4 \cr}
+\eeq
+where \(\ket{1} \equiv \ket{\no=1}\) (occupied). Note that the \(H_i\) are not scalars but matrices(blocks), of dimension half that of \(\hml\), that is \(2^{2N-1}\). Its clear that since, for example, \(H_2 = \bra{1}\hml\ket{0}\), we have
+\beq[ham-martix]
+\hml = H_1 \no + c_{N\sigma}^\dagger H_2 + H_3 c_{N\sigma} +H_4(1-\no)
+\eeq
+Its trivial to check that this definition of \(\hml\) indeed gives back the mentioned matrix elements. The expression for these matrix elements is quite easy to calculate. First, we define the partial trace over the subspace \(N\sigma\)
+\beq
+Tr_{N\sigma} \rr{\hml} \equiv \sum_{\ket{N\sigma}}\bra{N\sigma}\hml\ket{N\sigma} 
+\eeq
+The sum is over the possible states of \(N\sigma\), that is, \(\no=0\) and \(\no=1\). Applying this partial trace to equation \ref{ham-martix}, after multiplying throughout with \(\no\) from the right, gives
+\beq
+Tr_{N\sigma} \rr{\hml\no} = Tr_{N\sigma} \qq{H_1 \no \no + c_{N\sigma}^\dagger H_2\no + H_3 c_{N\sigma}\no +H_4(1-\no)\no}
+\eeq
+Recall the following: \(\no^2=\no\), \((1-\no)\no=0\). \\\\
+Also, since \(H_i\) are matrix elements with respect to \no, they will commute with the creation and annihilation operators. Hence, \(Tr_{N\sigma}(c_{N\sigma}^\dagger H_2\no) = H_2 Tr_{N\sigma}(c_{N\sigma}^\dagger\no) = 0\), because \(c_{N\sigma}^\dagger\no = 0\). \\\\
+Lastly, \(Tr_{N\sigma}(H_3c_{N\sigma}\no) = H_3 Tr_{N\sigma}(c_{N\sigma}\no) = H_3 Tr_{N\sigma}(\no c_{N\sigma}) = 0\), because \(\no c_{N\sigma} = 0\). So,
+\beq
+Tr_{N\sigma} \rr{\hml\no} = Tr_{N\sigma} \qq{H_1 \no} = H_1 Tr_{N\sigma}\no = H_1
+\eeq
+This gives the expression for \(H_1\). Similarly, by taking partial trace of \(\ham (1-\no)\), \(\ham c_{N\sigma}\) and \(c_{N\sigma}^\dagger\ham\), we get the expressions for all the blocks. They are listed here.
+\beq 
+H_1 &\equiv \hat{H}_{N\sigma,e} = Tr_{N\sigma} \qq{\hml\no}\\
+H_2 &\equiv \hat T_{N\sigma,e-h} = Tr_{N\sigma} \qq{\hml c_{N\sigma}} \\
+H_3 &\equiv T^\dagger_{N\sigma,e-h} = Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} \\
+H_4 &\equiv \hat{H}_{N\sigma,h} = Tr_{N\sigma} \qq{\hml(1-\no)}\\
+\eeq
+We get the following block decomposition of the Hamiltonian.
+\beq[h]
+\hml = \bordermatrix{~ & \ket{1} & \ket{0} \cr
+              \bra{1} & \hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h} \cr \\
+              \bra{0} & T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h} \cr}
+	=\bordermatrix{~ & \ket{1} & \ket{0} \cr
+              \bra{1} & Tr_{N\sigma} \qq{\hml\no} & Tr_{N\sigma} \qq{\hml c_{N\sigma}} \cr \\
+              \bra{0} & Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} & Tr_{N\sigma} \qq{\hml(1-\no)} \cr} \\
+\eeq
+\beq
+\hml= Tr_{N\sigma} \qq{\hml\no} \no + c_{N\sigma}^\dagger Tr_{N\sigma} \qq{\hml c_{N\sigma}} + Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} c_{N\sigma} \\ + Tr_{N\sigma} \qq{\hml(1-\no)}(1-\no)
+\eeq
+\subsection{Proof of the theorem}
+Define an operator \(\hat{P_{N\sigma}} = \un^\dagger \no \un\). This is the roated version of the number operator. What this does will be apparent from the following demonstration.
+\beq
+\qq{\hml, \hat{P_{N\sigma}}} &= \qq{\hml,\un^\dagger \no \un} = \hml\un^\dagger \no \un - \un^\dagger \no \un \hml \\
+&= \un^\dagger \overline{\hml}\no\un - \un^\dagger \no \overline{\hml} \un = \un^\dagger \qq{\hml, \no} \un \\
+&= 0 
+\eeq
+We see that \(\hat{P_{N\sigma}}\) is the operator that commutes with the original Hamiltonian. Note that here we are not transforming the Hamiltonian. Instead we are changing the single particle basis; \(\hat{P_{N\sigma}}\) is not the single-particle occupation basis \(\no\), rather a unitarily transformed version of that.This operator projects out the eigensubspaces of the diagonal Hamlitonian. \(\no\hml\no\) will project out the subspace of the Hamiltonian in which the particle states are occupied, but since the \(\hml\) is not diagonal, these will not be the eigensubspace. Instead, \(\hat{P_{N\sigma}}\hml\hat{P_{N\sigma}}\) will project out the eigensubspace.
+
+Both the approaches are mathematically equivalent; the matrix of \hml in the basis of \(\hat{P_{N\sigma}}\) and the matrix of \(\overline{\hml}\) in the basis of \(\no\) will be identical; they will both be block-diagonal with the same blocks in the diagonal. 
+\\  \\
+\(\hat{P_{N\sigma}}\) also has the following properties:
+\begin{itemize}
+\item \(\hat{P_{N\sigma}}^2 = \un^\dagger \no^2 \un = \un^\dagger \no \un = \hat{P_{N\sigma}}\) \\
+\item \(\hat{P_{N\sigma}}(1-\hat{P_{N\sigma}}) = \un^\dagger \no(1-\no) \un = 0\)
+\end{itemize}
+Let the block-diagonal form of the Hamiltonian be 
+\beq
+\overline{\hml} = 	\begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix}
+\eeq
+The block diagonal equations for \(\overline\hml\) are then, very simply,:
+\beq[Hdiag]
+\overline\hml \ket{1} = \hat{E_{N\sigma}} \ket{1} \\
+\overline\hml \ket{0} = \hat{E^\prime_{N\sigma}} \ket{0}
+\eeq
+\(\ket{1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\) is the eigenstate of \no for the occupied state. Similarly, \(\ket{0}\) is the vacant eigenstate. The goal is to construct expressions for the blocks \(\hat{E_{N\sigma}}\) and \(\hat{E^\prime_{N\sigma}}\). \\ \\
+Its easy to see that if any matrix \(\hat{A}\) is written in the basis of some operator \(\hat{m}\), \(\hat{m}\hat{A}\hat{m}\) returns the upper diagonal element of \(\hat{A}\) and \((1-\hat{m})\hat{A}(1-\hat{m})\) returns the lower diagonal element. For example, to get the upper diagonal element,
+\beq 
+\hat{A} = \begin{pmatrix} 1 & -1 \\ 2 & 0 \end{pmatrix} \implies \hat{m}\hat{A}\hat{m} = \begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix} \times \begin{pmatrix} 1 & -1 \\ 2 & 0 \end{pmatrix} \times \begin{pmatrix} 1 & 0\\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+\eeq
+Similarly,
+\beq
+\hat{m}\hat{A}(1-\hat{m}) = \begin{pmatrix} 0 & -1 \\ 0 & 0 \end{pmatrix},(1-\hat{m})\hat{A}\hat{m} = \begin{pmatrix} 0 & 0 \\ 2 & 0 \end{pmatrix},(1-\hat{m})\hat{A}(1-\hat{m}) = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}
+\eeq
+We hence have the equation
+\beq
+\no\overline{\hml}\no = \hat{P_{N\sigma}}\hml\hat{P_{N\sigma}} = \begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & 0 \\
+					\end{pmatrix} \\
+(1-\no)\overline{\hml}(1-\no) = (1-\hat{P_{N\sigma}})\hml(1-\hat{P_{N\sigma}}) = \begin{pmatrix} 
+					0 & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix}
+\eeq
+Here, we have used the fact that the diagonal blocks remain invariant under unitary transformations. \\ \\
+Define two matrices diagonal in \no:
+\beq[hp]
+\ham^\prime = \hat{E_{N\sigma}} \otimes \bf{I} = \begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & \hat{E_{N\sigma}} \\
+					\end{pmatrix} \\
+\eeq
+\beq[hpp]
+\ham^{\prime\prime} = \hat{E^\prime_{N\sigma}} \otimes \bf{I} = \begin{pmatrix} 
+					\hat{E^\prime_{N\sigma}} & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix} \\
+\eeq
+This enables us to derive the following equation between \(\hml\) and \(\ham^\prime\):
+\beq
+\hml\hat{P_{N\sigma}} &= \hml \un^\dagger \no \un = \un^\dagger \overline\hml \no \un = \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un \\
+&= \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & \hat{E_{N\sigma}} \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un = \un^\dagger \hat{E_{N\sigma}} \otimes \mathbb{I}\;\no \un = \hat{E_{N\sigma}} \otimes \mathbb{I}\;\un^\dagger \no \un = \ham^\prime \hat{P_{N\sigma}} 
+\eeq
+\beq[eq1]
+\tf \hml\hat{P_{N\sigma}} &= \ham^\prime \hat{P_{N\sigma}}
+\eeq
+Similar;y, performing the calculation with \(\ham^{\prime\prime}\) gives
+\beq[eq2]
+\tf \hml(1-\hat{P_{N\sigma}}) &= \ham^{\prime\prime} (1-\hat{P_{N\sigma}})
+\eeq
+\\ \\
+A general unitary matrix \(\un\) has the form (in basis of \(\no\))
+\beq
+\un = \begin{bmatrix}
+		e^{\iota\phi_1}\cos{\theta} & e^{\iota\phi_2}\sin{\theta} \\
+		-e^{-\iota\phi_2}\sin{\theta} & e^{-\iota\phi_1}\cos{\theta} \\
+		\end{bmatrix}
+\eeq
+This provides a form for the matrix of the projection operator in the basis of \(\no\):
+\beq
+\hat{P_{N\sigma}} = \un^\dagger \no \un &= \begin{bmatrix}
+		e^{-\iota\phi_1}\cos{\theta} & -e^{\iota\phi_2}\sin{\theta} \\
+		e^{-\iota\phi_2}\sin{\theta} & e^{\iota\phi_1}\cos{\theta} \\
+		\end{bmatrix}
+		\times 
+		\begin{bmatrix}
+		1 & 0 \\
+		0 & 0 \\
+		\end{bmatrix}
+		\times
+		\begin{bmatrix}
+		e^{\iota\phi_1}\cos{\theta} & e^{\iota\phi_2}\sin{\theta} \\
+		-e^{-\iota\phi_2}\sin{\theta} & e^{-\iota\phi_1}\cos{\theta} \\
+		\end{bmatrix} \\
+		&=\begin{bmatrix}
+		\cos^2\theta & \cos\theta\sin\theta e^{-\iota(\phi_1-\phi_2)} \\
+		\cos\theta\sin\theta e^{\iota(\phi_1-\phi_2)} & \sin^2\theta \\
+		\end{bmatrix}
+\eeq
+The diagonal terms represent the particle(occupied) and hole(vacant) contributions; owing to symmetry, we set them equal \(\cos^2\theta=\sin^2\theta=\fr{1}{2}\). Call the off-diagonal elements \(\hat{\eta}_{01}\) and \(\hat{\eta}^\dagger_{01}\). The final form becomes
+\beq[P]
+\hat{P_{N\sigma}} = \fr{1}{2}\begin{bmatrix}
+		1 & \hat{\eta}^\dagger_{01} \\
+		\hat{\eta}_{01} & 1 \\
+		\end{bmatrix}
+		= \fr{1}{2} \rr{\bf{I}+\eta_{N\sigma}+\eta_{N\sigma}^\dagger} \\
+\eeq
+\beq[1-P]
+\bf{I} - \hat{P_{N\sigma}} = \fr{1}{2}\begin{bmatrix}
+		1 & -\hat{\eta}^\dagger_{01} \\
+		-\hat{\eta}_{01} & 1 \\
+		\end{bmatrix}
+		= \fr{1}{2} \rr{\bf{I}-\eta_{N\sigma}-\eta_{N\sigma}^\dagger}
+\eeq
+\(\hat\eta_{N\sigma} = \hat{\eta}_{01} c_{N\sigma}\) is the electron to hole transition operator. \(\hat\eta_{N\sigma}^\dagger = \hat{\eta}^\dagger_{01} c_{N\sigma}\) is the hole to electron transition operator. Hence, they are defined to have some pretty obvious properties.
+\begin{enumerate}
+	\item \(\hat\eta_{N\sigma}^2 = \hat{\eta_{N\sigma}^\dagger}^2 = 0\) : once an electron or hole has undergone transition, there is no other to transition.
+	\item \((1-\no)\hat\eta_{N\sigma}\no=\eta_{N\sigma}\) : this is expected from the fact that \(\hat \eta_{N\sigma}\) acts with non-zero result only states of particle-number 1, and hence, \(\no\) will just give 1; after the action of \(\hat\eta_{N\sigma}\), we will get a state with hole (particle-number zero), so \((1-\no)\) will just give 1.
+	\item \(\no\hat\eta_{N\sigma}(1-\no)=0\) : this is expected because \(1-\no\) will give non-zero result only on hole states, but those states will give zero when acted upon by \(\hat\eta_{N\sigma}\), because there won't be any electron to transition from. 
+\end{enumerate}
+These defining properties have many corrolaries in terms of properties of \(\hat \eta_{N\sigma}\):
+\begin{itemize}
+	\item \(\no\hat\eta_{N\sigma} = \hat\eta_{N\sigma}^\dagger\no = 0\) : act with \(\no\) from left on property 2.
+	\item \(\hat\eta_{N\sigma}(1-\no) = (1-\no)\hat\eta_{N\sigma}^\dagger = 0\) : act with \(1-\no\) from right on property 2.
+	\item \(\hat\eta_{N\sigma}\no = (1-\no)\hat\eta_{N\sigma} = \eta_{N\sigma}\) : act with \(\no\) from right on property 2.
+\end{itemize}
+Using \ref{eq1} and the matrix form of \(\hat{P_{N\sigma}}\), \(\hml\) and \(\ham^\prime\) (\ref{P}, \ref{h} and \ref{hp}), we get
+\beq
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h}\\
+    T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}
+\end{pmatrix}
+\begin{pmatrix}
+	1 & \hat{\eta}^\dagger_{01} \\
+	\hat{\eta}_{01} & 1 \\
+\end{pmatrix}
+&=\hat{E}_{N\sigma}\bf{I}
+\begin{pmatrix}
+	1 & \hat{\eta}^\dagger_{01} \\
+	\hat{\eta}_{01} & 1 \\
+\end{pmatrix} \\
+\implies 
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01} & \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h}\\
+    \hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
+\end{pmatrix}
+&= \begin{pmatrix}
+	\hat{E}_{N\sigma} & \hat{E}_{N\sigma}\hat{\eta}^\dagger_{01} \\
+	\hat{E}_{N\sigma}\hat{\eta}_{01} & \hat{E}_{N\sigma} \\
+\end{pmatrix} \\
+\eeq
+The off-diagonal equations give expressions for the \(\hat\eta_{N\sigma}\).
+\beq[eta]
+\hat E_{N\sigma}\hat{\eta}^\dagger_{01} = \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h} \implies \hat{\eta}^\dagger_{01} = \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,e}}\hat T_{N\sigma,e-h} = \hat G_e(\hat E_{N\sigma}) \hat T_{N\sigma,e-h} \\ \implies \hat \eta_{N\sigma}^\dagger = c_{N\sigma}^\dagger \hat{\eta}^\dagger_{01} = c_{N\sigma}^\dagger \hat G_e(\hat E_{N\sigma}) \hat T_{N\sigma,e-h}\\
+\eeq
+\beq[etadag]
+\hat E_{N\sigma}\hat{\eta}_{01} = \hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} \implies \hat{\eta}_{01} = \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,h}}T^\dagger_{N\sigma,e-h} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h} \\
+\implies \hat \eta_{N\sigma} = \hat{\eta}_{01}c_{N\sigma} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h}c_{N\sigma}
+\eeq
+where
+\beq
+\hat G_e(\hat E_{N\sigma}) \equiv \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,e}}. \; \hat G_h(\hat E_{N\sigma}) \equiv \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,h}}
+\eeq
+Comparing the definitions of \(\hat \eta_{N\sigma}\) and \(\hat \eta_{N\sigma}^\dagger\), \ref{eta} and \ref{etadag}, gives us a consistency equation:
+\beq[cons]
+\hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h} = T^\dagger_{N\sigma,e-h} \hat G_e(\hat E_{N\sigma}) 
+\eeq
+The diagonal equations gives an equation for \(\hat{E}_{N\sigma}\):
+\beq[E1]
+\hat{E}_{N\sigma} = \hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}
+\eeq
+\beq[E2]
+\hat{E}_{N\sigma} = \hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
+\eeq
+These equations provide the commutator and anticommutator of the \(\hat\eta_{N\sigma}\) and \(\hat\eta^\dagger_{N\sigma}\). From eq \ref{E1},
+\beq[scomm1]
+\hat{E}_{N\sigma} - \hat{H}_{N\sigma,e} = \hat T_{N\sigma,e-h}\hat\eta_{01} &\implies \hat G_e(\hat E_{N\sigma})^{-1} = \hat T_{N\sigma,e-h}\hat\eta_{01} \\ &\implies \bf{1} = \hat G_e(\hat E_{N\sigma})\hat T_{N\sigma,e-h}\hat\eta_{01} = \hat\eta_{01}^\dagger\hat\eta_{01} \\
+\eeq
+\beq[bcomm1]
+\hat\eta^\dagger \hat\eta = c^\dagger_{N\sigma} \hat\eta_{01}^\dagger\hat\eta_{01} c_{N\sigma} = c^\dagger_{N\sigma} c_{N\sigma} = \no
+\eeq
+From \ref{E2},
+\beq[scomm2]
+\hat{E}_{N\sigma} - \hat{H}_{N\sigma,h} = T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} &\implies \hat G_h(\hat E_{N\sigma})^{-1} = T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} \\ &\implies \bf{1} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} = \hat\eta_{01}\hat\eta_{01}^\dagger \\
+\eeq
+\beq[bcomm2]
+\hat\eta \hat\eta^\dagger = c_{N\sigma} \hat\eta_{01}\hat\eta_{01}^\dagger c^\dagger_{N\sigma} = c_{N\sigma}c^\dagger_{N\sigma} = 1-\no
+\eeq
+Combining equations \ref{bcomm1} and \ref{bcomm2},
+\beq
+\qq{\hat\eta,\hat\eta^\dagger} &= 1- 2\no\\\cc{\hat\eta,\hat\eta^\dagger} &= 1
+\eeq
+\\
+Equation \ref{E1} provides an expression for the upper block of the diagonalised Hamiltonian,
+\begin{tcolorbox}
+\beq[e]
+\hat{E}_{N\sigma} = \hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}
+\eeq
+\end{tcolorbox}
+This expression has \(\hat{E}_{N\sigma}\) on both sides, so it has to be solved using the consistency equations.
+The goal of this exercise was to show that it is possible to consistently construct an expression for the diagonalised Hamiltonian purely from the blocks of the original Hamiltonian, namely \(\hat{H}_{N\sigma,h}\), \(\hat{H}_{N\sigma,e}\), \(\hat T_{N\sigma,e-h}\) and \(T^\dagger_{N\sigma,e-h}\). We have shown that for the upper block.\\\\
+The lower block can be constructed similarly, starting from \ref{eq2}. We again write the matrices in the basis of \(\no\) (using \ref{h}, \ref{1-P}, \ref{hpp}) and compare the matrix elements.
+\beq[lowblock]
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h}\\
+    T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}
+\end{pmatrix}
+\begin{pmatrix}
+	1 & -\hat{\eta}^\dagger_{01} \\
+	-\hat{\eta}_{01} & 1 \\
+\end{pmatrix}
+&=\hat{E^\prime}_{N\sigma}\bf{I}
+\begin{pmatrix}
+	1 & -\hat{\eta}^\dagger_{01} \\
+	-\hat{\eta}_{01} & 1 \\
+\end{pmatrix} \\
+\implies 
+\begin{pmatrix}
+	\hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01} & -\hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h}\\
+    -\hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}-T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
+\end{pmatrix}
+&= \begin{pmatrix}
+	\hat{E^\prime}_{N\sigma} & -\hat{E^\prime}_{N\sigma}\hat{\eta}^\dagger_{01} \\
+	-\hat{E^\prime}_{N\sigma}\hat{\eta}_{01} & \hat{E^\prime}_{N\sigma} \\
+\end{pmatrix}
+\eeq
+The off-diagonal equations again give expressions for \(\hat \eta_{N\sigma}\) and \(\hat \eta^\dagger_{N\sigma}\) which when compared with the previous expressions will give two more consistency equations.
+\beq[3]
+\hat{E^\prime}_{N\sigma}\hat{\eta}^\dagger_{01} = \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}-\hat T_{N\sigma,e-h} \implies \hat{\eta}^\dagger_{01} = \fr{-1}{\hat{E^\prime}_{N\sigma}-\hat{H}_{N\sigma,e}}\hat T_{N\sigma,e-h} = -\hat G_e\rr{\hat E^\prime_{N\sigma}}\hat T_{N\sigma,e-h}
+\eeq
+\beq[4]
+\hat{E^\prime}_{N\sigma}\hat{\eta}_{01} = \hat{H}_{N\sigma,h}\hat{\eta}_{01}-T^\dagger_{N\sigma,e-h} \implies \hat{\eta}_{01} = \fr{-1}{\hat{E^\prime}_{N\sigma}-\hat{H}_{N\sigma,h}}T^\dagger_{N\sigma,e-h} = -\hat G_h\rr{\hat E^\prime_{N\sigma}}T^\dagger_{N\sigma,e-h}
+\eeq
+Comparing equation \ref{3} to equation \ref{eta} and equation \ref{4} to equation \ref{etadag}, we get the following consistency equations:
+\beq
+-\hat G_e\rr{\hat E^\prime_{N\sigma}}\hat T_{N\sigma,e-h} = \hat G_e\rr{\hat E_{N\sigma}}\hat T_{N\sigma,e-h} \\
+-\hat G_h\rr{\hat E^\prime_{N\sigma}}T^\dagger_{N\sigma,e-h} = \hat G_h\rr{\hat E_{N\sigma}}T^\dagger_{N\sigma,e-h}
+\eeq
+The diagonal element gives an expression for the lower block of \(\overline \hml\).
+\begin{tcolorbox}
+\beq[eprime]
+\hat E^\prime_{N\sigma} = \hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01}
+\eeq
+\end{tcolorbox}
+Looking at equations \ref{e} and \ref{eprime}, we can write down the diagonalised Hamiltonian in the basis of \no:
+\beq
+\overline \hml 	= \un \hml \un^\dagger &= \begin{pmatrix} 
+					\hat{E_{N\sigma}} & 0 \\
+					0 & \hat{E^\prime_{N\sigma}} \\
+					\end{pmatrix} \\
+				&= \begin{pmatrix} 
+					\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01} & 0 \\
+					0 & \hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01} \\
+					\end{pmatrix}
+\eeq
+This concludes the construction of the diagonalised Hamiltonian. 
+\subsection{Determining the \un}
+The starting equation for the above construction was equation \ref{eq1}. That will also provide an expression for the \un. Operating equation \ref{eq1} to the right of \(\ket{1}\) (occupied eigenstate of \no) gives 
+\beq
+& \hml\hat P_{N\sigma}\ket{1} = \hat E_{N\sigma} \otimes\bf{I}\;\hat P_{N\sigma} \hml \ket{1} = \hat E_{N\sigma} \hat P_{N\sigma} \ket{1} \\
+&\implies \hml \un^\dagger \no \un \ket{1} = \hat E_{N\sigma} \un^\dagger \no \un \ket{1} && \rr{\text{substituting expression of \(\hat P_{N\sigma}\)}}\\
+&\implies \un \hml \un^\dagger \no \un \ket{1} = \un \hat E_{N\sigma} \un^\dagger \no \un \ket{1} && \rr{\text{operating \(\un\) from left}}\\
+&\implies \overline \hml \no \un \ket{1} = \un \hat E_{N\sigma} \un^\dagger \no \un \ket{1}
+\eeq
+Compare the last equation with \ref{Hdiag}. In order to satisfy the first equation of \ref{Hdiag}, we need the following two equations,
+\beq[ucond]
+\no \un \ket{1} &\propto \ket{1} \\
+\un \hat E_{N\sigma} \un^\dagger &=  E_{N\sigma}
+\eeq
+The second equations says 
+\beq[Ecomm]
+\qq{E_{N\sigma},\un}=0
+\eeq
+The \(\un\) that satisfies the first equation is \(\un = \kappa\rr{1-\hat\eta+\hat\eta^\dagger}\). \(\kappa\) is a constant determined by the unitarity condition \(\un\un^\dagger=\bf{I}\). To check that this satisfies \ref{ucond},
+\beq
+\no \un \ket{1} &= 	\begin{pmatrix} \bf{I} & 0 \\ 0 & 0 \end{pmatrix}
+					\kappa
+					\begin{pmatrix} \bf{I} & \eta^\dagger_{01} \\ -\eta_{01} & \bf{I} \end{pmatrix}
+					\begin{pmatrix} \bf{I} \\ 0 \end{pmatrix} \\
+				&= \kappa \begin{pmatrix} \bf{I} \\ 0 \end{pmatrix} \propto \ket{1}
+\eeq
+To find \(\kappa\),
+\beq
+\un\un^\dagger 	&= \kappa^2
+				\begin{pmatrix} \bf{I} & \eta^\dagger_{01} \\ -\eta_{01} & \bf{I} \end{pmatrix} 
+				\begin{pmatrix} \bf{I} & -\eta^\dagger_{01} \\ \eta_{01} & \bf{I} \end{pmatrix}
+				= \kappa^2
+				\begin{pmatrix} \bf{I} + \eta^\dagger_{01}\eta_{01} & 0 \\ 0 & \bf{I} + \eta^\dagger_{01}\eta_{01} \end{pmatrix} \\
+				&= \kappa^2
+				\begin{pmatrix} \bf{I} + \eta^\dagger_{01}\eta_{01} & 0 \\ 0 & \bf{I} + \eta^\dagger_{01}\eta_{01} \end{pmatrix}
+				= 2\kappa^2
+				\begin{pmatrix} \bf{I} & 0 \\ 0 & \bf{I}\end{pmatrix} \rr{\text{check \ref{scomm1},\ref{scomm2} for \(\eta^\dagger_{01}\eta_{01}\),\(\eta_{01}\eta^\dagger_{01}\)}} \\
+\implies \kappa=\fr{1}{\sqrt{2}}
+\eeq
+\begin{tcolorbox} 
+\beq
+\un = \fr{1}{\sqrt{2}}\rr{1-\hat\eta+\hat\eta^\dagger}
+\eeq
+\end{tcolorbox}
+\subsection{A corrolary: \(\qq{\hat G_e(\hat E_{N\sigma}), \hat E_{N\sigma}}=0\)}
+First note,
+\beq[init]
+\hat T^\dagger_{N\sigma,e-h}\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} &= T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) - T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})\hat E_{N\sigma}
+\eeq
+Now,
+\beq[part1]
+T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})\hat E_{N\sigma} &= \hat \eta_{01} \hat E_{N\sigma}
+\eeq
+Also,
+\beq[part2]
+T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) &= T^\dagger_{N\sigma,e-h}\qq{\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}}\hat G_e(\hat E_{N\sigma}) \\
+&=T^\dagger_{N\sigma,e-h}\qq{\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+\hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})} \\
+&=T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+\eeq
+The last line follows because \(\hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})=\bf{1}\). From \ref{E1}, we have
+\beq[unity]
+\hat{E}_{N\sigma}-\hat{H}_{N\sigma,e}=\hat T_{N\sigma,e-h}\hat\eta_{01}&\implies \hat G_e^{-1}(\hat E_{N\sigma}) = \hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h} \\
+&\implies \bf{1} = \hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})
+\eeq
+Continuing from \ref{part2},
+\beq[part3]
+T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) &=
+T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+&=\hat{H}_{N\sigma,h}T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+\eeq
+The last line follows from equation \ref{cons}:
+\beq
+&\hat T^\dagger_{N\sigma,e-h} \hat G_e(\hat E_{N\sigma}) = \hat G_h(\hat E_{N\sigma}) \hat T^\dagger_{N\sigma,e-h} \\
+&\implies (\hat{E}_{N\sigma}-\hat{H}_{N\sigma,h})\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}(\hat{E}_{N\sigma}-\hat{H}_{N\sigma,e}) \\
+&\implies \hat{E}_{N\sigma}\hat T^\dagger_{N\sigma,e-h}-\hat{H}_{N\sigma,h}\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}\hat{E}_{N\sigma}-\hat T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e} \\
+&\implies \hat{H}_{N\sigma,h}\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\;\;\;\;\;\;\;\;\;\rr{\because\hat{E}_{N\sigma}\hat T^\dagger_{N\sigma,e-h}=\hat T^\dagger_{N\sigma,e-h}\hat{E}_{N\sigma}}
+\eeq
+Again continuing from \ref{part3},
+\beq
+&T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) = \hat{H}_{N\sigma,h}T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
+&= \hat{H}_{N\sigma,h}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h}+T^\dagger_{N\sigma,e-h} && \rr{\text{from eq \ref{cons}}} \\
+&= \hat{H}_{N\sigma,h}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h}+T^\dagger_{N\sigma,e-h}G_e(\hat E_{N\sigma})T_{N\sigma,e-h}G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} && \rr{\text{from eq \ref{unity}}} \\
+&=\rr{\hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}G_e(\hat E_{N\sigma})T_{N\sigma,e-h}}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
+&=\rr{\hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat \eta^\dagger_{01}}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
+&=\hat E_{N\sigma}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
+&=\hat E_{N\sigma}\hat\eta_{01}
+\eeq
+Therefore,
+\beq[final]
+T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) = \hat E_{N\sigma}\hat\eta_{01}
+\eeq
+Substituting equations \ref{part1} and \ref{final} in equation \ref{init}, we have
+\beq
+\hat T^\dagger_{N\sigma,e-h}\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} &= \hat E_{N\sigma}\hat\eta_{01} - \hat\eta_{01}\hat E_{N\sigma} = \qq{\hat E_{N\sigma},\hat\eta_{01}} \\
+&= 0 && \rr{\text{from equation \ref{Ecomm}}} \\
+\eeq
+Therefore,
+\begin{tcolorbox}
+\beq
+\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} = 0 
+\eeq
+\end{tcolorbox}
+\section{A Simple Example}
+\beq
+\ham = -t\rr{c^\dagger_2c_1+c^\dagger_1c_2}+V\hat n_1\hat n_2-\mu(\hat n_1+\hat n_2) && \hat n_i = c^\dagger_i c_i
+\eeq
+For this problem, we take \(N\sigma\equiv1\). 1 refers to the first site. First step is to represent the Hamiltonian in block matrix form (equation \ref{h}).
+\beq
+\hat H_{1,e} &= Tr_1[\ham\hat n_1] \\
+&= Tr_1[V\hat n_1\hat n_2-\mu(\hat n_1+\hat n_2)] && \rr{\text{\(c\) and \(c^\dagger\) will not conserve the eigenvalue of \(\hat n\)}} \\
+&= V\hat n_2 -\mu(1+\hat n_2) &&\rr{Tr_1[V\hat n_1 \hat n_2]=VTr_1[\hat n_1]\hat n_2=V\hat n_2}
+\eeq
+Next is calculation of \(\hat H_{1,h}\):
+\beq
+\hat H_{1,h} &= Tr_1[\ham(1-\hat n_1)] = -\mu\hat n_2\\
+\eeq
+Next is calculation of \(T_{1,e-h}\).
+\beq
+T_{1,e-h} &= Tr_1[\ham c_1] \\  
+&= Tr_1[-tc^\dagger_1c_2c_1] = -tc_2 && \rr{\text{the only term that conserves eigenvalue of \(\hat n\)}}
+\eeq
+Therefore, \(T^\dagger_{1,e-h} = -tc^\dagger_2\). The block matrix form becomes 
+\beq[bmf]
+\ham = 	\begin{pmatrix}
+		V\hat n_2 -\mu(1+\hat n_2) & -tc_2 \\
+		-tc^\dagger_2 & -\mu\hat n_2 \\
+		\end{pmatrix}
+\eeq
+The block-diagonal form is, as usual, \(\overline\ham = \begin{pmatrix}
+		\hat E_1 & 0 \\
+		0 & \hat E^\prime_1 \\
+		\end{pmatrix} \) \\
+From equations \ref{eta} and \ref{etadag}, \(\hat \eta^\dagger_{01} = \hat G_e \hat T_{1,e-h}\) and \(\hat \eta_{01} = \hat G_h \hat T^\dagger_{1,e-h}\). Equation \ref{scomm1} gives 
+\beq[commprob]
+\hat\eta^\dagger_{01}\hat\eta_{01} = 1 \implies \hat G_e \hat T_{1,e-h}\hat G_h \hat T^\dagger_{1,e-h}=1
+\eeq
+Again, from equation \ref{cons}, \(\hat G_h \hat T^\dagger_{1,e-h} = \hat T^\dagger_{1,e-h}\hat G_e \). With this modification, equation \ref{commprob} becomes
+\beq[getE]
+\hat G_e \hat T_{1,e-h}\hat T^\dagger_{1,e-h}\hat G_e =1 \implies \hat T_{1,e-h}\hat T^\dagger_{1,e-h} = \rr{\hat G_e^{-1}}^2
+\eeq
+For this problem,
+\beq
+&\hat T_{1,e-h}\hat T^\dagger_{1,e-h} = t^2c_2c^\dagger_2 = t^2(1-\hat n_2) = t^2(1-\hat n_2)^2\\
+&\rr{\hat G_e^{-1}}^2 = \rr{\hat E_1 - \hat H_{1,e}}^2 = \rr{\hat E_1 - V\hat n_2 +\mu(1+\hat n_2)}^2
+\eeq
+Substituting these expressions in equation \ref{getE},
+\beq[first]
+t^2\rr{1-\hat n_2}^2 = \rr{\hat E_1 - V\hat n_2 +\mu(1+\hat n_2)}^2
+\eeq
+This has a solution, \(\hat E_1 - V\hat n_2 +\mu(1+\hat n_2) = t\rr{1-\hat n_2}\), that is,
+\begin{tcolorbox}
+\beq
+\hat E_1 = V\hat n_2 -\mu(1+\hat n_2) +t\rr{1-\hat n_2} = (V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2)
+\eeq
+\end{tcolorbox}
+The lower diagnonal block can be determined using the lower diagonal equation of \ref{lowblock}:
+\beq
+\hat E_1^\prime = \hat H_{1,h} - \hat T ^\dagger_{1,e-h} \hat G_e \hat T_{1,e-h} &= -\mu\hat n_2 - t^2 c^\dagger_2 \fr{1}{\hat E_1 - V\hat n_2 + \mu(1+\hat n_2)}c_2 \\
+&= -\mu\hat n_2 - t^2 c^\dagger_2 \fr{1}{t(1-\hat n_2)}c_2 && \rr{\text{see equation \ref{first}}}\\
+\eeq
+This simplifies when you realise that 
+\beq
+&(1-\hat n_2)c_2\ket{\hat n_2} = (1-\hat n_2) n_2 \ket{1-n_2} = n_2^2\ket{1-n_2} = n_2\ket{1-n_2} = c_2\ket{1-n_2} \\
+&\tf (1-\hat n_2)c_2 = c_2 \implies c_2 = \fr{1}{(1-\hat n_2)} c_2
+\eeq
+Substituting this in the expression for \(\hat E_1^\prime\) gives
+\begin{tcolorbox}
+\beq
+\hat E_1^\prime = -\mu\hat n_2 - t c^\dagger_2 c_2 = -\mu\hat n_2 - t\hat n_2 = -(\mu+t)\hat n_2
+\eeq
+\end{tcolorbox}
+This gives
+\beq
+\overline \ham &= \bordermatrix{
+				~ & \ket{\hat n_1=1} & \ket{\hat n_1=0} \cr
+               	& (V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2) & 0 \cr \\
+               	& 0 & -(\mu+t)\hat n_2 \cr
+               	} \\
+               &= \bordermatrix{
+               	~ & \ket{11} & \ket{10} & \ket{01} & \ket{00} \cr
+               	& (V-2\mu)\hat & 0 & 0 & 0 \cr \\
+               	& 0 & (t-\mu) & 0 & 0 \cr \\
+               	& 0 & 0 & -(\mu+t)\hat n_2 & 0 \cr \\
+               	& 0 & 0 & 0 & 0 \cr
+               	}
+\eeq
+\end{document}
+

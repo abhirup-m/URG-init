@@ -1,6 +1,7 @@
 \ProvidesPackage{common}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,braket,graphicx,enumitem,booktabs,multirow,booktabs}
+\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multirow,booktabs,tcolorbox}
+\usepackage[margin=1.5in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \newcommand{\ham}{\ensuremath{\mathcal{H}}}
 \newcommand{\ii}[1]{\ensuremath{\int_{-\infty}^{\infty}{#1}\:}}
@@ -22,6 +23,8 @@
 \newcommand{\pp}[1][]{\paragraph{#1}}
 \newcommand{\dv}[2]{\ensuremath{\frac{\:d#1}{\:d#2}}}
 \newcommand{\lm}[2]{\ensuremath{\lim_{{#1}\to{#2}}}}
+\newcommand{\cs}[1]{\ensuremath{\cos{\left(#1\right)}}}
+\newcommand{\sn}[1]{\ensuremath{\sin{\left(#1\right)}}}
 \newcommand{\C}[2]{\ensuremath{c_{{#1}{#2}}^\dagger}}
 \renewcommand{\c}[2]{\ensuremath{c_{{#1}{#2}}}}
 \newenvironment{zz}
@@ -30,3 +33,23 @@
 \DeclareMathOperator{\sech}{sech}
 \newcommand{\beq}[1][]{\begin{equation}\label{#1}\begin{aligned}}
 \newcommand{\eeq}[0]{\end{aligned}\end{equation}}
+\newtheorem{theorem}{Theorem}
+\newcommand{\btm}{\begin{theorem}}
+\newcommand{\etm}{\end{theorem}}
+\newcommand{\bpf}{\begin{proof}}
+\newcommand{\epf}{\end{proof}}
+\newcommand{\btc}{\begin{tcolorbox}}
+\newcommand{\etc}{\end{tcolorbox}}
+\newcommand{\na}{\ensuremath{\hat n_{1\uparrow}}}
+\newcommand{\nb}{\ensuremath{\hat n_{1\downarrow}}}
+\newcommand{\nc}{\ensuremath{\hat n_{2\uparrow}}}
+\newcommand{\nd}{\ensuremath{\hat n_{2\downarrow}}}
+
+
+\newcommand{\ca}{\ensuremath{c_{1\uparrow}}}
+\newcommand{\cb}{\ensuremath{c_{1\downarrow}}}
+\newcommand{\cd}{\ensuremath{c_{2\uparrow}}}
+\newcommand{\ce}{\ensuremath{c_{2\downarrow}}}
+\newcommand{\ua}{\ensuremath{\uparrow}}
+\newcommand{\da}{\ensuremath{\downarrow}}
+

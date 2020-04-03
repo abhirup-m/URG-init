@@ -1,0 +1,2 @@
+- fermi golden rule
+- formula for heisenberg and dirac pictures

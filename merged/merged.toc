@@ -1,39 +1,39 @@
-\contentsline {section}{\numberline {1}Exact diagonalization of the two-site Hubbard model}{3}{section.1}% 
-\contentsline {paragraph}{The Hamiltonian}{3}{section*.2}% 
-\contentsline {subsection}{\numberline {1.1}Symmetries of the problem}{3}{subsection.1.1}% 
-\contentsline {subsection}{\numberline {1.2}Partitioning the Hilbert space}{5}{subsection.1.2}% 
-\contentsline {subsection}{\numberline {1.3}N = 1}{6}{subsection.1.3}% 
-\contentsline {paragraph}{}{6}{section*.3}% 
-\contentsline {subsubsection}{\numberline {1.3.1}\(S_z^{tot} = -1\)}{6}{subsubsection.1.3.1}% 
-\contentsline {subsubsection}{\numberline {1.3.2}\(S_z^{tot} = +1\)}{7}{subsubsection.1.3.2}% 
-\contentsline {subsection}{\numberline {1.4}N=3}{7}{subsection.1.4}% 
-\contentsline {subsubsection}{\numberline {1.4.1}\(S_z^{tot} = -1\)}{8}{subsubsection.1.4.1}% 
-\contentsline {subsubsection}{\numberline {1.4.2}\(S_z^{tot} = +1\)}{8}{subsubsection.1.4.2}% 
-\contentsline {subsection}{\numberline {1.5}N=4}{8}{subsection.1.5}% 
-\contentsline {subsection}{\numberline {1.6}N=2}{9}{subsection.1.6}% 
-\contentsline {subsubsection}{\numberline {1.6.1}\(S_z^{tot} = \pm 1\)}{9}{subsubsection.1.6.1}% 
-\contentsline {subsubsection}{\numberline {1.6.2}\(S_z^{tot} = 0\)}{9}{subsubsection.1.6.2}% 
-\contentsline {subsection}{\numberline {1.7}The total spectrum}{11}{subsection.1.7}% 
-\contentsline {section}{\numberline {2}Exact diagonalization of the Anderson molecule}{11}{section.2}% 
-\contentsline {paragraph}{The Hamiltonian}{11}{section*.4}% 
-\contentsline {subsection}{\numberline {2.1}Symmetries of the problem}{12}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}N = 1}{12}{subsection.2.2}% 
-\contentsline {subsubsection}{\numberline {2.2.1}\(S_{tot}^z = -1\)}{12}{subsubsection.2.2.1}% 
-\contentsline {subsubsection}{\numberline {2.2.2}\(S_{tot}^z = +1\)}{13}{subsubsection.2.2.2}% 
-\contentsline {subsection}{\numberline {2.3}N=3}{13}{subsection.2.3}% 
-\contentsline {subsubsection}{\numberline {2.3.1}\(S_{tot}^z = -1\)}{13}{subsubsection.2.3.1}% 
-\contentsline {subsubsection}{\numberline {2.3.2}\(S_{tot}^z = +1\)}{13}{subsubsection.2.3.2}% 
-\contentsline {subsection}{\numberline {2.4}N=2}{13}{subsection.2.4}% 
-\contentsline {subsubsection}{\numberline {2.4.1}\(S_{tot}^z = \pm 1\)}{14}{subsubsection.2.4.1}% 
-\contentsline {subsubsection}{\numberline {2.4.2}\(S_{tot}^z = 0\)}{14}{subsubsection.2.4.2}% 
-\contentsline {subsection}{\numberline {2.5}The total spectrum}{15}{subsection.2.5}% 
-\contentsline {section}{\numberline {3}Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}{15}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}The Problem}{15}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Warming Up - Writing the Hamiltonian as blocks}{16}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Proof of the theorem}{17}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Determining the \ensuremath {\mathaccentV {hat}05E{U}_{N\sigma }}}{25}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}A corrolary: \(\ensuremath {\left [{\mathaccentV {hat}05EG_e(\mathaccentV {hat}05EE_{N\sigma }), \mathaccentV {hat}05EE_{N\sigma }}\right ]}=0\)}{26}{subsection.3.5}% 
-\contentsline {subsection}{\numberline {3.6}A Simple Example}{28}{subsection.3.6}% 
-\contentsline {subsubsection}{\numberline {3.6.1}The Eigenstates}{31}{subsubsection.3.6.1}% 
-\contentsline {subsection}{\numberline {3.7}Applying the RG on the Hubbard dimer}{32}{subsection.3.7}% 
-\contentsline {subsubsection}{\numberline {3.7.1}Eigenvectors}{35}{subsubsection.3.7.1}% 
+\contentsline {section}{\numberline {1}Exact diagonalization of the two-site Hubbard model}{2}{section.1}% 
+\contentsline {paragraph}{The Hamiltonian}{2}{section*.2}% 
+\contentsline {subsection}{\numberline {1.1}Symmetries of the problem}{2}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Partitioning the Hilbert space}{4}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}N = 1}{4}{subsection.1.3}% 
+\contentsline {paragraph}{}{5}{section*.3}% 
+\contentsline {subsubsection}{\numberline {1.3.1}\(S_z^{tot} = -1\)}{5}{subsubsection.1.3.1}% 
+\contentsline {subsubsection}{\numberline {1.3.2}\(S_z^{tot} = +1\)}{5}{subsubsection.1.3.2}% 
+\contentsline {subsection}{\numberline {1.4}N=3}{6}{subsection.1.4}% 
+\contentsline {subsubsection}{\numberline {1.4.1}\(S_z^{tot} = -1\)}{6}{subsubsection.1.4.1}% 
+\contentsline {subsubsection}{\numberline {1.4.2}\(S_z^{tot} = +1\)}{6}{subsubsection.1.4.2}% 
+\contentsline {subsection}{\numberline {1.5}N=4}{6}{subsection.1.5}% 
+\contentsline {subsection}{\numberline {1.6}N=2}{7}{subsection.1.6}% 
+\contentsline {subsubsection}{\numberline {1.6.1}\(S_z^{tot} = \pm 1\)}{7}{subsubsection.1.6.1}% 
+\contentsline {subsubsection}{\numberline {1.6.2}\(S_z^{tot} = 0\)}{7}{subsubsection.1.6.2}% 
+\contentsline {subsection}{\numberline {1.7}The total spectrum}{8}{subsection.1.7}% 
+\contentsline {section}{\numberline {2}Exact diagonalization of the Anderson molecule}{9}{section.2}% 
+\contentsline {paragraph}{The Hamiltonian}{9}{section*.4}% 
+\contentsline {subsection}{\numberline {2.1}Symmetries of the problem}{9}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}N = 1}{9}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}\(S_{tot}^z = -1\)}{9}{subsubsection.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2.2.2}\(S_{tot}^z = +1\)}{10}{subsubsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.3}N=3}{10}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}\(S_{tot}^z = -1\)}{10}{subsubsection.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.2}\(S_{tot}^z = +1\)}{10}{subsubsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.4}N=2}{11}{subsection.2.4}% 
+\contentsline {subsubsection}{\numberline {2.4.1}\(S_{tot}^z = \pm 1\)}{11}{subsubsection.2.4.1}% 
+\contentsline {subsubsection}{\numberline {2.4.2}\(S_{tot}^z = 0\)}{11}{subsubsection.2.4.2}% 
+\contentsline {subsection}{\numberline {2.5}The total spectrum}{12}{subsection.2.5}% 
+\contentsline {section}{\numberline {3}Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}{12}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}The Problem}{12}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Warming Up - Writing the Hamiltonian as blocks}{13}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Proof of the theorem}{14}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Determining the \ensuremath {\mathaccentV {hat}05E{U}_{N\sigma }}}{19}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}A corrolary: \(\ensuremath {\left [{\mathaccentV {hat}05EG_e(\mathaccentV {hat}05EE_{N\sigma }), \mathaccentV {hat}05EE_{N\sigma }}\right ]}=0\)}{21}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {3.6}A Simple Example}{22}{subsection.3.6}% 
+\contentsline {subsubsection}{\numberline {3.6.1}The Eigenstates}{24}{subsubsection.3.6.1}% 
+\contentsline {subsection}{\numberline {3.7}Applying the RG on the Hubbard dimer}{25}{subsection.3.7}% 
+\contentsline {subsubsection}{\numberline {3.7.1}Eigenvectors of \(\ensuremath {\mathaccentV {hat}05En_{1\uparrow }}=1\) sector}{27}{subsubsection.3.7.1}% 

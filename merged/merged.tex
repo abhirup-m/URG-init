@@ -853,6 +853,7 @@ Looking at equations \ref{e} and \ref{eprime}, we can write down the diagonalise
 \eeq
 This concludes the construction of the diagonalised Hamiltonian.
 }
+\comm{
 \subsection{Determining the \un}
 The starting equation for the above construction was equation \ref{eq1}. That will also provide an expression for the \un. Operating equation \ref{eq1} to the right of \(\ket{1}\) (occupied eigenstate of \no) gives 
 \beq
@@ -954,6 +955,7 @@ Therefore,
 \qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} = 0 
 \eeq
 \end{tcolorbox}
+}
 \subsection{A Simple Example}
 \beq
 \ham = -t\rr{c^\dagger_2c_1+c^\dagger_1c_2}+V\hat n_1\hat n_2-\mu(\hat n_1+\hat n_2) && \hat n_i = c^\dagger_i c_i = \begin{pmatrix} V-2\mu & 0 & 0 & 0 \\
@@ -1133,7 +1135,7 @@ T &= Tr_{\na}(\ham\ca) = -t\cd\\
 T^\dagger &= Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger\\
 \eta^\dagger_{1\ua} &= G_e c_{1\ua}^\dagger T = -t \hat G_e c^\dagger_{1\ua}c_{2\ua} = -t (\ham^\prime_{1\ua} -H_e \hat n_{})^{-1}c^\dagger_{1\ua}c_{2\ua}\\
 \tf \eta_{1\ua} &= -t c^\dagger_{2\ua}c_{1\ua}(\ham^\prime_{1\ua} -H_e \hat n_{})^{-1}  \\
-\eta_{1\ua}^\dagger\eta_{1\ua} &= \hat n_{1\ua} \implies t^2(1-\nc) = (\ham^\prime_{1\uparrow}-H_e \hat n_{1\ua})^2\hat n_{1\ua} \implies \ham^\prime_{1\uparrow}\hat n_{1\ua} = H_e\hat n_{1\ua} + t(1-\hat n_{2\ua})\hat n_{1\ua}
+\eta_{1\ua}^\dagger\eta_{1\ua} &= \hat n_{1\ua} \implies t^2(1-\nc)\na = (\ham^\prime_{1\uparrow}-H_e \hat n_{1\ua})^2\hat n_{1\ua} \implies \ham^\prime_{1\uparrow}\hat n_{1\ua} = H_e\hat n_{1\ua} + t(1-\hat n_{2\ua})\hat n_{1\ua}
 \eeq
 \beq
         \ham^\prime_{1\uparrow}\hat n_{1\ua} = U\hat n_{1\ua}(\hat n_{1\da}+\hat n_{2\ua}\hat n_{2\da}) + t\hat n_{1\ua}(1-\nc-\cb^\dagger\ce-\cb\ce^\dagger)
@@ -1141,43 +1143,40 @@ T^\dagger &= Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger\\
 The upper block is not diagonal, and has to be further diagonalised. The block is given by
 \btc
 \beq
-\hat E_{1\ua} = \bra{\na=1} \ham^\prime_{1\ua}\na\ket{\na=1} = U(\nb+\nc\nd)+t(1-\nc-\cb^\dagger\cd-\cd^\dagger\cb)
+\hat E_{1\ua} = \bra{\na=1} \ham^\prime_{1\ua}\na\ket{\na=1} = U(\nb+\nc\nd)+t(1-\nc-\cb^\dagger\ce-\ce^\dagger\cb)
 \eeq
 \etc
-\comm{
-The lower block, \(\ham^{\prime\prime}_{1\ua}(1-\na)\) can be obtained as
+The lower block, \(\ham^{\prime\prime}_{1\ua}(1-\na)\), can be obtained as
 \beq
-\ham^{\prime\prime}_{1\uparrow}(1-\na) = H_h(1-\na) - T^\dagger\cb\eta^\dagger_{1\ua} = H_h(1-\na) - t^2\cd^\dagger\ca\hat G_e\ca^\dagger\cd
+\ham^{\prime\prime}_{1\uparrow}(1-\na) = H_h(1-\na) - T^\dagger\ca\eta^\dagger_{1\ua} = H_h(1-\na) - t^2\cd^\dagger\ca\hat G_e\ca^\dagger\cd
 \eeq
 The block itself, \(\hat E^\prime_{1\ua}\), is obtained as
-\beq
+\beq[init]
 E^\prime_{1\uparrow} &= \bra{\na=0} \ham^{\prime\prime} (1-\na)\ket{\na=0}\\
 &= H_h -t^2\bra{\na=0}\cd^\dagger\ca\hat G_e \ca^\dagger \cd\ket{\na=0}\\
 &= U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb)-t^2\cd^\dagger\bra{\na=1}\hat G_e\ket{\na=1}\cd
 \eeq
 Now,
 \beq
-\bra{\na=1}\hat G_e^{-1}\ket{\na=1}=\bra{\na=1}(\ham^\prime_{1\ua}-H_e\na\ket{\na=1}
+\bra{\na=1}\hat G_e^{-1}\ket{\na=1}&=\bra{\na=1}\ham^\prime_{1\ua}-H_e\na\ket{\na=1} \\
+&= \bra{\na=1}\ham^\prime_{1\ua}\na-H_e\na\ket{\na=1}\\
+&= \bra{\na=1}t\na(1-\nc)\ket{\na=1} = t(1-\nc)\\
 \eeq
-
-The lower block is diagonal, and the eigenvalues can be read off directly, after bringing it to the following form:
-\beq[Eprime]
-E^\prime_{1\uparrow} = \begin{pmatrix} 
-                        U-t&&&&&&& \\
-                        &U-t&&&&&& \\
-                        &&U-t&&&&& \\
-                        &&&U-t&&&& \\
-                        &&&&U-t&&& \\
-                        &&&&&-t&& \\
-                        &&&&&&-t& \\
-                        &&&&&&&-t \\
-                \end{pmatrix}
+Substituting this in \ref{init} gives
+\beq
+E^\prime_{1\ua} = U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb)-t\cd^\dagger\fr{1}{1-\nc}\cd = U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb + \nc)
 \eeq
-}
+\btc
+\beq
+E^\prime_{1\ua} = U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb + \nc)
+\eeq
+\etc
+\subsection{\(\na=1\) sector}
+\subsubsection{Eigenvalues}
 To calculate the eigenvalues of the upper block, we take \(\hat E_{1\uparrow}\) as the new Hamiltonian \(\ham_{1\da}\)and this time trace out \(\nb\).
 \beq
-H_e &= Tr_{\nb}(\ham_{1\da}\nb) = U(1+\nc\nd) + t(1-\nc) \\
-H_h &= U\nc\nd+t(1-\nc) \\
+H_{e,\nb} &= Tr_{\nb}(\ham_{1\da}\nb) = U(1+\nc\nd) + t(1-\nc) \\
+H_{h,\nb} &= U\nc\nd+t(1-\nc) \\
 T &= -t\ce \\
 T^\dagger &= -t\ce^\dagger \\
 \eta^\dagger_{1\da} &= \hat G_e \cb^\dagger T = -t \hat G_e \cb^\dagger \ce \\
@@ -1185,32 +1184,32 @@ T^\dagger &= -t\ce^\dagger \\
 \eeq
 Then,
 \beq
-\eta_{1\da}^\dagger\eta_{1\da}=\nb &\implies \ham^\prime_{1\da} \nb = H_e \nb + t\nb(1-\nd) = U\nb(1+\nc\nd)+2t\nb(1-\nd)
+\eta_{1\da}^\dagger\eta_{1\da}=\nb &\implies \ham^\prime_{1\da} \nb = H_{e,\nb} \nb - t\nb(1-\nd) = U\nb(1+\nc\nd)-t\nb(\nc-\nd)
 \eeq
 This gives the upper block of the \(\na=1\) sector (that is, the \(\na=1,\nb=1\) sector); the matrix element is given by \(\hat E_{1\da}=\bra{\nb=1}\ham^\prime_{1\da}\nb\ket{\nb=1}\)
 \btc
 \beq
-E_{\nb} = U(\nc\nd + 1) +2t(1 -\nd) = \begin{pmatrix} 2U & & & \\ & U+2t & & \\ & & U & \\ & & & U+2t \end{pmatrix}
+E_{\nb} = U(\nc\nd + 1) - t(\nc -\nd) = \begin{pmatrix} 2U & & & \\ & U-t & & \\ & & U+t & \\ & & & U \end{pmatrix}
 \eeq
 \etc
 
 The lower block of \(\na=1\) sector(\(\na=1,\nb=0\)), that is, \(E^\prime_{1\downarrow}\), can again be determined using the formula for the lower blocks.
 \beq
-\ham^{\prime\prime}_{1\downarrow}\nb = H_h(1-\nb) - T^\dagger\cb\eta_{1\da}^\dagger = H_h(1-\nb) - t^2 \ce^\dagger \cb G_e \cb^\dagger \ce
+\ham^{\prime\prime}_{1\downarrow}\nb = H_{h,\nb}(1-\nb) - T^\dagger\cb\eta_{1\da}^\dagger = H_h(1-\nb) - t^2 \ce^\dagger \cb G_e \cb^\dagger \ce
 \eeq
 The matrix element, \(\hat E^\prime_{1\da} = \bra{\nb=0}\ham^{\prime\prime}(1-\nb)\ket{\nb=0} = H_h - t^2\ce^\dagger\bra{1}G_e\ket{1}\ce\)
 \beq
-\bra{1}G_e^{-1}\ket{1} &= \bra{1}\ham^\prime_{1\da} - H_e\nb\ket{1} = \bra{1} \ham^\prime_{1\da}\nb - H_e \nb\ket{1} = t(1-\nd)\\
-\tf \hat E^\prime_{1\da} &= H_h -t\ce^\dagger\fr{1}{1-\nd}\ce = H_h - t\nd = U\nc\nd+t(1-\nc\nd)
+\bra{1}G_e^{-1}\ket{1} &= \bra{1}\ham^\prime_{1\da} - H_{e,\nb}\nb\ket{1} = \bra{1} \ham^\prime_{1\da}\nb - H_e \nb\ket{1} = -t(1-\nd)\\
+\tf \hat E^\prime_{1\da} &= H_h + t\ce^\dagger\fr{1}{1-\nd}\ce = H_h + t\nd = U\nc\nd+t(1-\nc+\nd)
 \eeq
 \btc
 \beq
-E^\prime_{1\da} = H_h - t\nd = U\nc\nd+t(1-\nc\nd) =
+E^\prime_{1\da} = U\nc\nd+t(1-\nc+\nd) =
 \begin{pmatrix}
-        U-t & & & \\
+        U+t & & & \\
              & 0 & & \\
-             & & 0 & \\
-             & & & -t 
+             & & 2t & \\
+             & & & t 
 \end{pmatrix}
 \eeq
 \etc
@@ -1219,16 +1218,16 @@ The \(\na=1\) part of the diagonalised Hamiltonian is
 E^\prime_{1\nb} = 
 \begin{pmatrix}
         2U & & & & & & & \\
-        & U+2t & & & & & & \\
-        & & U& & & & & \\
-        & & &U+2t & & & & \\
-        & & & &2U-t & & & \\
-        & & & & &U-t & & \\
-        & & & & & &U & \\
-        & & & & & & &U \\
+        & U-t & & & & & & \\
+        & & U+t & & & & & \\
+        & & &U & & & & \\
+        & & & &U+t & & & \\
+        & & & & &0 & & \\
+        & & & & & &2t & \\
+        & & & & & & &t \\
 \end{pmatrix}
 \eeq
-\subsubsection{Eigenvectors of \(\na=1\) sector}
+\subsubsection{Eigenvectors}
 To get the first eight eigenvectors, I first find the eigenvectors in the space of \(\nb\). There are 8 eigenvectors in the space of \(\nb\), that is \(\ket{\nb,\nc,\nd}\). The \(\eta\) for this space is
 \beq
 \eta_{1\da} = -t \ce^\dagger \cb \hat G_e,\; \eta^\dagger_{1\da} = -t\hat G_e \cb^\dagger\ce
@@ -1236,17 +1235,17 @@ To get the first eight eigenvectors, I first find the eigenvectors in the space 
 The required eigenvectors are \(U_{1\da}^\dagger \ket{\nb\nc\nd} = \fr{1}{2}(1-\eta_{1\da}+\eta^\dagger_{1\da})\ket{\nb\nc\nd}\) \\
 Note that \(\eta\) acting on \(\ket{\nb\nc\nd}\) will give non-zero only when \(\nb=1,\nd=0\) and \(\eta^\dagger\) will give non-zero only when \(\nb=0,\nd=1\).
 \beq
-\eta^\dagger_{1\da}\ket{0,\nc,1} = -t\hat G_e\ket{1,\nc,0} = \fr{-t}{\ham^\prime_{1\da}-H_e\nb}\ket{1,\nc,0} = \fr{-t}{\ham^\prime_{1\da}\nb-H_e\nb}\ket{1,\nc,0} \\
-= \fr{-t}{t\nb(1-\nd)}\ket{1,\nc,0} = -\ket{1,\nc,0}
+\eta^\dagger_{1\da}\ket{0,\nc,1} = -t\hat G_e\ket{1,\nc,0} = \fr{-t}{\ham^\prime_{1\da}-H_{e\nb}\nb}\ket{1,\nc,0} = \fr{-t}{\ham^\prime_{1\da}\nb-H_{e\nb}\nb}\ket{1,\nc,0} \\
+= \fr{-t}{-t\nb(1-\nd)}\ket{1,\nc,0} = \ket{1,\nc,0}
 \eeq
 Similarly,
 \beq
-\eta_{1\da}\ket{1,\nc,0} = -t \ce^\dagger\cb \hat G_e\ket{1,\nc,0} = -t \ce^\dagger \cb \fr{1}{t} \ket{1,\nc,0} = -\ket{0,\nc,1}
+\eta_{1\da}\ket{1,\nc,0} = -t \ce^\dagger\cb \hat G_e\ket{1,\nc,0} = -t \ce^\dagger \cb \fr{1}{-t} \ket{1,\nc,0} = \ket{0,\nc,1}
 \eeq
 Therefore,
 \beq
-U_{1\da}^\dagger\ket{1,\nc,0} &= (1-\eta_{1\da})\ket{1,\nc,0}=\ket{1,\nc,0} + \ket{0,\nc,1}\\
-U_{1\da}^\dagger\ket{0,\nc,1} &= (1+\eta^\dagger_{1\da})\ket{0,\nc,1}=\ket{0,\nc,1} - \ket{1,\nc,0}\\
+U_{1\da}^\dagger\ket{1,\nc,0} &= (1-\eta_{1\da})\ket{1,\nc,0}=\ket{1,\nc,0} - \ket{0,\nc,1}\\
+U_{1\da}^\dagger\ket{0,\nc,1} &= (1+\eta^\dagger_{1\da})\ket{0,\nc,1}=\ket{0,\nc,1} + \ket{1,\nc,0}\\
 U_{1\da}^\dagger\ket{1,\nc,1} &= \ket{1,\nc,1} \\
 U_{1\da}^\dagger\ket{0,\nc,0} &= \ket{0,\nc,0} \\
 \eeq
@@ -1256,13 +1255,13 @@ Eigenvectors for \(\na=1\) sector:\\
         \(\nb\)&\(\nc\)&\(\nd\)&Eigenvector&Eigenvalue \\
         \hline
         1 & 1 & 1 & \(\ket{111}\) & 2U \\
-        1 & 1 & 0 & \(\ket{110}+\ket{011}\) & U+2t \\
-        1 & 0 & 1 & \(\ket{101}\) & U \\
-        1 & 0 & 0 & \(\ket{100}+\ket{001}\) & U+2t \\
-        0 & 1 & 1 & \(\ket{011}-\ket{110}\) & U-t \\
+        1 & 1 & 0 & \(\ket{110}-\ket{011}\) & U-t \\
+        1 & 0 & 1 & \(\ket{101}\) & U+t \\
+        1 & 0 & 0 & \(\ket{100}-\ket{001}\) & U \\
+        0 & 1 & 1 & \(\ket{011}+\ket{110}\) & U+t \\
         0 & 1 & 0 & \(\ket{010}\) & 0 \\
-        0 & 0 & 1 & \(\ket{001}-\ket{100}\) & 0 \\
-        0 & 0 & 0 & \(\ket{000}\) & -t \\
+        0 & 0 & 1 & \(\ket{001}+\ket{100}\) & 2t \\
+        0 & 0 & 0 & \(\ket{000}\) & t \\
 \end{tabular}
 \end{center}
 Now we need to find the eigenvectors in the space of \(\na=1\). To do this, we will act with \(U^\dagger_{1\ua}\) on the previously obtained eigenvectors.
@@ -1277,13 +1276,13 @@ Applying these on the previously obtained eigenvectors give \\
         \(\na\) & \(\nb\)&\(\nc\)&\(\nd\)&Eigenvector& Match? & Evalue(Exact Evalue) \\
         \hline
         1 & 1 & 1 & 1 & \(\ket{1111}\) & Y & 2U(same) \\
-        1 & 1 & 1 & 0 & \(\ket{1110}+\ket{1011}\) & Y & U+2t(U-t) \\
-        1 & 1 & 0 & 1 & \(\ket{1101}-\ket{0111}\) & Y & U(U+t) \\
-        1 & 1 & 0 & 0 & \(\ket{1100}+\ket{1001}-\ket{0110}-\ket{0011}\) & N &  U+2t(U+t) \\
-        1 & 0 & 1 & 1 & \(\ket{1011}-\ket{1110}\) & Y & U-t(...) \\
+        1 & 1 & 1 & 0 & \(\ket{1110}-\ket{1011}\) & Y & U-t(U-t) \\
+        1 & 1 & 0 & 1 & \(\ket{1101}+\ket{0111}\) & Y & U+t(U+t) \\
+        1 & 1 & 0 & 0 & \(\ket{1100}-\ket{1001}+\ket{0110}-\ket{0011}\) & N &  U(U+t) \\
+        1 & 0 & 1 & 1 & \(\ket{1011}+\ket{1110}\) & Y & U+t(...) \\
         1 & 0 & 1 & 0 & \(\ket{1010}\) & Y & 0(same) \\
-        1 & 0 & 0 & 1 & \(\ket{1001}-\ket{1100}-\ket{0011}+\ket{0110}\) & N & 0(...) \\
-        1 & 0 & 0 & 0 & \(\ket{1000} - \ket{0010}\) & Y & -t(t) \\
+        1 & 0 & 0 & 1 & \(\ket{1001}+\ket{1100}+\ket{0011}+\ket{0110}\) & N & 2t(...) \\
+        1 & 0 & 0 & 0 & \(\ket{1000} + \ket{0010}\) & Y & t(t) \\
 \end{tabular}
 \comm{
 -----------------------------------------------------------------------\\

@@ -1133,9 +1133,11 @@ H_e &= Tr_{\na}(\ham\na) = U(\nb+\nc\nd)-t(\cb^\dagger\ce+\ce^\dagger\cb) \\
 H_h &= Tr_{\na}(\ham(1-\na)) = U\nc\nd - t(\cb^\dagger\ce+\ce^\dagger\cb) \\
 T &= Tr_{\na}(\ham\ca) = -t\cd\\
 T^\dagger &= Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger\\
-\eta^\dagger_{1\ua} &= G_e c_{1\ua}^\dagger T = -t \hat G_e c^\dagger_{1\ua}c_{2\ua} = -t (\ham^\prime_{1\ua} -H_e \hat n_{})^{-1}c^\dagger_{1\ua}c_{2\ua}\\
-\tf \eta_{1\ua} &= -t c^\dagger_{2\ua}c_{1\ua}(\ham^\prime_{1\ua} -H_e \hat n_{})^{-1}  \\
-\eta_{1\ua}^\dagger\eta_{1\ua} &= \hat n_{1\ua} \implies t^2(1-\nc)\na = (\ham^\prime_{1\uparrow}-H_e \hat n_{1\ua})^2\hat n_{1\ua} \implies \ham^\prime_{1\uparrow}\hat n_{1\ua} = H_e\hat n_{1\ua} + t(1-\hat n_{2\ua})\hat n_{1\ua}
+\eta^\dagger_{1\ua} &= G_e c_{1\ua}^\dagger T = -t \hat G_e c^\dagger_{1\ua}c_{2\ua} = -t (\hat E_{1\ua} -H_e \hat n_{})^{-1}c^\dagger_{1\ua}c_{2\ua}\\
+\eta_{1\ua} &= G_h T^\dagger c_{1\ua} = -t (\hat E_{1\ua} - H_h (1-\na))c^\dagger_{2\ua}c_{1\ua} \\
+%\tf \eta_{1\ua} &= -t c^\dagger_{2\ua}c_{1\ua}(\ham^\prime_{1\ua} -H_e \hat n_{})^{-1}  \\
+%\eta_{1\ua}^\dagger\eta_{1\ua} &= \hat n_{1\ua} \implies t^2(1-\nc)\na = (\ham^\prime_{1\uparrow}-H_e \hat n_{1\ua})^2\hat n_{1\ua} \implies \ham^\prime_{1\uparrow}\hat n_{1\ua} = H_e\hat n_{1\ua} + t(1-\hat n_{2\ua})\hat n_{1\ua}
+\tf \eta^\dagger_{1\ua} \eta_{1\ua} &= t^2
 \eeq
 \beq
         \ham^\prime_{1\uparrow}\hat n_{1\ua} = U\hat n_{1\ua}(\hat n_{1\da}+\hat n_{2\ua}\hat n_{2\da}) + t\hat n_{1\ua}(1-\nc-\cb^\dagger\ce-\cb\ce^\dagger)

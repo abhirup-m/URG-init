@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.3.9)  6 APR 2020 12:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.4.11)  11 APR 2020 23:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -926,37 +926,37 @@ LaTeX Warning: Reference `uni' on page 22 undefined on input line 1090.
 [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1174.
+(hyperref)                removing `math shift' on input line 1176.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1174.
+(hyperref)                removing `subscript' on input line 1176.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\delimiter' on input line 1174.
+(hyperref)                removing `\delimiter' on input line 1176.
 
 [23]
-Overfull \hbox (4.7365pt too wide) detected at line 1188
+Overfull \hbox (4.7365pt too wide) detected at line 1190
 [][][]
  []
 
 [24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1251--1253
+Underfull \hbox (badness 10000) in paragraph at lines 1253--1255
 
  []
 
 
-Overfull \hbox (0.68pt too wide) in paragraph at lines 1272--1348
+Overfull \hbox (0.68pt too wide) in paragraph at lines 1274--1350
 []  
  []
 
 [26] [27] [28] [29]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1348.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1348.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1350.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1350.
  (./merged.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1348.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1348.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1350.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1350.
 
 Package rerunfilecheck Info: File `merged.out' has not changed.
 (rerunfilecheck)             Checksum: EE7731EF2E1292589EA553A8247FA561;2528.
@@ -967,8 +967,8 @@ LaTeX Warning: There were undefined references.
  ) 
 Here is how much of TeX's memory you used:
  17275 strings out of 492167
- 311939 string characters out of 6131559
- 424854 words of memory out of 5000000
+ 311939 string characters out of 6131558
+ 423854 words of memory out of 5000000
  21152 multiletter control sequences out of 15000+600000
  13717 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -986,7 +986,7 @@ sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on merged.pdf (30 pages, 249787 bytes).
+Output written on merged.pdf (30 pages, 249643 bytes).
 PDF statistics:
  566 PDF objects out of 1000 (max. 8388607)
  513 compressed objects within 6 object streams

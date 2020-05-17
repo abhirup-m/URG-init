@@ -267,7 +267,7 @@ The final spectrum is already obtained. One final thing to do is to just add the
 \multirow{6}{*}{2}                     & -1                  & 1  & 0-\(2\mu\)   & \(\ket{\downarrow,\downarrow}\)  \\ \cmidrule(l){2-5} 
                                        & \multirow{4}{*}{0}  & 1  & 0-\(2\mu\)   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
                                        &                     & 1  & U-\(2\mu\)   & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_\pm}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U\pm\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_+}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U+\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
                                        &                     & -1 & \(\frac{U-\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_-}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U-\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){2-5} 
                                        & 1                   & 1  & 0-\(2\mu\)   & \(\ket{\uparrow,\uparrow}\) \\ \toprule
 \multirow{4}{*}{3}                     & \multirow{2}{*}{-1} & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}+\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
@@ -654,7 +654,7 @@ c^\dagger_{N\sigma}\hat T_{N\sigma} + H_e \no \eta^\dagger_{N\sigma} = \ham^\pri
 \eeq
 Defining \(\hat G_e(\hat E_{N\sigma})\) = \fr{1}{\ham^\prime - H_e \no}, 
 \begin{tcolorbox}
-\beq
+\beq[etad]
         \eta^\dagger_{N\sigma} = \hat G_e(\hat E_{N\sigma}) c^\dagger_{N\sigma}\hat T_{N\sigma}
 \eeq
 \end{tcolorbox}
@@ -718,10 +718,6 @@ Combining the last two equations,
 \eeq
 \end{tcolorbox}
 
-
-
-\comm
-{
 Using \ref{eq1} and the matrix form of \(\hat{P_{N\sigma}}\), \(\hml\) and \(\ham^\prime\) (\ref{P}, \ref{h} and \ref{hp}), we get
 \beq
 \begin{pmatrix}
@@ -852,8 +848,6 @@ Looking at equations \ref{e} and \ref{eprime}, we can write down the diagonalise
 					\end{pmatrix}
 \eeq
 This concludes the construction of the diagonalised Hamiltonian.
-}
-\comm{
 \subsection{Determining the \un}
 The starting equation for the above construction was equation \ref{eq1}. That will also provide an expression for the \un. Operating equation \ref{eq1} to the right of \(\ket{1}\) (occupied eigenstate of \no) gives 
 \beq
@@ -955,7 +949,7 @@ Therefore,
 \qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} = 0 
 \eeq
 \end{tcolorbox}
-}
+
 \subsection{A Simple Example}
 \beq
 \ham = -t\rr{c^\dagger_2c_1+c^\dagger_1c_2}+V\hat n_1\hat n_2-\mu(\hat n_1+\hat n_2) && \hat n_i = c^\dagger_i c_i = \begin{pmatrix} V-2\mu & 0 & 0 & 0 \\
@@ -1018,8 +1012,6 @@ Now,
 \eeq
 Therefore, \(\bra{01}E^\prime(1-\hat n_1)\ket{01} = -\mu -t^2\fr{1}{t} = -\mu -t\).
 The final diagonalized matrix becomes 
-\comm{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Equation \ref{scomm1} gives 
 \beq[commprob]
 \hat\eta^\dagger_{01}\hat\eta_{01} = 1 \implies \hat G_e \hat T_{1,e-h}\hat G_h \hat T^\dagger_{1,e-h}=1
@@ -1072,7 +1064,7 @@ This gives nothing
                	& 0 & -(\mu+t)\hat n_2 \cr
                	} \\
 \eeq
-}
+
 \beq
 \overline \ham &= \bordermatrix{
                	~ & \ket{11} & \ket{10} & \ket{01} & \ket{00} \cr
@@ -1089,11 +1081,6 @@ The unitarily transformed Hamiltonian, \(\overline \ham\) is diagonal in the bas
 \eeq
 To find the eigenvectors \(\un^\dagger\ket{n_1,n_2}\), we need to find the \(\un\). From equation \ref{uni}, we have \(\un = \fr{1}{\sqrt 2}\rr{1+\hat \eta^\dagger - \hat \eta}\). 
 
-
-
-
-\comm{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         Again, \(\hat \eta_{1} = G_h T^\dagger c_1\), and \(\hat \eta^\dagger_{1} = c^\dagger_1 G_e T\) Using the expression of \(\hat E_1\). this simplifies as:
 \beq
         \eta &= \fr{1}{\hat E_1 - H_h}(-tc^\dagger_2)c_1 = \fr{-t}{(V-2\mu)\hat n_2 + (t-\mu)(1-\hat n_2)+\mu \hat n_2}c_1c_2^\dagger = \fr{-t}{V-\mu}c_1 c^\dagger_2 \\
@@ -1105,7 +1092,7 @@ To find the eigenvectors \(\un^\dagger\ket{n_1,n_2}\), we need to find the \(\un
 \beq
         \tf \un &= \fr{1}{\sqrt 2} \qq{1+\fr{t}{V-\mu}c_1 c^\dagger_2-c_1^\dagger c_2}, \un^\dagger = \fr{1}{\sqrt 2}\qq{1+\fr{t}{V-\mu}c_1^\dagger c_2 - c_2 c^\dagger_1}
 \eeq
-}
+
 To get the eigenstates of \ham, I act with \(U^\dagger\) on the eigenstates (\(\ket{n_1,n_2}\)):
 \beq
         \un ^\dagger \ket{11} = \ket{11}
@@ -1126,22 +1113,302 @@ The eigenstates come out to be (upto a normalizaiton):
         &\ket{01} - \ket{10} \\
         &\ket{11} \\
 \eeq
-\subsection{Applying the RG on the Hubbard dimer}
+\section{Applying the RG on the Hubbard dimer}
+\begin{gather}
+\ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\rr{\na\nb+\nc\nd}
+\end{gather}
+We begin by decoupling the first degree of freedom, namely, a spin-up electron on the first site. 
+\begin{gather}
+        H^e_{1\ua} = Tr_{\na}(\ham\na) = U(\nb+\nc\nd)-t(\cb^\dagger\ce+\ce^\dagger\cb) \\  
+        H^h_{1\ua} = Tr_{\na}(\ham(1-\na)) = U\nc\nd - t(\cb^\dagger\ce+\ce^\dagger\cb) \\
+        T_{1\ua} = Tr_{\na}(\ham\ca) = -t\cd\\
+        T^\dagger_{1\ua} = Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger
+\end{gather}
+Assume that the Hamiltonian, after block-diagonalisation in the subspace of \il{\na}, looks like
 \beq
-\ham &= -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\rr{\na\nb+\nc\nd} \\
-H_e &= Tr_{\na}(\ham\na) = U(\nb+\nc\nd)-t(\cb^\dagger\ce+\ce^\dagger\cb) \\  
-H_h &= Tr_{\na}(\ham(1-\na)) = U\nc\nd - t(\cb^\dagger\ce+\ce^\dagger\cb) \\
-T &= Tr_{\na}(\ham\ca) = -t\cd\\
-T^\dagger &= Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger\\
-\eta^\dagger_{1\ua} &= G_e c_{1\ua}^\dagger T = -t \hat G_e c^\dagger_{1\ua}c_{2\ua} = -t (\hat E_{1\ua} -H_e \hat n_{})^{-1}c^\dagger_{1\ua}c_{2\ua}\\
-\eta_{1\ua} &= G_h T^\dagger c_{1\ua} = -t (\hat E_{1\ua} - H_h (1-\na))c^\dagger_{2\ua}c_{1\ua} \\
-%\tf \eta_{1\ua} &= -t c^\dagger_{2\ua}c_{1\ua}(\ham^\prime_{1\ua} -H_e \hat n_{})^{-1}  \\
-%\eta_{1\ua}^\dagger\eta_{1\ua} &= \hat n_{1\ua} \implies t^2(1-\nc)\na = (\ham^\prime_{1\uparrow}-H_e \hat n_{1\ua})^2\hat n_{1\ua} \implies \ham^\prime_{1\uparrow}\hat n_{1\ua} = H_e\hat n_{1\ua} + t(1-\hat n_{2\ua})\hat n_{1\ua}
-\tf \eta^\dagger_{1\ua} \eta_{1\ua} &= t^2
+\ol \ham = U^\dagger_{1\ua} \ham U_{1\ua} = \begin{pmatrix} \hat E_{1\ua} & 0 \\ 0 & \hat E^\prime_{1\ua} \end{pmatrix}
 \eeq
+\il{\hat E_{1\ua}} and \il{\hat E^\prime_{1\ua}} are the sub-Hamiltonians with one fewer degree of freedom. That is, they are the Hamiltonians in the subspaces \il{\na=1,0} respectively.\\
+\subsection{\il{\na=1}}
+Define \il{\hat H^\prime_{1\ua} \equiv \hat E_{1\ua}\otimes \mathbb{I}}. Again, proceeding as in the formalism, we can derive
+\begin{gather}
+        \eta_{1\ua} = \hat G_e \hat T_{1\ua}^\dagger c_{1\ua} \\
+        \eta^\dagger_{1\ua} = \hat G_h c_{1\ua}^\dagger\hat T_{1\ua}
+\end{gather}
+
+
+The process of finding the eigenvalues involves using the equations for \il{\eta^\dagger\eta} and \il{\eta\eta^\dagger}:
+\begin{gather}
+        \eta^\dagger_{1\ua} \eta_{1\ua} = \na \label{2} \\
+        \eta_{1\ua} \eta^\dagger_{1\ua} = 1-\na \label{1}
+\end{gather}
+This subspace involves \il{1-\na=0}, hence we cannot use eq.~\ref{1}. We also have the choice of starting with the expression of either \il{\eta} or \il{\eta^\dagger}, but since \il{\eta} involves \il{1-\na} in the denominator, it doesn't lead to anything fruitful. So we start with \il{\eta^\dagger_{1\na}}. Using eq.~\ref{etad}:
+\beq
+ \eta^\dagger_{1\ua} = G_e c_{1\ua}^\dagger T_{1\ua} = -t \hat G_e c^\dagger_{1\ua}c_{2\ua} = \fr{-t}{\hat E_{1\ua}\na -H_e \hat n_{1\ua}}c^\dagger_{1\ua}c_{2\ua}
+\eeq
+The hole to electron operator \il{\eta_{1\ua}} is obtained by taking the Hermitian conjugate of \il{\eta^\dagger_{1\ua}}:
+\beq[eta1]
+ \eta_{1\ua} = c^\dagger_{2\ua}c_{1\ua}\fr{-t}{\hat E_{1\ua}\na -H_e \hat n_{1\ua}}
+\eeq
+Here we used the fact that \il{H_e\na} is Hermitian as seen from its expression, and
+
+\il{\hat E_{1\na}\na\equiv\hat E_{1\na}\otimes\na} is Hermitian because it is a sub-Hamiltonian by definition. Substituting these expressions in eq.~\ref{2},
+\begin{gather}
+\hat n_{1\ua}=\eta_{1\ua}^\dagger\eta_{1\ua}=\fr{-t}{\hat E_{1\ua}\na -H_e \hat n_{1\ua}}\na(1-\nc)\fr{-t}{\hat E_{1\ua}\na -H_e \hat n_{1\ua}}\\
+        \implies (\hat E_{1\ua}\na -H_e \hat n_{1\ua})^2 = t^2\na(1-\nc)\label{cent}
+\end{gather}
+This is the central equation(eq.~\ref{cent}) that will  be used for determining all the eigenvalues for the \il{\na=1} subspace. Substituting the expression for \il{H_e} gives:
+\beq[work]
+\qq{\hat E_{1\ua}\na -U\na\nb -U\nc\nd\na +t(\cb^\dagger\ce+\ce^\dagger\cb)\na}^2 = t^2\na(1-\nc)
+\eeq
+\subsubsection{N=2}
+We first look  at the \il{N=2} portion of the \il{\na} occupied subspace. The remaining degrees of freedom are \il{\nb}, \il{\nc} and \il{\nd}. Notice that the working equation, eq.~\ref{work} involves the creation and annihilation operators only for \il{\nb} and \il{\nd}. This means that \il{\nb} and \il{\nd} form a coupled degree of freedom, and this is in turn decoupled from \il{\nc}.Out of the two electrons (\il{N=2}), one electron is already there at \il{\na}. This leaves us with two possible subspaces to work in:
+\begin{itemize}
+    \item\il{\mathcal{\hat P} = \ket{1100}\bra{1100}+\ket{1001}\bra{1001}} \\\\
+        This is the subspace in which we keep \il{\nc} empty, and the second electron thus lie somewhere in the subspace spanned by \il{\nb} and \il{\nd}. The notation is obvious: \il{\ket{1100}\equiv\ket{\ua\da,0}} and \il{\ket{1001} \equiv \ket{\ua,\da}}. In this subspace, the right hand side of eq.~\ref{work} is unity, because \il{\na=1} and \il{\nc=0}. Define \il{\hat a_x = \begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}}. Clearly, \il{\hat a_x^2=1}. Then, in this subspace,
+\begin{gather}
+\qq{\hat E_{1\ua}\na -U\na\nb -U\nc\nd\na +t(\cb^\dagger\ce+\ce^\dagger\cb)\na}^2 = t^2 \hat a_x^2 \\
+\implies \hat E_{1\ua}\na -U\na\nb -U\nc\nd\na +t(\cb^\dagger\ce+\ce^\dagger\cb)\na = \pm t \hat a_x
+\end{gather}
+Next we need to write the LHS in this subspace. Taking \il{\ket{1100}} and \il{\ket{1001}} as the basis elements, we see that both \il{\ce^\dagger\cb} and \il{\cb^\dagger\ce} take one basis vector to the other, and hence
+\beq
+\cb^\dagger\ce+\ce^\dagger\cb = \begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix}
+\eeq
+Since \il{\nc=0}, the \il{\nc\nd\na} term drops out. Also,
+\beq
+\na\nd=\begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix}
+\eeq
+Finally, \il{\hat E_{1\ua,2} \equiv \mathcal{P}\hat E_{1\ua}\mathcal{P}} is the projected Hamiltonian in this subspace. Putting all these together,
+\begin{gather}
+\hat E_{1\ua,2} - \begin{pmatrix} U & 0 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix}0 & t \\ t & 0 \end{pmatrix} = \pm \begin{pmatrix} 0 & t \\ t & 0 \end{pmatrix}\\
+\implies \hat E_{1\ua,2} = \begin{pmatrix} U & 0  \\ 0 & 0 \end{pmatrix} , \begin{pmatrix} U & 2t \\ 2t & 0 \end{pmatrix}
+\end{gather}
+The first matrix gives eigenvalues \il{=\{U, 0\}} and eigenvectors \il{=\{\ket{\ua\da,0}, \ket{\ua,\da}\}}. The second matrix gives eigenvalues \il{E_\pm=\fr{U\pm\sqrt{U^2+16t^2}}{2}} and eigenvectors \il{=\{2t\ket{\ua,\da}+E_\pm\ket{\ua\da,0}\}}. Note that this is not the eigenvector for the total Hamiltonian, because it doesn't include the contribution from \il{\na=0} sector.
+\item \il{
+        \mathcal{P} = \ket{1010}\bra{1010}} \\\\
+In the previous subspace, we set \il{\nc=0}, so here we consider \il{\nc=1}:
+Since \il{\nb=\nd=0}, we have \il{U(\na\nb+\nc\nd)=0} and \il{\cb^\dagger\ce+\ce^\dagger\cb = 0}. The RHS is also zero. This means that in this subspace, the only eigenvalue is \il{E=0}. The eigenvector is \il{\ket{\ua,\ua}}.
+\end{itemize}
+
+\subsubsection{N=1}
+This case is simpler, because the only electron is placed at \il{\na}. Thus, \il{\nb=\nc=\nd=0} in this subspace. Since the subspace has just one state, it is unidimensionl, and the equation for this subspace will involve scalars instead of matrices. The RHS is hence \il{t^2} instead of \il{t^2a_x^2}. Since there are no electrons in \il{\nb} or \il{\nd}, the creation and annihilation operators in the LHS are zero:
+\beq
+\na\nb+\nc\nd = \cb^\dagger\ce+\ce^\dagger\cb = 0
+\eeq
+Eq.~\ref{work} thus reduces to
+\beq[En1]
+\hat E_{1\ua,1} = \pm t
+\eeq
+\il{\hat E_{1\ua,1}} is the projected Hamiltonian in this subspace. The eigenvalues in this subspace come out to be \il{\pm t}. Since the only state in this subspace is \il{\ket{\ua,0}}, that is the contribution to the eigenvectors.
+\subsubsection{N=3}
+With one electron at \il{\na}, we have two electrons to place. There are two options:
+\begin{itemize}
+    \item \il{
+            \mathcal{\hat P} = \ket{1110}\bra{1110}+\ket{1011}\bra{1011}}\\\\
+    Since the equation is diagonal in \il{\nc}, it makes sense to place one electron at \il{\nc}, and the other electron in the coupled subspace, that is, \il{\nb} and \il{\nd}. The corresponding projection operator is
+The RHS of eq.~\ref{work} in this subspace is 0, because \il{\nc=1}. This also means that
+\begin{gather}
+\na\nb+\nc\nd\na=\nb+\nd=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\\
+\cb^\dagger\ce+\ce^\dagger\cb = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\end{gather}
+The equation becomes
+\beq
+\hat E_{1\ua,3} - \begin{pmatrix} U & 0 \\ 0 & U \end{pmatrix}+\begin{pmatrix} 0 & t \\ t & 0 \end{pmatrix}=0 \implies \hat E_{1\ua,3} = \begin{pmatrix} U & -t \\ -t & U \end{pmatrix}
+\eeq
+The eigenvalues come out as \il{U\pm t}. The eigenvectors are \il{\ket{1110}\mp\ket{1011}}.
+\item \il{\mathcal{\hat P} = \ket{1101}} \\\\
+    The other sensible choice is to keep \il{\nc=0}. Since this subspace has just one state, it is unidimensional, and the equation is scalar.
+        \beq
+            \na\nb+\nc\nd = 1 \\
+            \cb^\dagger\ce+\ce^\dagger\cb=0 \\
+            \hat E_{1\ua,3} - U = \pm t
+        \eeq
+        The eigenvalues are \il{U\pm t}, and the eigenvector is \il{\ket{\ua\da,\da}}.
+\end{itemize}
+\subsection{\il{\na=0}}
+To calculate the eigenvalues for the unoccupied sector, define \il{\ham^{\prime\prime}  \equiv \hat E^\prime_{1\na} \otimes \mathbb{I}}. We can derive
+\begin{gather}
+    \eta_{1\ua} = -\hat G_h^\prime \hat T_{1\ua}^\dagger c_{1\ua}\label{now} \\
+        \eta^\dagger_{1\ua} = -\hat G_e^\prime c_{1\ua}^\dagger\hat T_{1\ua}\label{etad2}\\
+        \eta^\dagger_{1\ua}\eta_{1\ua}=\na \\
+        \eta_{1\ua}\eta^\dagger_{1\ua}=1-\na\label{zero}
+\end{gather}
+Note that \il{\hat G^\prime} involves \il{\hat E^\prime} in the denominator, because we now want to diagonalize the unoccupied block. Since \il{\na=0} now, we need to use eq.~\ref{zero} and start with the expression of \il{\eta_{1\ua} (eq.~\ref{now})} instead of \il{\eta^\dagger_{1\ua}}. Substituting the expression for \il{\eta_{1\ua}} and it's conjugate gives the following equation for the unoccupied sector:
+\beq
+\qq{\hat E^\prime_{1\ua} - U\nc\nd + t(\cb^\dagger\ce+\ce^\dagger\cb)}^2 = t^2 \nc
+\eeq
+\subsubsection{N=1}
+With no electron on \il{1,\ua}, the only electron can reside in a superposition of \il{\ket{\da,0}} or \il{\ket{0,\da}}:
+\begin{gather}
+    \mathcal{P} = \ket{0100}\bra{0100} + \ket{0001}\bra{0001}
+\end{gather}
+The right hand side is zero because \il{\nc=0}. Also,
+\begin{gather}
+    \na\nb+\nc\nd = 0\\
+    \cb^\dagger\ce+\ce^\dagger\cb = \begin{pmatrix} 0 & t \\ t & 0 \end{pmatrix}
+\end{gather}
+Putting it all together,
+\begin{gather}
+    \rr{E^\prime_{1\ua,2}+ \begin{pmatrix} 0 & t \\ t & 0 \end{pmatrix}}^2 = 0 \\
+    \implies E^\prime_{1\ua,2}= \begin{pmatrix} 0 & -t \\ -t & 0 \end{pmatrix}\label{eval}
+\end{gather}
+The eigenvalues are \il{\pm t}, the eigenvectors are \il{\ket{\da,0}\mp\ket{0.\da}}. 
+\subsubsection{N=2}
+\begin{gather}
+        \mathcal{P} = \ket{0110}\bra{0110}+\ket{0011}\bra{0011} \\
+        \implies E^\prime_{1\ua,2}-\begin{pmatrix} 0 & 0 \\ 0 & U \end{pmatrix} - \begin{pmatrix} 0 & t \\ t & U \end{pmatrix} = \pm t a_x \\
+                \implies E^\prime_{1\ua,2} = \begin{pmatrix} 0 & 0 \\ 0 & U \end{pmatrix}, \begin{pmatrix} 0 & 2t \\ 2t & 0 \end{pmatrix}
+\end{gather}
+The eigenvalues are \il{0, U} for the first matrix, with eigenvectors \il{\ket{0110}, \ket{0011}}, and\\  \il{E_\pm=\fr{U\pm\sqrt{U^2+16t^2}}{2}},  and \il{2t\ket{\da,\ua}+E_\pm\ket{0,\ua\da}} for the second.\\\\
+Similar to the \il{\na=1} situation,we can consider another subspace where \il{\nc=0}:
+\beq
+\mathcal{P} = \ket{0101}\bra{0101}
+\eeq
+Obviously, \il{\na\nb+\nc\nd=\cb^\dagger\ce+\ce^\dagger\cb=0}. The only eigenvalue is 0, with eigenvector \il{\ket{\da,\da}}.
+
+
+\subsubsection{N=3}
+Only state in this subspace is \il{\ket{0111}}.
+\begin{gather}
+    \mathcal{P} = \ket{0111} \\
+    \na\nb+\nc\nd = 1 \\
+    \cb^\dagger\ce+\ce^\dagger\cb = 0
+\end{gather}
+The equation(scalar) in this subspace is 
+\begin{gather}
+    E^\prime_{1\ua,3}-U = \pm t\label{yeah}
+\end{gather}
+
+The eigenvalues are \il{U\pm t}. The eigenvector is \il{\ket{0111}}.
+
+\subsection{The eigenstates}
+The eigenstates obtained for the various subspaces form only parts of the total eigenstates. Using the unitary operator \il{\hat U^\dagger = \fr{1}{\sqrt 2}(1+\eta-\eta^\dagger)}, these individual eigenstates can be combined into the total eigenstates.
+\subsubsection{N=1}
+First, consider the case of \il{\na=1}. The eigenstate for the subspace is \il{\ket{\na=1,N=1}=\ket{\ua,0}}. The total eigenstates are given by \il{\ket{\psi} = \hat U^\dagger_{1\ua} \ket{\na=1,N=1}}. Note that since \il{\eta^\dagger_{1\ua}} takes a hole at \il{\na} to an electron at the same quantum number, and since there is no hole at that quantum number (\il{\na} is occupied), \il{\eta^\dagger} will act to give zero, so we drop it.
+\beq
+\hat U_{1\ua}^\dagger \ket{\na=1,N=1} = \fr{1}{\sqrt 2} (1+\eta_{1\ua})\ket{\ua,0}
+\eeq
+From eq.~\ref{eta1}, \il{\eta_{1\ua} = c^\dagger_{2\ua}c_{1\ua}\fr{-t}{\hat E_{1\ua}\na -H_e \hat n_{1\ua}}}. In the subspace we are talking about, \\\il{\hat E_{1\ua}\na -H_e \hat n_{1\ua}=\pm t} (see eq.~\ref{En1}). Therefore,
+\beq
+\eta_{1\ua}\ket{\ua,0} = \mp \cd^\dagger\ca \ket{\ua,0}= \mp \ket{0,\ua}
+\eeq
+The total eigenstate turns out to be
+\beq
+\hat U_{1\ua}^\dagger \ket{\na=1,N=1} = \fr{1}{\sqrt 2}(\ket{\ua,0}+\eta_{1\ua}\ket{\ua,0}) = \ket{\ua,0} \mp \ket{0,\ua}
+\eeq
+Note that the respective eigenvalues are \il{\pm t}. \\\\
+Now consider the case of \il{\na=0}. The eigenstates for the subspace is \\\il{\ket{\na=0, N=1} = \ket{\da,0}\mp\ket{0,\da}}. This time, however, since the states are missing an electron in \na, \il{\eta} will act trivially, and we are left with
+\beq
+\hat U_{1\ua}^\dagger \ket{\na=0, N=1} = \fr{1}{\sqrt 2}(1-\eta^\dagger_{1\ua})\ket{\na=0, N=1}
+\eeq
+From eq.~\ref{now}, \il{\eta^\dagger_{1\ua} = -\ca^\dagger\cd\hat G^\prime_h = \ca^\dagger\cd \fr{t}{E^\prime - H_h(1-\na) }}. Note, however, that \il{\ket{\na=0,N=1}} does not have any electron at \nc, and \il{\cd} in \il{\eta^\dagger_{1\ua}} will necessarily give 0. Therefore,
+\beq
+\eta^\dagger_{1\ua}\ket{\na=0, N=1} = 0
+\eeq
+which means
+\beq
+U_{1\ua}^\dagger \ket{\na=0, N=1} = \fr{1}{\sqrt 2}\ket{\na=0, N=1} = \fr{\ket{\da,0}\mp\ket{0,\da}}{\sqrt 2}
+\eeq
+These are thus the final eigenstates for respective eigenvalues \il{\pm t}.\\
+The four eigenstates for \il{N=1} are listed in this table:
+\begin{center}
+\begin{tabular}{|c|c|}
+ \hline
+    \il{t}  & \il{\fr{\ket{\ua,0} - \ket{0,\ua}}{\sqrt 2}} \\
+    \il{-t} & \il{\fr{\ket{\ua,0} + \ket{0,\ua}}{\sqrt 2}} \\
+    \il{t}  & \il{\fr{\ket{\da,0} - \ket{0,\da}}{\sqrt 2}} \\
+    \il{-t} & \il{\fr{\ket{\da,0} + \ket{0,\da}}{\sqrt 2}} \\
+ \hline
+\end{tabular}
+\end{center}
+\subsubsection{N=3}
+The eigenstate for the first subspace are \\\il{\ket{\na=1,N=3}=\ket{\ua\da,\ua}\mp\ket{\ua,\ua\da}}. The total eigenstates are given by \il{\hat U^\dagger_{1\ua} \ket{\na=1,N=3}}. Note that since \il{\eta^\dagger_{1\ua}} takes a hole at \il{\na} to an electron at the same quantum number, and since there is no hole at that quantum number (\il{\na} is occupied), \il{\eta^\dagger} will act to give zero, so we drop it.
+\beq
+\hat U_{1\ua}^\dagger \ket{\na=1,N=3} = \fr{1}{\sqrt 2} (1+\eta_{1\ua})(\ket{\ua\da,\ua}\mp\ket{\ua,\ua\da})
+\eeq
+From eq.~\ref{eta1}, \il{\eta_{1\ua} = c^\dagger_{2\ua}c_{1\ua}\fr{-t}{\hat E_{1\ua}\na -H_e \hat n_{1\ua}}}. Since the part before \il{\ca} can only attach a coefficient to the kets, and since \il{\cd^\dagger} will act on both \il{\ket{\ua\da,\ua}} and \il{\ket{\ua,\ua\da}} to give zero, we have
+\beq
+\eta_{1\ua}\ket{\na=1,N=3}=0 
+\eeq
+The total eigenstates turn out to be
+\beq
+\hat U_{1\ua}^\dagger \ket{\na=1,N=3} = \fr{1}{\sqrt 2}\ket{\na=1,N=3}+\eta_{1\ua}\ket{\na=1,N=3} = \fr{\ket{\ua\da,\ua}\mp\ket{\ua,\ua\da}}{\sqrt 2}
+\eeq
+Note that the respective eigenvalues are \il{U \pm t}. \\\\
+Now consider second subspace for \il{N=3,\na=1}. The eigenstate is \il{\ket{\ua\da,\da}}. Here, \il{E-H_e = \pm t}, therefore,
+\beq
+\eta_{1\ua}\ket{\ua\da,\da} = \cd^\dagger\cb\fr{-t}{\pm t} \ket{\ua\da,\da} = \mp \ket{\da,\ua\da}
+\eeq
+which means
+\beq
+U_{1\ua}^\dagger \ket{\ua\da,\da} = \fr{\ket{\ua\da,\da}\mp\ket{\da,\ua\da}}{\sqrt 2}
+\eeq
+These are thus the final eigenstates for respective eigenvalues \il{U\pm t}.\\
+The four eigenstates for \il{N=1} are listed in this table:
+\begin{center}
+\begin{tabular}{|c|c|}
+ \hline
+    \il{U+t}    & \il{\fr{\ket{\ua\da,\ua} - \ket{\ua,\ua\da}}{\sqrt 2}} \\
+    \il{U-t}    & \il{\fr{\ket{\ua\da,\ua} + \ket{\ua,\ua\da}}{\sqrt 2}} \\
+    \il{U+t}    & \il{\fr{\ket{\ua\da,\da}-\ket{\da,\ua\da}}{\sqrt 2}} \\
+    \il{U-t}    & \il{\fr{\ket{\ua\da,\da}+\ket{\da,\ua\da}}{\sqrt 2}} \\
+ \hline
+\end{tabular}
+\end{center}
+\subsubsection{N=2}
+Consider the first set of eigenstates in \il{\na=1}: \il{\ket{\ua\da,0}} and \il{\ket{\ua,\da}}. \il{\eta^\dagger} can be dropped as usual. In this subspace, \il{\eta = -t\cd^\dagger\ca\fr{1}{-t\hat a_x} = \cd^\dagger\ca\hat a_x} (using \il{\hat a_x^2=1}). Applying these on the eigenstates gives
+\begin{gather}
+\eta_{1\ua} \ket{\ua\da,0} = \cd^\dagger\ca\hat a_x\ket{\ua\da,0} = \cd^\dagger\ca \ket{\ua,\da} = \ket{0,\ua\da}\\
+\eta_{1\ua} \ket{\ua,\da} = \cd^\dagger\ca\hat a_x\ket{\ua,\da} = \cd^\dagger\ca \ket{\ua\da,0} = \ket{\da,\ua}
+\end{gather}
+The total eigenstates are
+\begin{gather}
+    \hat U^\dagger_{1\ua} \ket{\ua\da,0} = \fr{\ket{\ua\da,0} + \eta_{1\ua} \ket{\ua\da,0}}{\sqrt 2} = \fr{\ket{\ua\da,0} + \ket{0,\ua\da}}{\sqrt 2}\\
+    \hat U^\dagger_{1\ua} \ket{\ua,\da} = \fr{\ket{\ua,\da} + \eta_{1\ua} \ket{\ua,\da}}{\sqrt 2} = \fr{\ket{\ua,\da} + \ket{\da,\ua}}{\sqrt 2}
+\end{gather}
+These are the total eigenstates corresponding to eigenvalues \il{U,0}.Consider the corresponding eigenstates from the \il{\na=0} sector will give the same eigenstates.\\
+Instead, take the second set of eigenstates of \il{\na=1}: \(2t\ket{\ua,\da}+E_\pm\ket{\ua\da,0}\) corresponding to eigenvalues \il{E_\pm = \fr{U\pm\sqrt{U^2+16t^2}}{2}}. Here, \il{\eta = -t\cd^\dagger\ca\fr{1}{t\hat a_x} = -\cd^\dagger\ca \hat a_x}.
+\beq
+\eta_{1\ua}(2t\ket{\ua,\da}+E_\pm\ket{\ua\da,0}) = -\cd^\dagger\ca \hat a_x(2t\ket{\ua,\da}+E_\pm\ket{\ua\da,0}) = -\cd^\dagger\ca (2t\ket{\ua\da,0}+E_\pm\ket{\ua,\da})\\
+= -2t\ket{\da,\ua}-E_\pm\ket{0,\ua\da}
+\eeq
+The total eigenstates are
+\beq
+\hat U^\dagger_{1\ua}(2t\ket{\ua,\da}+E_\pm\ket{\ua\da,0}) = \fr{1+\eta_{1\ua}}{\sqrt 2}(2t\ket{\ua,\da}+E_\pm\ket{\ua\da,0})\\ = 2t\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}+E_\pm\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}
+\eeq
+These are the final states corresponding to the eigenvalues \il{E_\pm}. \\\\
+The final states to consider are the ones with zero eigenvalues, that is, \il{\ket{\ua,\ua}} for \il{\na=1} and \il{\ket{\da,\da}} for \il{\na=0}. The action of \il{\hat U^\dagger_{1\ua}} on them is easy to see. Since \il{\eta} or \il{\eta^\dagger} annihilate one spin up electron and create another spin up electron at a different site, it is clear that they will give zero for both these states: \il{\ket{\da,\da}} has no spin up electron to annihilate, and \il{\ket{\ua,\ua}} has no free site to create a spin up electron. Hence, the final eigenstates are
+\beq
+\hat U^\dagger_{1\ua}\ket{\ua,\ua} = \ket{\ua,\ua}\\
+\hat U^\dagger_{1\ua}\ket{\da,\da} = \ket{\da,\da}
+\eeq
+These have eigenvalues 0.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+ \hline
+    \il{0}      & \il{\fr{\ket{\ua\da,0} + \ket{0,\ua\da}}{\sqrt 2}} \\
+    \il{U}      & \il{\fr{\ket{\ua,\da} + \ket{\da,\ua}}{\sqrt 2}} \\
+    \il{E_+}  & \il{2t\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}+E_+\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}} \\
+    \il{E_-}  & \il{2t\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}+E_-\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}} \\
+    \il{0}      & \il{\ket{\ua,\ua}} \\
+    \il{0}      & \il{\ket{\da,\da}} \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+
+
+
+
+
+\comm{
 \beq
         \ham^\prime_{1\uparrow}\hat n_{1\ua} = U\hat n_{1\ua}(\hat n_{1\da}+\hat n_{2\ua}\hat n_{2\da}) + t\hat n_{1\ua}(1-\nc-\cb^\dagger\ce-\cb\ce^\dagger)
 \eeq
+
+
 The upper block is not diagonal, and has to be further diagonalised. The block is given by
 \btc
 \beq
@@ -1254,7 +1521,7 @@ U_{1\da}^\dagger\ket{0,\nc,0} &= \ket{0,\nc,0} \\
 Eigenvectors for \(\na=1\) sector:\\
 \begin{center}
 \begin{tabular}{ c| c| c| c| c }
-        \(\nb\)&\(\nc\)&\(\nd\)&Eigenvector&Eigenvalue \\
+        \(\nb\)&\(\nc\)&\(\nd\)&Eigenvector&Eigenvalue
         \hline
         1 & 1 & 1 & \(\ket{111}\) & 2U \\
         1 & 1 & 0 & \(\ket{110}-\ket{011}\) & U-t \\
@@ -1286,8 +1553,6 @@ Applying these on the previously obtained eigenvectors give \\
         1 & 0 & 0 & 1 & \(\ket{1001}+\ket{1100}+\ket{0011}+\ket{0110}\) & N & 2t(...) \\
         1 & 0 & 0 & 0 & \(\ket{1000} + \ket{0010}\) & Y & t(t) \\
 \end{tabular}
-\comm{
------------------------------------------------------------------------\\
 To find the eigenvectors, I first find the unitary for the lower block
 \(\na\), and use it to diagonalise the shallowest Hamiltonian.
 \beq
@@ -1347,4 +1612,5 @@ Applying \(U_{1\ua}\) on \(\ket{\na=1,\nb,\nc,\nd}\) will produce the eigenblock
             \end{cases}
 \eeq
 }
+
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.4)  16 MAY 2020 22:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.4)  18 MAY 2020 22:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -563,11 +563,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip52
 )
 \c@theorem=\count138
-) (./merged.aux
-
-LaTeX Warning: Label `eprime' multiply defined.
-
-)
+) (./merged.aux)
 \openout1 = `merged.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -584,7 +580,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
- (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count139
 \scratchdimen=\dimen187
@@ -686,7 +683,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.44 ...rline {4.2.1}N=1}{34}{subsubsection.4.2.1}
+l.44 ...En_{1\uparrow }}=0}\)}{33}{subsection.4.2}
                                                   % [1])
 \tf@toc=\write7
 \openout7 = `merged.toc'.
@@ -789,323 +786,290 @@ Overfull \hbox (37.78574pt too wide) detected at line 239
 [][][]
  []
 
-[9]
+[9] [10] [11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 308.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 308.
+(hyperref)                removing `math shift' on input line 364.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 308.
-
-[10]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 322.
+(hyperref)                removing `subscript' on input line 364.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 322.
+(hyperref)                removing `superscript' on input line 364.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 322.
+(hyperref)                removing `math shift' on input line 378.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 334.
+(hyperref)                removing `subscript' on input line 378.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 334.
+(hyperref)                removing `superscript' on input line 378.
+
+[13]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 390.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 334.
+(hyperref)                removing `subscript' on input line 390.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 346.
+(hyperref)                removing `superscript' on input line 390.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 346.
+(hyperref)                removing `math shift' on input line 402.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 346.
-
-[11]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 362.
+(hyperref)                removing `subscript' on input line 402.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 362.
+(hyperref)                removing `superscript' on input line 402.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 362.
+(hyperref)                removing `math shift' on input line 418.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\pm' on input line 362.
+(hyperref)                removing `subscript' on input line 418.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 367.
+(hyperref)                removing `superscript' on input line 418.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 367.
+(hyperref)                removing `\pm' on input line 418.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 367.
+(hyperref)                removing `math shift' on input line 423.
 
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 475--480
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 423.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 423.
+
+[14] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 527--532
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--480
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 510--514
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 514--515
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 528--532
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 548--551
-
- []
-
-[16]
-Overfull \hbox (51.33936pt too wide) detected at line 567
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 574--578
+Underfull \hbox (badness 10000) in paragraph at lines 527--532
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 631--634
+Underfull \hbox (badness 10000) in paragraph at lines 562--566
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--634
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 661--664
+Underfull \hbox (badness 10000) in paragraph at lines 580--584
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 682--683
+Underfull \hbox (badness 10000) in paragraph at lines 600--603
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 682--683
-
- []
-
-[19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 794--797
-
- []
-
-[21] [22]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 851.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sigma' on input line 851.
-
-
-Overfull \hbox (15.08463pt too wide) detected at line 858
+[19]
+Overfull \hbox (51.33936pt too wide) detected at line 619
 [][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 626--630
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 683--686
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 683--686
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 713--716
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 734--735
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 734--735
+
  []
 
 [23]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 894.
+(hyperref)                removing `subscript' on input line 773.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 894.
+(hyperref)                removing `\sigma' on input line 773.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 894.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 894.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sigma' on input line 894.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 894.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sigma' on input line 894.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 894.
+Overfull \hbox (15.08463pt too wide) detected at line 780
+[][][]
+ []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 958--962
+Underfull \hbox (badness 10000) in paragraph at lines 815--819
 
  []
 
-[25] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1004
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 857--861
 
  []
 
-[27] [28] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1132
+
+LaTeX Warning: Reference `scomm1' on page 26 undefined on input line 872.
+
+
+LaTeX Warning: Reference `cons' on page 26 undefined on input line 876.
+
+[26] [27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 987--989
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1132.
+(hyperref)                removing `math shift' on input line 989.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1132.
+(hyperref)                removing `subscript' on input line 989.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\delimiter' on input line 1132.
+(hyperref)                removing `\delimiter' on input line 989.
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1026
+
+ []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1167--1169
-
- []
-
-[31]
-Overfull \hbox (9.47334pt too wide) in paragraph at lines 1185--1187
+Overfull \hbox (9.47334pt too wide) in paragraph at lines 1042--1044
 \OT1/cmr/m/n/12 ond ma-trix gives eigen-val-ues $[]$ and eigen-vec-tors $[]$.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1188--1191
+Underfull \hbox (badness 10000) in paragraph at lines 1045--1048
 
  []
 
 
-Overfull \hbox (10.92819pt too wide) in paragraph at lines 1188--1191
+Overfull \hbox (10.92819pt too wide) in paragraph at lines 1045--1048
 \OT1/cmr/m/n/12 In the pre-vi-ous sub-space, we set $[]$, so here we con-sider 
 $[]$: Since $[]$,
  []
 
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 1207--1210
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1067
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1219--1222
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1079
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1228.
+(hyperref)                removing `math shift' on input line 1085.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1228.
+(hyperref)                removing `subscript' on input line 1085.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\delimiter' on input line 1228.
+(hyperref)                removing `\delimiter' on input line 1085.
 
-[33] [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1265
+[32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1122
 
  []
 
 
-Overfull \hbox (3.67354pt too wide) in paragraph at lines 1287--1289
+Overfull \hbox (3.67354pt too wide) in paragraph at lines 1144--1146
 \OT1/cmr/m/n/12 First, con-sider the case of $[]$. The eigen-state for the sub-
 space is $[]$.
  []
 
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1159
+
+ []
+
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 1298--1302
-
- []
-
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 1336--1340
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1197
 
  []
 
 
-Overfull \hbox (11.66699pt too wide) in paragraph at lines 1336--1340
+Overfull \hbox (11.66699pt too wide) in paragraph at lines 1193--1197
 \OT1/cmr/m/n/12 Now con-sider sec-ond sub-space for $[]$. The eigen-state is $[
 ]$. Here, $[]$,
  []
 
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 1378--1382
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 1235--1239
 
  []
 
-[38] [39] [40] [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1616.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1616.
+[37] [38]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1473.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1473.
  (./merged.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1616.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1616.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1473.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1473.
 
 Package rerunfilecheck Info: File `merged.out' has not changed.
-(rerunfilecheck)             Checksum: 3A8AD1BDF625BC760D5772C5F15925CE;3201.
+(rerunfilecheck)             Checksum: 925B4597BF8BED29F42280E7012D652E;3304.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18518 strings out of 492167
- 333517 string characters out of 6131559
- 446380 words of memory out of 5000000
- 22275 multiletter control sequences out of 15000+600000
+ 18472 strings out of 492167
+ 333014 string characters out of 6131559
+ 429260 words of memory out of 5000000
+ 22254 multiletter control sequences out of 15000+600000
  13717 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,19n,81p,1095b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1123,10 +1087,10 @@ usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf
 e1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
 onts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msbm10.pfb>
-Output written on merged.pdf (42 pages, 300136 bytes).
+Output written on merged.pdf (39 pages, 295343 bytes).
 PDF statistics:
- 866 PDF objects out of 1000 (max. 8388607)
- 783 compressed objects within 8 object streams
- 312 named destinations out of 1000 (max. 500000)
- 389 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 781 PDF objects out of 1000 (max. 8388607)
+ 716 compressed objects within 8 object streams
+ 287 named destinations out of 1000 (max. 500000)
+ 397 words of extra memory for PDF output out of 10000 (max. 10000000)
 

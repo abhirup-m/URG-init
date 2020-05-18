@@ -251,7 +251,6 @@ This subspace is not automatically diagonal, but is easily diagonalized. The eig
 with eigenvalues \(\frac{U\pm\sqrt{U^2+16 t^2}}{2}\) respectively.
 \subsection{The total spectrum}
 The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
-\begin{table}[htb]
 \begin{center}
 \begin{tabular}{@{}ccccc@{}}
 \toprule
@@ -278,8 +277,65 @@ The final spectrum is already obtained. One final thing to do is to just add the
 \toprule
 \end{tabular}
 \end{center}
-\end{table}
+\subsection{The Mott-insulating limit}
+In the limit of \il{U\gg t}, the \il{N=2} part of the spectrum groups itself roughly into two bands:
+\begin{gather}
+\fr{U+\sqrt{U^2+16t^2}}{2} =  \fr{U+U\sqrt{1+\fr{16t^2}{U}}}{2} \approx \fr{U+U(1+\fr{8t^2}{U^2})}{2} = U + \fr{4t^2}{U}\\
+\fr{U-\sqrt{U^2+16t^2}}{2} =  \fr{U-U\sqrt{1+\fr{16t^2}{U}}}{2} \approx \fr{U-U(1+\fr{8t^2}{U^2})}{2} = -\fr{4t^2}{U}
+\end{gather}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    \multirow{2}{*}{lower} & \il{\fr{-4t^2}{U}} & \il{\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}} \\
+    & \il{0} & \il{\ket{\ua,\ua}, \ket{\da,\da}, \fr{\ket{\ua,\da}+\ket{\da,\ua}}{\sqrt 2}}\\
+    \hline
+    \multirow{2}{*}{upper} & \il{U} & \il{\fr{\ket{\ua\da,0}+\ket{0,\ua\da}}{\sqrt 2}} \\
+    & \il{U+\fr{4t^2}{U}} & \il{\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}}\\
+    \hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+    \item The separation between the two bands is \il{\Delta=U}. The kets in the lower band are formed mostly  of superpositions of the Neel states (singly occupied states with opposite spin) as well as the polarised states (singly occupied states with same spin). This is expected because for very large \il{U}, it becomes the only determining factor, and states with single occupation will be appreciably lower in energy compared to the doubly occupied states, and hence will gather in the lower band. 
+    \item For exactly the same reason, the upper band will be formed mostly by superpositions of holon-doublon states (two electrons on one site and none on the other), because they will incur the heavy cost of the on-site repulsion energy, and will hence assemble in the upper band. 
+    \item The lower band is a collection of three states: the ground state is the singlet state \il{\ket{\ua,\da}-\ket{\da,\ua}}, with an energy of \il{-\fr{4t^2}{U}}, while the other three , \il{\ket{\ua,\ua},\ket{\da,\da}, \ket{\ua,\da}+\ket{\da,\ua}}, form a degenerate triplet of first excited states with \il{0} energy.
+\end{itemize}
+\subsection{Comparison with the antiferromagnetic Heisenberg model}
+\beq
+\ham_{\text{Heisenberg}} = J \vec{\sigma_1}\cdot\vec{\sigma_2} - J, && \text{with  }J=-\fr{t^2}{U}<0
+\eeq
+To diagonalise this Hamiltonian, we rewrite the pauli matrix vectors using \il{\sigma^z} and \il{\sigma^\pm}:
+\beq
+\vec{\sigma_1}\cdot\vec{\sigma_2} = \sigma^z_1\sigma^z_2 + \fr{\sigma^+_1\sigma^-_2+\sigma^-_1\sigma^+_2}{2}
+\eeq
+where \il{\sigma^\pm_i = \sigma^x_i \pm \iota\sigma^y_i}. Note that 
+\begin{gather}
+    \sigma^+\ket{\ua}=\sigma^-\ket{\da} = 0\\
+    \sigma^+\ket{\da}=2\ket{\ua}\\
+    \sigma^-\ket{\ua}=2\ket{\da}
+\end{gather}
+Using these properties, it is easy to write down the \il{4\times4} matrix of the Hamiltonian in the basis of \il{\ket{\ua\ua},\ket{\ua\da},\ket{\da\ua},\ket{\da\da}}.
+\beq
+\ham = J \begin{pmatrix}
+    1 & & & \\
+    & -1 & 2 & \\
+    & 2 & -1 & \\
+    & & & 1 \\
+\end{pmatrix}
+- J
+\eeq
+
+The \il{\ket{\ua\ua}} and \il{\ket{\da\da}} form eigenkets with eigenvalues J each. The middle \il{2\times2} matrix can easily be diagonalised. It gives two other eigenvectors \il{\ket{\ua\da}\pm\ket{\da\ua}}, with eigenvalues \il{J,-3J}. After adding the constant term \il{-J} to these eigenvalues, the final spectrum becomes
+\begin{itemize}
+    \item \il{\ket{\ua\ua}: 0}
+    \item \il{\ket{\da\da}: 0}
+    \item \il{\ket{\ua\da}+\ket{\da\ua}: 0}
+    \item \il{\ket{\ua\da}-\ket{\da\ua}: -4J}
+\end{itemize}
+Recognizing \il{J} as \il{-\fr{t^2}{U}}, we get the same spectrum as the lower block.
 \section{Exact diagonalization of the Anderson molecule}
+
+
+
 
 \pp[The Hamiltonian]
 \beq
@@ -404,7 +460,6 @@ The eigenvectors are
 \end{itemize}
 \subsection{The total spectrum}
 The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
-\begin{table}
 \begin{center}
 \begin{tabular}{@{}cccc@{}}
 \toprule
@@ -442,12 +497,9 @@ The final spectrum is already obtained. One final thing to do is to just add the
  \toprule
 
 4                                      & 0                   & 2(\(\epsilon_s+\epsilon_d)+U\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
-
-
 \toprule
 \end{tabular}
 \end{center}
-\end{table}
 
 \section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}
 \subsection{The Problem} You have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a fermi gas). Equivalenty, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
@@ -718,140 +770,10 @@ Combining the last two equations,
 \eeq
 \end{tcolorbox}
 
-Using \ref{eq1} and the matrix form of \(\hat{P_{N\sigma}}\), \(\hml\) and \(\ham^\prime\) (\ref{P}, \ref{h} and \ref{hp}), we get
-\beq
-\begin{pmatrix}
-	\hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h}\\
-    T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}
-\end{pmatrix}
-\begin{pmatrix}
-	1 & \hat{\eta}^\dagger_{01} \\
-	\hat{\eta}_{01} & 1 \\
-\end{pmatrix}
-&=\hat{E}_{N\sigma}\bf{I}
-\begin{pmatrix}
-	1 & \hat{\eta}^\dagger_{01} \\
-	\hat{\eta}_{01} & 1 \\
-\end{pmatrix} \\
-\implies 
-\begin{pmatrix}
-	\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01} & \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h}\\
-    \hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
-\end{pmatrix}
-&= \begin{pmatrix}
-	\hat{E}_{N\sigma} & \hat{E}_{N\sigma}\hat{\eta}^\dagger_{01} \\
-	\hat{E}_{N\sigma}\hat{\eta}_{01} & \hat{E}_{N\sigma} \\
-\end{pmatrix} \\
-\eeq
-The off-diagonal equations give expressions for the \(\hat\eta_{N\sigma}\).
-\beq[eta]
-\hat E_{N\sigma}\hat{\eta}^\dagger_{01} = \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h} \implies \hat{\eta}^\dagger_{01} = \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,e}}\hat T_{N\sigma,e-h} = \hat G_e(\hat E_{N\sigma}) \hat T_{N\sigma,e-h} \\ \implies \hat \eta_{N\sigma}^\dagger = c_{N\sigma}^\dagger \hat{\eta}^\dagger_{01} = c_{N\sigma}^\dagger \hat G_e(\hat E_{N\sigma}) \hat T_{N\sigma,e-h}\\
-\eeq
-\beq[etadag]
-\hat E_{N\sigma}\hat{\eta}_{01} = \hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} \implies \hat{\eta}_{01} = \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,h}}T^\dagger_{N\sigma,e-h} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h} \\
-\implies \hat \eta_{N\sigma} = \hat{\eta}_{01}c_{N\sigma} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h}c_{N\sigma}
-\eeq
-where
-\beq
-\hat G_e(\hat E_{N\sigma}) \equiv \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,e}}. \; \hat G_h(\hat E_{N\sigma}) \equiv \fr{1}{\hat E_{N\sigma}-\hat H_{N\sigma,h}}
-\eeq
-Comparing the definitions of \(\hat \eta_{N\sigma}\) and \(\hat \eta_{N\sigma}^\dagger\), \ref{eta} and \ref{etadag}, gives us a consistency equation:
-\beq[cons]
-\hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h} = T^\dagger_{N\sigma,e-h} \hat G_e(\hat E_{N\sigma}) 
-\eeq
-The diagonal equations gives an equation for \(\hat{E}_{N\sigma}\):
-\beq[E1]
-\hat{E}_{N\sigma} = \hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}
-\eeq
-\beq[E2]
-\hat{E}_{N\sigma} = \hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
-\eeq
-These equations provide the commutator and anticommutator of the \(\hat\eta_{N\sigma}\) and \(\hat\eta^\dagger_{N\sigma}\). From eq \ref{E1},
-\beq[scomm1]
-\hat{E}_{N\sigma} - \hat{H}_{N\sigma,e} = \hat T_{N\sigma,e-h}\hat\eta_{01} &\implies \hat G_e(\hat E_{N\sigma})^{-1} = \hat T_{N\sigma,e-h}\hat\eta_{01} \\ &\implies \bf{1} = \hat G_e(\hat E_{N\sigma})\hat T_{N\sigma,e-h}\hat\eta_{01} = \hat\eta_{01}^\dagger\hat\eta_{01} \\
-\eeq
-\beq[bcomm1]
-\hat\eta^\dagger \hat\eta = c^\dagger_{N\sigma} \hat\eta_{01}^\dagger\hat\eta_{01} c_{N\sigma} = c^\dagger_{N\sigma} c_{N\sigma} = \no
-\eeq
-From \ref{E2},
-\beq[scomm2]
-\hat{E}_{N\sigma} - \hat{H}_{N\sigma,h} = T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} &\implies \hat G_h(\hat E_{N\sigma})^{-1} = T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} \\ &\implies \bf{1} = \hat G_h(\hat E_{N\sigma}) T^\dagger_{N\sigma,e-h}\hat\eta^\dagger_{01} = \hat\eta_{01}\hat\eta_{01}^\dagger \\
-\eeq
-\beq[bcomm2]
-\hat\eta \hat\eta^\dagger = c_{N\sigma} \hat\eta_{01}\hat\eta_{01}^\dagger c^\dagger_{N\sigma} = c_{N\sigma}c^\dagger_{N\sigma} = 1-\no
-\eeq
-Combining equations \ref{bcomm1} and \ref{bcomm2},
-\beq
-\qq{\hat\eta,\hat\eta^\dagger} &= 1- 2\no\\\cc{\hat\eta,\hat\eta^\dagger} &= 1
-\eeq
-\\
-Equation \ref{E1} provides an expression for the upper block of the diagonalised Hamiltonian,
-\begin{tcolorbox}
-\beq[e]
-\hat{E}_{N\sigma} = \hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}
-\eeq
-\end{tcolorbox}
-This expression has \(\hat{E}_{N\sigma}\) on both sides, so it has to be solved using the consistency equations.
-The goal of this exercise was to show that it is possible to consistently construct an expression for the diagonalised Hamiltonian purely from the blocks of the original Hamiltonian, namely \(\hat{H}_{N\sigma,h}\), \(\hat{H}_{N\sigma,e}\), \(\hat T_{N\sigma,e-h}\) and \(T^\dagger_{N\sigma,e-h}\). We have shown that for the upper block.\\\\
-The lower block can be constructed similarly, starting from \ref{eq2}. We again write the matrices in the basis of \(\no\) (using \ref{h}, \ref{1-P}, \ref{hpp}) and compare the matrix elements.
-\beq[lowblock]
-\begin{pmatrix}
-	\hat{H}_{N\sigma,e} & \hat T_{N\sigma,e-h}\\
-    T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}
-\end{pmatrix}
-\begin{pmatrix}
-	1 & -\hat{\eta}^\dagger_{01} \\
-	-\hat{\eta}_{01} & 1 \\
-\end{pmatrix}
-&=\hat{E^\prime}_{N\sigma}\bf{I}
-\begin{pmatrix}
-	1 & -\hat{\eta}^\dagger_{01} \\
-	-\hat{\eta}_{01} & 1 \\
-\end{pmatrix} \\
-\implies 
-\begin{pmatrix}
-	\hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01} & -\hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}+\hat T_{N\sigma,e-h}\\
-    -\hat{H}_{N\sigma,h}\hat{\eta}_{01}+T^\dagger_{N\sigma,e-h} & \hat{H}_{N\sigma,h}-T^\dagger_{N\sigma,e-h}\hat\eta_{01}^\dagger
-\end{pmatrix}
-&= \begin{pmatrix}
-	\hat{E^\prime}_{N\sigma} & -\hat{E^\prime}_{N\sigma}\hat{\eta}^\dagger_{01} \\
-	-\hat{E^\prime}_{N\sigma}\hat{\eta}_{01} & \hat{E^\prime}_{N\sigma} \\
-\end{pmatrix}
-\eeq
-The off-diagonal equations again give expressions for \(\hat \eta_{N\sigma}\) and \(\hat \eta^\dagger_{N\sigma}\) which when compared with the previous expressions will give two more consistency equations.
-\beq[3]
-\hat{E^\prime}_{N\sigma}\hat{\eta}^\dagger_{01} = \hat{H}_{N\sigma,e}\hat{\eta}^\dagger_{01}-\hat T_{N\sigma,e-h} \implies \hat{\eta}^\dagger_{01} = \fr{-1}{\hat{E^\prime}_{N\sigma}-\hat{H}_{N\sigma,e}}\hat T_{N\sigma,e-h} = -\hat G_e\rr{\hat E^\prime_{N\sigma}}\hat T_{N\sigma,e-h}
-\eeq
-\beq[4]
-\hat{E^\prime}_{N\sigma}\hat{\eta}_{01} = \hat{H}_{N\sigma,h}\hat{\eta}_{01}-T^\dagger_{N\sigma,e-h} \implies \hat{\eta}_{01} = \fr{-1}{\hat{E^\prime}_{N\sigma}-\hat{H}_{N\sigma,h}}T^\dagger_{N\sigma,e-h} = -\hat G_h\rr{\hat E^\prime_{N\sigma}}T^\dagger_{N\sigma,e-h}
-\eeq
-Comparing equation \ref{3} to equation \ref{eta} and equation \ref{4} to equation \ref{etadag}, we get the following consistency equations:
-\beq
--\hat G_e\rr{\hat E^\prime_{N\sigma}}\hat T_{N\sigma,e-h} = \hat G_e\rr{\hat E_{N\sigma}}\hat T_{N\sigma,e-h} \\
--\hat G_h\rr{\hat E^\prime_{N\sigma}}T^\dagger_{N\sigma,e-h} = \hat G_h\rr{\hat E_{N\sigma}}T^\dagger_{N\sigma,e-h}
-\eeq
-The diagonal element gives an expression for the lower block of \(\overline \hml\).
-\begin{tcolorbox}
-\beq[eprime]
-\hat E^\prime_{N\sigma} = \hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01}
-\eeq
-\end{tcolorbox}
-Looking at equations \ref{e} and \ref{eprime}, we can write down the diagonalised Hamiltonian in the basis of \no:
-\beq
-\overline \hml 	= \un \hml \un^\dagger &= \begin{pmatrix} 
-					\hat{E_{N\sigma}} & 0 \\
-					0 & \hat{E^\prime_{N\sigma}} \\
-					\end{pmatrix} \\
-				&= \begin{pmatrix} 
-					\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01} & 0 \\
-					0 & \hat{H}_{N\sigma,e}-\hat T_{N\sigma,e-h}\hat\eta_{01} \\
-					\end{pmatrix}
-\eeq
-This concludes the construction of the diagonalised Hamiltonian.
 \subsection{Determining the \un}
 The starting equation for the above construction was equation \ref{eq1}. That will also provide an expression for the \un. Operating equation \ref{eq1} to the right of \(\ket{1}\) (occupied eigenstate of \no) gives 
 \beq
-& \hml\hat P_{N\sigma}\ket{1} = \hat E_{N\sigma} \otimes\bf{I}\;\hat P_{N\sigma} \hml \ket{1} = \hat E_{N\sigma} \hat P_{N\sigma} \ket{1} \\
+& \hml\hat P_{N\sigma}\ket{1} = \hat E_{N\sigma} \otimes\bf{I}\;\hat P_{N\sigma} \ket{1} = \hat E_{N\sigma} \hat P_{N\sigma} \ket{1} \\
 &\implies \hml \un^\dagger \no \un \ket{1} = \hat E_{N\sigma} \un^\dagger \no \un \ket{1} && \rr{\text{substituting expression of \(\hat P_{N\sigma}\)}}\\
 &\implies \un \hml \un^\dagger \no \un \ket{1} = \un \hat E_{N\sigma} \un^\dagger \no \un \ket{1} && \rr{\text{operating \(\un\) from left}}\\
 &\implies \overline \hml \no \un \ket{1} = \un \hat E_{N\sigma} \un^\dagger \no \un \ket{1}
@@ -867,86 +789,21 @@ The second equations says
 \eeq
 The \(\un\) that satisfies the first equation is \(\un = \kappa\rr{1-\hat\eta+\hat\eta^\dagger}\). \(\kappa\) is a constant determined by the unitarity condition \(\un\un^\dagger=\bf{I}\). To check that this satisfies \ref{ucond},
 \beq
-\no \un \ket{1} &= 	\begin{pmatrix} \bf{I} & 0 \\ 0 & 0 \end{pmatrix}
-					\kappa
-					\begin{pmatrix} \bf{I} & \eta^\dagger_{01} \\ -\eta_{01} & \bf{I} \end{pmatrix}
-					\begin{pmatrix} \bf{I} \\ 0 \end{pmatrix} \\
-				&= \kappa \begin{pmatrix} \bf{I} \\ 0 \end{pmatrix} \propto \ket{1}
+\hat n_{N\sigma}\hat U_{N\sigma}\ket{1} &\propto \hat n_{N\sigma}(1-\hat \eta + \hat \eta^\dagger)\ket{1} \\
+&= \hat n_{N\sigma}(1-\hat \eta)\ket{1} && \rr{\eta^\dagger \ket{1}=0} \\
+&= \ket{1} - \hat n \hat \eta\ket{1} \\
+&= \ket{1} && \rr{\hat n \hat \eta = 0}
 \eeq
-To find \(\kappa\),
+To find \(\kappa\), we will use the unitarity of \il{\hat U_{N\sigma}}:
 \beq
-\un\un^\dagger 	&= \kappa^2
-				\begin{pmatrix} \bf{I} & \eta^\dagger_{01} \\ -\eta_{01} & \bf{I} \end{pmatrix} 
-				\begin{pmatrix} \bf{I} & -\eta^\dagger_{01} \\ \eta_{01} & \bf{I} \end{pmatrix}
-				= \kappa^2
-				\begin{pmatrix} \bf{I} + \eta^\dagger_{01}\eta_{01} & 0 \\ 0 & \bf{I} + \eta^\dagger_{01}\eta_{01} \end{pmatrix} \\
-				&= \kappa^2
-				\begin{pmatrix} \bf{I} + \eta^\dagger_{01}\eta_{01} & 0 \\ 0 & \bf{I} + \eta^\dagger_{01}\eta_{01} \end{pmatrix}
-				= 2\kappa^2
-				\begin{pmatrix} \bf{I} & 0 \\ 0 & \bf{I}\end{pmatrix} \rr{\text{check \ref{scomm1},\ref{scomm2} for \(\eta^\dagger_{01}\eta_{01}\),\(\eta_{01}\eta^\dagger_{01}\)}} \\
+\un\un^\dagger 	&=\kappa^2(1-\eta+\eta^\dagger)(1+\eta-\eta^\dagger) \\
+&= \kappa^2(1+\cc{\eta,\eta^\dagger}) && \rr{\eta^2 = {\eta^\dagger}^2 = 0} \\
+&= 2\kappa^2 && \rr{\cc{\eta,\eta^\dagger}=1}\\
 \implies \kappa=\fr{1}{\sqrt{2}}
 \eeq
 \begin{tcolorbox} 
 \beq[uni]
 \un = \fr{1}{\sqrt{2}}\rr{1-\hat\eta+\hat\eta^\dagger}
-\eeq
-\end{tcolorbox}
-\subsection{A corrolary: \(\qq{\hat G_e(\hat E_{N\sigma}), \hat E_{N\sigma}}=0\)}
-First note,
-\beq[init]
-\hat T^\dagger_{N\sigma,e-h}\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} &= T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) - T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})\hat E_{N\sigma}
-\eeq
-Now,
-\beq[part1]
-T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})\hat E_{N\sigma} &= \hat \eta_{01} \hat E_{N\sigma}
-\eeq
-Also,
-\beq[part2]
-T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) &= T^\dagger_{N\sigma,e-h}\qq{\hat{H}_{N\sigma,e}+\hat T_{N\sigma,e-h}\hat\eta_{01}}\hat G_e(\hat E_{N\sigma}) \\
-&=T^\dagger_{N\sigma,e-h}\qq{\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+\hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})} \\
-&=T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
-\eeq
-The last line follows because \(\hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})=\bf{1}\). From \ref{E1}, we have
-\beq[unity]
-\hat{E}_{N\sigma}-\hat{H}_{N\sigma,e}=\hat T_{N\sigma,e-h}\hat\eta_{01}&\implies \hat G_e^{-1}(\hat E_{N\sigma}) = \hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h} \\
-&\implies \bf{1} = \hat T_{N\sigma,e-h}\hat G_h(\hat E_{N\sigma})\hat T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})
-\eeq
-Continuing from \ref{part2},
-\beq[part3]
-T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) &=
-T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
-&=\hat{H}_{N\sigma,h}T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
-\eeq
-The last line follows from equation \ref{cons}:
-\beq
-&\hat T^\dagger_{N\sigma,e-h} \hat G_e(\hat E_{N\sigma}) = \hat G_h(\hat E_{N\sigma}) \hat T^\dagger_{N\sigma,e-h} \\
-&\implies (\hat{E}_{N\sigma}-\hat{H}_{N\sigma,h})\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}(\hat{E}_{N\sigma}-\hat{H}_{N\sigma,e}) \\
-&\implies \hat{E}_{N\sigma}\hat T^\dagger_{N\sigma,e-h}-\hat{H}_{N\sigma,h}\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}\hat{E}_{N\sigma}-\hat T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e} \\
-&\implies \hat{H}_{N\sigma,h}\hat T^\dagger_{N\sigma,e-h} = \hat T^\dagger_{N\sigma,e-h}\hat{H}_{N\sigma,e}\;\;\;\;\;\;\;\;\;\rr{\because\hat{E}_{N\sigma}\hat T^\dagger_{N\sigma,e-h}=\hat T^\dagger_{N\sigma,e-h}\hat{E}_{N\sigma}}
-\eeq
-Again continuing from \ref{part3},
-\beq
-&T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) = \hat{H}_{N\sigma,h}T^\dagger_{N\sigma,e-h}\hat G_e(\hat E_{N\sigma})+T^\dagger_{N\sigma,e-h} \\
-&= \hat{H}_{N\sigma,h}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h}+T^\dagger_{N\sigma,e-h} && \rr{\text{from eq \ref{cons}}} \\
-&= \hat{H}_{N\sigma,h}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h}+T^\dagger_{N\sigma,e-h}G_e(\hat E_{N\sigma})T_{N\sigma,e-h}G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} && \rr{\text{from eq \ref{unity}}} \\
-&=\rr{\hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}G_e(\hat E_{N\sigma})T_{N\sigma,e-h}}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
-&=\rr{\hat{H}_{N\sigma,h}+T^\dagger_{N\sigma,e-h}\hat \eta^\dagger_{01}}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
-&=\hat E_{N\sigma}\hat G_h(\hat E_{N\sigma})T^\dagger_{N\sigma,e-h} \\
-&=\hat E_{N\sigma}\hat\eta_{01}
-\eeq
-Therefore,
-\beq[final]
-T^\dagger_{N\sigma,e-h}\hat E_{N\sigma}\hat G_e(\hat E_{N\sigma}) = \hat E_{N\sigma}\hat\eta_{01}
-\eeq
-Substituting equations \ref{part1} and \ref{final} in equation \ref{init}, we have
-\beq
-\hat T^\dagger_{N\sigma,e-h}\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} &= \hat E_{N\sigma}\hat\eta_{01} - \hat\eta_{01}\hat E_{N\sigma} = \qq{\hat E_{N\sigma},\hat\eta_{01}} \\
-&= 0 && \rr{\text{from equation \ref{Ecomm}}} \\
-\eeq
-Therefore,
-\begin{tcolorbox}
-\beq
-\qq{\hat E_{N\sigma}, \hat G_e(\hat E_{N\sigma})} = 0 
 \eeq
 \end{tcolorbox}
 

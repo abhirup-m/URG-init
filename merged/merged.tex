@@ -472,7 +472,7 @@ The final spectrum is already obtained. One final thing to do is to just add the
 
  \cmidrule(l){2-4}
 
-& 1 & \(\epsilon_d + \fr{1}{4}(U\pm\Delta)\)  & \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\) \\
+& 1 & \(\epsilon_d + \fr{1}{4}(U\pm\Delta)\)  & \(\fr{1}{N_\pm}\rr{t\ket{\ua,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\ua}}\) \\
  \toprule
 
 \multirow{6}{*}{2}                     & -1                  & \(2\epsilon_d+\fr{U}{2}\)   & \(\ket{\downarrow,\downarrow}\)  \\
@@ -493,7 +493,7 @@ The final spectrum is already obtained. One final thing to do is to just add the
 
  \cmidrule(l){2-4}
 
-& 1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
+& 1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\uparrow}-\fr{1}{4}(U\pm\Delta)\ket{\uparrow,\uparrow\downarrow})\) \\
  \toprule
 
 4                                      & 0                   & 2(\(\epsilon_s+\epsilon_d)+U\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
@@ -1244,8 +1244,8 @@ These have eigenvalues 0.
 \begin{center}
 \begin{tabular}{|c|c|}
  \hline
-    \il{0}      & \il{\fr{\ket{\ua\da,0} + \ket{0,\ua\da}}{\sqrt 2}} \\
-    \il{U}      & \il{\fr{\ket{\ua,\da} + \ket{\da,\ua}}{\sqrt 2}} \\
+    \il{U}      & \il{\fr{\ket{\ua\da,0} + \ket{0,\ua\da}}{\sqrt 2}} \\
+    \il{0}      & \il{\fr{\ket{\ua,\da} + \ket{\da,\ua}}{\sqrt 2}} \\
     \il{E_+}  & \il{2t\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}+E_+\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}} \\
     \il{E_-}  & \il{2t\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}+E_-\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}} \\
     \il{0}      & \il{\ket{\ua,\ua}} \\
@@ -1253,221 +1253,108 @@ These have eigenvalues 0.
  \hline
 \end{tabular}
 \end{center}
+\section{Applying RG on the Anderson molecule}
+\beq
+\ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\na\nb + \epsilon_d(\na+\nb) + \epsilon_s(\nc+\nd)
+\eeq
+For this problem, we need to disentangle both \il{\na} and \il{\nb}.
+\beq
+H_{e,1\ua} &= -t(\ce^\dagger\cb+\cb^\dagger\ce) + U\nb + \epsilon_d(1+\nb) + \epsilon_s(\nc+\nd)\\
+H_{h,1\ua} &= -t(\ce^\dagger\cb+\cb^\dagger\ce)  + \epsilon_d\nb + \epsilon_s(\nc+\nd)\\
+\hat T_{1\ua} &= -t\cd\\
+\implies \hat T^\dagger_{1\ua} &= -t\cd^\dagger\\
+\eta^\dagger_{1\ua} &= \fr{-t}{\hat E\na - H_e\na}\ca^\dagger\cd \\
+\eta_{1\ua} &= \fr{-t}{\hat E^\prime(1-\na) - H_h(1-\na)}\ca^\dagger\cd \\
+\eeq
+\beq
+H_{e,1\da} &= -t(\cd^\dagger\ca+\ca^\dagger\cd) + U\na + \epsilon_d(1+\na) + \epsilon_s(\nc+\nd)\\
+H_{h,1\da} &= -t(\cd^\dagger\ca+\ca^\dagger\cd) + \epsilon_d\na + \epsilon_s(\nc+\nd)\\
+\hat T_{1\da} &= -t\ce\\
+\implies \hat T^\dagger_{1\da} &= -t\ce^\dagger\\
+\eta^\dagger_{1\da} &= \fr{-t}{\hat E\nb - H_e\nb}\cb^\dagger\ce \\
+\eta_{1\da} &= \fr{-t}{\hat E^\prime(1-\nb) - H_h(1-\nb)}\cb^\dagger\ce \\
+\eeq
+The equation for \il{\na=0} is
+\beq
+t^2\nc &= \qq{E^\prime - \epsilon_d\nb-\epsilon_s(\nc+\nd)+t(\cb^\dagger\ce+\ce^\dagger\cb)}^2
+\eeq
+The equation for \il{\nb=0} is
+\beq
+t^2\nd &= \qq{E^\prime - \epsilon_d\na-\epsilon_s(\nc+\nd)+t(\ca^\dagger\cd+\cd^\dagger\ca)}^2
+\eeq
+\subsection{\il{N=1}}
+\begin{itemize}
+    \item \il{\na=0: \mathcal{P}=\ket{0100}\bra{0100}+\ket{0001}\bra{0001}}
+\begin{gather}
+	\epsilon_d\nb=\begin{pmatrix}\epsilon_d & 0 \\ 0 & 0 \end{pmatrix}\\
+	\epsilon_s(\nc+\nd)=\begin{pmatrix}0 & 0 \\ 0 & \epsilon_s \end{pmatrix}\\
+	t(\cb^\dagger\ce+\ce^\dagger\cb)=\begin{pmatrix}0 & t \\ t & 0 \end{pmatrix}\\
+	t^2\nc=0\\
+	\implies E= \begin{pmatrix}\epsilon_d & -t \\ -t & \epsilon_s \end{pmatrix}
+\end{gather}
+The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with eigenvectors \il{t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}}, where \\\il{\Delta(t)=2\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}
+\item \il{\nb=0: \mathcal{P}=\ket{1000}\bra{1000}+\ket{0010}\bra{0010}}
 
-
-
-
-
-
-
-\comm{
-\beq
-        \ham^\prime_{1\uparrow}\hat n_{1\ua} = U\hat n_{1\ua}(\hat n_{1\da}+\hat n_{2\ua}\hat n_{2\da}) + t\hat n_{1\ua}(1-\nc-\cb^\dagger\ce-\cb\ce^\dagger)
-\eeq
-
-
-The upper block is not diagonal, and has to be further diagonalised. The block is given by
-\btc
-\beq
-\hat E_{1\ua} = \bra{\na=1} \ham^\prime_{1\ua}\na\ket{\na=1} = U(\nb+\nc\nd)+t(1-\nc-\cb^\dagger\ce-\ce^\dagger\cb)
-\eeq
-\etc
-The lower block, \(\ham^{\prime\prime}_{1\ua}(1-\na)\), can be obtained as
-\beq
-\ham^{\prime\prime}_{1\uparrow}(1-\na) = H_h(1-\na) - T^\dagger\ca\eta^\dagger_{1\ua} = H_h(1-\na) - t^2\cd^\dagger\ca\hat G_e\ca^\dagger\cd
-\eeq
-The block itself, \(\hat E^\prime_{1\ua}\), is obtained as
-\beq[init]
-E^\prime_{1\uparrow} &= \bra{\na=0} \ham^{\prime\prime} (1-\na)\ket{\na=0}\\
-&= H_h -t^2\bra{\na=0}\cd^\dagger\ca\hat G_e \ca^\dagger \cd\ket{\na=0}\\
-&= U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb)-t^2\cd^\dagger\bra{\na=1}\hat G_e\ket{\na=1}\cd
-\eeq
-Now,
-\beq
-\bra{\na=1}\hat G_e^{-1}\ket{\na=1}&=\bra{\na=1}\ham^\prime_{1\ua}-H_e\na\ket{\na=1} \\
-&= \bra{\na=1}\ham^\prime_{1\ua}\na-H_e\na\ket{\na=1}\\
-&= \bra{\na=1}t\na(1-\nc)\ket{\na=1} = t(1-\nc)\\
-\eeq
-Substituting this in \ref{init} gives
-\beq
-E^\prime_{1\ua} = U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb)-t\cd^\dagger\fr{1}{1-\nc}\cd = U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb + \nc)
-\eeq
-\btc
-\beq
-E^\prime_{1\ua} = U\nc\nd -t(\cb^\dagger\cd+\cd^\dagger\cb + \nc)
-\eeq
-\etc
-\subsection{\(\na=1\) sector}
-\subsubsection{Eigenvalues}
-To calculate the eigenvalues of the upper block, we take \(\hat E_{1\uparrow}\) as the new Hamiltonian \(\ham_{1\da}\)and this time trace out \(\nb\).
-\beq
-H_{e,\nb} &= Tr_{\nb}(\ham_{1\da}\nb) = U(1+\nc\nd) + t(1-\nc) \\
-H_{h,\nb} &= U\nc\nd+t(1-\nc) \\
-T &= -t\ce \\
-T^\dagger &= -t\ce^\dagger \\
-\eta^\dagger_{1\da} &= \hat G_e \cb^\dagger T = -t \hat G_e \cb^\dagger \ce \\
-\implies \eta_{1\da} &= -t \ce^\dagger \cb \hat G_e\\
-\eeq
-Then,
-\beq
-\eta_{1\da}^\dagger\eta_{1\da}=\nb &\implies \ham^\prime_{1\da} \nb = H_{e,\nb} \nb - t\nb(1-\nd) = U\nb(1+\nc\nd)-t\nb(\nc-\nd)
-\eeq
-This gives the upper block of the \(\na=1\) sector (that is, the \(\na=1,\nb=1\) sector); the matrix element is given by \(\hat E_{1\da}=\bra{\nb=1}\ham^\prime_{1\da}\nb\ket{\nb=1}\)
-\btc
-\beq
-E_{\nb} = U(\nc\nd + 1) - t(\nc -\nd) = \begin{pmatrix} 2U & & & \\ & U-t & & \\ & & U+t & \\ & & & U \end{pmatrix}
-\eeq
-\etc
-
-The lower block of \(\na=1\) sector(\(\na=1,\nb=0\)), that is, \(E^\prime_{1\downarrow}\), can again be determined using the formula for the lower blocks.
-\beq
-\ham^{\prime\prime}_{1\downarrow}\nb = H_{h,\nb}(1-\nb) - T^\dagger\cb\eta_{1\da}^\dagger = H_h(1-\nb) - t^2 \ce^\dagger \cb G_e \cb^\dagger \ce
-\eeq
-The matrix element, \(\hat E^\prime_{1\da} = \bra{\nb=0}\ham^{\prime\prime}(1-\nb)\ket{\nb=0} = H_h - t^2\ce^\dagger\bra{1}G_e\ket{1}\ce\)
-\beq
-\bra{1}G_e^{-1}\ket{1} &= \bra{1}\ham^\prime_{1\da} - H_{e,\nb}\nb\ket{1} = \bra{1} \ham^\prime_{1\da}\nb - H_e \nb\ket{1} = -t(1-\nd)\\
-\tf \hat E^\prime_{1\da} &= H_h + t\ce^\dagger\fr{1}{1-\nd}\ce = H_h + t\nd = U\nc\nd+t(1-\nc+\nd)
-\eeq
-\btc
-\beq
-E^\prime_{1\da} = U\nc\nd+t(1-\nc+\nd) =
-\begin{pmatrix}
-        U+t & & & \\
-             & 0 & & \\
-             & & 2t & \\
-             & & & t 
-\end{pmatrix}
-\eeq
-\etc
-The \(\na=1\) part of the diagonalised Hamiltonian is
-\beq
-E^\prime_{1\nb} = 
-\begin{pmatrix}
-        2U & & & & & & & \\
-        & U-t & & & & & & \\
-        & & U+t & & & & & \\
-        & & &U & & & & \\
-        & & & &U+t & & & \\
-        & & & & &0 & & \\
-        & & & & & &2t & \\
-        & & & & & & &t \\
-\end{pmatrix}
-\eeq
-\subsubsection{Eigenvectors}
-To get the first eight eigenvectors, I first find the eigenvectors in the space of \(\nb\). There are 8 eigenvectors in the space of \(\nb\), that is \(\ket{\nb,\nc,\nd}\). The \(\eta\) for this space is
-\beq
-\eta_{1\da} = -t \ce^\dagger \cb \hat G_e,\; \eta^\dagger_{1\da} = -t\hat G_e \cb^\dagger\ce
-\eeq
-The required eigenvectors are \(U_{1\da}^\dagger \ket{\nb\nc\nd} = \fr{1}{2}(1-\eta_{1\da}+\eta^\dagger_{1\da})\ket{\nb\nc\nd}\) \\
-Note that \(\eta\) acting on \(\ket{\nb\nc\nd}\) will give non-zero only when \(\nb=1,\nd=0\) and \(\eta^\dagger\) will give non-zero only when \(\nb=0,\nd=1\).
-\beq
-\eta^\dagger_{1\da}\ket{0,\nc,1} = -t\hat G_e\ket{1,\nc,0} = \fr{-t}{\ham^\prime_{1\da}-H_{e\nb}\nb}\ket{1,\nc,0} = \fr{-t}{\ham^\prime_{1\da}\nb-H_{e\nb}\nb}\ket{1,\nc,0} \\
-= \fr{-t}{-t\nb(1-\nd)}\ket{1,\nc,0} = \ket{1,\nc,0}
-\eeq
-Similarly,
-\beq
-\eta_{1\da}\ket{1,\nc,0} = -t \ce^\dagger\cb \hat G_e\ket{1,\nc,0} = -t \ce^\dagger \cb \fr{1}{-t} \ket{1,\nc,0} = \ket{0,\nc,1}
-\eeq
-Therefore,
-\beq
-U_{1\da}^\dagger\ket{1,\nc,0} &= (1-\eta_{1\da})\ket{1,\nc,0}=\ket{1,\nc,0} - \ket{0,\nc,1}\\
-U_{1\da}^\dagger\ket{0,\nc,1} &= (1+\eta^\dagger_{1\da})\ket{0,\nc,1}=\ket{0,\nc,1} + \ket{1,\nc,0}\\
-U_{1\da}^\dagger\ket{1,\nc,1} &= \ket{1,\nc,1} \\
-U_{1\da}^\dagger\ket{0,\nc,0} &= \ket{0,\nc,0} \\
-\eeq
-Eigenvectors for \(\na=1\) sector:\\
-\begin{center}
-\begin{tabular}{ c| c| c| c| c }
-        \(\nb\)&\(\nc\)&\(\nd\)&Eigenvector&Eigenvalue
-        \hline
-        1 & 1 & 1 & \(\ket{111}\) & 2U \\
-        1 & 1 & 0 & \(\ket{110}-\ket{011}\) & U-t \\
-        1 & 0 & 1 & \(\ket{101}\) & U+t \\
-        1 & 0 & 0 & \(\ket{100}-\ket{001}\) & U \\
-        0 & 1 & 1 & \(\ket{011}+\ket{110}\) & U+t \\
-        0 & 1 & 0 & \(\ket{010}\) & 0 \\
-        0 & 0 & 1 & \(\ket{001}+\ket{100}\) & 2t \\
-        0 & 0 & 0 & \(\ket{000}\) & t \\
-\end{tabular}
-\end{center}
-Now we need to find the eigenvectors in the space of \(\na=1\). To do this, we will act with \(U^\dagger_{1\ua}\) on the previously obtained eigenvectors.
-\beq
-\eta^\dagger_{1\ua} = -t \hat G_e \ca^\dagger\cd, \; \eta_{1\ua} = -t \cd^\dagger\ca \hat G_e \\
-\eta^\dagger_{1\ua} \ket{\na=0,\nb,\nc=1,\nd}=-\ket{1,\nb,0,\nd} \\
-\eta_{1\ua} \ket{\na=1,\nb,\nc=0,\nd}=-\ket{0,\nb,1,\nd} \\
-\eeq
-Applying these on the previously obtained eigenvectors give \\
-%First 8 eigenvectors (corresponding to \(\na=1\)):\\
-\begin{tabular}{c|c| c| c| c | c| c }
-        \(\na\) & \(\nb\)&\(\nc\)&\(\nd\)&Eigenvector& Match? & Evalue(Exact Evalue) \\
-        \hline
-        1 & 1 & 1 & 1 & \(\ket{1111}\) & Y & 2U(same) \\
-        1 & 1 & 1 & 0 & \(\ket{1110}-\ket{1011}\) & Y & U-t(U-t) \\
-        1 & 1 & 0 & 1 & \(\ket{1101}+\ket{0111}\) & Y & U+t(U+t) \\
-        1 & 1 & 0 & 0 & \(\ket{1100}-\ket{1001}+\ket{0110}-\ket{0011}\) & N &  U(U+t) \\
-        1 & 0 & 1 & 1 & \(\ket{1011}+\ket{1110}\) & Y & U+t(...) \\
-        1 & 0 & 1 & 0 & \(\ket{1010}\) & Y & 0(same) \\
-        1 & 0 & 0 & 1 & \(\ket{1001}+\ket{1100}+\ket{0011}+\ket{0110}\) & N & 2t(...) \\
-        1 & 0 & 0 & 0 & \(\ket{1000} + \ket{0010}\) & Y & t(t) \\
-\end{tabular}
-To find the eigenvectors, I first find the unitary for the lower block
-\(\na\), and use it to diagonalise the shallowest Hamiltonian.
-\beq
-\eta^\dagger_{1\uparrow} &= \ca^\dagger G_e T = \ca^\dagger \fr{1}{t(1-\nc)}(-t\cd) = -\ca^\dagger\cd \\
-\implies \eta_{1\uparrow} &= -\ca\cd^\dagger \\
-\implies U_{1\uparrow}^\dagger &= \fr{1}{\sqrt 2}(1+\eta_{1\uparrow}-\eta^\dagger_{1\uparrow}) = \fr{1}{\sqrt 2}(1+\ca^\dagger\cd-\ca\cd^\dagger)
-\eeq
-This \(U^\dagger_{1\uparrow}\) will block-diagonalise the shallowest Hamiltonian into two subspaces, \(\na=1\) and \(\na=0\). The latter block is internally diagonal, as seen from the form of \(\hat E_{1\uparrow}^\prime\), equation \ref{Eprime}. These 8 eigenstates are thus:
-\beq
-U^\dagger_{1\uparrow}\ket{\na=0,\nb\nc\nd} \sim (1+\ca^\dagger\cd-\ca\cd^\dagger)\ket{\na=0,\nb,\nc,\nd} 
-\eeq
-For various values of \(\nb,\nc,\text{ and }\nd\), we get the following eigenstates
-\beq
-U^\dagger_{1\uparrow}\ket{\na=0,\nb\nc\nd} \sim 
-        \begin{cases}
-                \text{Eigenvector} & \text{Eigenvalue} \\
-                \ket{\da,\ua\da}+\ket{\ua\da,\da} & -t + U\\
-                \ket{\da,\ua}+\ket{\ua\da,0} & -t + U\\
-                \ket{\da,\da} & -t + U\\
-                \ket{\da,0} & -t + U\\
-                \ket{0,\ua\da}+\ket{0,\da} & -t + U\\
-                \ket{0,\ua}+\ket{0,0} & -t \\
-                \ket{0,\da} & -t \\
-                \ket{0,0} & -t \\
-        \end{cases}
-\eeq
-The upper block, \(\na=1\), is  not internally diagonal, so it has to be diagonalised again, using \(U_{1\downarrow}\).
-\beq
-\eta^\dagger_{1\da} &= \cb^\dagger G_e T = -\cb^\dagger\ce \\
-\eta_{1\da} &= -\cb\ce^\dagger \\
-U^\dagger_{1\downarrow} &= \fr{1}{\sqrt 2}(1 - \cb\ce^\dagger + \cb^\dagger\ce)
-\eeq
-Applying \(U_{1\ua}\) on \(\ket{\na=1,\nb,\nc,\nd}\) will produce the eigenblock corresponding to \(\na=1\). Applying \(U_{1\da}\) on this block will then produce the 8 eigenstates corresponding to \(\na=1\). Representing \(\ket{\na=1,\nb,\nc,\nd}\) as \(\ket{\na=1}\),
-\beq
-\ket{\na=1} &\xrightarrow{U_{1\ua}} \fr{1}{\sqrt 2}(\ket{\ua\nb\nc\nd}-\cd^\dagger\ket{0\nb\nc\nd})\\
-            &= \begin{cases}
-                \ket{\ua\da,\ua\da} \\
-                \ket{\ua\da,\ua} \\
-                \ket{\ua\da,\da}-\ket{\da,\ua\da} \\
-                \ket{\ua\da,0}-\ket{\da,\ua} \\
-                \ket{\ua,\ua\da} \\
-                \ket{\ua,\ua} \\
-                \ket{\ua,\da}-\ket{0,\ua\da} \\
-                \ket{\ua,0}-\ket{0,\ua} \\
-            \end{cases} \\
-                    &\xrightarrow{U_{1\da}}
-            \begin{cases}
-                \text{Eigenvectors} & \text{Eigenvalues} \\
-                \ket{\ua\da,\ua\da} & 2U-t \\
-                \ket{\ua\da,\ua}-\ket{\ua,\ua\da} & U+t \\
-                \ket{\ua\da,\da}+\ket{\ua,\da}-\ket{0,\ua\da} & U+t \\
-                \ket{\ua\da,0}-\ket{\da,\ua} -\ket{0,\ua\da}& U+2t \\
-                \ket{\ua,\ua\da}+\ket{\ua\da,\ua}& 2U-t \\
-                \ket{\ua,\ua}& U-t \\
-                \ket{\ua,\da}-\ket{0,\ua\da}-\ket{\ua\da,0}+\ket{\da,\ua}& U \\
-                \ket{\ua,0}-\ket{0,\ua} & U \\
-            \end{cases}
-\eeq
-}
+\begin{gather}
+	\epsilon_d\na=\begin{pmatrix}\epsilon_d & 0 \\ 0 & 0 \end{pmatrix}\\
+	\epsilon_s(\nc+\nd)=\begin{pmatrix}0 & 0 \\ 0 & \epsilon_s \end{pmatrix}\\
+	t(\ca^\dagger\cd+\cd^\dagger\ca)=\begin{pmatrix}0 & t \\ t & 0 \end{pmatrix}\\
+	t^2\nd=0\\
+	\implies E= \begin{pmatrix}\epsilon_d & -t \\ -t & \epsilon_s \end{pmatrix}
+\end{gather}
+The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with eigenvectors \il{t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}}.
+\end{itemize}
+\subsection{\il{N=2}}
+\begin{itemize}
+    \item \il{\na=1: \mathcal{P} = \ket{1100}\bra{1100}+\ket{1001}\bra{1001}}
+	\begin{gather}
+	    U\na\nb=\begin{pmatrix}U& 0 \\ 0 & 0 \end{pmatrix}\\
+	    \epsilon_d(\na+\nb)=\begin{pmatrix}2\epsilon_d & 0 \\ 0 & \epsilon_d \end{pmatrix}\\
+	\epsilon_s(\nc+\nd)=\begin{pmatrix}0 & 0 \\ 0 & \epsilon_s \end{pmatrix}\\
+	t(\cb^\dagger\ce+\ce^\dagger\cb)=\begin{pmatrix}0 & -t \\ -t & 0 \end{pmatrix}\\
+	    t^2(1-\nc)=t^2 a_x^2\\
+	\implies E= \begin{pmatrix}U+2\epsilon_d & 2t \\ 2t & \epsilon_d + \epsilon_s \end{pmatrix}, \begin{pmatrix}U+2\epsilon_d & 0 \\ 0 & \epsilon_d + \epsilon_s \end{pmatrix}
+	\end{gather}
+	The first matrix gives eigenvalues \il{\fr{3\epsilon_d+\epsilon_s+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}} and eigenvectors \\\il{2t\ket{\ua\da,0}+\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}\ket{\ua,\da}}. The second matrix is already diagonal; the eigenvalues are \il{2\epsilon_d+U,\epsilon_s+\epsilon_d}, with eigenvectors \il{\ket{\ua,\da},\ket{\ua\da,0}}.
+    \item \il{\na=0: \mathcal{P}=\ket{0101}\bra{0101}}
+	\begin{gather}
+	\epsilon_d\nb=\epsilon_d\\
+	\epsilon_s(\nc+\nd)=\epsilon_s\\
+	t(\cb^\dagger\ce+\ce^\dagger\cb)=0\\
+	t^2\nc=0\\
+	\implies E= \epsilon_d+\epsilon_s
+	\end{gather}
+	The eigenvalue is \il{\epsilon_d+\epsilon_s} with eigenvector \il{\ket{\da,\da}}.
+    \item \il{\nb=0: \mathcal{P}=\ket{1010}\bra{1010}}
+	\begin{gather}
+	\epsilon_d\na=\epsilon_d\\
+	\epsilon_s(\nc+\nd)=\epsilon_s\\
+	t(\ca^\dagger\cd+\cd^\dagger\ca)=0\\
+	t^2\nc=0\\
+	\implies E= \epsilon_d+\epsilon_s
+	\end{gather}
+	The eigenvalue is \il{\epsilon_d+\epsilon_s} with eigenvector \il{\ket{\ua,\ua}}.
+\end{itemize}
+\subsection{\il{N=3}}
+\begin{itemize}
+    \item \il{\na=1: \mathcal{P}=\ket{1110}\bra{1110}+\ket{1011}\bra{1011}}
+	\begin{gather}
+	    U\na\nb=\begin{pmatrix} U & 0 \\ 0 & 0 \end{pmatrix}\\
+	    \epsilon_d(\na+\nb)=\begin{pmatrix} 2\epsilon_d & 0 \\ 0 & \epsilon_d\end{pmatrix}\\
+	\epsilon_s(\nc+\nd)=\begin{pmatrix} \epsilon_s & 0 \\ 0 & 2\epsilon_s\end{pmatrix}\\
+	t(\cb^\dagger\ce+\ce^\dagger\cb)=\begin{pmatrix} 0 & t \\ t & 0\end{pmatrix}\\
+	    t^2(1-\nc)=0\\
+	    \implies E= \begin{pmatrix} 2\epsilon_d+\epsilon_s+U & -t \\ -t & \epsilon_d+2\epsilon_s\end{pmatrix}
+	\end{gather}
+	The eigenvalues are \il{\fr{3\epsilon_s+\epsilon_d+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}}
+    \item \il{\nb=1: \mathcal{P}=\ket{1101}\bra{1101}+\ket{0111}\bra{0111}}
+	\begin{gather}
+	    \epsilon_d(\na+\nb)=\begin{pmatrix} 2\epsilon_d & 0 \\ 0 & \epsilon_d\end{pmatrix}\\
+	\epsilon_s(\nc+\nd)=\begin{pmatrix} \epsilon_s & 0 \\ 0 & 2\epsilon_s\end{pmatrix}\\
+	t(\cb^\dagger\ce+\ce^\dagger\cb)=\begin{pmatrix} 0 & t \\ t & 0\end{pmatrix}\\
+	    t^2(1-\nc)=0\\
+	    \implies E= \begin{pmatrix} 2\epsilon_d+\epsilon_s & -t \\ -t & \epsilon_d+2\epsilon_s\end{pmatrix}
+	\end{gather}
+\end{itemize}
 
 \end{document}

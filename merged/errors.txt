@@ -1,0 +1,3 @@
+Latexmk: This is Latexmk, John Collins, 18 June 2019, version: 4.65.
+Latexmk: Changing directory to './'
+Latexmk: Undoing directory change

@@ -22,8 +22,7 @@
 \beq
 \ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow} -\mu \hat{N}
 \eeq
-\(a_a\)
-I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site.
+I have 2 lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site.
 
 \subsection{Symmetries of the problem}
 The following operators commute with the Hamiltonian.
@@ -397,7 +396,7 @@ eigenvectors : \(\fr{1}{N_\pm}\rr{t\ket{\uparrow,0}+(\epsilon_d-\lambda_\pm)\ket
               \ket{\uparrow\downarrow,\downarrow} & 2\epsilon_d + \epsilon_s + U & -t \cr \\
               \ket{\downarrow,\uparrow\downarrow} & -t & 2\epsilon_s + \epsilon_d \cr}
 \eeq
-Again setting \(\epsilon_s = \epsilon_d + \fr{U}{2}\), eigenvalues: \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\). \\ Corresponding eigenvectors \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\)
+Again setting \(\epsilon_s = \epsilon_d + \fr{U}{2}\), eigenvalues: \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\). \\ Corresponding eigenvectors \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}+\fr{1}{4}(U\mp\Delta)\ket{\downarrow,\uparrow\downarrow})\)
 
 \subsubsection{\(S_{tot}^z = +1\)}
 \beq
@@ -489,11 +488,11 @@ The final spectrum is already obtained. One final thing to do is to just add the
                                      
                                         \toprule
 
-\multirow{2}{*}{3} & -1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}-\fr{1}{4}(U\pm\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
+\multirow{2}{*}{3} & -1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}+\fr{1}{4}(U\mp\Delta)\ket{\downarrow,\uparrow\downarrow})\) \\
 
  \cmidrule(l){2-4}
 
-& 1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\uparrow}-\fr{1}{4}(U\pm\Delta)\ket{\uparrow,\uparrow\downarrow})\) \\
+& 1 & \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\)  & \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\uparrow}+\fr{1}{4}(U\mp\Delta)\ket{\uparrow,\uparrow\downarrow})\) \\
  \toprule
 
 4                                      & 0                   & 2(\(\epsilon_s+\epsilon_d)+U\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
@@ -1253,6 +1252,7 @@ These have eigenvalues 0.
  \hline
 \end{tabular}
 \end{center}
+
 \section{Applying RG on the Anderson molecule}
 \beq
 \ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\na\nb + \epsilon_d(\na+\nb) + \epsilon_s(\nc+\nd)
@@ -1285,6 +1285,7 @@ t^2\nd &= \qq{E^\prime - \epsilon_d\na-\epsilon_s(\nc+\nd)+t(\ca^\dagger\cd+\cd^
 \subsection{\il{N=1}}
 \begin{itemize}
     \item \il{\na=0: \mathcal{P}=\ket{0100}\bra{0100}+\ket{0001}\bra{0001}}
+
 \begin{gather}
 	\epsilon_d\nb=\begin{pmatrix}\epsilon_d & 0 \\ 0 & 0 \end{pmatrix}\\
 	\epsilon_s(\nc+\nd)=\begin{pmatrix}0 & 0 \\ 0 & \epsilon_s \end{pmatrix}\\
@@ -1292,7 +1293,13 @@ t^2\nd &= \qq{E^\prime - \epsilon_d\na-\epsilon_s(\nc+\nd)+t(\ca^\dagger\cd+\cd^
 	t^2\nc=0\\
 	\implies E= \begin{pmatrix}\epsilon_d & -t \\ -t & \epsilon_s \end{pmatrix}
 \end{gather}
-The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with eigenvectors \il{t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}}, where \\\il{\Delta(t)=2\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}
+
+The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with eigenvectors \il{t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}}, where \\\il{\Delta(t)=2\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}. Now, \il{\eta^\dagger=\cd^\dagger\ca\fr{-t}{E-H_h}}, but since both the basis kets have \il{\na=0}, \il{\eta^\dagger} will act to give 0. Therefore,
+\beq
+	U^\dagger(t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da})=t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}
+\eeq
+This is the final eigenstate.
+
 \item \il{\nb=0: \mathcal{P}=\ket{1000}\bra{1000}+\ket{0010}\bra{0010}}
 
 \begin{gather}
@@ -1302,8 +1309,27 @@ The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with ei
 	t^2\nd=0\\
 	\implies E= \begin{pmatrix}\epsilon_d & -t \\ -t & \epsilon_s \end{pmatrix}
 \end{gather}
-The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with eigenvectors \il{t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}}.
+The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with eigenvectors \il{t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}}.Now, \il{\eta^\dagger=\ce^\dagger\cb\fr{-t}{E-H_h}}, but since both the basis kets have \il{\nb=0}, \il{\eta^\dagger} will act to give 0. Therefore,
+\beq
+	U^\dagger(t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua})=t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}
+\eeq
+This is the final eigenstate.
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+ \hline
+ 	E.V.	&	E.S.	&	\il{\omega}\\
+	\hline
+    \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}      & 
+	\il{t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}} & -- \\
+	\il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}} &
+	\il{t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}} & -- \\
+ \hline
+\end{tabular}
+\end{center}
 \end{itemize}
+
 \subsection{\il{N=2}}
 \begin{itemize}
     \item \il{\na=1: \mathcal{P} = \ket{1100}\bra{1100}+\ket{1001}\bra{1001}}
@@ -1315,7 +1341,18 @@ The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with ei
 	    t^2(1-\nc)=t^2 a_x^2\\
 	\implies E= \begin{pmatrix}U+2\epsilon_d & 2t \\ 2t & \epsilon_d + \epsilon_s \end{pmatrix}, \begin{pmatrix}U+2\epsilon_d & 0 \\ 0 & \epsilon_d + \epsilon_s \end{pmatrix}
 	\end{gather}
-	The first matrix gives eigenvalues \il{\fr{3\epsilon_d+\epsilon_s+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}} and eigenvectors \\\il{2t\ket{\ua\da,0}+\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}\ket{\ua,\da}}. The second matrix is already diagonal; the eigenvalues are \il{2\epsilon_d+U,\epsilon_s+\epsilon_d}, with eigenvectors \il{\ket{\ua,\da},\ket{\ua\da,0}}.
+	The first matrix gives eigenvalues \il{\fr{3\epsilon_d+\epsilon_s+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}} and eigenvectors \\\il{2t\ket{\ua\da,0}+\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}\ket{\ua,\da}}. Now, \il{\eta=\cd^\dagger\ca\fr{-t}{E-H_e}=-\cd^\dagger\ca\hat a_x}. Therefore,
+	\beq
+	U^\dagger\rr{2t\ket{\ua\da,0}+\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}\ket{\ua,\da}} \\
+	= (1-\cd^\dagger\ca\hat a_x)\rr{2t\ket{\ua\da,0}+\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}\ket{\ua,\da}}\\
+	=\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}(\ket{\ua,\da}-\ket{\da,\ua})+2t(\ket{\ua\da,0}-\ket{0,\ua\da})
+	\eeq
+These are the final eigenstates.
+	The second matrix is already diagonal; the eigenvalues are \il{2\epsilon_d+U,\epsilon_s+\epsilon_d}, with eigenvectors \il{\ket{\ua,\da},\ket{\ua\da,0}}. Here, \il{\eta=\cd^\dagger\ca\hat a_x}. Therefore,
+	\beq
+	U^\dagger\{\ket{\ua,\da},\ket{\ua\da,0}\}=(1+\cd^\dagger\ca\hat a_x)\{\ket{\ua,\da},\ket{\ua\da,0}\}=\{\ket{\ua,\da}+\ket{\da,\ua},\ket{\ua\da,0}+\ket{0,\ua\da}\}.
+	\eeq
+	These are the final eigenstates.
     \item \il{\na=0: \mathcal{P}=\ket{0101}\bra{0101}}
 	\begin{gather}
 	\epsilon_d\nb=\epsilon_d\\
@@ -1335,6 +1372,26 @@ The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with ei
 	\end{gather}
 	The eigenvalue is \il{\epsilon_d+\epsilon_s} with eigenvector \il{\ket{\ua,\ua}}.
 \end{itemize}
+For these last two subspaces, \il{U^\dagger = 1 - \eta^\dagger}. For the \il{\na=0} case, \il{\eta^\dagger \propto \cd^\dagger\ca}, but the state has \il{\na=0}. Similarly, for the last case, \il{\eta^\dagger \propto \ce^\dagger\cb}, but the state has \il{\nb=0}. Therefore, the final eigenstates for these cases remain unchanged.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+ \hline
+ 	E.V.	&	E.S.	&	\il{\omega}\\
+	\hline
+	\il{\epsilon_d+\epsilon_s} & 
+	\il{\ket{\da,\da}} & -- \\
+
+	\il{\epsilon_d+\epsilon_s} & 
+	\il{\ket{\ua,\ua}} & -- \\
+
+	\il{2\epsilon_d+U} &	\il{\ket{\ua,\da}+\ket{\da,\ua}}	& -- \\
+	\il{\epsilon_s+\epsilon_d} &	\il{\ket{\ua\da,0}+\ket{0,\ua\da}}& -- \\
+	\il{\fr{3\epsilon_d+\epsilon_s+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}} & \il{\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}(\ket{\ua,\da}-\ket{\da,\ua})+2t(\ket{\ua\da,0}-\ket{0,\ua\da})}& -- \\
+ \hline
+\end{tabular}
+\end{center}
+
 \subsection{\il{N=3}}
 \begin{itemize}
     \item \il{\na=1: \mathcal{P}=\ket{1110}\bra{1110}+\ket{1011}\bra{1011}}
@@ -1346,15 +1403,31 @@ The eigenvalues are \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}, with ei
 	    t^2(1-\nc)=0\\
 	    \implies E= \begin{pmatrix} 2\epsilon_d+\epsilon_s+U & -t \\ -t & \epsilon_d+2\epsilon_s\end{pmatrix}
 	\end{gather}
-	The eigenvalues are \il{\fr{3\epsilon_s+\epsilon_d+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}}
+	The eigenvalues are \il{\fr{3(\epsilon_s+\epsilon_d)+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}} and eigenvectors are \\\il{t\ket{\ua\da,\ua}-\fr{\epsilon_s-\epsilon_d+U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\ua,\ua\da}}.Here, \il{\eta \propto \cd^\dagger\ca}. But, for these states, \il{\nc=1}, hence \il{\cd^\dagger} will give zero. Therefore, the final states remain unchanged.
+
     \item \il{\nb=1: \mathcal{P}=\ket{1101}\bra{1101}+\ket{0111}\bra{0111}}
 	\begin{gather}
+	    U\na\nb=\begin{pmatrix} U & 0 \\ 0 & 0 \end{pmatrix} \\
 	    \epsilon_d(\na+\nb)=\begin{pmatrix} 2\epsilon_d & 0 \\ 0 & \epsilon_d\end{pmatrix}\\
 	\epsilon_s(\nc+\nd)=\begin{pmatrix} \epsilon_s & 0 \\ 0 & 2\epsilon_s\end{pmatrix}\\
-	t(\cb^\dagger\ce+\ce^\dagger\cb)=\begin{pmatrix} 0 & t \\ t & 0\end{pmatrix}\\
-	    t^2(1-\nc)=0\\
-	    \implies E= \begin{pmatrix} 2\epsilon_d+\epsilon_s & -t \\ -t & \epsilon_d+2\epsilon_s\end{pmatrix}
+	t(\ca^\dagger\cd+\cd^\dagger\ca)=\begin{pmatrix} 0 & t \\ t & 0\end{pmatrix}\\
+	    t^2(1-\nd)=0\\
+	    \implies E= \begin{pmatrix} 2\epsilon_d+\epsilon_s+U & -t \\ -t & \epsilon_d+2\epsilon_s\end{pmatrix}
 	\end{gather}
+	The eigenvalues are \il{\fr{3(\epsilon_s+\epsilon_d)+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}} and eigenvectors are \\\il{t\ket{\ua\da,\da}-\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\da,\ua\da}}. Here, \il{\eta \propto \ce^\dagger\cb}. But, for these states, \il{\nd=1}, hence \il{\ce^\dagger} will give zero. Therefore, the final states remain unchanged.
 \end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+ \hline
+ 	E.V.	&	E.S.	&	\il{\omega}\\
+	\hline
+    \il{\fr{3(\epsilon_s+\epsilon_d)+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}}      & 
+	\il{t\ket{\ua\da,\da}-\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\da,\ua\da}} & -- \\
+    \il{\fr{3(\epsilon_s+\epsilon_d)+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}}      & 
+	\il{t\ket{\ua\da,\ua}-\fr{\epsilon_s-\epsilon_d+U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\ua,\ua\da}} & -- \\
+ \hline
+\end{tabular}
+\end{center}
 
 \end{document}

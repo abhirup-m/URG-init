@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+\usepackage{common}
+\setlength{\parindent}{0in}
+\renewcommand\arraystretch{2}
+\newcommand{\un}{\ensuremath{\hat{U}_{N\sigma}}}
+\newcommand{\no}{\ensuremath{\hat{n}_{N\sigma}}}
+\newcommand{\hml}{\ensuremath{\ham_{2N}}}
+\begin{document}
+\begin{itemize}
+\item \il{\mathcal{P}_1=\ket{1010}\bra{1010} (\text{up-polarized}): \ham_{N=2,up}=0}\\
+\item \il{\mathcal{P}_2=\ket{0101}\bra{0101}(\text{down-polarized}): \ham_{N=2,down}=0}\\
+\item \il{\mathcal{P}_3=\ket{1100}\bra{1100}+\ket{1001}\bra{1001}: \ham_{N=2,mix}=\begin{pmatrix}U & 2t & &  \\ 2t & 0 & & \\ & & U & \\ & & & 0\end{pmatrix}}\\
+\beq
+U^\dagger\ham_{N=2,mix}U = \begin{pmatrix} \fr{U+\sqrt{U^2+16t^2}}{2} &&& \\ &\fr{U-\sqrt{U^2+16t^2}}{2}&&\\ &&U&\\&&&0\end{pmatrix}
+\eeq
+\end{itemize}
+Combining,
+\beq
+\ham^{rot}_{N=2} = \begin{pmatrix} 0 &&& & & \\ &  \fr{U+\sqrt{U^2+16t^2}}{2} &&&& \\& &  \fr{U-\sqrt{U^2+16t^2}}{2}&& &\\ & & & U && \\ &&&&0& \\&&&&&0\end{pmatrix} \simeq(\text{large U}) \begin{pmatrix} 0 & & & \\ &  U+\fr{4t^2}{U} && \\& &  -\fr{4t^2}{U} &\\ &&&U&&\\&&&&0&\\&&&&&0 \end{pmatrix}
+\eeq
+\beq
+\ham_{heis} = \begin{pmatrix} 0 & & & \\ &  -2J & J & \\ &J & -2J& \\ & & & 0\end{pmatrix}=\begin{pmatrix} 0 & & & \\ &  2\fr{t^2}{U} & \fr{-t^2}{U} & \\ &\fr{-t^2}{U} & 2\fr{t^2}{U}& \\ & & & 0\end{pmatrix}\ra_{(\text{diagonalising})}\begin{pmatrix} 0 & & & \\ &  -4\fr{t^2}{U} &  & \\ & & 0& \\ & & & 0\end{pmatrix}
+\eeq
+\end{document}

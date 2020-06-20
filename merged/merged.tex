@@ -16,7 +16,7 @@
 \tableofcontents
 \newpage
 
-\section{Exact diagonalization of the two-site Hubbard model}
+\section{Exact diagonalization of the two-site Hubbard model (real space)}
 
 \pp[The Hamiltonian]
 \beq
@@ -253,7 +253,7 @@ The final spectrum is already obtained. One final thing to do is to just add the
 \begin{center}
 \begin{tabular}{@{}ccccc@{}}
 \toprule
-\multicolumn{5}{c}{\bf{Exact Diagonalization of Hubbard Dimer}} \\
+	\multicolumn{5}{c}{\bf{Exact diagonalization of Hubbard dimer (real space)}} \\
 \toprule
 \(\hat{N}\) & \(S_z^{tot}\) & \(\hat{P}\) & E & \(\ket{\Phi}\)\\
 \toprule
@@ -331,11 +331,23 @@ The \il{\ket{\ua\ua}} and \il{\ket{\da\da}} form eigenkets with eigenvalues J ea
     \item \il{\ket{\ua\da}-\ket{\da\ua}: -4J}
 \end{itemize}
 Recognizing \il{J} as \il{-\fr{t^2}{U}}, we get the same spectrum as the lower block.
+
+\subsection{Diagonalization in momentum space}
+It is similarly possible to diagonalise the momentum space Hamiltonian. To write the Hamiltonian in momentum space, note that the allowed values of the momentum are \il{k_n = n\pi = 0,\pi}. Using these modes, the creation and annihilation operators can be Fourier transformed:
+\beq
+c_{1,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}+c_{\pi,\sigma}}\\
+c_{2,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}-c_{\pi,\sigma}}
+\eeq
+In terms of these operators, the Hubbard Hamiltonian becomes
+\beq
+\ham = t\sum_\sigma\rr{\hat n_{\pi,\sigma}-\hat n_{0,\sigma}}+\fr{U}{2}\prod_\sigma \qq{\hat n_{0,\sigma}+\hat n_{\pi,\sigma}} + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
+\eeq
+This Hamiltonian also conserves the total particle number and z-componennt of total spin.
+\subsubsection{N=1}
+\beq
+\ham 
+\eeq
 \section{Exact diagonalization of the Anderson molecule}
-
-
-
-
 \pp[The Hamiltonian]
 \beq
 \ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\hat{n}_{1\uparrow}\hat{n}_{1\downarrow} + \epsilon_s\sum_\sigma\hat n_{2\sigma} + \epsilon_d\sum_\sigma\hat n_{1\sigma}
@@ -499,6 +511,27 @@ The final spectrum is already obtained. One final thing to do is to just add the
 \toprule
 \end{tabular}
 \end{center}
+
+\subsection{The Kondo molecule limit}
+First set \il{\epsilon_d = -\frac{U}{2}}. In the limit of large \il{U},
+\begin{gather}
+	\Delta(\fr{U}{2}, t) = \sqrt{\fr{U^2}{4}+16t^2} \approx \fr{U}{2} + \fr{16t^2}{U}
+\end{gather}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	before & after & states & band \\
+    \hline
+	\(2\epsilon_d+\fr{3}{4}U-\fr{1}{2}\Delta(\fr{U}{2},t)\)& \il{\fr{-8t^2}{U}} & \il{\fr{\ket{\ua,\da}-\ket{\da,\ua}}{\sqrt 2}} & \multirow{2}{*}{lower}  \\
+	\il{2\epsilon_d+\fr{U}{2}} & \il{0} & \il{\ket{\ua,\ua}, \ket{\da,\da}, \fr{\ket{\ua,\da}+\ket{\da,\ua}}{\sqrt 2}} & \\
+    \hline
+	\il{2\epsilon_d+U} & \il{\fr{U}{2}} & \il{\fr{\ket{\ua\da,0}+\ket{0,\ua\da}}{\sqrt 2}} & \multirow{2}{*}{upper}  \\
+	\(2\epsilon_d+\fr{3}{4}U+\fr{1}{2}\Delta(\fr{U}{2},t)\)& \il{\fr{U}{2}+\fr{8t^2}{U}} & \il{\fr{\ket{\ua\da,0}-\ket{0,\ua\da}}{\sqrt 2}}&\\
+    \hline
+\end{tabular}
+\end{center}
+
+
 
 \section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}
 \subsection{The Problem} You have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a fermi gas). Equivalenty, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
@@ -969,7 +1002,7 @@ The eigenstates come out to be (upto a normalizaiton):
         &\ket{01} - \ket{10} \\
         &\ket{11} \\
 \eeq
-\section{Applying the RG on the Hubbard dimer}
+\section{Applying the RG on the Hubbard dimer (real space)}
 \begin{gather}
 \ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\rr{\na\nb+\nc\nd}
 \end{gather}
@@ -1253,6 +1286,161 @@ These have eigenvalues 0.
 \end{tabular}
 \end{center}
 
+\section{Applying the RG on the Hubbard dimer (momentum space)}
+To write the Hamiltonian in momentum space, note that the allowed values of the momentum are \il{k_n = n\pi = 0,\pi}. Using these modes, the creation and annihilation operators can be Fourier transformed:
+\beq
+c_{1,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}+c_{\pi,\sigma}}\\
+c_{2,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}-c_{\pi,\sigma}}
+\eeq
+In terms of these operators, the Hubbard Hamiltonian becomes
+\beq
+\ham = t\sum_\sigma\rr{\hat n_{\pi,\sigma}-\hat n_{0,\sigma}}+\fr{U}{2}\prod_\sigma \qq{\hat n_{0,\sigma}+\hat n_{\pi,\sigma}} + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
+\eeq
+Disentangle \il{\pi\ua}.
+\begin{gather}
+	H_e = Tr\qq{\ham \hat n_{\pi,\ua}} = t\rr{\hat n_{\pi\da}+1-\hat n_{0\ua}-\hat n_{0\da}}+\fr{U}{2}(1+\hat n_{0\ua})(\hat n_{0\da}+\hat n_{\pi\da})\\
+	H_h = Tr\qq{\ham (1-\hat n_{\pi,\ua})} = t\rr{\hat n_{\pi\da}-\hat n_{0\ua}-\hat n_{0\da}}+\fr{U}{2}\hat n_{0\ua}(\hat n_{0\da}+\hat n_{\pi\da})\\
+	T = Tr \qq{\ham_{\pi\ua}} = \fr{U}{2}c_{0\ua}(c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da})\\
+	\eta^\dagger = G_e c^\dagger_{\pi\ua}T= \fr{U}{2}\fr{1}{(E-H_e)\hat n_{\pi\ua}}c^\dagger_{\pi\ua}c_{0\ua}\rr{c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}}\\
+	\eta= G_h T^\dagger c_{\pi\ua}= \fr{U}{2}\fr{1}{(E-H_h)(1-\hat n_{\pi\ua})}\rr{c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}}c^\dagger_{0\ua}c_{\pi\ua}\\
+\end{gather}
+The working equations for the occupied and unoccupied subspaces become (using \il{\eta^\dagger \eta = \hat n} and \il{\eta\eta^\dagger = 1 - \hat n})
+\begin{itemize}
+	\item occupied: \il{(E-H_e)^2 = \fr{U^2}{2}(1-\hat n_{0\ua})\rr{c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}}^2}
+	\item vacant: \il{(E-H_h)^2 = \fr{U^2}{2}\hat n_{0\ua}\rr{c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}}^2}
+\end{itemize}
+The notation to be used is \il{\ket{\hat n_{\pi,\ua},\hat n_{\pi,\da},\hat n_{0,\ua},\hat n_{0,\da}}}.
+\subsection{\il{N=1}}
+\il{\mathcal{P} = \ket{0100}\bra{0100}+\ket{0001}\bra{0001}} ( use vacant equation)
+\begin{gather}
+\hat n_{0\ua} = 0\\
+H_h = t\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\\
+	\implies E = H_h = \pm t
+\end{gather}
+\il{\eta^\dagger \propto c_{0\ua}}. There is no \il{0\ua} electron in this subspace. So \il{U^\dagger = I}. Hence the eigenstates are \il{\ket{\da,0}} and \il{\ket{0,\da}}.\\\\
+\il{\mathcal{P} = \ket{0010}\bra{0010}} ( use vacant equation)
+\begin{gather}
+H_h = -t
+\implies E = H_h = -t
+\end{gather}
+\il{\eta^\dagger \propto c_{\pi\da},c_{0\da}}. No such electron in this subspace. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{0,\ua}}.\\\\
+\il{\mathcal{P} = \ket{1000}\bra{1000}} ( use occupied equation)
+\begin{gather}
+c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}=0\\
+H_e = t	
+\implies E = H_e = t
+\end{gather}
+\il{\eta \propto c_{\pi\da},c_{0\da}}. Hence eigenstate is \il{\ket{\ua,0}}.
+\begin{table}[tbh!]
+	\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		t  & \il{\ket{\da,0}}\\
+		-t & \il{\ket{0,\da}}\\
+		t  & \il{\ket{\ua,0}}\\
+		-t & \il{\ket{0,\ua}}\\
+		\hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+\subsection{\il{N=2}}
+\il{\mathcal{P} = \ket{1010}\bra{1010}} ( use occupied equation)
+\begin{gather}
+1-\hat n_{0\ua} = 0\\
+	H_e = 0\\
+	\implies E = H_e = 0
+\end{gather}
+\il{\eta \propto c^\dagger_{0\ua}}. Since \il{0\ua} is already occupied, \il{U^\dagger = I}. Hence the eigenstates are \il{\ket{\ua\da,\ua}} and \il{\ket{\ua,\ua\da}}.\\\\
+
+\il{\mathcal{P} = \ket{0101}\bra{0101}} (use vacant equation)
+\begin{gather}
+H_h = 0
+\implies E = H_h = 0
+\end{gather}
+\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\ua\da,\da}}.\\\\
+\il{\mathcal{P} = \ket{1001}\bra{1001}} ( use occupied equation)
+
+\begin{gather}
+	(c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da})^2=1\\
+	H_e = \fr{U}{2}
+	\implies E = H_e \pm \fr{U}{2} = U,0
+\end{gather}
+\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\da,\ua\da}}.\\\\
+\il{\mathcal{P} = \ket{1100}\bra{1100}} (use occupied equation)
+
+\begin{gather}
+	(c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da})^2=1\\
+	H_e = 2t + \fr{U}{2}
+	\implies E = H_e \pm \fr{U}{2} = 2t + \fr{U}{2} \pm \fr{U}{2}
+\end{gather}
+But there's a catch here. If I carry out the same calculation using the vacant counterpart to this state (\il{\ket{0011}}), I get a different equation:
+\beq
+E = -2t + \fr{U}{2} \pm \fr{U}{2}
+\eeq
+These two equations should be the same because they are rotated versions of the same eigenstates. That means that we have to take the two states together. The combined equation in this subspace becomes
+\beq
+\fr{U^2}{4}(c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da})^2= \fr{U^2}{4} = \rr{\fr{U \sigma_x}{2}}^2\\
+E = \fr{U}{2}+\begin{pmatrix}2t & 0 \\ 0 & -2t \end{pmatrix} \pm \fr{U}{2} \sigma_x
+\eeq
+Choosing the minus sign (either will work),
+\beq
+E = \fr{U}{2} + \begin{pmatrix} 2t & -\fr{U}{2} \\ -\fr{U}{2} & -2t \end{pmatrix}
+\eeq
+The eigenvalues are \il{\fr{U \pm \Delta(U,t)}{2}}.
+ Eigenstates are \il{\fr{U}{2}\ket{\ua\da,0}+(2t\pm\Delta)\ket{0,\ua\da}} .\\\\
+\begin{table}[tbh!]
+	\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		0,0  & \il{\ket{\ua,\ua},\ket{\da,\da}}\\
+		0,U  & \il{\ket{\ua,\da}+\ket{\da,\ua},\ket{\ua,\da}-\ket{\da,\ua}}\\
+		\il{\fr{U\pm\Delta}{2}}  & \il{\fr{U}{2}\ket{\ua\da,0}+(2t\pm\Delta)\ket{0,\ua\da}}\\
+		\hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+
+\subsection{\il{N=3}}
+\il{\mathcal{P} = \ket{1110}\bra{1110}+\ket{1011}\bra{1011}} ( use occupied equation)
+\begin{gather}
+1-\hat n_{0\ua} = 0\\
+	H_e = \fr{U}{2} + t\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\\
+	\implies E = H_e = U \pm t
+\end{gather}
+\il{\eta \propto c^\dagger_{0\ua}}. Since \il{0\ua} is already occupied, \il{U^\dagger = I}. Hence the eigenstates are \il{\ket{\ua\da,\ua}} and \il{\ket{\ua,\ua\da}}.\\\\
+\il{\mathcal{P} = \ket{1101}\bra{1101}} ( use occupied equation)
+\begin{gather}
+H_e = U+t
+\implies E = H_e = U+t
+\end{gather}
+\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\ua\da,\da}}.\\\\
+\il{\mathcal{P} = \ket{0111}\bra{0111}} ( use vacant equation)
+\begin{gather}
+c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}=0\\
+H_h = U-t	
+\implies E = H_h = U - t
+\end{gather}
+\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\da,\ua\da}}.\\\\
+
+\begin{table}[tbh!]
+	\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		U+t  & \il{\ket{\ua\da,\ua}}\\
+		U-t  & \il{\ket{\ua,\ua\da}}\\
+		U+t  & \il{\ket{\ua\da,\da}}\\
+		U-t  & \il{\ket{\da,\ua\ua}}\\
+		\hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+
+
+
+
 \section{Applying RG on the Anderson molecule}
 \beq
 \ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\na\nb + \epsilon_d(\na+\nb) + \epsilon_s(\nc+\nd)
@@ -1430,4 +1618,188 @@ For these last two subspaces, \il{U^\dagger = 1 - \eta^\dagger}. For the \il{\na
 \end{tabular}
 \end{center}
 
+The route via the URG, on the other hand, proceeds in the following way:
+\newpage
+\section{Comparison of Schrieffer-Wolff transformation and URG}
+\subsection{The Schrieffer-Wolff transformation}
+The general method of Schrieffer-Wolff transformation involves defining a unitarily transformed Hamiltonian
+\beq
+\ham_{eff} = e^{-\lambda {\hat S}} \ham e^{\lambda {\hat S}}
+\eeq
+where \il{\ham = H_0 + V}, \il{H_0} is the diagonal part (with known eigenstates) and \il{V} is the perturbation. Unitarity of the transformation requires \il{{\hat S}^\dagger = -S}. Expanding \il{\ham_{eff}} upto second order in \il{\lambda} gives
+\beq
+\ham_{eff} \simeq H_0 + \lambda\rr{V + \qq{H_0,{\hat S}}} + \fr{\lambda^2}{2}\rr{\qq{V,{\hat S}}+\qq{\qq{H_0,{\hat S}},{\hat S}}}
+\eeq
+To extract the low energy physics, we set the first order term to zero, giving us the condition 
+\beq[swcondition]
+\qq{{\hat S},H_0} = V
+\eeq
+The effective Hamiltonian then simplifies to
+\beq[finalsw]
+\ham_{eff} \simeq H_0 + \fr{1}{2}\qq{V,{\hat S}}
+\eeq
+To find \il{\hat S}, take the the inner product of eq.~\ref{swcondition} between \il{\bra{\alpha}} and \il{\ket{\beta}}. The mentioned kets are eigenstates of \il{H_0} with eigenvalues \il{E_{\alpha,\beta}}. 
+\beq
+V_{\alpha\beta} &= \bra{\alpha}\rr{H_0S-SH_0}\ket{\beta} \\
+\implies S_{\alpha\beta} &= \fr{V_{\alpha\beta}}{E_\alpha-E_\beta}
+\eeq
+Again taking the matrix element of eq.~\ref{finalsw} between \il{\bra{\alpha}} and \il{\ket{\beta}}, we get
+\beq[rotsw]
+\rr{\ham_{eff}}_{\alpha\beta} = E_\alpha\delta_{\alpha\beta} + \fr{1}{2}\sum_\gamma V_{\alpha\gamma}V_{\gamma\beta}\rr{\fr{1}{E_\alpha-E_\gamma}-\fr{1}{E_\gamma-E_\beta}}
+\eeq
+\subsection{Anderson Molecule}
+I take the simplified case where I set the chemical potential \il{\epsilon_s} to 0, and for particle-hole symmetry put \il{\epsilon_d = -\fr{U}{2}}. We then have
+\beq
+H_0 = Un_{1\ua}n_{1\da}-\fr{U}{2}n_1 && V = -t\sum_\sigma\rr{c^\dagger_{1\sigma}c_{2\sigma}+c^\dagger_{2\sigma}c_{1\sigma}}
+\eeq
+Eq.~\ref{finalsw} then gives the SW-transformed Hamiltonian. The journey is shown below.
+
+\begin{gather}
+	\ham(\text{exact}) = \begin{pmatrix}\ket{\ua,\ua} &\ket{\da,\da} &\ket{\ua,\da} & \ket{\da,\ua} &\ket{\ua\da,0} &\ket{0,\ua\da} \\ 
+	2\epsilon_d+\fr{U}{2} &&&&& \\
+	& 2\epsilon_d+\fr{U}{2} &&&&\\
+	&& 2\epsilon_d+\fr{U}{2} && t & -t \\ 
+	&&& 2\epsilon_d+\fr{U}{2} & -t & t \\
+	&& t & -t & 2\epsilon_d+U & \\
+	&& -t & t && 2\epsilon_d+U 
+	\end{pmatrix}\\
+	\Bigg\downarrow {\large{\text{SWT}}}\\
+	\ham_{eff} = \begin{pmatrix} 
+	-\fr{U}{2} &&&&& \\ 
+	& -\fr{U}{2} &&&&\\
+	&& -\fr{U}{2} -\fr{4t^2}{U} & \fr{4t^2}{U} &&& \\ 
+	&& \fr{4t^2}{U} & -\fr{U}{2}-\fr{4t^2}{U} &&& \\
+	&&&& \fr{4t^2}{U} & -\fr{4t^2}{U} \\
+	&&&& -\fr{4t^2}{U} & \fr{4t^2}{U}
+	\end{pmatrix}\\
+	\Bigg\downarrow {\large{\text{diag.}}}\\ 
+	 = \begin{pmatrix}-\fr{U}{2} &&&&& \\ 
+	 & -\fr{U}{2} &&&&\\
+	 && -\fr{U}{2} &&&& \\ 
+	 &&& -\fr{U}{2}-\fr{8t^2}{U} &&& \\
+	 &&&& 0 & \\
+	 &&&&& \fr{8t^2}{U}
+	 \end{pmatrix}
+\end{gather}
+
+In the final matrix, the first four states form the lower band, with energies around \il{-\fr{U}{2}}, and the last two form the upper band, with energies around \il{\fr{U}{2}}. They are separated by a gap of \il{U}. The appearance of \il{\fr{t^2}{U}} means that this is equivalent to performing a second-order perturbation-theoretic calculation in the parameter \il{\fr{t}{U}}.
+\paragraph{The Unitary RG}
+On the other hand, the path via the URG goes as
+\begin{gather*}
+	\ham(\text{exact}) = \begin{pmatrix}\ket{\ua,\ua} &\ket{\da,\da} &\ket{\ua,\da} & \ket{\da,\ua} &\ket{\ua\da,0} &\ket{0,\ua\da} \\ 
+	2\epsilon_d+\fr{U}{2} &&&&& \\
+	& 2\epsilon_d+\fr{U}{2} &&&&\\
+	&& 2\epsilon_d+\fr{U}{2} && t & -t \\ 
+	&&& 2\epsilon_d+\fr{U}{2} & -t & t \\
+	&& t & -t & 2\epsilon_d+U & \\
+	&& -t & t && 2\epsilon_d+U 
+	\end{pmatrix}\\
+		\Bigg\downarrow {\large{\text{URG}}}
+\end{gather*}
+\begin{gather*}
+	\begin{pmatrix} 
+	2\epsilon_d+\fr{U}{2} &&&&& \\
+	& 2\epsilon_d+\fr{U}{2} &&&&\\
+	&& 2\epsilon_d+\fr{U}{2} & 2t &&& \\ 
+	&& 2t & 2\epsilon_d+U &&& \\
+	&&&& 2\epsilon_d+\fr{U}{2} & \\
+	&&&&& 2\epsilon_d+U & 
+	\end{pmatrix}\\
+	\Bigg\downarrow {\large{\epsilon_d = -\fr{U}{2}}\text{  (particle-hole symmetry)}}
+\end{gather*}
+\begin{gather*}
+	= \begin{pmatrix} 
+	-\fr{U}{2} &&&&& \\
+	& -\fr{U}{2} &&&&\\
+	&& -\fr{U}{2} & 2t &&& \\ 
+	&& 2t & 0 &&& \\
+	&&&& -\fr{U}{2} & \\
+	&&&&& 0 & 
+	\end{pmatrix}
+	\longrightarrow\text{diag.}\longrightarrow
+	\begin{pmatrix} 
+	-\fr{U}{2} &&&&& \\
+	& -\fr{U}{2} &&&&\\
+	&& \fr{-U-\Delta(2t)}{4} &&&& \\ 
+	&&& \fr{-U+\Delta(2t)}{4} &&& \\
+	&&&& -\fr{U}{2} & \\
+	&&&&& 0 & 
+	\end{pmatrix}
+\end{gather*}
+
+\begin{itemize}
+\item First thing to note is that the eigenvalues and vectors are preserved in this process, because the transformations are unitary (instead of perturbative). 
+\item Another thing to note is that under the action of the RG, the matrix has become block-diagonalized; there are three \il{2\times 2} disconnected blocks; the top and bottom blocks are diagonal, the middle one is not. \item Thirdly, since the process is non-perturbative, the upper and lower bands are not yet completely manifest; they appear only in the limit of large U. Most of the states are already present though, as seen in the already-diagonal blocks. Applying that limit on the exact eigenstates obtained from the middle block do indeed give the remaining states of the lower and upper bands, that is, \il{-\fr{U}{2}-\fr{8t^2}{U}, \fr{U}{2}+\fr{8t^2}{U}}.
+\end{itemize}
+
+\subsection{Hubbard dimer}
+For the Hubbard dimer,
+\beq
+H_0 = U\sum_in_{i\ua}n_{i\da} && V = -t\sum_\sigma\rr{c^\dagger_{1\sigma}c_{2\sigma}+c^\dagger_{2\sigma}c_{1\sigma}}
+\eeq
+The transformation of the Hubbard Hamiltonian under SWT is shown:
+\begin{gather*}
+H_{\text{exact}} = 
+\begin{pmatrix}
+	0 &&&&&\\
+	& 0&&&&\\
+	&& 0 && -t & t \\
+	&&& 0 & t & -t \\
+	&& -t & t & U & \\
+	&& t & -t && U \\
+\end{pmatrix}
+\xrightarrow {\large{\text{SWT}}}
+\begin{pmatrix}
+	0 &&&&&\\
+	& 0&&&&\\
+	&& -\fr{2t^2}{U} & \fr{2t^2}{U} && \\
+	&& \fr{2t^2}{U} & -\fr{2t^2}{U} && \\
+	&&&& U+\fr{2t^2}{U} & -\fr{2t^2}{U} \\
+	&&&& -\fr{2t^2}{U} & U+\fr{2t^2}{U} \\
+\end{pmatrix}
+\end{gather*}
+\begin{gather*}
+\Bigg\downarrow {\large{\text{diag.}}}\\
+\begin{pmatrix}
+	0 &&&&&\\
+	& 0&&&&\\
+	&& 0 &&& \\
+	&&& -\fr{4t^2}{U} && \\
+	&&&& U & \\
+	&&&&& U+\fr{4t^2}{U} \\
+\end{pmatrix}
+\end{gather*}
+As seen in the previous example as well, the SWT block-diagonalises the Hamiltonian into low energy and high energy blocks. The first two blocks form a lower band, with energies around \il{0}. The third block forms the upper band, after a gap of \il{U}. This is done perturbatively, because contributions of third order \il{\rr{\fr{t}{U}}^3} and higher are dropped.
+
+\paragraph{The Unitary RG} 
+
+\begin{gather*}
+\begin{pmatrix}
+	0 &&&&&\\
+	& 0&&&&\\
+	&& 0 && -t & t \\
+	&&& 0 & t & -t \\
+	&& -t & t & U & \\
+	&& t & -t && U \\
+\end{pmatrix}
+\xrightarrow{\text{URG}}
+\begin{pmatrix}
+	0 &&&&& \\
+	& 0 &&&& \\
+	&& U & 2t && \\
+	&& 2t & 0 && \\
+	&&&& U & \\
+	&&&&& & 0 \\
+\end{pmatrix}
+\xrightarrow{\text{diag.}}
+\begin{pmatrix}
+	0 &&&&& \\
+	& 0 &&&& \\
+	&& \fr{U+\Delta}{2} &&& \\
+	&&& \fr{U-\Delta}{2} && \\
+	&&&& U & \\
+	&&&&& & 0 \\
+\end{pmatrix}
+\end{gather*}
+All orders are kept in the rotation (non-perturbative), as seen in the \il{\Delta = \sqrt{U^2+16t^2}}. Taking the limit \il{U\gg t} produces the bands: \il{\Delta \simeq U+\fr{8t^2}{U}}.
 \end{document}

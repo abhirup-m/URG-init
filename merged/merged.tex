@@ -8,14 +8,26 @@
 \begin{document}
 \begin{titlepage}
 \begin{center}
-\bf{\Large{Title}}\\
+	\vspace{10pt}
+\bf{\Large{Unitary Renormalisation Group Approach to the Hubbard Dimer and Anderson Molecule}}\\
+	\vspace{10pt}
+	\vspace{30pt}
+	\bf{\Large{Abhirup Mukherjee}}\\
+	\vspace{30pt}
+	\bf{\Large{{18IP014}}}
 \end{center}
 
 \end{titlepage}
 
 \tableofcontents
 \newpage
-
+\section{Introduction}
+Condensed matter physics is mostly many-body in nature, and usually deals with huge number of particles. As such, it is usully not possible to obtain exact solutions to problems, and one usually resorts to approximate methods such as perturbative techniques or numerical solutions. The problem with such methods is that they do not always work, some problems might require exact solutions and it is always more appealing to get exact solutions compared to approximate ones. Taking this thread, Anirban Mukherjee in Dr. Siddhartha Lal's group devised an algorithm to unitarily rotate the Hamiltonian progresively into a block-diagonalized form, hence obtaining the eigenvalues and eigenvectors of the problem.
+\paragraph{}
+The way this algorithm workks is the following: first a particular degree of freedom of the problem is chosen. This degree of freedom is then decoupled from the problem by block-diagonalizating the Hamiltonian in the subspace of this degree of freedom. This is achieved by considering transition operators that take states from the occupied part of this degree of freedom to the unoccupied part and vice-versa. These operators are shown to have certain properties which involve the the block-diagonal parts of the Hamiltonian. By using these properties (that is, the equations obtained thereof), these block-diagonal parts can be extracted. Once these parts are extracted, the Hamiltonian is block-diagonal in this degree of freedom, and this can be done recursively to diagonalize the whole Hamiltonian.
+\paragraph{}
+This method has already been applied by Anirban Mukherjee and others in the group to study several problems. The most notable among these is an exact solution of the two-dimensional Hubbard model at half-filling for zero temperature. Since this method is relatively new, my motivation in this project was to get a better feel for this method by solving two models which can be exactly diagonalised, namely the two site Hubbard model and the two site Anderson model. Since the exact solutions of these models are available, the approach via the renormalization group method can be compared with the exact diagonalization process, leading to a better understanding of the proces. A similar approach in this respect is the Schrieffer-Wolff transformation; it also seeks to block-diagonalize the Hamiltonian. Hence it makes sense to draw a comparison between the two methods. The models are analysed using the Schrieffer-Wolff transformation, and the differences between the approaches are noted.
+\newpage
 \section{Exact diagonalization of the two-site Hubbard model (real space)}
 
 \pp[The Hamiltonian]
@@ -347,6 +359,7 @@ This Hamiltonian also conserves the total particle number and z-componennt of to
 \beq
 \ham 
 \eeq
+\newpage
 \section{Exact diagonalization of the Anderson molecule}
 \pp[The Hamiltonian]
 \beq
@@ -532,7 +545,7 @@ First set \il{\epsilon_d = -\frac{U}{2}}. In the limit of large \il{U},
 \end{center}
 
 
-
+\newpage
 \section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}
 \subsection{The Problem} You have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a fermi gas). Equivalenty, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
 \btm
@@ -1002,6 +1015,9 @@ The eigenstates come out to be (upto a normalizaiton):
         &\ket{01} - \ket{10} \\
         &\ket{11} \\
 \eeq
+
+
+\newpage
 \section{Applying the RG on the Hubbard dimer (real space)}
 \begin{gather}
 \ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\rr{\na\nb+\nc\nd}
@@ -1286,6 +1302,8 @@ These have eigenvalues 0.
 \end{tabular}
 \end{center}
 
+
+\newpage
 \section{Applying the RG on the Hubbard dimer (momentum space)}
 To write the Hamiltonian in momentum space, note that the allowed values of the momentum are \il{k_n = n\pi = 0,\pi}. Using these modes, the creation and annihilation operators can be Fourier transformed:
 \beq
@@ -1440,8 +1458,8 @@ H_h = U-t
 
 
 
-
-\section{Applying RG on the Anderson molecule}
+\newpage
+\section{Applying the RG on the Anderson molecule (real-space)}
 \beq
 \ham = -t\sum_\sigma(c_{1\sigma}^\dagger c_{2\sigma}+c_{2\sigma}^\dagger c_{1\sigma})+U\na\nb + \epsilon_d(\na+\nb) + \epsilon_s(\nc+\nd)
 \eeq
@@ -1620,6 +1638,84 @@ For these last two subspaces, \il{U^\dagger = 1 - \eta^\dagger}. For the \il{\na
 
 The route via the URG, on the other hand, proceeds in the following way:
 \newpage
+
+\section{Applying the RG on the Anderson molecule (momentum-space)}
+Similar to the Hubbard molecule, we can transform the Anderson molecule Hamiltonian to the momentum-space by using the Fourier-transformed creation and annihilation operators. Without the translational invariance of the Hubbard dimer, the Hamiltonian is very complicated in the momentum space, so I set \il{\epsilon_s = 0} and \il{\epsilon_d = -\fr{U}{2}}. The momentum-space Hamiltonian then comes out as
+\beq
+\ham = t(n_\pi - n_0) - \fr{U}{8}(n_\ua - n_\da)^2 - \fr{U}{4}(n_\ua - n_\da)(c^\dagger_{0\ua}c_{\pi\ua} + c^\dagger_{\pi\ua}c_{0\ua}- c^\dagger_{0\da}c_{\pi\da}- c^\dagger_{\pi\da}c_{0\da})\\-\fr{U}{8}(c^\dagger_{0\ua}c_{\pi\ua} + c^\dagger_{\pi\ua}c_{0\ua}- c^\dagger_{0\da}c_{\pi\da}- c^\dagger_{\pi\da}c_{0\da})^2
+\eeq
+where \il{n_0 = n_{0\ua}+n_{0\da}} and \il{n_\ua = n_{0\ua}+n_{\pi\ua}}. Disentangling the \il{\pi\ua} degree of freedom:
+\begin{gather}
+H_e = t(1+n_{\pi\da}-n_0) + \fr{U}{4}\qq{n_{0\ua}(n_\da-1-c^\dagger_{0\da}c_{\pi\da}- c^\dagger_{\pi\da}c_{0\da})-1}\\
+H_h = t(n_{\pi\da}-n_0) + \fr{U}{4}\qq{n_{0\ua}n_\da+ (n_{0\ua}-1)(c^\dagger_{0\da}c_{\pi\da}+ c^\dagger_{\pi\da}c_{0\da})-n_0-n_{\pi\da}}
+\end{gather}
+The working equation (using \il{\eta^\dagger\eta = \hat n}) becomes
+\begin{gather}
+(E - H_e)^2 = \rr{\fr{U}{4}}^2(1-n_{0\ua})(n_\da + c^\dagger_{0\da}c_{\pi\da} + c^\dagger_{\pi\da}c_{0\da} - 1)^2\\
+(E^\prime - H_h)^2 = \rr{\fr{U}{4}}^2 n_{0\ua}(n_\da + c^\dagger_{0\da}c_{\pi\da} + c^\dagger_{\pi\da}c_{0\da} - 1)^2
+\end{gather}
+Similarly, the equation for disentangling \il{\pi\da} is
+\begin{gather}
+(E - H_e)^2 = \rr{\fr{U}{4}}^2(1-n_{0\da})(n_\ua + c^\dagger_{0\ua}c_{\pi\ua} + c^\dagger_{\pi\ua}c_{0\ua} - 1)^2\\
+(E^\prime - H_h)^2 = \rr{\fr{U}{4}}^2 n_{0\da}(n_\ua + c^\dagger_{0\ua}c_{\pi\ua} + c^\dagger_{\pi\ua}c_{0\ua} - 1)^2
+\end{gather}
+\newpage
+
+\subsection{N=1}
+\begin{gather}
+\mathcal{P} = \ket{0100}\bra{0100}+\ket{0001}\bra{0001}\\
+n_{0\ua} = 0 \implies \text{RHS} = 0 \\
+	\implies E = H_h = -\fr{U}{4} + \begin{pmatrix} t & -\fr{U}{4} \\ -\fr{U}{4} & t \end{pmatrix}
+\end{gather}
+The eigenvalues are \il{\fr{-U\pm\Delta}{4}}.
+
+\begin{gather}
+\mathcal{P} = \ket{1000}\bra{1000}+\ket{0010}\bra{0010}\\
+n_{0\da} = 0 \implies \text{RHS} = 0 \\
+	\implies E = H_h = -\fr{U}{4} + \begin{pmatrix} t & -\fr{U}{4} \\ -\fr{U}{4} & t \end{pmatrix}
+\end{gather}
+The eigenvalues are \il{\fr{-U\pm\Delta}{4}}.
+\subsection{N=2}
+\begin{gather}
+	\mathcal{P} = \ket{1100}\bra{1100} + \ket{0011}\bra{0011}\\
+	\text{RHS} = \rr{\fr{U}{4}}^2 \\
+	\implies E = H_e \pm \fr{U}{4}\sigma_x = \begin{pmatrix} 2t & \pm\fr{U}{4} \\ \pm\fr{U}{4} & -2t \end{pmatrix} 
+\end{gather}
+
+The eigenvalues are \il{-\fr{U}{4}\pm\fr{\Delta(\fr{U}{2})}{2}}.
+
+\begin{gather}
+	\mathcal{P} = \ket{1001}\bra{1001} + \ket{0110}\bra{0110}\\
+	\text{RHS} = \rr{\fr{U}{4}}^2 \\
+	\implies E = H_e \pm \fr{U}{4}\sigma_x = -\fr{U}{4}+{\begin{pmatrix} & \pm\fr{U}{4} \\ \pm\fr{U}{4} & \end{pmatrix}}
+\end{gather}
+
+The eigenvalues are \il{0,-\fr{U}{2}}.
+
+\begin{gather}
+	\mathcal{P} = \ket{0011}\bra{0011}\\
+	\text{RHS} = 0 \\
+	\implies E = H_e = -\fr{U}{2}
+\end{gather}
+
+\begin{gather}
+	\mathcal{P} = \ket{1010}\bra{1010}\\
+	\text{RHS} = 0 \\
+	\implies E = H_e = -\fr{U}{2}
+\end{gather}
+
+The final eigenvalues are both \il{-\fr{U}{2}}.
+
+\subsection{N=3}
+
+\begin{gather}
+	\mathcal{P} = \ket{1110}\bra{1110}+\ket{1011}\bra{1011}\\
+	\text{RHS} = 0 \\
+	\implies E = H_e = -\fr{U}{4}+\begin{pmatrix} t & \fr{U}{4} \\ \fr{U}{4} & -t \end{pmatrix} 
+\end{gather}
+The eigenvalues are \il{-\fr{U}{4} \pm \fr{\Delta}{4}}.
+
+
 \section{Comparison of Schrieffer-Wolff transformation and URG}
 \subsection{The Schrieffer-Wolff transformation}
 The general method of Schrieffer-Wolff transformation involves defining a unitarily transformed Hamiltonian
@@ -1802,4 +1898,5 @@ As seen in the previous example as well, the SWT block-diagonalises the Hamilton
 \end{pmatrix}
 \end{gather*}
 All orders are kept in the rotation (non-perturbative), as seen in the \il{\Delta = \sqrt{U^2+16t^2}}. Taking the limit \il{U\gg t} produces the bands: \il{\Delta \simeq U+\fr{8t^2}{U}}.
+
 \end{document}

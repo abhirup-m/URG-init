@@ -1,7 +1,7 @@
 \ProvidesPackage{common}
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multirow,xcolor,mathtools,blkarray,booktabs,tcolorbox,caption}
-\usepackage[margin=1.2in]{geometry}
+\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multicol,multirow,mathtools,blkarray,booktabs,tcolorbox,caption}
+\usepackage[top=0mm,right=20mm,left=20mm,bottom=10mm,landscape]{geometry}
 \usepackage[hidelinks]{hyperref}
 \newcommand{\ham}{\ensuremath{\mathcal{H}}}
 \newcommand{\ii}[1]{\ensuremath{\int_{-\infty}^{\infty}{#1}\:}}
@@ -33,8 +33,8 @@
 {\begin{equation} \begin{aligned}}
 {\end{aligned} \end{equation}}
 \DeclareMathOperator{\sech}{sech}
-\newcommand{\beq}[1][]{\begin{equation}\label{#1}\begin{aligned}}
-\newcommand{\eeq}[0]{\end{aligned}\end{equation}}
+\newcommand{\beq}[1][]{\begin{equation*}\label{#1}\begin{aligned}}
+\newcommand{\eeq}[0]{\end{aligned}\end{equation*}}
 \newtheorem{theorem}{Theorem}
 \newcommand{\btm}{\begin{theorem}}
 \newcommand{\etm}{\end{theorem}}

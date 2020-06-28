@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{common}
 \setlength{\parindent}{0in}
-\renewcommand\arraystretch{2}
+\renewcommand\arraystretch{1.9}
 \newcommand{\un}{\ensuremath{\hat{U}_{N\sigma}}}
 \newcommand{\no}{\ensuremath{\hat{n}_{N\sigma}}}
 \newcommand{\hml}{\ensuremath{\ham_{2N}}}
@@ -9,32 +9,53 @@
 \begin{titlepage}
 \begin{center}
 	\vspace{10pt}
-\bf{\Large{Unitary Renormalisation Group Approach to the Hubbard Dimer and Anderson Molecule}}\\
-	\vspace{10pt}
-	\vspace{30pt}
-	\bf{\Large{Abhirup Mukherjee}}\\
-	\vspace{30pt}
-	\bf{\Large{{18IP014}}}
+\bf{\Huge{Unitary Renormalization Group Approach to the Hubbard Dimer and Anderson Molecule}}\\
+	\vspace{50pt}
+	\Large{Author: \bf{Abhirup Mukherjee}}\\
+	\bf{\Large{{(18IP014)}}}\\
+	\vspace{20pt}
+	\Large{Supervisor: \bf{Dr. Siddhartha Lal}}\\
+	\vspace{50pt}
+	\bf{\Large{IPhD. 4\uu{th} Semester Project Report}}\\
+	\vspace{20pt}
+	\bf{\Large{Department of Physical Sciences}}\\
+	\vspace{20pt}
+	\bf{\Large{Indian Institute of Science Education and Research, Kolkata}}\\
+
 \end{center}
 
 \end{titlepage}
 
+\section*{Acknowledgements}
+This project would not have been possible without the help of several people. First and foremost, I would like to thank my supervisor, Dr. Siddhartha Lal, for allowing me to join his group and work on this project as a way to familiarize myself with the method demonstrated in this report, and of course for designing the project itself. A huge thank you also goes to Anirban Mukherjee, my senior in the group, for helping me out when I was starting with the method. I also thank Siddhartha Patra, another senior in the group, for discussions on some topics I was finding hard to understand. I also want to acknowledge the fruitful discussions I had with my friend at IIT Bombay, Dibyanandan Bhowmick.
+\newpage
+\section*{Abstract}
+The power of exact analytical methods over numerical or approximate methods is that they give more comprehensive answers and explanations. Take for example the difference between a wavefunction obtained from exact diagonalization and a plot of the wavefunction obtained from numerical analysis. While the latter gives you an idea, the former gives you the complete thing. In this report, I follow a similar theme: I explore an exact method in a condensed matter setting. This exact method (a unitary renormalization group method) is used to solve two toy models - the Hubbard dimer and Anderson molecule). The focus is to showcase this method rather than learning about the models, because the models are exactly diagonalizable anyway. It is seen that the solutions the URG match exactly with the exact diagonalization results. A comparison is also drawn with a similar block-diagonalization method- the Schrieffer-Wolff transformation. It is seen that while the SW transformation is perturbative and one must truncate the expansion at some point to get something out of it, the URG is exact.
+\newpage
+
 \tableofcontents
+
 \newpage
 \section{Introduction}
-Condensed matter physics is mostly many-body in nature, and usually deals with huge number of particles. As such, it is usully not possible to obtain exact solutions to problems, and one usually resorts to approximate methods such as perturbative techniques or numerical solutions. The problem with such methods is that they do not always work, some problems might require exact solutions and it is always more appealing to get exact solutions compared to approximate ones. Taking this thread, Anirban Mukherjee in Dr. Siddhartha Lal's group devised an algorithm to unitarily rotate the Hamiltonian progresively into a block-diagonalized form, hence obtaining the eigenvalues and eigenvectors of the problem.
+Condensed matter physics is mostly many-body in nature, and usually deals with huge number of particles. As such, it is usually not possible to obtain exact solutions to problems, and one usually resorts to approximate methods such as perturbative techniques or numerical solutions. The problem with such methods is that they do not always work, some problems might require exact solutions and it is always more appealing to get exact solutions compared to approximate ones. Taking this thread, Anirban Mukherjee in Dr. Siddhartha Lal's group devised an algorithm to unitarily rotate the Hamiltonian progressively into a block-diagonalized form, hence obtaining the eigenvalues and eigenvectors of the problem.
 \paragraph{}
-The way this algorithm workks is the following: first a particular degree of freedom of the problem is chosen. This degree of freedom is then decoupled from the problem by block-diagonalizating the Hamiltonian in the subspace of this degree of freedom. This is achieved by considering transition operators that take states from the occupied part of this degree of freedom to the unoccupied part and vice-versa. These operators are shown to have certain properties which involve the the block-diagonal parts of the Hamiltonian. By using these properties (that is, the equations obtained thereof), these block-diagonal parts can be extracted. Once these parts are extracted, the Hamiltonian is block-diagonal in this degree of freedom, and this can be done recursively to diagonalize the whole Hamiltonian.
+The way this algorithm works is the following: first a particular degree of freedom of the problem is chosen. This degree of freedom is then decoupled from the problem by block-diagonalization  the Hamiltonian in the subspace of this degree of freedom. This is achieved by considering transition operators that take states from the occupied part of this degree of freedom to the unoccupied part and vice-versa. These operators are shown to have certain properties which involve the block-diagonal parts of the Hamiltonian. By using these properties (that is, the equations obtained thereof), these block-diagonal parts can be extracted. Once these parts are extracted, the Hamiltonian is block-diagonal in this degree of freedom, and this can be done recursively to diagonalize the whole Hamiltonian.
 \paragraph{}
-This method has already been applied by Anirban Mukherjee and others in the group to study several problems. The most notable among these is an exact solution of the two-dimensional Hubbard model at half-filling for zero temperature. Since this method is relatively new, my motivation in this project was to get a better feel for this method by solving two models which can be exactly diagonalised, namely the two site Hubbard model and the two site Anderson model. Since the exact solutions of these models are available, the approach via the renormalization group method can be compared with the exact diagonalization process, leading to a better understanding of the proces. A similar approach in this respect is the Schrieffer-Wolff transformation; it also seeks to block-diagonalize the Hamiltonian. Hence it makes sense to draw a comparison between the two methods. The models are analysed using the Schrieffer-Wolff transformation, and the differences between the approaches are noted.
+This method has already been applied by Anirban Mukherjee and others in the group to study several problems. The most notable among these is an exact solution of the two-dimensional Hubbard model at half-filling for zero temperature. Since this method is relatively new, my motivation in this project was to get a better feel for this method by solving two models which can be exactly diagonalised, namely the two site Hubbard model and the two site Anderson model. Since the exact solutions of these models are available, the approach via the renormalization group method can be compared with the exact diagonalization process, leading to a better understanding of the process. A similar approach in this respect is the Schrieffer-Wolff transformation; it also seeks to block-diagonalize the Hamiltonian. Hence it makes sense to draw a comparison between the two methods. The models are analysed using the Schrieffer-Wolff transformation, and the differences between the approaches are noted.
+\paragraph{}
+Since this method uses the properties of the Fermionic creation and annihilation operators, this method can be used only on Fermionic Hamiltonians. In the first sections, I solve the two models using exact diagonalization. The first model is the Hubbard dimer. It consists of two lattice sites, with hopping between them parameterised by a hopping strength \il{t}, and an on-site repulsion for both sites, parameterised by \il{U}. This Hamiltonian is solved by making use of the symmetries of the system: the total number operator \il{\hat n = \sum_{i,\sigma} n_{i\sigma}}, the total magnetization operator \il{\hat S_z = \sum_{i}(n_{i\ua}-n_{i\da})} and the site parity operator \il{\hat P: c_1 \leftrightarrow c_2} commute with the Hamlitonian. These commutations are proved, and then used to diagonalize the Hamiltonian in the subspace of the eigenstates of the operators. Similarly, the Anderson molecule is a two site version of the Anderson impurity model. One site represents the d-orbital impurity site, with site energy \il{\epsilon_d}, and the other site represents the conduction band, with energy (and hence chemical potential, because there is just the one conduction band electron) \il{\epsilon_s}. There is hopping between them, with strength \il{t}, and an on-site repulsion on the impurity site only, with a penalty of \il{U}. This model is also solved similar to the Hubbard dimer, by making use of the symmetries. After solving the models, I show that they lead to other models in limit of high \il{U}: the Hubbard dimer goes to the Mott insulator and the Anderson molecule goes to the Kondo molecule.
+
+\paragraph{}
+Next, I derive the formalism of the unitary renormalization group method used here. Starting from a general Fermionic Hamiltonian, a transition operator \il{\eta} is defined, and the block-diagonalized Hamiltonian is found to obey certain relations. These relations will ultimately be used to block diagonalize the Hamiltonians. I apply the URG both in position and momentum space. The results match with the ones obtained from exact diagonalization, because the URG uses unitary rotations which should keep the eigenvalues and vectors intact. Finally, I show the method of Schrieffer-Wolff transformation very briefly on both the models, focussing on the changes made to the Hamiltonian along the way. The changes are in some sense similar since both the methods (SW and URG) strive to block-diagonalise the Hamiltonian, but the SW transformation enforces the limit of large \il{U}, because only terms up to second order are kept, otherwise the method is not tractable, while the URG does not drop any order.
+
 \newpage
-\section{Exact diagonalization of the two-site Hubbard model (real space)}
+\section{Exact diagonalization of the Hubbard dimer (real space)}
 
 \pp[The Hamiltonian]
 \beq
-\ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow} -\mu \hat{N}
+\ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}
 \eeq
-I have 2 lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site.
+I have 2 lattice sites, indexed by 1 and 2, occupied by electrons. \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers.  \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the penalty incurred in energy when two electrons occupy the same site.
 
 \subsection{Symmetries of the problem}
 The following operators commute with the Hamiltonian.
@@ -51,7 +72,7 @@ The last term in the Hamiltonian is the number operator itself. Ignoring that, t
 &= \delta_{i,2}\:\C{1}{\sigma} \cc{\c{2}{\sigma},\C{2}{\sigma^\prime}}\c{2}{\sigma^\prime} - \delta_{i,1}\C{1}{\sigma^\prime}\cc{\c{1}{\sigma^\prime},\C{1}{\sigma}}\c{2}{\sigma} \\
 &= \delta_{\sigma,\sigma^\prime}\C{1}{\sigma}\c{1}{\sigma}\rr{\delta_{i,2} - \delta_{i,1}}
 \eeq
-The third line follows because the electrons on different sites are distinguishable and hence, the \it{creation and anhillation operators of different sites will commute among themselves}. Therefore,
+The third line follows because the electrons on different sites are distinguishable and hence, the \it{creation and annihilationihilation operators of different sites will commute among themselves}. Therefore,
 \beq
 \qq{\C{1}{\sigma}\c{2}{\sigma}, \hat{N}} &= \sum_{i\sigma^\prime}\qq{\C{1}{\sigma}\c{2}{\sigma},\hat{n}_{i\sigma^\prime}} = \C{1}{\sigma}\c{1}{\sigma}\sum_{i=\{1,2\}}\rr{\delta_{i,2} - \delta_{i,1}} = 0
 \eeq
@@ -115,21 +136,24 @@ Since any general wavefunction can be expanded in terms of these wavefunctions a
 \end{proof}
 \end{enumerate}
 \subsection{Partitioning the Hilbert space}
-THe Hamiltonian commutes with the three operators. This means that is possible to simultaneously diagonalize these four operators: \(\ham, \hat{N}, S_z^{tot}, \hat{P}\). I will be able to label the eigenstates of the total Hamiltonian using the eigenvalues of these operatos. First take the total number operator. \(\hat{N}\) can take four values for a two-site system, 1 through 4. The eigenstates labelled by a particular number, say N=2 will be orthogonal to the eigenstates labelled by another number, say N=4. This means each eigenvalue of \(\hat{N}\) will have a distinct subspace orthogonal to the other values of \(\hat{N}\). I will be able to diagonalize each such subspace independently of each other, because they will not have any overlap. This feature enables us to block-diagonalize the total Hamiltonian into four blocks, each block belonging to each value \(\hat{N}\). 
 
-Inside each block, I will be able to repeat the procedure by next using the eigenvalues of \(S_z^{tot}\). Each block of the Hamiltonian will again break up to smaller blocks for each value of the total magnetization. The eigenvalues of parity operator provide a further partitioning of the blocks of magnetization.
+The Hamiltonian commutes with the three operators. This means that is possible to simultaneously diagonalize these four operators: \(\ham, \hat{N}, S_z^{tot}, \hat{P}\). I will be able to label the eigenstates of the total Hamiltonian using the eigenvalues of these operators. First take the total number operator. \(\hat{N}\) can take four values for a two-site system, 1 through 4. The eigenstates labelled by a particular number, say N=2 will be orthogonal to the eigenstates labelled by another number, say N=4. This means each eigenvalue of \(\hat{N}\) will have a distinct subspace orthogonal to the other values of \(\hat{N}\). I will be able to diagonalize each such subspace independently of each other, because they will not have any overlap. This feature enables us to block-diagonalize the total Hamiltonian into four blocks, each block belonging to each value \(\hat{N}\). 
 
-From this point, all the states I will work with will necessarily be eigenfunctions of \(\hat{N}\), so it doesn't make sense to keep the last term in the Hamiltonian, \(\mu \hat{N}\). I redefine the Hamiltonian by absorbing this term: \(\ham \rightarrow \ham + \mu \hat{N} = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}\). This will keep the eigenvectors unaltered, but will increase the eigenvalues by \(\mu N\), where N is the number of particles in the eigenstate I are considering.
+\paragraph{}
+Inside each block, I will be able to repeat the procedure by next using the eigenvalues of \(S_z^{tot}\). Each block of the Hamiltonian will again break up to smaller blocks for each value of the total magnetization. The eigenvalues of parity operator provide a further partitioning of the blocks of magnetization. For writing the state kets, I use the following notation: \(\ket{\uparrow,\downarrow}\) means electron on site 1 has spin up and that on site 2 has spin-down. \(\ket{\downarrow, 0}\) means electron on site 1 has spin-down and there is no electron on site 2.
 
 \subsection{N = 1}
-For writing the state kets, I use the following notation: \(\ket{\uparrow,\downarrow}\) means electron on site 1 has spin up and that on site 2 has spin-down. \(\ket{\downarrow, 0}\) means electron on site 1 has spin-down and there is no electron on site 2. 
+
 \pp For one electron on two lattice sites, I start by writing down the eigenstates of \(S_z^{tot}\). For odd number of electrons, zero magnetization is not possible. So,
 \begin{itemize}
-\item \(S_z^{tot} = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
-\item \(S_z^{tot} = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
+	\item[$\ast$] \(S_z^{tot} = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
+	\item[$\ast$] \(S_z^{tot} = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
 \end{itemize}
-Each eigenvalue will have a separate subspace and can be separately diagonalized. I need to find the matrix elements of \(\ham\) in these eigenkets. Since there is no possibility of two electrons occupying same site, I ignore the \(U\)-term for the time being. 
-\subsubsection{\(S_z^{tot} = -1\)}
+Each eigenvalue will have a separate subspace and can be separately diagonalized. I need to find the matrix elements of \(\ham\) in these eigenkets. Since there is no possibility of two electrons occupying same site, I ignore the \(U\)-term for the time being.
+
+\begin{itemize}
+
+\item{\(S_z^{tot} = -1\)}
 Let us first see the action of the Hamiltonian on the eigenfunctions with \(S_z^{tot} = -1\).
 \beq
 \ham\ket{\downarrow,0} = -t \C{2}{\downarrow}\c{1}{\downarrow}\ket{\downarrow,0} = -t\ket{0,\downarrow} \\
@@ -147,7 +171,8 @@ The eigenvalues and eigenvectors of this matrix are \(\frac{\ket{\downarrow,0} \
 \hat{P}\rr{\ket{\downarrow,0} + \ket{0,\downarrow}} = \ket{0,\downarrow} + \ket{\downarrow,0} \implies \hat{P} = 1 \\
 \hat{P}\rr{\ket{\downarrow,0} - \ket{0,\downarrow}} = \ket{0,\downarrow} - \ket{\downarrow,0} \implies \hat{P} = -1
 \eeq
-\subsubsection{\(S_z^{tot} = +1\)}
+
+\item{\(S_z^{tot} = +1\)}
 Now I look at the spin-up states.
 \beq
 \ham\ket{\uparrow,0} = -t \C{2}{\uparrow}\c{1}{\uparrow}\ket{\uparrow,0} = -t\ket{0,\uparrow} \\
@@ -160,12 +185,13 @@ Clearly, this gives the same matrix as the spin-down states:
               \ket{0,\uparrow} & -t & 0 \cr}
 \eeq
 and hence similar eigenfunctions: \(\frac{\ket{\uparrow,0} \pm \ket{0,\uparrow}}{\sqrt{2}}\), with eigenvalues \(\mp t\).
-\subsection{N=3}
+\end{itemize}
+
+\subsection{N = 3}
 I once again write down the eigenstates of \(S_z^{tot}\), this time with three electrons.
 \begin{itemize}
 \item \(S_z^{tot} = -1\): \(\ket{\uparrow\downarrow,\downarrow}, \ket{\downarrow,\uparrow\downarrow}\)
-\item \(S_z^{tot} = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
-\subsubsection{\(S_z^{tot} = -1\)}
+
 \beq
 \ham \ket{\uparrow\downarrow,\downarrow} = -t \C{2}{\uparrow}\c{1}{\uparrow}\ket{\uparrow\downarrow,\downarrow} + U\ket{\uparrow\downarrow,\downarrow} = -t\ket{\downarrow,\uparrow\downarrow} + U\ket{\uparrow\downarrow,\downarrow} \\
 \ham \ket{\downarrow,\uparrow\downarrow} = -t \C{1}{\uparrow}\c{2}{\uparrow}\ket{\downarrow,\uparrow\downarrow} + U\ket{\downarrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\downarrow} + U\ket{\downarrow,\uparrow\downarrow}
@@ -177,13 +203,15 @@ I once again write down the eigenstates of \(S_z^{tot}\), this time with three e
 \eeq
 This matrix has eigenvalues \(U \mp t\), and corresponding eigenvectors \(\frac{\ket{\uparrow\downarrow,\downarrow} \pm \ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\)
 
-\subsubsection{\(S_z^{tot} = +1\)}
+\item \(S_z^{tot} = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
+
 \beq
 \ham \ket{\uparrow\downarrow,\uparrow} = -t \C{2}{\downarrow}\c{1}{\downarrow}\ket{\uparrow\downarrow,\uparrow} + U\ket{\uparrow\downarrow,\uparrow} = t \C{2}{\downarrow}\c{1}{\downarrow}\ket{\downarrow\uparrow,\uparrow} + U\ket{\uparrow\downarrow,\uparrow} \\
 =t \ket{\uparrow,\downarrow\uparrow} + U\ket{\uparrow\downarrow,\uparrow} = -t \ket{\uparrow,\uparrow\downarrow} + U\ket{\uparrow\downarrow,\uparrow}\\
 \ham \ket{\uparrow,\uparrow\downarrow} = -t \C{1}{\downarrow}\c{2}{\downarrow}\ket{\uparrow,\uparrow\downarrow} + U\ket{\uparrow,\uparrow\downarrow} = t \C{1}{\downarrow}\c{2}{\downarrow}\ket{\uparrow,\downarrow\uparrow} + U\ket{\uparrow,\uparrow\downarrow} \\
 =t \ket{\downarrow\uparrow,\uparrow} + U\ket{\uparrow,\uparrow\downarrow} = -t \ket{\uparrow\downarrow,\uparrow} + U\ket{\uparrow,\uparrow\downarrow}\\
 \eeq
+
 \beq
 \bordermatrix{~ & \ket{\uparrow\downarrow,\uparrow} & \ket{\uparrow,\uparrow\downarrow} \cr
               \ket{\uparrow\downarrow,\uparrow} & U & -t \cr \\
@@ -191,26 +219,28 @@ This matrix has eigenvalues \(U \mp t\), and corresponding eigenvectors \(\frac{
 \eeq
 \end{itemize}
 This matrix has eigenvalues \(U \mp t\), and corresponding eigenvectors \(\frac{\ket{\uparrow\downarrow,\uparrow} \pm \ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\)
-\subsection{N=4}
+
+\subsection{N = 4}
 With four electrons, the only possible state is \(\ket{\uparrow\downarrow,\uparrow\downarrow}\). Its easy to find the eigenvalue. Since all states are filled, no hopping can take place, so the hopping term is zero. Therefore,
 \beq
 \ham \ket{\uparrow\downarrow,\uparrow\downarrow} = 2U \ket{\uparrow\downarrow,\uparrow\downarrow}
 \eeq
 So, \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) is an eigenvector with eigenvalue \(2U\).
-\subsection{N=2}
+
+\subsection{N = 2}
+
 This is the eigenvalue that has the largest subspace.
 \begin{itemize}
 \item \(S_z^{tot} = -1\): \(\ket{\downarrow,\downarrow}\)
 \item \(S_z^{tot} = +1\): \(\ket{\uparrow,\uparrow}\)
-\item \(S_z^{tot} = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
-\end{itemize}
 
-\subsubsection{\(S_z^{tot} = \pm 1\)}
 These two subspaces have a single state each, so theya are obviously eigenstates. Since they both have identical spins on both sites, the hopping term is 0, and the \(U\)-term is also zero because of single occupation. As a result, they both have zero eigenvalue
 \beq
 \ham \ket{\downarrow,\downarrow} = \ham \ket{\uparrow,\uparrow} = 0
 \eeq
-\subsubsection{\(S_z^{tot} = 0\)}
+
+\item \(S_z^{tot} = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
+
 This subspace has four eigenvectors,
 \beq
 \ket{\uparrow,\downarrow},\;\:\;\:\;\:\ket{\downarrow,\uparrow},\;\:\;\:\;\:\ket{0,\uparrow\downarrow},\;\:\;\:\;\:\ket{\uparrow\downarrow,0}
@@ -258,10 +288,10 @@ This subspace is not automatically diagonal, but is easily diagonalized. The eig
 &\frac{1}{N_\pm}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U\pm\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}} \\
 &N_{\pm} = \cc{\frac{U}{2}\qq{U\pm\sqrt{U^2+16t^2}}+16t^2}^\frac{1}{2}
 \eeq
-
 with eigenvalues \(\frac{U\pm\sqrt{U^2+16 t^2}}{2}\) respectively.
+\end{itemize}
+
 \subsection{The total spectrum}
-The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
 \begin{center}
 \begin{tabular}{@{}ccccc@{}}
 \toprule
@@ -270,21 +300,21 @@ The final spectrum is already obtained. One final thing to do is to just add the
 \(\hat{N}\) & \(S_z^{tot}\) & \(\hat{P}\) & E & \(\ket{\Phi}\)\\
 \toprule
 0 & - & - & 0 & \(\ket{0,0}\) \\ \toprule
-\multicolumn{1}{c}{\multirow{4}{*}{1}} & \multirow{2}{*}{-1} & 1  & -t-\(\mu\)  & \(\frac{\ket{\downarrow,0}+\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-\multicolumn{1}{c}{}                   &                     & -1 & t-\(\mu\)   & \(\frac{\ket{\downarrow,0}-\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){2-5}
-\multicolumn{1}{c}{}                   & \multirow{2}{*}{1}  & 1  & -t-\(\mu\)  & \(\frac{\ket{\uparrow,0}+\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-\multicolumn{1}{c}{}                   &                     & -1 & t-\(\mu\)   & \(\frac{\ket{\uparrow,0}-\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \toprule
-\multirow{6}{*}{2}                     & -1                  & 1  & 0-\(2\mu\)   & \(\ket{\downarrow,\downarrow}\)  \\ \cmidrule(l){2-5} 
-                                       & \multirow{4}{*}{0}  & 1  & 0-\(2\mu\)   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & 1  & U-\(2\mu\)   & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_+}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U+\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & \(\frac{U-\sqrt{U^2+16 t^2}}{2}\)-\(2\mu\)    & \(\frac{1}{N_-}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U-\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){2-5} 
-                                       & 1                   & 1  & 0-\(2\mu\)   & \(\ket{\uparrow,\uparrow}\) \\ \toprule
-\multirow{4}{*}{3}                     & \multirow{2}{*}{-1} & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}+\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & U+t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\downarrow}-\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){2-5}
-                                       & \multirow{2}{*}{1}  & 1  & U-t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\uparrow}+\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
-                                       &                     & -1 & U+t-\(3\mu\) & \(\frac{\ket{\uparrow\downarrow,\uparrow}-\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \toprule
-4                                      & 0                   & 1  & 2U-\(4\mu\)  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
+\multicolumn{1}{c}{\multirow{4}{*}{1}} & \multirow{2}{*}{-1} & 1  & -t  & \(\frac{\ket{\downarrow,0}+\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+\multicolumn{1}{c}{}                   &                     & -1 & t   & \(\frac{\ket{\downarrow,0}-\ket{0,\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){2-5}
+\multicolumn{1}{c}{}                   & \multirow{2}{*}{1}  & 1  & -t  & \(\frac{\ket{\uparrow,0}+\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+\multicolumn{1}{c}{}                   &                     & -1 & t   & \(\frac{\ket{\uparrow,0}-\ket{0,\uparrow}}{\sqrt{2}}\)  \\ \toprule
+\multirow{6}{*}{2}                     & -1                  & 1  & 0   & \(\ket{\downarrow,\downarrow}\)  \\ \cmidrule(l){2-5} 
+                                       & \multirow{4}{*}{0}  & 1  & 0   & \(\frac{\ket{\uparrow,\downarrow}+\ket{\downarrow,\uparrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & 1  & U   & \(\frac{\ket{\uparrow\downarrow,0}+\ket{0,\uparrow\downarrow}}{\sqrt{2}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U+\sqrt{U^2+16 t^2}}{2}\)    & \(\frac{1}{N_+}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U+\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & \(\frac{U-\sqrt{U^2+16 t^2}}{2}\)    & \(\frac{1}{N_-}\cc{2t \frac{(\ket{\uparrow,\downarrow}-\ket{\downarrow,\uparrow})}{\sqrt{2}} + \frac{U-\sqrt{U^2+16 t^2}}{2} \frac{(\ket{\uparrow\downarrow,0}-\ket{0,\uparrow\downarrow})}{\sqrt{2}}}\)  \\ \cmidrule(l){2-5} 
+                                       & 1                   & 1  & 0   & \(\ket{\uparrow,\uparrow}\) \\ \toprule
+\multirow{4}{*}{3}                     & \multirow{2}{*}{-1} & 1  & U-t & \(\frac{\ket{\uparrow\downarrow,\downarrow}+\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & U+t & \(\frac{\ket{\uparrow\downarrow,\downarrow}-\ket{\downarrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){2-5}
+                                       & \multirow{2}{*}{1}  & 1  & U-t & \(\frac{\ket{\uparrow\downarrow,\uparrow}+\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \cmidrule(l){3-5} 
+                                       &                     & -1 & U+t & \(\frac{\ket{\uparrow\downarrow,\uparrow}-\ket{\uparrow,\uparrow\downarrow}}{\sqrt{2}}\) \\ \toprule
+4                                      & 0                   & 1  & 2U  & \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) \\
 \toprule
 \end{tabular}
 \end{center}
@@ -345,20 +375,48 @@ The \il{\ket{\ua\ua}} and \il{\ket{\da\da}} form eigenkets with eigenvalues J ea
 Recognizing \il{J} as \il{-\fr{t^2}{U}}, we get the same spectrum as the lower block.
 
 \subsection{Diagonalization in momentum space}
-It is similarly possible to diagonalise the momentum space Hamiltonian. To write the Hamiltonian in momentum space, note that the allowed values of the momentum are \il{k_n = n\pi = 0,\pi}. Using these modes, the creation and annihilation operators can be Fourier transformed:
+Since I will also need the momentum space eigenvectors later, I am briefly showing the process here. The process is simpler compared to the real space process, because of the translational invariance. It is similarly possible to diagonalise the momentum space Hamiltonian. To write the Hamiltonian in momentum space, note that the allowed values of the momentum are \il{k_n = n\pi = 0,\pi}. Using these modes, the creation and annihilation operators can be Fourier transformed:
 \beq
 c_{1,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}+c_{\pi,\sigma}}\\
 c_{2,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}-c_{\pi,\sigma}}
 \eeq
 In terms of these operators, the Hubbard Hamiltonian becomes
 \beq
-\ham = t\sum_\sigma\rr{\hat n_{\pi,\sigma}-\hat n_{0,\sigma}}+\fr{U}{2}\prod_\sigma \qq{\hat n_{0,\sigma}+\hat n_{\pi,\sigma}} + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
+\ham = t\rr{\hat n_{\pi}-\hat n_{0}}+\fr{U}{2}n_\ua n_\da + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
 \eeq
-This Hamiltonian also conserves the total particle number and z-componennt of total spin.
-\subsubsection{N=1}
+where \il{n_\pi = \sum_\sigma n_{\pi\sigma}}. This Hamiltonian also conserves the total particle number and z-component of total spin. The notation used is \il{\ket{n_{\pi\ua}n_{\pi\da},n_{0\ua}n_{0\da}}}.
+
+\paragraph{N=1}
+
 \beq
-\ham 
+\ham \ket{\ua,0} &= t \ket{\ua,0}\\ 
+\ham \ket{\da,0} &= t \ket{\da,0}\\ 
+\ham \ket{0,\ua} &= -t\ket{0,\ua}\\ 
+\ham \ket{0,\da} &= -t\ket{0,\da}\\ 
 \eeq
+
+\paragraph{N=2}
+
+\beq
+\ham \ket{\ua,\ua} &= 0\ket{\ua,\ua}\\
+\ham \ket{\da,\da} &= 0\ket{\da,\da}\\
+\ham \ket{\ua,\da} &= \fr{U}{2}\ket{\ua,\da} - \fr{U}{2}\ket{\da,\ua}\\
+\ham \ket{\da,\ua} &= \fr{U}{2}\ket{\da,\ua} - \fr{U}{2}\ket{\ua,\da}\\
+\fr{U}{2}\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} &\implies 0,\fr{U}{2} \implies \ket{\ua,\da}\pm\ket{\da,\ua}\\
+\ham \ket{\ua\da,0} &= (2t + \fr{U}{2})\ket{\ua\da,0} - \fr{U}{2}\ket{0,\ua\da}\\
+\ham \ket{0,\ua\da} &= (-2t + \fr{U}{2})\ket{0,\ua\da} - \fr{U}{2}\ket{\ua\da,0}\\
+\fr{U}{2}+\begin{pmatrix} 2t & -\fr{U}{2} \\ -\fr{U}{2} & -2t \end{pmatrix} &\implies \fr{U\pm\Delta}{2} \implies \fr{U}{2}\ket{\ua\da,0}+(2t\pm\Delta)\ket{0,\ua\da}
+\eeq
+
+\paragraph{N = 3}
+
+\beq
+\ham \ket{\ua,\ua\da} &= (-t+U) \ket{\ua,\ua\da}\\ 
+\ham \ket{\da,\ua\da} &= (-t+U) \ket{\da,\ua\da}\\ 
+\ham \ket{\ua\da,\ua} &= (t +U) \ket{\ua\da,\ua}\\ 
+\ham \ket{\ua\da,\da} &= (t +U) \ket{\ua\da,\da}\\ 
+\eeq
+
 \newpage
 \section{Exact diagonalization of the Anderson molecule}
 \pp[The Hamiltonian]
@@ -366,7 +424,7 @@ This Hamiltonian also conserves the total particle number and z-componennt of to
 \ham = -t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}} + U\hat{n}_{1\uparrow}\hat{n}_{1\downarrow} + \epsilon_s\sum_\sigma\hat n_{2\sigma} + \epsilon_d\sum_\sigma\hat n_{1\sigma}
 \eeq
 
-I have two lattice sites, indexed by 1 and 2, occupied by electrons. \(\mu\) is the chemical potential, \C{i}{\sigma} and \(c_{i\sigma}\) are the fermionic creation and annihilation operators at the i\uu{th} site, with spin-index \(\sigma\). \(\sigma\) can take values \(\uparrow\) and \(\downarrow\), denoting spin-up and spin-down states respectively. \(\hat{n}_{i\sigma}=\C{i}{\sigma} \c{i}{\sigma}\) is the number operator for the \(i^{th}\) site and at spin-index \(\sigma\); it counts the number of fermions with the designated quantum numbers. \(\hat{N}= \sum_{i\sigma}\hat{n}_{i\sigma}\) is the total number operator; it counts the total number of fermions at all sites and spin-indices. \it t is the hopping strength; the more the t, the more are the electrons likely to hop between sites. \it U is the on-site repulsion cost; it represents the increase in energy when two electrons occupy the same site. The model has on-site repulsion only for the first site. The sites have energies of \(\epsilon_s\) and \(\epsilon_s\) respectively.
+This is quite similar to the Hubbard dimer Hamiltonian. The difference here is that the first site represents an impurity site with energy \il{\epsilon_d}, and the second site represents the conduction band with chemical potential \il{\epsilon_s}. The single particle energy levels are \il{epsilon_d} if the site is unoccupied and \il{\epsilon_d+U} if one electron is already there. For simplicity, I will set the chemical potential to exactly midway between these two levels : \il{\epsilon_d+\fr{U}{2}}.
 
 \subsection{Symmetries of the problem}
 The following operators commute with the Hamiltonian.
@@ -380,13 +438,10 @@ The following operators commute with the Hamiltonian.
 Since all the terms in the Hamiltonian are spin-preserving (all events conserve the number of particles having a definite spin \(\sigma\)), total angular momentum will be conserved. It's obvious that the number operator term do so. The hopping term does so as well; \(c^\dagger_{i\sigma}c_{j\sigma}\) destroys a particle of spin \(\sigma\) and creates a particle of the same spin; the total angular momentum remain conserved in the process, although the number of particles at a particular site is not conserved. Thus, \(\qq{\hat S^2_{tot}, \ham}=0\).
 \end{enumerate}
 
-\subsection{N = 1}
+\subsection{N = 1 sector}
 \begin{itemize}
 \item \(S_{tot}^z = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
-\item \(S_{tot}^z = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
-\end{itemize}
-\subsubsection{\(S_{tot}^z = -1\)}
-Let us first see the action of the Hamiltonian on the eigenfunctions with \(S_{tot}^z = -1\).
+
 \beq
 \ham\ket{\downarrow,0} = \epsilon_d\ket{\downarrow,0}-t\ket{0,\downarrow} \\
 \ham\ket{0,\downarrow} = \epsilon_s\ket{0,\downarrow}-t\ket{\downarrow,0} \\
@@ -399,19 +454,21 @@ We get the following matrix for this tiny subspace of the Hamiltonian:
 \eeq
 Eigenvalues: \(\fr{1}{2}\qq{\epsilon_d+\epsilon_s \pm \sqrt{(\epsilon_d-\epsilon_s)^2+4t^2}}\). For \(\epsilon_s = \epsilon_d + \fr{U}{2}\) and \(\Delta = \sqrt{U^2+16t^2}\), \\ eigenvalues, \(\lambda_\pm = \epsilon_d + \fr{1}{4}(U\pm\Delta)\). \\
 The eigenvectors are \(\fr{1}{N_\pm}\rr{t\ket{\downarrow,0}-\fr{1}{4}(U\pm\Delta)\ket{0,\downarrow}}\), where \(N_\pm^2 = t^2 + (\fr{U\pm\Delta}{4})^2\)
-\subsubsection{\(S_{tot}^z = +1\)}
+
+
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
+\end{itemize}
+
 \beq
 \ham\ket{\uparrow,0} = \epsilon_d\ket{\uparrow,0}-t\ket{0,\uparrow} \\
 \ham\ket{0,\uparrow} = \epsilon_s\ket{0,\uparrow}-t\ket{\uparrow,0} \\
 \eeq
 Clearly, this gives the same matrix as the spin-down states. So, the eigenvalues will be exactly the same, and the eigenvectors will be correspondingly modified in the new basis. \\
 eigenvectors : \(\fr{1}{N_\pm}\rr{t\ket{\uparrow,0}+(\epsilon_d-\lambda_\pm)\ket{0,\uparrow}}\)
-\subsection{N=3}
+\subsection{N = 3 sector}
 \begin{itemize}
 \item \(S_{tot}^z = -1\): \(\ket{\uparrow\downarrow,\downarrow}, \ket{\downarrow,\uparrow\downarrow}\)
-\item \(S_{tot}^z = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
-\end{itemize}
-\subsubsection{\(S_{tot}^z = -1\)}
+
 \beq
 \ham \ket{\uparrow\downarrow,\downarrow} = -t\ket{\downarrow,\uparrow\downarrow} + (2\epsilon_d + \epsilon_s + U)\ket{\uparrow\downarrow,\downarrow} \\
 \ham \ket{\downarrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\downarrow} + (2\epsilon_s + \epsilon_d)\ket{\downarrow,\uparrow\downarrow}
@@ -423,7 +480,9 @@ eigenvectors : \(\fr{1}{N_\pm}\rr{t\ket{\uparrow,0}+(\epsilon_d-\lambda_\pm)\ket
 \eeq
 Again setting \(\epsilon_s = \epsilon_d + \fr{U}{2}\), eigenvalues: \(3\epsilon_d + \fr{5}{4}U \pm \fr{1}{4}\Delta\). \\ Corresponding eigenvectors \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\downarrow}+\fr{1}{4}(U\mp\Delta)\ket{\downarrow,\uparrow\downarrow})\)
 
-\subsubsection{\(S_{tot}^z = +1\)}
+\item \(S_{tot}^z = +1\): \(\ket{\uparrow\downarrow,\uparrow}, \ket{\uparrow,\uparrow\downarrow}\)
+\end{itemize}
+
 \beq
 \ham \ket{\uparrow\downarrow,\uparrow} = -t\ket{\uparrow,\uparrow\downarrow} + (2\epsilon_d + \epsilon_s + U)\ket{\uparrow\downarrow,\uparrow} \\
 \ham \ket{\uparrow,\uparrow\downarrow} = -t\ket{\uparrow\downarrow,\uparrow} + (2\epsilon_s + \epsilon_d)\ket{\uparrow,\uparrow\downarrow}
@@ -431,20 +490,22 @@ Again setting \(\epsilon_s = \epsilon_d + \fr{U}{2}\), eigenvalues: \(3\epsilon_
 Again the same matrix. Hence the eigenvalues are same. Eigenvectors are
 \(\fr{1}{N_\pm}(t\ket{\uparrow\downarrow,\uparrow}-\fr{1}{4}(U\pm\Delta)\ket{\uparrow,\uparrow\downarrow})\)
 
-\subsection{N=2}
+\subsection{N = 2 sector}
+
 This is the eigenvalue that has the largest subspace.
+
 \begin{itemize}
 \item \(S_{tot}^z = -1\): \(\ket{\downarrow,\downarrow}\)
 \item \(S_{tot}^z = +1\): \(\ket{\uparrow,\uparrow}\)
-\item \(S_{tot}^z = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
-\end{itemize}
 
-\subsubsection{\(S_{tot}^z = \pm 1\)}
 These two subspaces have a single state each, so theya are obviously eigenstates. Since they both have identical spins on both sites, the hopping term is 0, and the \(U\)-term is also zero because of single occupation. As a result, they both have zero eigenvalue
 \beq
 \ham \ket{\downarrow,\downarrow} = \ham \ket{\uparrow,\uparrow} = \epsilon_s + \epsilon_d
 \eeq
-\subsubsection{\(S_{tot}^z = 0\)}
+
+\item \(S_{tot}^z = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
+\end{itemize}
+
 This subspace has four eigenvectors,
 \beq
 \ket{\uparrow,\downarrow},\;\:\;\:\;\:\ket{\downarrow,\uparrow},\;\:\;\:\;\:\ket{0,\uparrow\downarrow},\;\:\;\:\;\:\ket{\uparrow\downarrow,0}
@@ -482,8 +543,9 @@ The eigenvectors are
 	\item \(\fr{U-\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}: 2\epsilon_d+\fr{3}{4}U+\fr{1}{2}\Delta(\fr{U}{2},t)\)
 	\item \(\fr{U+\Delta}{4\sqrt{2}t}\fr{\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}}{\sqrt 2}-\ket{\uparrow\downarrow,0} + \ket{0,\uparrow\downarrow}: 2\epsilon_d+\fr{3}{4}U-\fr{1}{2}\Delta(\fr{U}{2},t)\)
 \end{itemize}
+
 \subsection{The total spectrum}
-The final spectrum is already obtained. One final thing to do is to just add the respective values of \(-\mu N\) to the eigenvalues.
+
 \begin{center}
 \begin{tabular}{@{}cccc@{}}
 \toprule
@@ -526,9 +588,11 @@ The final spectrum is already obtained. One final thing to do is to just add the
 \end{center}
 
 \subsection{The Kondo molecule limit}
-First set \il{\epsilon_d = -\frac{U}{2}}. In the limit of large \il{U},
+In the limit of large \il{U}, the Anderson molecule in the \il{N=2} sector effectively develops an antiferromagnetic interaction, and the spectrum splits into two bands. This is similar to the case of Hubbard dimer, where the spectrum matched that of an antiferromagnetic Heisenberg system at large U. The difference is in the value of the Heisenberg parameter \il{J}.
+
+First set \il{\epsilon_d = -\frac{U}{2}} to impose particle-hole symmetry (the impurity part of the Hamiltonian then becomes invariant under changing the particle operators to hole operators). In the limit of large \il{U},
 \begin{gather}
-	\Delta(\fr{U}{2}, t) = \sqrt{\fr{U^2}{4}+16t^2} \approx \fr{U}{2} + \fr{16t^2}{U}
+	\Delta\rr{\fr{U}{2}, t} = \sqrt{\fr{U^2}{4}+16t^2} \approx \fr{U}{2} + \fr{16t^2}{U}
 \end{gather}
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
@@ -546,12 +610,13 @@ First set \il{\epsilon_d = -\frac{U}{2}}. In the limit of large \il{U},
 
 
 \newpage
-\section{Block diagonalization of a Fermionic Hamiltonian in single Fermion number occupancy basis}
-\subsection{The Problem} You have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a fermi gas). Equivalenty, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
-\btm
-This Hamiltonian can be transformed using a certain unitary transformation \un, into \(\overline{\ham} = \un \ham \un^\dagger\) such that this transformed Hamiltonian is diagonal in the occupancy basis of \(\hat{n}_{N\sigma}\). A rephrased statement is, there exists a unitary operator \(\un\) such that \(\qq{\un \hml \un^\dagger, \no}=0\).
-\etm
-\subsection{Warming Up - Writing the Hamiltonian as blocks}
+
+\section{Block-diagonalization of a Fermionic Hamiltonian}
+
+\subsection{The Problem}
+I have a system of \(N\) spin-half fermions. The corresponding Hamiltonian \(\hml\) comprises \(2N\) fermionic single particle degrees of freedom defined in the number occupancy basis of \(\hat{n}_{i\sigma} = c^\dagger_{i\sigma}c_{i\sigma}\), for all \([i\sigma]\in[1,N]\times[\sigma,-\sigma]\). The corresponding Hilbert space has a dimension of \(2^{2N}\). \(i\) represents some external degree of freedom like site-index for electrons on a lattice or the electron momentum if we go to momentum-space. This Hamiltonian is in general non-diagonal in the occupancy basis of a certain degree of freedom \(N\sigma\). \(N\sigma\) can be taken to be any degree of freedom, like say, the first lattice site or the largest momentum (Fermi momentum for a Fermi gas). Equivalently, for a general \ham, \(\qq{\ham, \hat{n}_{N\sigma}}\neq 0\). The goal is to diagonalize this Hamiltonian. 
+
+\subsection{Writing the Hamiltonian as blocks}
 The Hamiltonian \(\hml\) in general has off-diagonal terms and can be written as the following general matrix in the occupancy basis of \(N\sigma\):
 \beq
 \hml = \bordermatrix{~ & \ket{1} & \ket{0} \cr
@@ -595,7 +660,9 @@ We get the following block decomposition of the Hamiltonian.
 \beq
 \hml= Tr_{N\sigma} \qq{\hml\no} \no + c_{N\sigma}^\dagger Tr_{N\sigma} \qq{\hml c_{N\sigma}} + Tr_{N\sigma} \qq{ c_{N\sigma}^\dagger\hml} c_{N\sigma} \\ + Tr_{N\sigma} \qq{\hml(1-\no)}(1-\no)
 \eeq
-\subsection{Proof of the theorem}
+
+\subsection{Obtaining the block-diagonal Hamiltonian}
+
 Define an operator \(\hat{P_{N\sigma}} = \un^\dagger \no \un\). This is the roated version of the number operator. What this does will be apparent from the following demonstration.
 \beq
 \qq{\hml, \hat{P_{N\sigma}}} &= \qq{\hml,\un^\dagger \no \un} = \hml\un^\dagger \no \un - \un^\dagger \no \un \hml \\
@@ -715,7 +782,7 @@ The diagonal terms represent the particle(occupied) and hole(vacant) contributio
 \eeq
 \(\hat\eta_{N\sigma} = \hat{\eta}_{01} c_{N\sigma}\) is the electron to hole transition operator. \(\hat\eta_{N\sigma}^\dagger = \hat{\eta}^\dagger_{01} c_{N\sigma}\) is the hole to electron transition operator. Hence, they are defined to have some pretty obvious properties.
 \begin{enumerate}
-	\item \(\hat\eta_{N\sigma}^2 = \hat{\eta_{N\sigma}^\dagger}^2 = 0\) : once an electron or hole has undergone transition, there is no other to transition.
+	\item \(\hat\eta_{N\sigma}^2 = \hat{\eta_{N\sigma}^{\dagger^2}} = 0\) : once an electron or hole has undergone transition, there is no other to transition.
 	\item \((1-\no)\hat\eta_{N\sigma}\no=\eta_{N\sigma}\) : this is expected from the fact that \(\hat \eta_{N\sigma}\) acts with non-zero result only states of particle-number 1, and hence, \(\no\) will just give 1; after the action of \(\hat\eta_{N\sigma}\), we will get a state with hole (particle-number zero), so \((1-\no)\) will just give 1.
 	\item \(\no\hat\eta_{N\sigma}(1-\no)=0\) : this is expected because \(1-\no\) will give non-zero result only on hole states, but those states will give zero when acted upon by \(\hat\eta_{N\sigma}\), because there won't be any electron to transition from. 
 \end{enumerate}
@@ -750,11 +817,9 @@ Combining the final equations of \ref{rhs} and \ref{lhs}, we get
 c^\dagger_{N\sigma}\hat T_{N\sigma} + H_e \no \eta^\dagger_{N\sigma} = \ham^\prime \eta^\dagger_{N\sigma}\implies \eta^\dagger_{N\sigma} = \fr{1}{\ham^\prime - H_e \no} c^\dagger_{N\sigma} \hat T_{N\sigma}
 \eeq
 Defining \(\hat G_e(\hat E_{N\sigma})\) = \fr{1}{\ham^\prime - H_e \no}, 
-\begin{tcolorbox}
 \beq[etad]
         \eta^\dagger_{N\sigma} = \hat G_e(\hat E_{N\sigma}) c^\dagger_{N\sigma}\hat T_{N\sigma}
 \eeq
-\end{tcolorbox}
 This expresses the electron-hole transition operator in terms of the eigenblock \(\hat E_{N\sigma}\). \\\\
 The expression for \(\eta\) is obtained using \((1-\no)\hml\hat P\no = (1-\no)\ham^\prime \hat P \no\)
 \beq
@@ -771,11 +836,9 @@ The expression for \(\eta\) is obtained using \((1-\no)\hml\hat P\no = (1-\no)\h
 (1-\no)\ham^\prime\hat P \no = \fr{1}{2}\ham^\prime (1-\no)\eta = \fr{1}{2}\ham^\prime\eta
 \eeq
 Combining \ref{one} and \ref{two}, we get
-\begin{tcolorbox}
 \beq
         \eta_{N\sigma} = G_h(\hat E_{N\sigma})  \hat T^\dagger_{N\sigma}c_{N\sigma}
 \eeq
-\end{tcolorbox}
 where \(G_h(\hat E_{N\sigma} = \fr{1}{\ham^\prime - H_h(1-\no)}\) \\\\
 
 The expression for the eigenblock \(\hat E_{N\sigma}\) is obtained using \(\no \hml \hat P \no = \no \ham^\prime \hat P \no\)
@@ -787,11 +850,9 @@ The expression for the eigenblock \(\hat E_{N\sigma}\) is obtained using \(\no \
 &\rr{\because \no \ham^\prime \no = \hat E \no, \no \ham^\prime \eta = \ham^\prime \no \eta =0}
 \eeq
 Combining,
-\begin{tcolorbox}
 \beq
         \hat E_{N\sigma}\no = H_e \no + c^\dagger_{N\sigma} \hat T_{N\sigma} \eta_{N\sigma}
 \eeq
-\end{tcolorbox}
 The expression for the lower eigenblock \(\hat E^\prime_{N\sigma}\) is obtained by repeating the last stuff with \(\ham^{\prime\prime}\):
 \beq
 \hml(1-\hat P) &= \ham^{\prime\prime} (1-\hat P) \\
@@ -809,11 +870,9 @@ Therefore,
 (1-\no)\ham^{\prime\prime}(1-\hat P)(1-\no) &= \fr{1}{2}\hat (1-\no)H^{\prime\prime} (1-\no)=\fr{1}{2}\hat E^\prime (1-\no)
 \eeq
 Combining the last two equations,
-\begin{tcolorbox}
 \beq[eprime]
         \hat E_{N\sigma}^\prime(1-\no) = H_h(1-\no) - \hat T^\dagger_{N\sigma} c_{N\sigma} \eta^\dagger_{N\sigma}
 \eeq
-\end{tcolorbox}
 
 \subsection{Determining the \un}
 The starting equation for the above construction was equation \ref{eq1}. That will also provide an expression for the \un. Operating equation \ref{eq1} to the right of \(\ket{1}\) (occupied eigenstate of \no) gives 
@@ -846,11 +905,19 @@ To find \(\kappa\), we will use the unitarity of \il{\hat U_{N\sigma}}:
 &= 2\kappa^2 && \rr{\cc{\eta,\eta^\dagger}=1}\\
 \implies \kappa=\fr{1}{\sqrt{2}}
 \eeq
-\begin{tcolorbox} 
+
 \beq[uni]
 \un = \fr{1}{\sqrt{2}}\rr{1-\hat\eta+\hat\eta^\dagger}
 \eeq
-\end{tcolorbox}
+
+\subsection{Summary of the results}
+\begin{itemize}
+	\item \(\eta^\dagger = G_e c^\dagger T \)
+	\item \(\eta^\dagger = G_h T^\dagger c\)
+	\item \(\eta^\dagger \eta = \hat n\)
+	\item \(\eta \eta^\dagger = 1-\hat n\)
+	\item \(U = \fr{1}{\sqrt 2}\rr{1-\eta+\eta^\dagger}\)
+\end{itemize}
 
 \subsection{A Simple Example}
 \beq
@@ -914,58 +981,6 @@ Now,
 \eeq
 Therefore, \(\bra{01}E^\prime(1-\hat n_1)\ket{01} = -\mu -t^2\fr{1}{t} = -\mu -t\).
 The final diagonalized matrix becomes 
-Equation \ref{scomm1} gives 
-\beq[commprob]
-\hat\eta^\dagger_{01}\hat\eta_{01} = 1 \implies \hat G_e \hat T_{1,e-h}\hat G_h \hat T^\dagger_{1,e-h}=1
-\eeq
-Again, from equation \ref{cons}, \(\hat G_h \hat T^\dagger_{1,e-h} = \hat T^\dagger_{1,e-h}\hat G_e \). With this modification, equation \ref{commprob} becomes
-\beq[getE]
-\hat G_e \hat T_{1,e-h}\hat T^\dagger_{1,e-h}\hat G_e =1 \implies \hat T_{1,e-h}\hat T^\dagger_{1,e-h} = \rr{\hat G_e^{-1}}^2
-\eeq
-For this problem,
-\beq
-&\hat T_{1,e-h}\hat T^\dagger_{1,e-h} = t^2c_2c^\dagger_2 = t^2(1-\hat n_2) = t^2(1-\hat n_2)^2\\
-&\rr{\hat G_e^{-1}}^2 = \rr{\hat E_1 - \hat H_{1,e}}^2 = \rr{\hat E_1 - V\hat n_2 +\mu(1+\hat n_2)}^2
-\eeq
-Substituting these expressions in equation \ref{getE},
-\beq[first]
-t^2\rr{1-\hat n_2}^2 = \rr{\hat E_1 - V\hat n_2 +\mu(1+\hat n_2)}^2
-\eeq
-This has a solution, \(\hat E_1 - V\hat n_2 +\mu(1+\hat n_2) = t\rr{1-\hat n_2}\), that is,
-\begin{tcolorbox}
-\beq
-\hat E_1 = V\hat n_2 -\mu(1+\hat n_2) +t\rr{1-\hat n_2} = (V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2)
-\eeq
-\end{tcolorbox}
-The lower diagonal block \(\hat E^\prime\)can be determined as follows. First note that in the original Hamiltonian, only the upper \(3\times3\) portion is interacting among themselves, the 4\uu{th} row and 4\uu{th} column of the Hamiltonian do not interact with the rest. This means that the lower element of \(\hat E^\prime\) is zero. Also note that the unitary transformations do not alter the partial trace of the matrix. Specifically,
-\beq
-Tr_1\rr{\overline \ham} = Tr_1\rr{\un \ham \un^\dagger} = Tr_1\rr{\un^\dagger \un \ham} = Tr_1\rr{\ham}
-\eeq
-Since we know the expression of \(\hat E_1\) and the structure of \(\hat E^\prime_1\), we can write down the structure of \(\overline \ham\):
-\beq
-\overline \ham = 
-\begin{pmatrix}
-        V-2\mu  &       &       & \\
-                & t-\mu &       & \\
-                &       & \hat E^\prime_1 & \\
-                &       &       &       0
-\end{pmatrix}
-\eeq
-Therefore, 
-\(Tr_1\overline \ham = (V-2\mu)\hat n_2 + (t-\mu)(1-\hat n_2) + \hat E^\prime_1\hat n_2\). From equation \ref{bmf}, \(Tr_1\rr{\ham} = V\hat n_2 - \mu(1+\hat n_2) - \mu \hat n_2\). Equating the two traces, we get an expression for the lower block:
-
-\beq
-\hat E_1^\prime\hat n_2 = -(\mu+t)\hat n_2
-\eeq
-
-This gives nothing
-\beq
-\overline \ham &= \bordermatrix{
-				~ & \ket{\hat n_1=1} & \ket{\hat n_1=0} \cr
-               	& (V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2) & 0 \cr \\
-               	& 0 & -(\mu+t)\hat n_2 \cr
-               	} \\
-\eeq
 
 \beq
 \overline \ham &= \bordermatrix{
@@ -976,6 +991,32 @@ This gives nothing
                	& 0 & 0 & 0 & 0 \cr
                	}
 \eeq
+
+There's an alternative way of deriving the lower block - using the fact that the trace is invariant under the URG transformations. First note that in the original Hamiltonian, only the upper \(3\times3\) portion is interacting among themselves, the 4\uu{th} row and 4\uu{th} column of the Hamiltonian do not interact with the rest. This means that the lower element of \(\hat E^\prime\) is zero. Also note that the unitary transformations do not alter the partial trace of the matrix. Specifically,
+\beq
+Tr_1\rr{\overline \ham} = Tr_1\rr{\un \ham \un^\dagger} = Tr_1\rr{\un^\dagger \un \ham} = Tr_1\rr{\ham}
+\eeq
+Since we know the expression of \(\hat E_1\) and the structure of \(\hat E^\prime_1\), we can write down the structure of \(\overline \ham\):
+
+\beq
+\overline \ham = 
+\begin{pmatrix}
+        V-2\mu  &       &       & \\
+                & t-\mu &       & \\
+                &       & \hat E^\prime_1 & \\
+                &       &       &       0
+\end{pmatrix}
+\eeq
+
+Therefore, 
+\(Tr_1\overline \ham = (V-2\mu)\hat n_2 + (t-\mu)(1-\hat n_2) + \hat E^\prime_1\hat n_2\). From equation \ref{bmf}, \(Tr_1\rr{\ham} = V\hat n_2 - \mu(1+\hat n_2) - \mu \hat n_2\). Equating the two traces, we get an expression for the lower block:
+
+\beq
+\hat E_1^\prime\hat n_2 = -(\mu+t)\hat n_2
+\eeq
+
+We thus get the same final Hamiltonian.
+
 \subsubsection{The Eigenstates}
 The unitarily transformed Hamiltonian, \(\overline \ham\) is diagonal in the basis of \(\hat n\). This implies that the eigenstates of the original Hamiltonian \(\ham\) are the unitarily transformed versions of the eigenkets of \(\hat n\):
 \beq
@@ -983,16 +1024,14 @@ The unitarily transformed Hamiltonian, \(\overline \ham\) is diagonal in the bas
 \eeq
 To find the eigenvectors \(\un^\dagger\ket{n_1,n_2}\), we need to find the \(\un\). From equation \ref{uni}, we have \(\un = \fr{1}{\sqrt 2}\rr{1+\hat \eta^\dagger - \hat \eta}\). 
 
-        Again, \(\hat \eta_{1} = G_h T^\dagger c_1\), and \(\hat \eta^\dagger_{1} = c^\dagger_1 G_e T\) Using the expression of \(\hat E_1\). this simplifies as:
+We have  \(\hat \eta_{1} = G_h T^\dagger c_1\). Using the expression of \(\hat E_1\). this simplifies as:
 \beq
         \eta &= \fr{1}{\hat E_1 - H_h}(-tc^\dagger_2)c_1 = \fr{-t}{(V-2\mu)\hat n_2 + (t-\mu)(1-\hat n_2)+\mu \hat n_2}c_1c_2^\dagger = \fr{-t}{V-\mu}c_1 c^\dagger_2 \\
         \eta^\dagger &= c_1^\dagger \fr{1}{(V-2\mu)\hat n_2 +(t-\mu)(1-\hat n_2)-(V-2\mu)\hat n_2 + \mu(1-\hat n_2)}(-tc_2) = - c_1^\dagger c_2
 \eeq
-\begin{tcolorbox}
-        QUESTION: How can the \(\eta\) in the previous equation be conjugates of each other? Where's the problem? This question boils down to the following. In order for \(\eta\) and \(\eta^\dagger\) to be conjugates of each other, the consistency equation \(G_h T^\dagger = T^\dagger G_e\) needs to be satisfied. That comes down to \(c^\dagger_2\{t(1-\hat n_2)-4\mu\hat n_2\} = \{(V-\mu)n^\dagger_2+(t-\mu)(1-\hat n_2)\}c^\dagger_2\), or, \textbf{\(tc^\dagger_2 = (V-\mu)c^\dagger_2\)}. Why should this work out in general?
-\end{tcolorbox}
+
 \beq
-        \tf \un &= \fr{1}{\sqrt 2} \qq{1+\fr{t}{V-\mu}c_1 c^\dagger_2-c_1^\dagger c_2}, \un^\dagger = \fr{1}{\sqrt 2}\qq{1+\fr{t}{V-\mu}c_1^\dagger c_2 - c_2 c^\dagger_1}
+        \tf \un &= \fr{1}{\sqrt 2} \qq{1+\fr{t}{V-\mu}c_1 c^\dagger_2-c_1^\dagger c_2} \implies \un^\dagger = \fr{1}{\sqrt 2}\qq{1+\fr{t}{V-\mu}c_1^\dagger c_2 - c_2 c^\dagger_1}
 \eeq
 
 To get the eigenstates of \ham, I act with \(U^\dagger\) on the eigenstates (\(\ket{n_1,n_2}\)):
@@ -1029,7 +1068,7 @@ We begin by decoupling the first degree of freedom, namely, a spin-up electron o
         T_{1\ua} = Tr_{\na}(\ham\ca) = -t\cd\\
         T^\dagger_{1\ua} = Tr_{\na}(\ca^\dagger\ham) = -t\cd^\dagger
 \end{gather}
-Assume that the Hamiltonian, after block-diagonalisation in the subspace of \il{\na}, looks like
+Assume that the Hamiltonian, after block-diagonalization in the subspace of \il{\na}, looks like
 \beq
 \ol \ham = U^\dagger_{1\ua} \ham U_{1\ua} = \begin{pmatrix} \hat E_{1\ua} & 0 \\ 0 & \hat E^\prime_{1\ua} \end{pmatrix}
 \eeq
@@ -1066,7 +1105,7 @@ This is the central equation(eq.~\ref{cent}) that will  be used for determining 
 \beq[work]
 \qq{\hat E_{1\ua}\na -U\na\nb -U\nc\nd\na +t(\cb^\dagger\ce+\ce^\dagger\cb)\na}^2 = t^2\na(1-\nc)
 \eeq
-\subsubsection{N=2}
+\subsection{N = 2}
 We first look  at the \il{N=2} portion of the \il{\na} occupied subspace. The remaining degrees of freedom are \il{\nb}, \il{\nc} and \il{\nd}. Notice that the working equation, eq.~\ref{work} involves the creation and annihilation operators only for \il{\nb} and \il{\nd}. This means that \il{\nb} and \il{\nd} form a coupled degree of freedom, and this is in turn decoupled from \il{\nc}.Out of the two electrons (\il{N=2}), one electron is already there at \il{\na}. This leaves us with two possible subspaces to work in:
 \begin{itemize}
     \item\il{\mathcal{\hat P} = \ket{1100}\bra{1100}+\ket{1001}\bra{1001}} \\\\
@@ -1095,7 +1134,7 @@ In the previous subspace, we set \il{\nc=0}, so here we consider \il{\nc=1}:
 Since \il{\nb=\nd=0}, we have \il{U(\na\nb+\nc\nd)=0} and \il{\cb^\dagger\ce+\ce^\dagger\cb = 0}. The RHS is also zero. This means that in this subspace, the only eigenvalue is \il{E=0}. The eigenvector is \il{\ket{\ua,\ua}}.
 \end{itemize}
 
-\subsubsection{N=1}
+\subsection{N = 1}
 This case is simpler, because the only electron is placed at \il{\na}. Thus, \il{\nb=\nc=\nd=0} in this subspace. Since the subspace has just one state, it is unidimensionl, and the equation for this subspace will involve scalars instead of matrices. The RHS is hence \il{t^2} instead of \il{t^2a_x^2}. Since there are no electrons in \il{\nb} or \il{\nd}, the creation and annihilation operators in the LHS are zero:
 \beq
 \na\nb+\nc\nd = \cb^\dagger\ce+\ce^\dagger\cb = 0
@@ -1105,7 +1144,9 @@ Eq.~\ref{work} thus reduces to
 \hat E_{1\ua,1} = \pm t
 \eeq
 \il{\hat E_{1\ua,1}} is the projected Hamiltonian in this subspace. The eigenvalues in this subspace come out to be \il{\pm t}. Since the only state in this subspace is \il{\ket{\ua,0}}, that is the contribution to the eigenvectors.
-\subsubsection{N=3}
+
+\subsection{N = 3}
+
 With one electron at \il{\na}, we have two electrons to place. There are two options:
 \begin{itemize}
     \item \il{
@@ -1138,11 +1179,14 @@ To calculate the eigenvalues for the unoccupied sector, define \il{\ham^{\prime\
         \eta^\dagger_{1\ua}\eta_{1\ua}=\na \\
         \eta_{1\ua}\eta^\dagger_{1\ua}=1-\na\label{zero}
 \end{gather}
+
 Note that \il{\hat G^\prime} involves \il{\hat E^\prime} in the denominator, because we now want to diagonalize the unoccupied block. Since \il{\na=0} now, we need to use eq.~\ref{zero} and start with the expression of \il{\eta_{1\ua} (eq.~\ref{now})} instead of \il{\eta^\dagger_{1\ua}}. Substituting the expression for \il{\eta_{1\ua}} and it's conjugate gives the following equation for the unoccupied sector:
 \beq
 \qq{\hat E^\prime_{1\ua} - U\nc\nd + t(\cb^\dagger\ce+\ce^\dagger\cb)}^2 = t^2 \nc
 \eeq
-\subsubsection{N=1}
+
+\subsection{N = 1}
+
 With no electron on \il{1,\ua}, the only electron can reside in a superposition of \il{\ket{\da,0}} or \il{\ket{0,\da}}:
 \begin{gather}
     \mathcal{P} = \ket{0100}\bra{0100} + \ket{0001}\bra{0001}
@@ -1158,7 +1202,9 @@ Putting it all together,
     \implies E^\prime_{1\ua,2}= \begin{pmatrix} 0 & -t \\ -t & 0 \end{pmatrix}\label{eval}
 \end{gather}
 The eigenvalues are \il{\pm t}, the eigenvectors are \il{\ket{\da,0}\mp\ket{0.\da}}. 
-\subsubsection{N=2}
+
+\subsection{N = 2}
+
 \begin{gather}
         \mathcal{P} = \ket{0110}\bra{0110}+\ket{0011}\bra{0011} \\
         \implies E^\prime_{1\ua,2}-\begin{pmatrix} 0 & 0 \\ 0 & U \end{pmatrix} - \begin{pmatrix} 0 & t \\ t & U \end{pmatrix} = \pm t a_x \\
@@ -1171,8 +1217,8 @@ Similar to the \il{\na=1} situation,we can consider another subspace where \il{\
 \eeq
 Obviously, \il{\na\nb+\nc\nd=\cb^\dagger\ce+\ce^\dagger\cb=0}. The only eigenvalue is 0, with eigenvector \il{\ket{\da,\da}}.
 
+\subsection{N = 3}
 
-\subsubsection{N=3}
 Only state in this subspace is \il{\ket{0111}}.
 \begin{gather}
     \mathcal{P} = \ket{0111} \\
@@ -1188,7 +1234,9 @@ The eigenvalues are \il{U\pm t}. The eigenvector is \il{\ket{0111}}.
 
 \subsection{The eigenstates}
 The eigenstates obtained for the various subspaces form only parts of the total eigenstates. Using the unitary operator \il{\hat U^\dagger = \fr{1}{\sqrt 2}(1+\eta-\eta^\dagger)}, these individual eigenstates can be combined into the total eigenstates.
-\subsubsection{N=1}
+
+\subsubsection{N = 1}
+
 First, consider the case of \il{\na=1}. The eigenstate for the subspace is \il{\ket{\na=1,N=1}=\ket{\ua,0}}. The total eigenstates are given by \il{\ket{\psi} = \hat U^\dagger_{1\ua} \ket{\na=1,N=1}}. Note that since \il{\eta^\dagger_{1\ua}} takes a hole at \il{\na} to an electron at the same quantum number, and since there is no hole at that quantum number (\il{\na} is occupied), \il{\eta^\dagger} will act to give zero, so we drop it.
 \beq
 \hat U_{1\ua}^\dagger \ket{\na=1,N=1} = \fr{1}{\sqrt 2} (1+\eta_{1\ua})\ket{\ua,0}
@@ -1226,7 +1274,9 @@ The four eigenstates for \il{N=1} are listed in this table:
  \hline
 \end{tabular}
 \end{center}
-\subsubsection{N=3}
+
+\subsubsection{N = 3}
+
 The eigenstate for the first subspace are \\\il{\ket{\na=1,N=3}=\ket{\ua\da,\ua}\mp\ket{\ua,\ua\da}}. The total eigenstates are given by \il{\hat U^\dagger_{1\ua} \ket{\na=1,N=3}}. Note that since \il{\eta^\dagger_{1\ua}} takes a hole at \il{\na} to an electron at the same quantum number, and since there is no hole at that quantum number (\il{\na} is occupied), \il{\eta^\dagger} will act to give zero, so we drop it.
 \beq
 \hat U_{1\ua}^\dagger \ket{\na=1,N=3} = \fr{1}{\sqrt 2} (1+\eta_{1\ua})(\ket{\ua\da,\ua}\mp\ket{\ua,\ua\da})
@@ -1260,7 +1310,9 @@ The four eigenstates for \il{N=1} are listed in this table:
  \hline
 \end{tabular}
 \end{center}
-\subsubsection{N=2}
+
+\subsubsection{N = 2}
+
 Consider the first set of eigenstates in \il{\na=1}: \il{\ket{\ua\da,0}} and \il{\ket{\ua,\da}}. \il{\eta^\dagger} can be dropped as usual. In this subspace, \il{\eta = -t\cd^\dagger\ca\fr{1}{-t\hat a_x} = \cd^\dagger\ca\hat a_x} (using \il{\hat a_x^2=1}). Applying these on the eigenstates gives
 \begin{gather}
 \eta_{1\ua} \ket{\ua\da,0} = \cd^\dagger\ca\hat a_x\ket{\ua\da,0} = \cd^\dagger\ca \ket{\ua,\da} = \ket{0,\ua\da}\\
@@ -1661,7 +1713,8 @@ Similarly, the equation for disentangling \il{\pi\da} is
 \end{gather}
 \newpage
 
-\subsection{N=1}
+\subsection{N = 1}
+
 \begin{gather}
 \mathcal{P} = \ket{0100}\bra{0100}+\ket{0001}\bra{0001}\\
 n_{0\ua} = 0 \implies \text{RHS} = 0 \\
@@ -1675,7 +1728,9 @@ n_{0\da} = 0 \implies \text{RHS} = 0 \\
 	\implies E = H_h = -\fr{U}{4} + \begin{pmatrix} t & -\fr{U}{4} \\ -\fr{U}{4} & t \end{pmatrix}
 \end{gather}
 The eigenvalues are \il{\fr{-U\pm\Delta}{4}}.
-\subsection{N=2}
+
+\subsection{N = 2}
+
 \begin{gather}
 	\mathcal{P} = \ket{1100}\bra{1100} + \ket{0011}\bra{0011}\\
 	\text{RHS} = \rr{\fr{U}{4}}^2 \\
@@ -1706,15 +1761,25 @@ The eigenvalues are \il{0,-\fr{U}{2}}.
 
 The final eigenvalues are both \il{-\fr{U}{2}}.
 
-\subsection{N=3}
+\subsection{N = 3}
 
 \begin{gather}
 	\mathcal{P} = \ket{1110}\bra{1110}+\ket{1011}\bra{1011}\\
 	\text{RHS} = 0 \\
 	\implies E = H_e = -\fr{U}{4}+\begin{pmatrix} t & \fr{U}{4} \\ \fr{U}{4} & -t \end{pmatrix} 
 \end{gather}
+
 The eigenvalues are \il{-\fr{U}{4} \pm \fr{\Delta}{4}}.
 
+\begin{gather}
+	\mathcal{P} = \ket{1101}\bra{1101}+\ket{0111}\bra{0111}\\
+	\text{RHS} = 0 \\
+	\implies E = H_e = -\fr{U}{4}+\begin{pmatrix} t & -\fr{U}{4} \\ -\fr{U}{4} & -t \end{pmatrix} 
+\end{gather}
+
+The eigenvalues are \il{-\fr{U}{4} \pm \fr{\Delta}{4}}.
+
+\newpage
 
 \section{Comparison of Schrieffer-Wolff transformation and URG}
 \subsection{The Schrieffer-Wolff transformation}
@@ -1899,4 +1964,8 @@ As seen in the previous example as well, the SWT block-diagonalises the Hamilton
 \end{gather*}
 All orders are kept in the rotation (non-perturbative), as seen in the \il{\Delta = \sqrt{U^2+16t^2}}. Taking the limit \il{U\gg t} produces the bands: \il{\Delta \simeq U+\fr{8t^2}{U}}.
 
+\newpage
+
+\section*{Conclusions}
+Although a proper estimation of the advantages and problems offered by this method (URG) can only be inferred after applying it to many-body problems, a naive discussion is presented here. One thing that stands out is the ease of obtaining the eigenvalues and eigenfunctions. One just eeds to select the proper subspaces and they are done. Compare this with the exact diagonalization method where one may run into complications if they are to diagonalize a \il{3\times3} or \il{4\times4} block. Even the Anderson molecule, with lower symmetry (and hence higher computational difficulty), which posed some complication during exact diagonalization, was relatively easier to solve using the URG. Schrieffer-Wolff transformation,despite being a neat technique, does not really compare to a method that can give exact solutions. One might argue that the SW transformation filters out the low energy states, but that is also possible using the URG, as shown by Anirban Mukherjee and co. in various problems like the two-dimensional Hubbard model and the quantum kagome antiferromagnet. 
 \end{document}

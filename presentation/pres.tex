@@ -1,0 +1,297 @@
+\documentclass[20pt]{extarticle}
+\usepackage{common}
+\usepackage{xcolor}
+\definecolor{mygr}{rgb}{0,0.15,0}
+\newcommand{\head}[1]{
+\centerline{\begin{tcolorbox}[colback=mygr,colframe=gray,width=28cm,halign=center]
+\vspace{10pt}
+\bf{\Large{\color{white}{#1}}}
+\vspace{10pt}
+\end{tcolorbox}}
+}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+	\vspace*{70pt}
+\head{Unitary Renormalization Group Approach to the Hubbard Dimer and Anderson Molecule}
+	\vspace*{50pt}
+\bf{\large{Abhirup Mukherjee (18IP014)}}\\
+	\vspace*{20pt}
+\bf{\large{Supervisor: Dr. Siddhartha Lal}}\\
+	\vspace*{50pt}
+\bf{\large{Department of Physical Sciences}}\\
+	\vspace*{20pt}
+\bf{\large{Indian Institute of Science, Education and Research, Kolkata}}
+
+\end{center}
+
+\end{titlepage}
+
+\newpage
+
+\head{Overview}
+
+\vspace*{\fill}
+
+\begin{itemize}
+
+\item\bf{ Exact diagonalization of the models}
+
+\vspace*{20pt}
+\item\bf{ Formalism of the unitary renormalization group}
+
+\vspace*{20pt}
+\item\bf{ Applying the URG to the models}
+
+\vspace*{20pt}
+\item\bf{ Comparison with Schrieffer-Wolff transformation}
+
+\vspace*{20pt}
+\end{itemize}
+
+\vspace*{\fill}
+
+\newpage
+
+\head{Exact diagonalization of Hubbard dimer}
+
+\vspace*{20pt}
+\beq
+\ham = \underbrace{-t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}}}_{\text{hopping term}} + \overbrace{U\sum_i\hat{n}_{i\uparrow}\hat{n}_{i\downarrow}}^{\text{Hubbard term}}
+\eeq
+
+\vspace*{20pt}
+
+\textbf{\large{Symmetries of the problem}}
+
+\vspace*{20pt}
+
+\begin{itemize}
+
+\item \bf{Total number of particles:} \il{\hat n = \sum_{i,\sigma} \hat n_{i,\sigma}}
+
+\vspace*{20pt}
+
+\item \bf{Total magnetization: \il{\hat S_z = \sum_{i} (\hat n_\ua - n_\da)}}
+
+\vspace*{20pt}
+
+\item \bf{Site parity: \il{\hat P : \Psi\rr{i,j} \ra \Psi\rr{j,i}}}
+
+\end{itemize}
+
+\newpage
+
+\head{Exact diagonalization of Hubbard dimer}
+
+\vspace*{50pt}
+
+\bf{\large{Some easy eigenstates using the commuting operators}}
+
+\vspace*{30pt}
+
+\begin{itemize}
+
+\large{
+\item \textbf{N = 1} \il{\implies \ket{\ua,0}, \ket{0,\ua}, \ket{\da,0}, \ket{0,\da}} 
+\vspace*{40pt}
+\item \textbf{magnetization = up}\il{ \implies \ket{\ua,0}, \ket{0,\ua}},
+\vspace{20pt}\\
+\textbf{magnetization = down}\il{  \implies \ket{\da,0}, \ket{0,\da}}\\
+\vspace*{20pt}
+\item \textbf{parity = +ve } \il{\implies \ket{\ua,0} + \ket{0,\ua}, \ket{\da,0} + \ket{0,\da}}
+\vspace*{20pt}\\
+\textbf{parity = --ve } \il{\implies \ket{\ua,0} - \ket{0,\ua}, \ket{\da,0} -\ket{0,\da}}}
+\end{itemize}
+
+\newpage
+
+\head{Exact diagonalization of Hubbard dimer}
+
+\vspace*{50pt}
+
+\bf{\large{Some easy eigenstates using the commuting operators}}
+
+\vspace*{30pt}
+
+\begin{itemize}
+
+\large{
+\item \textbf{N = 3} \il{\implies \ket{\ua,\ua\da}, \ket{\ua\da,\ua}, \ket{\da,\ua\da}, \ket{\ua\da,\da}} 
+\vspace*{40pt}
+\item \textbf{magnetization = up}\il{ \implies \ket{\ua,\ua\da}, \ket{\ua\da,\ua}},
+\vspace{20pt}\\
+\textbf{magnetization = down}\il{  \implies \ket{\da,\ua\da}, \ket{\ua\da,\da}}\\
+\vspace*{20pt}
+\item \textbf{parity = +ve } \il{\implies \ket{\ua,\ua\da} + \ket{\ua\da,\ua}, \ket{\da,\ua\da} + \ket{\ua\da,\da}}
+\vspace*{20pt}\\
+\textbf{parity = --ve } \il{\implies \ket{\ua,\ua\da} - \ket{\ua\da,\ua}, \ket{\da,\ua\da} -\ket{\ua\da,\da}}}
+\end{itemize}
+
+\newpage
+
+\head{Exact diagonalization of Hubbard dimer}
+
+\vspace*{50pt}
+
+\bf{\large{N = 2 requires a bit more work}}
+
+\vspace*{30pt}
+
+\begin{itemize}
+\large{
+\item \textbf{magnetization = \il{\pm}1} is easy \il{\implies \ket{\ua,\ua},\ket{\da,\da}}
+}
+
+\vspace*{20pt}
+
+\item \textbf{magnetization = 0} \il{\implies \ket{\ua,\da},\ket{\da,\ua},\ket{\ua\da,0},\ket{0,\ua\da}}
+\vspace{30pt}\\
+\textbf{parity = 1} \il{\implies \ket{\ua,\da}+\ket{\da,\ua},\;\;\ket{\ua\da,0}+\ket{0,\ua\da} \implies \text{diagonal}}
+\vspace{1pt}\\
+\textbf{parity = -1} \il{\implies \ket{\ua,\da}-\ket{\da,\ua},\;\;\ket{\ua\da,0}-\ket{0,\ua\da}}
+\vspace{10pt}\\
+\beq
+\begin{pmatrix} \;0\; & \;2t\; \\ &&\\ \;2t\; & \;U\; \end{pmatrix} \implies \text{easily diagonalised}
+\eeq
+\end{itemize}
+\newpage
+
+\head{Exact diagonalization of Anderson molecule}
+
+\beq
+\ham = \underbrace{\epsilon_s\sum_\sigma\hat n_{2\sigma}}_\text{\bf{ conduction band (CB)}} + \overbrace{\epsilon_d\sum_\sigma\hat n_{1\sigma}}^\text{\bf{ impurity site(IS)}} -\underbrace{t\sum_\sigma\rr{\C{1}{\sigma}\c{2}{\sigma}+\C{2}{\sigma}\c{1}{\sigma}}}_{\text{\bf{ hopping b/w CB and IS}}} + \overbrace{U\hat{n}_{1\uparrow}\hat{n}_{1\downarrow}}^{\text{\bf{ IS repulsion}}}
+\eeq
+\vspace*{20pt}
+
+\large{\bf{This also proceeds very similarly using the symmetries of the Hamiltonian:}
+
+\vspace*{10pt}
+
+\begin{itemize}
+\large{
+\item \bf{number of particles}
+
+\vspace*{10pt}
+
+\item \bf{magnetization}
+
+\vspace*{10pt}
+
+\item \bf{total spin angular momentum} \il{\hat S_{tot}^2=\sum_x \hat S_x^2}
+}
+\end{itemize}
+
+(not showing the full thing here)
+
+\newpage
+
+\head{Formalism of unitary renormalization group}
+
+\vspace*{20pt}
+
+\textbf{Given} \il{\implies} \textbf{some non-diagonal Hamiltonian} \il{\ra \begin{pmatrix} \;\hat A\; & \;\hat B\; \\ && \\ \;\hat C & \;\hat D \end{pmatrix}}\\
+\vspace{20pt}\\
+\textbf{Objective} \il{\implies} \textbf{a block-diagonal Hamiltonian} \il{\ra \begin{pmatrix} \;\hat E\; & \;0\; \\ && \\ \;0 & \;\hat E^\prime \end{pmatrix}} 
+\vspace{30pt}\\
+\textbf{Equivalent Objective} \il{\implies} \textbf{find unitary U such that}\\
+\beq
+\hat U^\dagger 
+\begin{pmatrix} \;\hat A\; & \;\hat B\; \\ && \\ \;\hat C & \;\hat D \end{pmatrix}
+\hat U
+= \begin{pmatrix} \;\hat E\; & \;0\; \\ && \\ \;0 & \;\hat E^\prime \end{pmatrix}
+\eeq
+
+\newpage
+
+\head{Formalism of unitary renormalization group}
+
+\vspace*{40pt}
+
+\bf{Important: We are talking about \textit{block}-diagonalization}\\
+
+\vspace*{20pt}
+
+\bf{The resolution of the Hamiltonian is in the occupied and vacant states of some degree of freedom \il{\hat n}}.
+\beq
+\ham_{2n \times 2n} = \bordermatrix{~ & \ket{\hat n = 1} & \ket{\hat n = 0} \cr 
+	& \;(\hat H_e)_{n \times n}\; & \;(\hat T)_{n \times n}\; \\ 
+	&&& \\ 
+	& \;(\hat T^\dagger)_{n \times n} & \; (\hat H_h)_{n \times n}}
+\eeq\\
+\beq
+\hat H_e \implies &\text{\bf{occupied part of} \ham}
+\vspace{10pt}\\
+\hat H_h \implies &\text{\bf{unoccupied part of} \ham}
+\vspace{10pt}\\
+\hat T, \hat T^\dagger \implies &\text{\bf{transitions between}} \;\; \hat A \;\; \& \;\; \hat B
+\eeq
+
+
+\newpage
+
+\head{Formalism of unitary renormalization group}
+
+\vspace*{40pt}
+
+\bf{So how do we determine this block-diagonal form?}
+\vspace*{40pt}\\
+\bf{Consider a new operator:} \il{\mathcal{P} = U^\dagger\;\hat n \;U}
+\vspace*{40pt}\\
+\bf{What does this do?} \il{\mathcal{P} \ham \mathcal{P} = \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;0\; \end{pmatrix}}
+\vspace*{40pt}\\
+\bf{\il{\mathcal{P}} \textit{rotates} the Hamiltonian into block-diagonal form and \textit{projects} out the upper block.}
+\vspace*{20pt}
+\beq
+\mathcal{P} : \begin{pmatrix} \;H_e\; & \;T\; \\ \;T^\dagger\; & \;H_h\;\end{pmatrix} \xrightarrow{rotation} \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;E^\prime\;\end{pmatrix} \xrightarrow{projection} \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;0\; \end{pmatrix}
+\eeq
+
+\newpage
+
+\head{Formalism of unitary renormalization group}
+
+\vspace*{40pt}
+
+\bf{Since the projection operator mixes the components of the Hamiltonian, we take the following form:} 
+\beq
+\mathcal{P} \sim 1+\eta+\eta^\dagger
+\eeq
+
+\vspace*{40pt}
+\il{\eta} \bf{takes an occupied state to an unoccupied state}\\
+\beq
+\eta : \ket{1}\otimes\ket{\Psi_n} \ra \ket{0}\otimes\ket{\Phi_n} \hspace*{100pt} \begin{pmatrix} \Psi_n \\ 0 \end{pmatrix} \rightarrow \begin{pmatrix} 0 \\ \Phi_n \end{pmatrix}
+\eeq\\
+\vspace*{20pt}
+\bf{Similarly}, \il{\eta^\dagger} \bf{takes an unoccupied state to an occupied state}
+\beq
+\eta^\dagger : \ket{0}\otimes\ket{\chi_n} \ra \ket{1}\otimes\ket{\xi_n} \hspace*{100pt} \begin{pmatrix} 0 \\ \chi_n \end{pmatrix} \rightarrow \begin{pmatrix} \xi_n \\ 0 \end{pmatrix}
+\eeq\\
+
+\newpage
+
+\head{Formalism of unitary renormalization group}
+\begin{center} \bf{Use the following}\\\il{\Big\downarrow}\end{center}
+\begin{center}\begin{tcolorbox}[halign=center, colback=white, width=13cm]
+	\bf{Properties of \il{\eta,\eta^\dagger}}\\
+	\vspace*{20pt}
+	\bf{Projection property of \il{\mathcal{P}}}\\
+	\vspace*{20pt}
+	\bf{Some linear algebra}\\
+\end{tcolorbox}\end{center}
+\begin{center}\il{\Big\downarrow}\bf{  to get }\il{\Big\downarrow}\end{center} 
+\begin{center}\begin{tcolorbox}[halign=center, colback=white, colframe=red, width=13cm]
+	\il{\eta^\dagger \eta = \hat n,\eta\eta ^\dagger = 1-\hat n}\\
+	\il{\eta^\dagger = \rr{\hat E - \hat H_e}^{-1}c^\dagger T}\\
+	\il{\eta^\dagger = \rr{\hat E - \hat H_h}^{-1}T^\dagger c}\\
+\end{tcolorbox}\end{center}
+
+
+
+\end{document}
+
+

@@ -402,7 +402,7 @@ where \il{n_\pi = \sum_\sigma n_{\pi\sigma}}. This Hamiltonian also conserves th
 \ham \ket{\da,\da} &= 0\ket{\da,\da}\\
 \ham \ket{\ua,\da} &= \fr{U}{2}\ket{\ua,\da} - \fr{U}{2}\ket{\da,\ua}\\
 \ham \ket{\da,\ua} &= \fr{U}{2}\ket{\da,\ua} - \fr{U}{2}\ket{\ua,\da}\\
-\fr{U}{2}\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} &\implies 0,\fr{U}{2} \implies \ket{\ua,\da}\pm\ket{\da,\ua}\\
+\fr{U}{2}\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} &\implies 0,U \implies \ket{\ua,\da}\pm\ket{\da,\ua}\\
 \ham \ket{\ua\da,0} &= (2t + \fr{U}{2})\ket{\ua\da,0} - \fr{U}{2}\ket{0,\ua\da}\\
 \ham \ket{0,\ua\da} &= (-2t + \fr{U}{2})\ket{0,\ua\da} - \fr{U}{2}\ket{\ua\da,0}\\
 \fr{U}{2}+\begin{pmatrix} 2t & -\fr{U}{2} \\ -\fr{U}{2} & -2t \end{pmatrix} &\implies \fr{U\pm\Delta}{2} \implies \fr{U}{2}\ket{\ua\da,0}+(2t\pm\Delta)\ket{0,\ua\da}
@@ -1364,13 +1364,13 @@ c_{2,\sigma}=\fr{1}{\sqrt 2}\rr{c_{0,\sigma}-c_{\pi,\sigma}}
 \eeq
 In terms of these operators, the Hubbard Hamiltonian becomes
 \beq
-\ham = t\sum_\sigma\rr{\hat n_{\pi,\sigma}-\hat n_{0,\sigma}}+\fr{U}{2}\prod_\sigma \qq{\hat n_{0,\sigma}+\hat n_{\pi,\sigma}} + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
+\ham = t\rr{\hat n_{\pi}-\hat n_{0}}+\fr{U}{2}n_\ua n_\da + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
 \eeq
 Disentangle \il{\pi\ua}.
 \begin{gather}
 	H_e = Tr\qq{\ham \hat n_{\pi,\ua}} = t\rr{\hat n_{\pi\da}+1-\hat n_{0\ua}-\hat n_{0\da}}+\fr{U}{2}(1+\hat n_{0\ua})(\hat n_{0\da}+\hat n_{\pi\da})\\
 	H_h = Tr\qq{\ham (1-\hat n_{\pi,\ua})} = t\rr{\hat n_{\pi\da}-\hat n_{0\ua}-\hat n_{0\da}}+\fr{U}{2}\hat n_{0\ua}(\hat n_{0\da}+\hat n_{\pi\da})\\
-	T = Tr \qq{\ham_{\pi\ua}} = \fr{U}{2}c_{0\ua}(c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da})\\
+	T = Tr \qq{\ham c_{\pi\ua}} = \fr{U}{2}c_{0\ua}(c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da})\\
 	\eta^\dagger = G_e c^\dagger_{\pi\ua}T= \fr{U}{2}\fr{1}{(E-H_e)\hat n_{\pi\ua}}c^\dagger_{\pi\ua}c_{0\ua}\rr{c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}}\\
 	\eta= G_h T^\dagger c_{\pi\ua}= \fr{U}{2}\fr{1}{(E-H_h)(1-\hat n_{\pi\ua})}\rr{c^\dagger_{0\da}c_{\pi\da}+c^\dagger_{\pi\da}c_{0\da}}c^\dagger_{0\ua}c_{\pi\ua}\\
 \end{gather}
@@ -1421,14 +1421,14 @@ H_e = t
 	H_e = 0\\
 	\implies E = H_e = 0
 \end{gather}
-\il{\eta \propto c^\dagger_{0\ua}}. Since \il{0\ua} is already occupied, \il{U^\dagger = I}. Hence the eigenstates are \il{\ket{\ua\da,\ua}} and \il{\ket{\ua,\ua\da}}.\\\\
+\il{\eta \propto c^\dagger_{0\ua}}. Since \il{0\ua} is already occupied, \il{U^\dagger = I}. Hence the eigenstate is \il{\ket{\ua,\ua}}.\\
 
 \il{\mathcal{P} = \ket{0101}\bra{0101}} (use vacant equation)
 \begin{gather}
 H_h = 0
 \implies E = H_h = 0
 \end{gather}
-\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\ua\da,\da}}.\\\\
+\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\da,\da}}.\\\\
 \il{\mathcal{P} = \ket{1001}\bra{1001}} ( use occupied equation)
 
 \begin{gather}
@@ -1436,7 +1436,7 @@ H_h = 0
 	H_e = \fr{U}{2}
 	\implies E = H_e \pm \fr{U}{2} = U,0
 \end{gather}
-\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\da,\ua\da}}.\\\\
+\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\ua,\da}}.\\\\
 \il{\mathcal{P} = \ket{1100}\bra{1100}} (use occupied equation)
 
 \begin{gather}
@@ -1575,14 +1575,14 @@ This is the final eigenstate.
 
 
 \begin{center}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|}
  \hline
- 	E.V.	&	E.S.	&	\il{\omega}\\
+ 	E.V.	&	E.S.\\
 	\hline
     \il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}}      & 
-	\il{t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}} & -- \\
+	\il{t\ket{\ua,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\ua}} \\
 	\il{\fr{\epsilon_s+\epsilon_d}{2}\pm\fr{\Delta}{4}} &
-	\il{t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}} & -- \\
+	\il{t\ket{\da,0}-(\fr{\epsilon_s-\epsilon_d}{2}\pm\fr{\Delta}{4})\ket{0,\da}} \\
  \hline
 \end{tabular}
 \end{center}
@@ -1633,19 +1633,19 @@ These are the final eigenstates.
 For these last two subspaces, \il{U^\dagger = 1 - \eta^\dagger}. For the \il{\na=0} case, \il{\eta^\dagger \propto \cd^\dagger\ca}, but the state has \il{\na=0}. Similarly, for the last case, \il{\eta^\dagger \propto \ce^\dagger\cb}, but the state has \il{\nb=0}. Therefore, the final eigenstates for these cases remain unchanged.
 
 \begin{center}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|}
  \hline
- 	E.V.	&	E.S.	&	\il{\omega}\\
+ 	E.V.	&	E.S.\\
 	\hline
 	\il{\epsilon_d+\epsilon_s} & 
-	\il{\ket{\da,\da}} & -- \\
+	\il{\ket{\da,\da}}  \\
 
 	\il{\epsilon_d+\epsilon_s} & 
-	\il{\ket{\ua,\ua}} & -- \\
+	\il{\ket{\ua,\ua}}  \\
 
-	\il{2\epsilon_d+U} &	\il{\ket{\ua,\da}+\ket{\da,\ua}}	& -- \\
-	\il{\epsilon_s+\epsilon_d} &	\il{\ket{\ua\da,0}+\ket{0,\ua\da}}& -- \\
-	\il{\fr{3\epsilon_d+\epsilon_s+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}} & \il{\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}(\ket{\ua,\da}-\ket{\da,\ua})+2t(\ket{\ua\da,0}-\ket{0,\ua\da})}& -- \\
+	\il{2\epsilon_d+U} &	\il{\ket{\ua,\da}+\ket{\da,\ua}}	 \\
+	\il{\epsilon_s+\epsilon_d} &	\il{\ket{\ua\da,0}+\ket{0,\ua\da}} \\
+	\il{\fr{3\epsilon_d+\epsilon_s+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}} & \il{\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+16t^2}}{2}(\ket{\ua,\da}-\ket{\da,\ua})+2t(\ket{\ua\da,0}-\ket{0,\ua\da})} \\
  \hline
 \end{tabular}
 \end{center}
@@ -1676,14 +1676,14 @@ For these last two subspaces, \il{U^\dagger = 1 - \eta^\dagger}. For the \il{\na
 \end{itemize}
 
 \begin{center}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|}
  \hline
- 	E.V.	&	E.S.	&	\il{\omega}\\
+ 	E.V.	&	E.S.	\\
 	\hline
     \il{\fr{3(\epsilon_s+\epsilon_d)+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}}      & 
-	\il{t\ket{\ua\da,\da}-\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\da,\ua\da}} & -- \\
+	\il{t\ket{\ua\da,\da}-\fr{\epsilon_s-\epsilon_d-U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\da,\ua\da}}\\
     \il{\fr{3(\epsilon_s+\epsilon_d)+U\pm\sqrt{(\epsilon_s-\epsilon_d-U)^2+4t^2}}{2}}      & 
-	\il{t\ket{\ua\da,\ua}-\fr{\epsilon_s-\epsilon_d+U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\ua,\ua\da}} & -- \\
+	\il{t\ket{\ua\da,\ua}-\fr{\epsilon_s-\epsilon_d+U\pm\sqrt{(\epsilon_s-\epsilon_d)^2+4t^2}}{2}\ket{\ua,\ua\da}}\\
  \hline
 \end{tabular}
 \end{center}
@@ -1967,5 +1967,5 @@ All orders are kept in the rotation (non-perturbative), as seen in the \il{\Delt
 \newpage
 
 \section*{Conclusions}
-Although a proper estimation of the advantages and problems offered by this method (URG) can only be inferred after applying it to many-body problems, a naive discussion is presented here. One thing that stands out is the ease of obtaining the eigenvalues and eigenfunctions. One just eeds to select the proper subspaces and they are done. Compare this with the exact diagonalization method where one may run into complications if they are to diagonalize a \il{3\times3} or \il{4\times4} block. Even the Anderson molecule, with lower symmetry (and hence higher computational difficulty), which posed some complication during exact diagonalization, was relatively easier to solve using the URG. Schrieffer-Wolff transformation,despite being a neat technique, does not really compare to a method that can give exact solutions. One might argue that the SW transformation filters out the low energy states, but that is also possible using the URG, as shown by Anirban Mukherjee and co. in various problems like the two-dimensional Hubbard model and the quantum kagome antiferromagnet. 
+Although a proper estimation of the advantages and problems offered by this method (URG) can only be inferred after applying it to many-body problems, a naive discussion is presented here. One thing that stands out is the ease of obtaining the eigenvalues and eigenfunctions. One just eeds to select the proper subspaces and they are done. Compare this with the exact diagonalization method where one may run into complications if they are to diagonalize a \il{3\times3} or \il{4\times4} block. Even the Anderson molecule, with lower symmetry (and hence higher computational difficulty), which posed some complication during exact diagonalization, was relatively easier to solve using the URG. Schrieffer-Wolff transformation,despite being a neat technique, does not really compare to a method that can give exact solutions. One might argue that the SW transformation filters out the low energy states, but that is also possible using the URG, as shown by Anirban Mukherjee and co. in various problems like the two-dimensional Hubbard model and the quantum kagome antiferromagnet.
 \end{document}

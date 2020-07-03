@@ -1,8 +1,10 @@
 \ProvidesPackage{common}
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multicol,multirow,mathtools,blkarray,booktabs,tcolorbox,caption}
-\usepackage[top=0mm,right=20mm,left=20mm,bottom=10mm,landscape]{geometry}
+\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multicol,multirow,mathtools,blkarray,booktabs,tcolorbox,tikz,caption}
+\usepackage[top=0mm,right=20mm,left=20mm,bottom=10mm,paperwidth=14.2in,paperheight=8in]{geometry}
 \usepackage[hidelinks]{hyperref}
+\usetikzlibrary{shapes.geometric, arrows,decorations.markings}
+\tikzstyle{arrow} = [thick,->,>=stealth,scale=3]
 \newcommand{\ham}{\ensuremath{\mathcal{H}}}
 \newcommand{\ii}[1]{\ensuremath{\int_{-\infty}^{\infty}{#1}\:}}
 \newcommand{\ol}[1]{\ensuremath \overline{#1}}

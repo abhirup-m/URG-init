@@ -1,7 +1,11 @@
 \ProvidesPackage{common}
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multirow,xcolor,mathtools,blkarray,booktabs,tcolorbox,caption}
+\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multirow,xcolor,fancyhdr,mathtools,blkarray,booktabs,tcolorbox,caption}
 \usepackage[margin=1.2in]{geometry}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\leftmark}
+\renewcommand{\headrulewidth}{0pt}
 \usepackage[hidelinks]{hyperref}
 \newcommand{\ham}{\ensuremath{\mathcal{H}}}
 \newcommand{\ii}[1]{\ensuremath{\int_{-\infty}^{\infty}{#1}\:}}

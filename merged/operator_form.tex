@@ -1,0 +1,28 @@
+\documentclass[14pt]{extarticle}
+\usepackage{common}
+\begin{document}
+The rotated Hamiltonian in the \il{N=2} subspace is coming out as
+\beq
+\ham_\text{rot} = U\na\nb+U(1-\na)\nc\nd+\na\qq{\fr{U+\Delta}{2}\nc+\fr{U-\Delta}{2}\nd}
+\eeq
+\paragraph{}
+I defined
+\beq
+f^C_1 = \begin{pmatrix}\ca \\ \ce^\dagger \end{pmatrix},f^C_2 = \begin{pmatrix}\cd \\ \cb^\dagger \end{pmatrix}\\
+f^S_1 = \begin{pmatrix}\ca \\ \ce \end{pmatrix},f^S_2 = \begin{pmatrix}\cd \\ \cb \end{pmatrix}\\
+\eeq
+These give
+\beq
+C^z_1 &= (f^C_1)^\dagger \sigma_z f^C_1 = \na+\nd-1\\
+C^z_2 &= (f^C_2)^\dagger \sigma_z f^C_2 = \nb+\nc-1\\
+S^z_1 &= (f^S_1)^\dagger \sigma_z f^S_1 = \na-\nd\\
+S^z_2 &= (f^S_2)^\dagger \sigma_z f^S_2 = \nb-\nc
+\eeq
+\paragraph{}
+\textbf{But if I try to substitute these C and S instead of the number operators in the rotated Hamiltonian, it becomes extremely complicated. Do you have any idea where I might be going wrong?}
+\beq
+\ham_\text{rot} &= \fr{U}{4}(C^z_1+S^z_1+1)(C^z_2-S^z_2+1)+ \\
+&\fr{U}{8}(1-C^z_1 - S_1^z)(C_1^z-S_1^z+1)(C_2^z+S_2^z+1)+\\
+&\fr{C_1^z+S_1^z+1}{8}\qq{U(C_1^z-S_1^z+C_2^z-S_2^z+2)+\Delta(C_1^z-S_1^z-C_2^z+S_2^z)}
+\eeq
+\end{document}

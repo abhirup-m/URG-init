@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.6.18)  28 JUN 2020 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.6.18)  3 JUL 2020 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -544,23 +544,74 @@ Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \tcb@out=\write4
 \tcb@record@out=\write5
 )
-(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen282
+\pgffor@skip=\dimen283
+\pgffor@stack=\toks43
+\pgffor@toks=\toks44
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count293
+\pgfplotmarksize=\dimen284
+)
+\tikz@lastx=\dimen285
+\tikz@lasty=\dimen286
+\tikz@lastxsaved=\dimen287
+\tikz@lastysaved=\dimen288
+\tikz@lastmovetox=\dimen289
+\tikz@lastmovetoy=\dimen290
+\tikzleveldistance=\dimen291
+\tikzsiblingdistance=\dimen292
+\tikz@figbox=\box114
+\tikz@figbox@bg=\box115
+\tikz@tempbox=\box116
+\tikz@tempbox@bg=\box117
+\tikztreelevel=\count294
+\tikznumberofchildren=\count295
+\tikznumberofcurrentchild=\count296
+\tikz@fig@count=\count297
+ (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count298
+\pgfmatrixcurrentcolumn=\count299
+\pgf@matrix@numberofcolumns=\count300
+)
+\tikz@expandcount=\count301
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2020/05/10 v3.4j Customizing captions (AR)
 
 (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/05/10 v1.11 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen282
-\captionmargin@=\dimen283
-\captionwidth=\dimen284
-\caption@tempdima=\dimen285
-\caption@indent=\dimen286
-\caption@parindent=\dimen287
-\caption@hangindent=\dimen288
+\captionmargin=\dimen293
+\captionmargin@=\dimen294
+\captionwidth=\dimen295
+\caption@tempdima=\dimen296
+\caption@indent=\dimen297
+\caption@parindent=\dimen298
+\caption@hangindent=\dimen299
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count293
-\c@continuedfloat=\count294
+\c@caption@flags=\count302
+\c@continuedfloat=\count303
 )
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -571,18 +622,18 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count295
-\Gm@cntv=\count296
-\c@Gm@tempcnt=\count297
-\Gm@bindingoffset=\dimen289
-\Gm@wd@mp=\dimen290
-\Gm@odd@mp=\dimen291
-\Gm@even@mp=\dimen292
-\Gm@layoutwidth=\dimen293
-\Gm@layoutheight=\dimen294
-\Gm@layouthoffset=\dimen295
-\Gm@layoutvoffset=\dimen296
-\Gm@dimlist=\toks43
+\Gm@cnth=\count304
+\Gm@cntv=\count305
+\c@Gm@tempcnt=\count306
+\Gm@bindingoffset=\dimen300
+\Gm@wd@mp=\dimen301
+\Gm@odd@mp=\dimen302
+\Gm@even@mp=\dimen303
+\Gm@layoutwidth=\dimen304
+\Gm@layoutheight=\dimen305
+\Gm@layouthoffset=\dimen306
+\Gm@layoutvoffset=\dimen307
+\Gm@dimlist=\toks45
 )
 (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
@@ -622,9 +673,9 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
-\@linkdim=\dimen297
-\Hy@linkcounter=\count298
-\Hy@pagecounter=\count299
+\@linkdim=\dimen308
+\Hy@linkcounter=\count307
+\Hy@pagecounter=\count308
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
@@ -637,7 +688,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count300
+\Hy@SavedSpaceFactor=\count309
 Package hyperref Info: Hyper figures OFF on input line 4464.
 Package hyperref Info: Link nesting OFF on input line 4469.
 Package hyperref Info: Hyper index ON on input line 4472.
@@ -645,14 +696,14 @@ Package hyperref Info: Plain pages OFF on input line 4479.
 Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count301
+\c@Hy@tempcnt=\count310
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5076.
-\XeTeXLinkMargin=\dimen298
+\XeTeXLinkMargin=\dimen309
 
 (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -661,9 +712,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count302
-\Field@Width=\dimen299
-\Fld@charsize=\dimen300
+\Fld@menulength=\count311
+\Field@Width=\dimen310
+\Fld@charsize=\dimen311
 Package hyperref Info: Hyper figures OFF on input line 6347.
 Package hyperref Info: Link nesting OFF on input line 6352.
 Package hyperref Info: Hyper index ON on input line 6355.
@@ -677,9 +728,9 @@ LaTeX Info: Redefining \pageref on input line 6421.
 (/usr/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty
 Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
-\Hy@abspage=\count303
-\c@Item=\count304
-\c@Hfootnote=\count305
+\Hy@abspage=\count312
+\c@Item=\count313
+\c@Hfootnote=\count314
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -689,8 +740,8 @@ File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
 (/usr/share/texmf-dist/tex/latex/atveryend/atveryend.sty
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 )
-\Fld@listcount=\count306
-\c@bookmark@seq@number=\count307
+\Fld@listcount=\count315
+\c@bookmark@seq@number=\count316
 
 (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -703,12 +754,46 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip64
 )
-\c@theorem=\count308
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+shapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geomet
+ric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+arrows.code.tex
+File: tikzlibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\arrowsize=\dimen312
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.markings.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen313
+\pgfdecoratedremainingdistance=\dimen314
+\pgfdecoratedinputsegmentcompleteddistance=\dimen315
+\pgfdecoratedinputsegmentremainingdistance=\dimen316
+\pgf@decorate@distancetomove=\dimen317
+\pgf@decorate@repeatstate=\count317
+\pgfdecorationsegmentamplitude=\dimen318
+\pgfdecorationsegmentlength=\dimen319
+)
+\tikz@lib@dec@box=\box118
+)
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
+ons.markings.code.tex))
+\c@theorem=\count318
 )
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count309
-\l__pdf_internal_box=\box114
+\l__kernel_color_stack_int=\count319
+\l__pdf_internal_box=\box119
 ) (./pres.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
@@ -729,17 +814,17 @@ LaTeX Font Info:    ... okay on input line 15.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count310
-\scratchdimen=\dimen301
-\scratchbox=\box115
-\nofMPsegments=\count311
-\nofMParguments=\count312
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count313
-\MPscratchDim=\dimen302
-\MPnumerator=\count314
-\makeMPintoPDFobject=\count315
-\everyMPtoPDFconversion=\toks45
+\scratchcounter=\count320
+\scratchdimen=\dimen320
+\scratchbox=\box120
+\nofMPsegments=\count321
+\nofMParguments=\count322
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count323
+\MPscratchDim=\dimen321
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
+\everyMPtoPDFconversion=\toks47
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -758,16 +843,16 @@ Package caption Info: End \AtBeginDocument code.
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
 * driver: pdftex
-* paper: <default>
+* paper: custom
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: landscape 
-* h-part:(L,W,R)=(56.9055pt, 681.15898pt, 56.9055pt)
-* v-part:(T,H,B)=(0.0pt, 585.84225pt, 28.45274pt)
-* \paperwidth=794.96999pt
-* \paperheight=614.295pt
-* \textwidth=681.15898pt
-* \textheight=585.84225pt
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 912.42276pt, 56.9055pt)
+* v-part:(T,H,B)=(0.0pt, 549.70724pt, 28.45274pt)
+* \paperwidth=1026.23376pt
+* \paperheight=578.15999pt
+* \textwidth=912.42276pt
+* \textheight=549.70724pt
 * \oddsidemargin=-15.36449pt
 * \evensidemargin=-15.36449pt
 * \topmargin=-122.26999pt
@@ -788,7 +873,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box116
+\AtBeginShipoutBox=\box121
 Package hyperref Info: Link coloring OFF on input line 15.
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -799,7 +884,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count316
+\c@section@level=\count326
 )
 LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
@@ -814,14 +899,36 @@ ination with the same identifier (name{page.}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.58 \newpage
+l.57 \newpage
               [1]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
+LaTeX Font Info:    Calculating math sizes for size <29.86> on input line 62.
 
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <14.93> not available
+(Font)              size <14.4> substituted on input line 62.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <29.86> not available
+(Font)              size <24.88> substituted on input line 62.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <14.93> not available
+(Font)              size <14.4> substituted on input line 62.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <29.86> not available
+(Font)              size <24.88> substituted on input line 62.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <14.93> not available
+(Font)              size <14.4> substituted on input line 62.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 62.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -830,34 +937,67 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.87 \newpage
-              [2]pdfTeX warning (ext4): destination with the same identifier (n
-ame{page.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 \newpage
-               [3]pdfTeX warning (ext4): destination with the same identifier (
-name{page.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.135 \newpage
-               [4]
-Overfull \hbox (21.06741pt too wide) in paragraph at lines 152--159
-\OT1/cmr/bx/n/24.88 parity = 1 $[]$
+l.85 \newpage
+              [2]
+<one.png, id=25, 557.08125pt x 94.3525pt>
+File: one.png Graphic file (type png)
+<use one.png>
+Package pdftex.def Info: one.png  used on input line 98.
+(pdftex.def)             Requested size: 557.0799pt x 94.35225pt.
+
+Overfull \hbox (107.0799pt too wide) in paragraph at lines 98--99
+[][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 152--159
-
- []
-
+<two.png, id=26, 578.16pt x 151.56625pt>
+File: two.png Graphic file (type png)
+<use two.png>
+Package pdftex.def Info: two.png  used on input line 103.
+(pdftex.def)             Requested size: 578.15858pt x 151.56587pt.
+<three.png, id=27, 571.13374pt x 141.52875pt>
+File: three.png Graphic file (type png)
+<use three.png>
+Package pdftex.def Info: three.png  used on input line 106.
+(pdftex.def)             Requested size: 571.13235pt x 141.5284pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.162 \newpage
-               [5]
-Overfull \hbox (1.29965pt too wide) detected at line 168
+l.108 \newpage
+               [3 <./one.png> <./two.png> <./three.png>]
+<four.png, id=31, 575.14874pt x 139.52126pt>
+File: four.png Graphic file (type png)
+<use four.png>
+Package pdftex.def Info: four.png  used on input line 118.
+(pdftex.def)             Requested size: 575.14734pt x 139.5209pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.120 \newpage
+               [4 <./four.png>]
+<five.png, id=35, 299.1175pt x 78.2925pt>
+File: five.png Graphic file (type png)
+<use five.png>
+Package pdftex.def Info: five.png  used on input line 133.
+(pdftex.def)             Requested size: 299.11676pt x 78.2923pt.
+
+Overfull \hbox (34.42963pt too wide) in paragraph at lines 128--136
+[]$[]$ $[]$
+ []
+
+<six.png, id=36, 571.13374pt x 236.885pt>
+File: six.png Graphic file (type png)
+<use six.png>
+Package pdftex.def Info: six.png  used on input line 137.
+(pdftex.def)             Requested size: 571.13235pt x 236.88441pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.138 \newpage
+               [5 <./five.png> <./six.png>]
+Overfull \hbox (37.02556pt too wide) detected at line 144
 [][]
  []
 
@@ -865,19 +1005,25 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.191 \newpage
+l.149 \newpage
                [6]
-Overfull \hbox (29.24452pt too wide) in paragraph at lines 197--203
-[]\OT1/cmr/bx/n/24.88 Given $[]$ some non-diagonal Hamil-to-nian $[]$ 
- []
-
-
-Overfull \hbox (18.09721pt too wide) in paragraph at lines 197--203
-\OT1/cmr/bx/n/24.88 Objective $[]$ a block-diagonal Hamil-to-nian $[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--203
+<./seven.png, id=44, 148.555pt x 152.57pt>
+File: ./seven.png Graphic file (type png)
+<use ./seven.png>
+Package pdftex.def Info: ./seven.png  used on input line 157.
+(pdftex.def)             Requested size: 148.55463pt x 152.56963pt.
+<./eight.png, id=45, 136.51pt x 138.5175pt>
+File: ./eight.png Graphic file (type png)
+<use ./eight.png>
+Package pdftex.def Info: ./eight.png  used on input line 164.
+(pdftex.def)             Requested size: 136.50966pt x 138.51715pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.168 \newpage
+               [7 <./seven.png> <./eight.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
@@ -885,40 +1031,40 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.209 \newpage
-               [7]
-Overfull \hbox (4.77148pt too wide) in paragraph at lines 215--216
-[]\OT1/cmr/bx/n/24.88 Important: We are talk-ing about \OT1/cmr/bx/it/24.88 blo
-ck\OT1/cmr/bx/n/24.88 -diagonalization 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--227
-
+l.203 \newpage
+               [8]
+Overfull \hbox (5.4688pt too wide) in paragraph at lines 208--220
+\OMS/cmsy/m/n/24.88 P$ []\OT1/cmr/bx/n/29.86 ro-tates[] the Hamil-to-nian into 
+block-diagonal form and []projects[]
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.235 \newpage
-               [8]pdfTeX warning (ext4): destination with the same identifier (
+l.222 \newpage
+               [9]pdfTeX warning (ext4): destination with the same identifier (
 name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.253 \newpage
-               [9]
-Underfull \hbox (badness 10000) in paragraph at lines 265--267
+l.249 \newpage
+               [10]
+Overfull \hbox (3.84586pt too wide) in paragraph at lines 267--268
+[]$[]$ 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.277 \newpage
+               [11]
+Underfull \hbox (badness 10000) in paragraph at lines 297--302
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+Underfull \hbox (badness 10000) in paragraph at lines 297--302
 
  []
 
@@ -926,46 +1072,199 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.275 \newpage
-               [10]pdfTeX warning (ext4): destination with the same identifier 
+l.309 \newpage
+               [12]
+Underfull \hbox (badness 10000) in paragraph at lines 320--324
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--324
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--324
+
+ []
+
+
+Underfull \hbox (badness 5417) in paragraph at lines 320--324
+\OT1/cmr/bx/n/29.86 Notice the lonely sub-space
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--350
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.365 \newpage
+               [13]pdfTeX warning (ext4): destination with the same identifier 
 (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.295 \end{document}
-                     [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 295.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 295.
+l.401 \newpage
+               [14]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.448 \newpage
+               [15]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.480 \newpage
+               [16]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.513 \newpage
+               [17]
+Underfull \hbox (badness 10000) in paragraph at lines 521--557
+
+ []
+
+
+Overfull \hbox (14.56871pt too wide) in paragraph at lines 557--557
+ []$[]$ 
+ []
+
+
+Overfull \hbox (250.0pt too wide) in paragraph at lines 557--557
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.559 \newpage
+               [18]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.589 \newpage
+               [19]
+Underfull \hbox (badness 10000) in paragraph at lines 595--596
+
+ []
+
+
+Overfull \hbox (2.22925pt too wide) in paragraph at lines 602--602
+ []$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--620
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 597--622
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.625 \newpage
+               [20]
+Underfull \hbox (badness 10000) in paragraph at lines 633--662
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--662
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.663 \newpage
+               [21]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.689 \newpage
+               [22]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.728 \newpage
+               [23]
+Underfull \hbox (badness 10000) in paragraph at lines 741--742
+[]\OT1/cmr/bx/n/29.86 reduces to []\OT1/cmr/bx/it/29.86 an-ti-fer-ro-mag-
+ []
+
+
+Overfull \hbox (47.90125pt too wide) in paragraph at lines 732--759
+[]|  $[]$ $[]$ 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.760 \newpage
+               [24]
+<plot.png, id=107, 1387.584pt x 755.9442pt>
+File: plot.png Graphic file (type png)
+<use plot.png>
+Package pdftex.def Info: plot.png  used on input line 767.
+(pdftex.def)             Requested size: 693.7903pt x 377.97118pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.769 \end{document}
+                     [25 <./plot.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 769.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 769.
  (./pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 295.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 295.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 769.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 769.
 Package rerunfilecheck Info: File `pres.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- )
-(\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 171 ({)
-### bottom level 
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.98pt have occurred.
+
+ ) 
 Here is how much of TeX's memory you used:
- 19178 strings out of 480478
- 351034 string characters out of 5905959
- 608164 words of memory out of 5000000
- 34848 multiletter control sequences out of 15000+600000
- 543357 words of font info for 65 fonts, out of 8000000 for 9000
+ 23291 strings out of 480478
+ 453241 string characters out of 5905959
+ 763917 words of memory out of 5000000
+ 38886 multiletter control sequences out of 15000+600000
+ 542700 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,17n,81p,921b,563s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
-c}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf
--dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm2488.pfb>
-Output written on pres.pdf (12 pages, 111536 bytes).
+ 69i,25n,81p,945b,915s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/cm-super/sfrm2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm
+2986.pfb>
+Output written on pres.pdf (26 pages, 283042 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 2 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
+ 3 named destinations out of 1000 (max. 500000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 

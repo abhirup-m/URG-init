@@ -11,59 +11,59 @@
 \contentsline {subsection}{\numberline {2.3}N = 1}{10}{subsection.2.3}%
 \contentsline {paragraph}{}{10}{section*.10}%
 \contentsline {subsection}{\numberline {2.4}N = 3}{11}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}N = 4}{11}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}N = 4}{12}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}N = 2}{12}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}The total spectrum}{14}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}The Mott-insulating limit}{15}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Comparison with the antiferromagnetic Heisenberg model}{15}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Diagonalization in momentum space}{16}{subsection.2.10}%
-\contentsline {paragraph}{N=1}{17}{section*.11}%
-\contentsline {paragraph}{N=2}{17}{section*.12}%
-\contentsline {paragraph}{N = 3}{17}{section*.13}%
-\contentsline {section}{\numberline {3}Exact diagonalization of the Anderson molecule}{18}{section.3}%
-\contentsline {paragraph}{The Hamiltonian}{18}{section*.14}%
-\contentsline {subsection}{\numberline {3.1}Symmetries of the problem}{18}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}N = 1 sector}{18}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}N = 3 sector}{19}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}N = 2 sector}{19}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}The total spectrum}{21}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}The Kondo molecule limit}{21}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Block-diagonalization of a Fermionic Hamiltonian}{23}{section.4}%
-\contentsline {subsection}{\numberline {4.1}The Problem}{23}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Writing the Hamiltonian as blocks}{23}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Obtaining the block-diagonal Hamiltonian}{24}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Determining the \ensuremath {\hat {U}_{N\sigma }}}{30}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Summary of the results}{31}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}A Simple Example}{31}{subsection.4.6}%
-\contentsline {subsubsection}{\numberline {4.6.1}The Eigenstates}{34}{subsubsection.4.6.1}%
-\contentsline {section}{\numberline {5}Applying the RG on the Hubbard dimer (real space)}{36}{section.5}%
-\contentsline {subsection}{\numberline {5.1}\({\ensuremath {\hat n_{1\uparrow }}=1}\)}{36}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}N = 2}{37}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}N = 1}{38}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}N = 3}{39}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}\({\ensuremath {\hat n_{1\uparrow }}=0}\)}{40}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}N = 1}{40}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}N = 2}{41}{subsection.5.7}%
-\contentsline {subsection}{\numberline {5.8}N = 3}{41}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}The eigenstates}{41}{subsection.5.9}%
-\contentsline {subsubsection}{\numberline {5.9.1}N = 1}{42}{subsubsection.5.9.1}%
-\contentsline {subsubsection}{\numberline {5.9.2}N = 3}{43}{subsubsection.5.9.2}%
-\contentsline {subsubsection}{\numberline {5.9.3}N = 2}{44}{subsubsection.5.9.3}%
-\contentsline {section}{\numberline {6}Applying the RG on the Hubbard dimer (momentum space)}{46}{section.6}%
-\contentsline {subsection}{\numberline {6.1}\({N=1}\)}{47}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}\({N=2}\)}{47}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}\({N=3}\)}{49}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Applying the RG on the Anderson molecule (real-space)}{50}{section.7}%
-\contentsline {subsection}{\numberline {7.1}\({N=1}\)}{51}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}\({N=2}\)}{53}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}\({N=3}\)}{55}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Applying the RG on the Anderson molecule (momentum-space)}{57}{section.8}%
-\contentsline {subsection}{\numberline {8.1}N = 1}{58}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}N = 2}{58}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}N = 3}{59}{subsection.8.3}%
-\contentsline {section}{\numberline {9}Comparison of Schrieffer-Wolff transformation and URG}{60}{section.9}%
-\contentsline {subsection}{\numberline {9.1}The Schrieffer-Wolff transformation}{60}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Anderson Molecule}{60}{subsection.9.2}%
-\contentsline {paragraph}{The Unitary RG}{62}{section*.18}%
-\contentsline {subsection}{\numberline {9.3}Hubbard dimer}{63}{subsection.9.3}%
-\contentsline {paragraph}{The Unitary RG}{64}{section*.19}%
+\contentsline {subsection}{\numberline {2.7}The total spectrum}{15}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}The Mott-insulating limit}{16}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Comparison with the antiferromagnetic Heisenberg model}{16}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Diagonalization in momentum space}{17}{subsection.2.10}%
+\contentsline {paragraph}{N=1}{18}{section*.11}%
+\contentsline {paragraph}{N=2}{18}{section*.12}%
+\contentsline {paragraph}{N = 3}{18}{section*.13}%
+\contentsline {section}{\numberline {3}Exact diagonalization of the Anderson molecule}{19}{section.3}%
+\contentsline {paragraph}{The Hamiltonian}{19}{section*.14}%
+\contentsline {subsection}{\numberline {3.1}Symmetries of the problem}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}N = 1 sector}{19}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}N = 3 sector}{20}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}N = 2 sector}{20}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}The total spectrum}{22}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}The Kondo molecule limit}{22}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Block-diagonalization of a Fermionic Hamiltonian}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Problem}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Writing the Hamiltonian as blocks}{24}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Obtaining the block-diagonal Hamiltonian}{25}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Determining the \ensuremath {\hat {U}_{N\sigma }}}{31}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Summary of the results}{32}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}A Simple Example}{32}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}The Eigenstates}{35}{subsubsection.4.6.1}%
+\contentsline {section}{\numberline {5}Applying the RG on the Hubbard dimer (real space)}{37}{section.5}%
+\contentsline {subsection}{\numberline {5.1}\({\ensuremath {\hat n_{1\uparrow }}=1}\)}{37}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}N = 2}{38}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}N = 1}{39}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}N = 3}{40}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}\({\ensuremath {\hat n_{1\uparrow }}=0}\)}{41}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}N = 1}{41}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}N = 2}{42}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}N = 3}{42}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}The eigenstates}{43}{subsection.5.9}%
+\contentsline {subsubsection}{\numberline {5.9.1}N = 1}{43}{subsubsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.2}N = 3}{44}{subsubsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.3}N = 2}{45}{subsubsection.5.9.3}%
+\contentsline {section}{\numberline {6}Applying the RG on the Hubbard dimer (momentum space)}{47}{section.6}%
+\contentsline {subsection}{\numberline {6.1}\({N=1}\)}{48}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}\({N=2}\)}{48}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}\({N=3}\)}{50}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Applying the RG on the Anderson molecule (real-space)}{51}{section.7}%
+\contentsline {subsection}{\numberline {7.1}\({N=1}\)}{52}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}\({N=2}\)}{54}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}\({N=3}\)}{56}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Applying the RG on the Anderson molecule (momentum-space)}{58}{section.8}%
+\contentsline {subsection}{\numberline {8.1}N = 1}{59}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}N = 2}{59}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}N = 3}{60}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Comparison of Schrieffer-Wolff transformation and URG}{61}{section.9}%
+\contentsline {subsection}{\numberline {9.1}The Schrieffer-Wolff transformation}{61}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Anderson Molecule}{61}{subsection.9.2}%
+\contentsline {paragraph}{The Unitary RG}{63}{section*.18}%
+\contentsline {subsection}{\numberline {9.3}Hubbard dimer}{64}{subsection.9.3}%
+\contentsline {paragraph}{The Unitary RG}{65}{section*.19}%

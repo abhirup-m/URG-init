@@ -144,7 +144,11 @@ Inside each block, I will be able to repeat the procedure by next using the eige
 
 \subsection{N = 1}
 
-\pp For one electron on two lattice sites, I start by writing down the eigenstates of \(S_z^{tot}\). For odd number of electrons, zero magnetization is not possible. So,
+\pp For one electron on two lattice sites, I start by writing down the eigenstates of \(S_z^{tot}\). For odd number of electrons, zero magnetization is not possible. 
+\begin{center}
+	\includegraphics[scale=0.5]{one.png}
+\end{center}
+So,
 \begin{itemize}
 	\item[$\ast$] \(S_z^{tot} = -1\): \(\ket{\downarrow,0}, \ket{0, \downarrow}\)
 	\item[$\ast$] \(S_z^{tot} = +1\): \(\ket{\uparrow,0}, \ket{0, \uparrow}\)
@@ -189,6 +193,9 @@ and hence similar eigenfunctions: \(\frac{\ket{\uparrow,0} \pm \ket{0,\uparrow}}
 
 \subsection{N = 3}
 I once again write down the eigenstates of \(S_z^{tot}\), this time with three electrons.
+\begin{center}
+	\includegraphics[scale=0.5]{four.png}
+\end{center}
 \begin{itemize}
 \item \(S_z^{tot} = -1\): \(\ket{\uparrow\downarrow,\downarrow}, \ket{\downarrow,\uparrow\downarrow}\)
 
@@ -229,16 +236,22 @@ So, \(\ket{\uparrow\downarrow,\uparrow\downarrow}\) is an eigenvector with eigen
 
 \subsection{N = 2}
 
-This is the eigenvalue that has the largest subspace.
+This is the eigenvalue that has the largest subspace.\\\\
+\begin{minipage}{\textwidth/2}
 \begin{itemize}
 \item \(S_z^{tot} = -1\): \(\ket{\downarrow,\downarrow}\)
 \item \(S_z^{tot} = +1\): \(\ket{\uparrow,\uparrow}\)
-
+\end{itemize}
+\end{minipage}
+\begin{minipage}{\textwidth/2}
+	\includegraphics[scale=0.5]{five.png}
+\end{minipage}
+\vspace*{10pt}\\
 These two subspaces have a single state each, so theya are obviously eigenstates. Since they both have identical spins on both sites, the hopping term is 0, and the \(U\)-term is also zero because of single occupation. As a result, they both have zero eigenvalue
 \beq
 \ham \ket{\downarrow,\downarrow} = \ham \ket{\uparrow,\uparrow} = 0
 \eeq
-
+\begin{itemize}
 \item \(S_z^{tot} = 0\):  \(\ket{\uparrow,\downarrow},\ket{\downarrow,\uparrow},\ket{0,\uparrow\downarrow},\ket{\uparrow\downarrow,0}\)
 
 This subspace has four eigenvectors,
@@ -290,6 +303,11 @@ This subspace is not automatically diagonal, but is easily diagonalized. The eig
 \eeq
 with eigenvalues \(\frac{U\pm\sqrt{U^2+16 t^2}}{2}\) respectively.
 \end{itemize}
+
+\begin{center}
+	\includegraphics[scale=0.5]{six.png}
+\end{center}
+
 
 \subsection{The total spectrum}
 \begin{center}
@@ -384,7 +402,13 @@ In terms of these operators, the Hubbard Hamiltonian becomes
 \beq
 \ham = t\rr{\hat n_{\pi}-\hat n_{0}}+\fr{U}{2}n_\ua n_\da + \fr{U}{2}\prod_\sigma \qq{c^\dagger_{0,\sigma}c_{\pi,\sigma}+c^\dagger_{\pi,\sigma}c_{0,\sigma}}
 \eeq
+\begin{minipage}{300pt}
 where \il{n_\pi = \sum_\sigma n_{\pi\sigma}}. This Hamiltonian also conserves the total particle number and z-component of total spin. The notation used is \il{\ket{n_{\pi\ua}n_{\pi\da},n_{0\ua}n_{0\da}}}.
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}{\textwidth/3}
+	\includegraphics[scale=0.3]{pic3.png}
+\end{minipage}
 
 \paragraph{N=1}
 
@@ -727,7 +751,7 @@ Define two matrices diagonal in \no:
 This enables us to derive the following equation between \(\hml\) and \(\ham^\prime\):
 \beq
 \hml\hat{P_{N\sigma}} &= \hml \un^\dagger \no \un = \un^\dagger \overline\hml \no \un = \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un \\
-&= \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & \hat{E_{N\sigma}} \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un = \un^\dagger \hat{E_{N\sigma}} \otimes \mathbb{I}\;\no \un = \hat{E_{N\sigma}} \otimes \mathbb{I}\;\un^\dagger \no \un = \ham^\prime \hat{P_{N\sigma}} 
+&= \un^\dagger \begin{pmatrix} \hat{E_{N\sigma}} & 0 \\ 0 & \hat{E_{N\sigma}} \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \un = \un^\dagger \hat{E_{N\sigma}} \otimes \mathbb{I}\;\no \un \\&= \hat{E_{N\sigma}} \otimes \mathbb{I}\;\un^\dagger \no \un = \ham^\prime \hat{P_{N\sigma}} 
 \eeq
 \beq[eq1]
 \tf \hml\hat{P_{N\sigma}} &= \ham^\prime \hat{P_{N\sigma}}
@@ -793,7 +817,11 @@ These defining properties have many corrolaries in terms of properties of \(\hat
 	\item \(\hat\eta_{N\sigma}\no = (1-\no)\hat\eta_{N\sigma} = \eta_{N\sigma}\) : act with \(\no\) from right on property 2.
 \end{itemize}
 To construct the diagonalised Hamiltonian and get some properties of the \(\eta_{N\sigma}\), we will use equations \ref{eq1} and \ref{eq2}. \\\\
-First of all, \(\hml \hat P_{N\sigma} = \ham^\prime P_{N\sigma}\implies \no\hml\hat P_{N\sigma} (1-\no) = \no \ham^\prime \hat P_{N\sigma} (1-\no)\). \\\\
+First of all, \(\hml \hat P_{N\sigma} = \ham^\prime P_{N\sigma}\implies \no\hml\hat P_{N\sigma} (1-\no) = \no \ham^\prime \hat P_{N\sigma} (1-\no)\). \\
+\begin{center}
+	\fbox{\includegraphics[scale=0.3]{pic6.png}}
+\end{center}
+
 The RHS simplifies as
 \beq[rhs]
 \hat P_{N\sigma}(1-\no) = \fr{1}{2}(1 + \eta + \eta^\dagger)(1-\no) = \fr{1}{2}(1 + \eta^\dagger)(1-\no) && \rr{\because \eta_{N\sigma}(1-\no)=0} \\
@@ -1118,11 +1146,17 @@ Next we need to write the LHS in this subspace. Taking \il{\ket{1100}} and \il{\
 \beq
 \cb^\dagger\ce+\ce^\dagger\cb = \begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix}
 \eeq
+\begin{minipage}{\textwidth/2}
 Since \il{\nc=0}, the \il{\nc\nd\na} term drops out. Also,
 \beq
 \na\nd=\begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix}
 \eeq
 Finally, \il{\hat E_{1\ua,2} \equiv \mathcal{P}\hat E_{1\ua}\mathcal{P}} is the projected Hamiltonian in this subspace. Putting all these together,
+\end{minipage}
+\hspace*{60pt}
+\begin{minipage}{\textwidth/3}
+	\includegraphics[scale=0.3]{pic1.png}
+\end{minipage}
 \begin{gather}
 \hat E_{1\ua,2} - \begin{pmatrix} U & 0 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix}0 & t \\ t & 0 \end{pmatrix} = \pm \begin{pmatrix} 0 & t \\ t & 0 \end{pmatrix}\\
 \implies \hat E_{1\ua,2} = \begin{pmatrix} U & 0  \\ 0 & 0 \end{pmatrix} , \begin{pmatrix} U & 2t \\ 2t & 0 \end{pmatrix}
@@ -1231,6 +1265,10 @@ The equation(scalar) in this subspace is
 \end{gather}
 
 The eigenvalues are \il{U\pm t}. The eigenvector is \il{\ket{0111}}.
+
+\begin{center}
+	\includegraphics[scale=0.3]{pic2.png}
+\end{center}
 
 \subsection{The eigenstates}
 The eigenstates obtained for the various subspaces form only parts of the total eigenstates. Using the unitary operator \il{\hat U^\dagger = \fr{1}{\sqrt 2}(1+\eta-\eta^\dagger)}, these individual eigenstates can be combined into the total eigenstates.
@@ -1436,7 +1474,12 @@ H_h = 0
 	H_e = \fr{U}{2}
 	\implies E = H_e \pm \fr{U}{2} = U,0
 \end{gather}
-\il{\eta \propto c^\dagger_{\pi\da},c^\dagger_{0\da}}.These states are filled. Hence, \il{U^\dagger = I}. Eigenstate is \il{\ket{\ua,\da}}.\\\\
+To get eigenstates, note:
+\begin{gather}
+\eta = \fr{U/2}{E-H_e}(c^\dagger_{\pi\da}c_{0\da}+c^\dagger_{\pi\da}c_{0\da}) c^\dagger_{0\ua}c_{\pi\ua} = \pm(c^\dagger_{\pi\da}c_{0\da}+c^\dagger_{\pi\da}c_{0\da}) c^\dagger_{0\ua}c_{\pi\ua}\\
+\implies \eta \ket{1001} = \mp \ket{0110}
+\end{gather}
+Eigenstates  are \il{\ket{\ua,\da}\pm\ket{\da,\ua}}.\\\\
 \il{\mathcal{P} = \ket{1100}\bra{1100}} (use occupied equation)
 
 \begin{gather}
@@ -1963,6 +2006,13 @@ As seen in the previous example as well, the SWT block-diagonalises the Hamilton
 \end{pmatrix}
 \end{gather*}
 All orders are kept in the rotation (non-perturbative), as seen in the \il{\Delta = \sqrt{U^2+16t^2}}. Taking the limit \il{U\gg t} produces the bands: \il{\Delta \simeq U+\fr{8t^2}{U}}.
+
+\newpage
+
+\begin{figure}[tb!h]
+\caption{Comparison of the solutions obtained from SWT and URG}
+\fbox{\includegraphics[width=\textwidth]{./com_plot}}
+\end{figure}
 
 \newpage
 

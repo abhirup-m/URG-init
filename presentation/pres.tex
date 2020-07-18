@@ -3,10 +3,8 @@
 \usepackage{xcolor}
 \definecolor{mygr}{rgb}{0,0.15,0}
 \newcommand{\head}[1]{
-\centerline{\begin{tcolorbox}[colback=mygr,colframe=gray,width=14.2in,halign=center]
-\vspace{10pt}
+\centerline{\begin{tcolorbox}[colback=mygr,colframe=gray,width=14.2in,valign=center,halign=center,height=1in]
 \bf{\Large{\color{white}{#1}}}
-\vspace{10pt}
 \end{tcolorbox}}
 }
 \newcommand{\cen}[1]{\begin{center}\Large{#1}\end{center}}
@@ -78,7 +76,7 @@
 
 \vspace*{10pt}
 
-\item \bf{Site parity: \il{\hat P : \Psi\rr{i,j} \ra \Psi\rr{j,i}}}}
+\item \bf{Site parity:} \il{\pmb{\hat P : \Psi\rr{i,j} \ra \Psi\rr{j,i}}}}
 
 \end{itemize}
 
@@ -270,7 +268,7 @@
 \begin{tcolorbox}[halign=center, colback=white, colframe=red]
 	\il{\pmb{\eta^\dagger \eta = \hat n,\eta\eta ^\dagger = 1-\hat n}}\\\vspace*{20pt}
 	\il{\pmb{\eta^\dagger = \rr{\hat E - \hat H_e}^{-1}c^\dagger T}}\\\vspace*{20pt}
-	\il{\pmb{\eta^\dagger = \rr{\hat E - \hat H_h}^{-1}T^\dagger c}}\\\vspace*{20pt}
+	\il{\pmb{\eta= \rr{\hat E - \hat H_h}^{-1}T^\dagger c}}\\\vspace*{20pt}
 \end{tcolorbox}
 \end{minipage}
 
@@ -280,7 +278,7 @@
 
 \vspace*{20pt}
 
-\begin{center}\bf{\Large{First step: Determine the working equation}}\end{center}
+\begin{center}\bf{\Large{First determine the working equation}}\end{center}
 
 	\vspace*{40pt}
 	\hspace*{-60pt}
@@ -298,7 +296,7 @@
 	\\
 		\il{\pmb{H_h = Tr\qq{\ham\;(1-\hat n_{1\ua})}}}\\
 	\\
-		\il{\pmb{H_e = Tr\qq{\ham\; c_{1\ua}}}}
+		\il{\pmb{T = Tr\qq{\ham\; c_{1\ua}}}}
 \end{tcolorbox}
 \end{minipage}
 \vspace{30pt}
@@ -319,7 +317,7 @@
 \begin{minipage}[c]{\textwidth/2}
 	\bf{Consider \large{\il{\underline{\pmb{N=2}, \pmb{n_{1\ua}=1}}}}}\\
 	\\
-	\bf{Also, \il{\pmb{H_e = }}\\\il{\\ \pmb{Un_{1\da}-Un_{2\ua}n_{2\da}+t(\ce^\dagger\cb+\cb^\dagger\ce)}}}\\\\\\
+	\bf{Also, \\\il{\pmb{H_e = Un_{1\da}-Un_{2\ua}n_{2\da}+t(\ce^\dagger\cb+\cb^\dagger\ce)}}}\\\\\\
 	\bf{Notice the lonely subspace and the mixed subspace}
 \end{minipage}
 \hspace*{120pt}
@@ -465,14 +463,14 @@
 \hspace*{20pt}
 \pmb{\xrightarrow{\text{\Large{  URG  }}}}
 \hspace*{20pt}
-\begin{pmatrix}
+\textcolor{blue}{\begin{pmatrix}
 	0 &&&&& \\
 	& 0 &&&& \\
 	&& \;\;U & \;\;2t && \\
 	&& \;\;2t & \;\;0 && \\
 	&&&& \;\;U & \\
 	&&&&& & 0 \\
-\end{pmatrix}}
+\end{pmatrix}}}
 \eeq
 \vspace*{10pt}
 \begin{center}\bf{\large{\color{purple}{\Large{Notice the \textit{block-diagonalizing effect}}}}}\end{center}
@@ -662,15 +660,55 @@
 
 \newpage
 
+\head{Applying URG to Hubbard molecule (k-space)}
+
+\cen{\textbf{An issue I am unable to resolve...}}
+
+\cen{\il{ N = 2}\\\il{ \ket{\ua\da,0}, \ket{0,\ua\da}}}
+\vspace*{30pt}
+
+
+
+\newpage
+
+\head{Applying URG to Hubbard dimer (k-space)}
+
+\cen{\textbf{Transformation of the \il{\pmb {N=2}} subspace}}
+
+\vspace*{30pt}
+\beq
+\pmb{
+\textcolor{black}{	
+		\begin{pmatrix} 
+	0 &&&&& \\
+	& 0 &&&&\\
+	&& \fr{U}{2} & -\fr{U}{2} && \\ 
+	&& -\fr{U}{2} & \fr{U}{2} && \\
+	&&&& \fr{U}{2}+2t & -\fr{U}{2} \\
+	&&&& -\fr{U}{2} & \fr{U}{2}-2t
+	\end{pmatrix}}
+	\pmb {\xrightarrow{\text{\Large{  URG  }}}}
+\textcolor{blue}{	
+	\begin{pmatrix} 
+	0 &&&&& \\
+	& 0 &&&&\\
+	&& 0 &&& \\ 
+	&&& U && \\
+	&&&& \fr{U+\Delta}{2} & \\
+	&&&&& \fr{U-\Delta}{2} 
+	\end{pmatrix}}}
+\eeq
+\newpage
+
 \head{Schrieffer-Wolff Transformation}
 
 \vspace*{40pt}
 
-\centerline{\begin{tcolorbox}[colback=white, colframe=green, halign=center, width=200pt, height=50pt]
+\centerline{\begin{tcolorbox}[colback=white, colframe=green, valign=center,halign=center, width=200pt, height=50pt]
 	\il{\pmb{\ham = \ham_0 + V}}
 \end{tcolorbox}}
-\begin{center} \Bigg \downarrow \end{center}
-\centerline{\begin{tcolorbox}[colback=white, colframe=green, halign=center, width=350pt]
+\begin{center} \Bigg \downarrow \il{\pmb{e^{-S}\ham e^S}} \end{center}
+\centerline{\begin{tcolorbox}[colback=white, colframe=blue,valign=center, halign=center, width=350pt]
 	\il{\pmb{\ham_\text{eff} = \ham_0 + \fr{1}{2}\qq{V,\hat S}}}
 \end{tcolorbox}}
 
@@ -681,7 +719,7 @@
 \end{minipage}
 \hspace*{100pt}
 \begin{minipage}[c]{\textwidth/3}
-\centerline{\begin{tcolorbox}[colback=white, colframe=green, halign=center, width=200pt, height=50pt]
+\centerline{\begin{tcolorbox}[colback=white, colframe=yellow,valign=center, halign=center, width=200pt, height=50pt]
 	\il{\pmb{\qq{\hat S, \ham_0} = V}}
 \end{tcolorbox}}
 \end{minipage}
@@ -729,7 +767,7 @@
 
 \head{Schrieffer-Wolff Transf. (Anderson molecule)}
 \vspace*{60pt}
-\hspace*{-80pt}
+\hspace*{-85pt}
 \begin{minipage}{500pt}
 	\begin{tcolorbox}[colback=white, colframe=red, height=400pt, width=500pt]
 	\vspace*{20pt}
@@ -763,7 +801,18 @@
 
 \vspace*{20pt}
 \cen{
-	\includegraphics[scale=0.5]{plot.png}
+	\includegraphics[scale=0.6]{plot.png}
 }
 
+\newpage
+
+\head{Things I haven't understood(solved) yet}
+\vspace*{80pt}
+\begin{itemize}
+	\item \textbf{Getting the effective Hamiltonian preserving the symmetries}
+\vspace*{40pt}
+	\item \textbf{Solving the problem in one go (without needing to go into subspaces)}
+\vspace*{40pt}
+	\item \textbf{Different choices lead to different effective Hamiltonians, although the final spectrum is the same}
+\end{itemize}
 \end{document}

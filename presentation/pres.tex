@@ -22,7 +22,7 @@
 	\vspace*{70pt}
 \bf{\large{Department of Physical Sciences}}\\
 	\vspace*{20pt}
-\bf{\large{Indian Institute of Science, Education and Research, Kolkata}}
+\bf{\large{Indian Institute of Science Education and Research, Kolkata}}
 
 \end{center}
 
@@ -90,7 +90,8 @@
 \hspace*{50pt}
 \begin{minipage}{100pt}
 \large{
-	\textbf{N = 1}}
+	\textbf{N = 1}
+}
 \end{minipage}
 \begin{minipage}{450pt}
 	\includegraphics{one.png}
@@ -147,19 +148,19 @@
 \newpage
 
 \head{Formalism of unitary renormalization group}
-\vspace{50pt}
+\vspace{20pt}
 \begin{minipage}{650pt}
 	\textbf{Given} \il{\pmb \longrightarrow} \textbf{some \textcolor{red}{non-diagonal} Hamiltonian }\il{\pmb \longrightarrow}
 \end{minipage}
 \begin{minipage}{200pt}
-	\cen{\includegraphics{./seven.png}}
+	\cen{\includegraphics[scale=0.6]{./seven1.png}}
 \end{minipage}
-\vspace{70pt}\\
+\vspace{30pt}\\
 \begin{minipage}{680pt}
 	\hspace*{30pt}\textbf{Goal} \il{\pmb \longrightarrow} \textbf{a \textcolor{red}{block-diagonal} Hamiltonian }\il{\pmb \longrightarrow}
 \end{minipage}
 \begin{minipage}{200pt}
-	\cen{\includegraphics{./eight.png}}
+	\cen{\includegraphics[scale=0.6]{./eight1.png}}
 \end{minipage}
 
 
@@ -176,13 +177,13 @@
 \bf{The resolution of the Hamiltonian is in the occupied and vacant states of some degree of freedom \il{\pmb {\hat n}}}.
 \vspace*{40pt}\\
 \begin{minipage}{500pt}
-\begin{tcolorbox}[width=500pt,colframe=red,colback=white, height=180pt]
+\begin{tcolorbox}[width=500pt,colframe=red,colback=white,height=200pt,valign=center]
 \vspace*{-25pt}
 \beq
-\ham_{2n \times 2n} = \bordermatrix{~ & \ket{\hat n = 1} & \ket{\hat n = 0} \cr 
+\pmb{\ham_{2n \times 2n} = \bordermatrix{~ & \ket{\hat n = 1} & \ket{\hat n = 0} \cr 
 	& \;(\hat H_e)_{n \times n}\; & \;(\hat T)_{n \times n}\; \\ 
 	&&& \\ 
-	& \;(\hat T^\dagger)_{n \times n} & \; (\hat H_h)_{n \times n}}
+	& \;(\hat T^\dagger)_{n \times n} & \; (\hat H_h)_{n \times n}}}
 \eeq
 \end{tcolorbox}
 \end{minipage}
@@ -211,11 +212,11 @@
 \vspace*{30pt}\\
 \bf{\il{\mathcal{P}} \textcolor{red}{rotates} the Hamiltonian into block-diagonal form and \textcolor{red}{projects} out the upper block.}
 \vspace*{20pt}
-\begin{tcolorbox}[colback=white,colframe=red]
+\cen{\begin{tcolorbox}[width=750pt, colback=white,colframe=red,height=120pt,valign=center,halign=center]
 \beq
-\mathcal{P} : \begin{pmatrix} \;H_e\; & \;T\; \\ \;T^\dagger\; & \;H_h\;\end{pmatrix} \xrightarrow{rotation} \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;E^\prime\;\end{pmatrix} \xrightarrow{projection} \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;0\; \end{pmatrix}
+\pmb{\mathcal{P} : \begin{pmatrix} \;H_e\; & \;T\; \\ \;T^\dagger\; & \;H_h\;\end{pmatrix} \xrightarrow{rotation} \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;E^\prime\;\end{pmatrix} \xrightarrow{projection} \begin{pmatrix} \;E\; & \;0\; \\ \;0\; & \;0\; \end{pmatrix}}
 \eeq
-\end{tcolorbox}
+\end{tcolorbox}}
 
 \newpage
 
@@ -232,7 +233,7 @@
 \vspace*{50pt}
 \hspace*{50pt}
 \begin{minipage}[c]{\textwidth/2}
-	\il{\pmb{\eta : \ket{1}\otimes\ket{\Psi_n} \ra \ket{0}\otimes\ket{\Phi_n}}}
+	\il{\pmb{\eta\; : \;\ket{1}\;\otimes\;\ket{\Psi_n} \;\ra \;\ket{0}\;\otimes\;\ket{\Phi_n}}}
 \end{minipage}
 \begin{minipage}[c]{250pt}
 \begin{tcolorbox}[colback=white, colframe=blue, halign=center]
@@ -284,18 +285,18 @@
 	\hspace*{-60pt}
 	\begin{minipage}[c]{\textwidth/2}
 \begin{itemize} 
-	\item \bf{Choose \il{1\ua} as the degree of freedom to disentangle.}
+	\item \bf{Choose \il{\pmb{1\ua}} as the degree of freedom to disentangle.}
 		\vspace*{30pt}
-	\item \bf{Calculate \il{\hat H_e, \hat H_h} and \il{\hat T}}
+	\item \bf{Calculate \il{\pmb{\hat H_e, \hat H_h}} and \il{\pmb{\hat T}}}
 \end{itemize}
 	\end{minipage}
 	\hspace*{100pt}
 	\begin{minipage}[c]{300pt}
-	\begin{tcolorbox}[colback=white, colframe=red]
+	\begin{tcolorbox}[colback=white,colframe=red,halign=center]
 		\il{\pmb{H_e = Tr\qq{\ham\;\hat n_{1\ua}}}}\\
-	\\
+\vspace{30pt}
 		\il{\pmb{H_h = Tr\qq{\ham\;(1-\hat n_{1\ua})}}}\\
-	\\
+\vspace{30pt}
 		\il{\pmb{T = Tr\qq{\ham\; c_{1\ua}}}}
 \end{tcolorbox}
 \end{minipage}
@@ -660,46 +661,6 @@
 
 \newpage
 
-\head{Applying URG to Hubbard molecule (k-space)}
-
-\cen{\textbf{An issue I am unable to resolve...}}
-
-\cen{\il{ N = 2}\\\il{ \ket{\ua\da,0}, \ket{0,\ua\da}}}
-\vspace*{30pt}
-
-
-
-\newpage
-
-\head{Applying URG to Hubbard dimer (k-space)}
-
-\cen{\textbf{Transformation of the \il{\pmb {N=2}} subspace}}
-
-\vspace*{30pt}
-\beq
-\pmb{
-\textcolor{black}{	
-		\begin{pmatrix} 
-	0 &&&&& \\
-	& 0 &&&&\\
-	&& \fr{U}{2} & -\fr{U}{2} && \\ 
-	&& -\fr{U}{2} & \fr{U}{2} && \\
-	&&&& \fr{U}{2}+2t & -\fr{U}{2} \\
-	&&&& -\fr{U}{2} & \fr{U}{2}-2t
-	\end{pmatrix}}
-	\pmb {\xrightarrow{\text{\Large{  URG  }}}}
-\textcolor{blue}{	
-	\begin{pmatrix} 
-	0 &&&&& \\
-	& 0 &&&&\\
-	&& 0 &&& \\ 
-	&&& U && \\
-	&&&& \fr{U+\Delta}{2} & \\
-	&&&&& \fr{U-\Delta}{2} 
-	\end{pmatrix}}}
-\eeq
-\newpage
-
 \head{Schrieffer-Wolff Transformation}
 
 \vspace*{40pt}
@@ -776,7 +737,7 @@
 \begin{itemize}
 	\item \textbf{directly \textcolor{red}{\it{drops terms}} higher than \il{\pmb{t^2}}}
 \vspace*{30pt}
-	\item \textbf{reduces to \textcolor{red}{\it{antiferromagnetic Heisenberg model}}}
+	\item \textbf{separates into two bands, with a gap of \il{\fr{U}{2}}}
 \end{itemize}
 \vspace*{30pt}
 	\end{tcolorbox}
@@ -789,7 +750,7 @@
 \begin{itemize}
 	\item \textbf{\textcolor{blue}{\it{All terms}} are kept in the transformation}
 \vspace*{30pt}
-	\item \textbf{reduces to antiferr. Heis. model \it{\textcolor{blue}{only at large \il{\pmb U}}}}
+	\item \textbf{separates into bands only at \il{U \gg t}}
 \end{itemize}
 \vspace*{30pt}
 	\end{tcolorbox}
@@ -806,13 +767,11 @@
 
 \newpage
 
-\head{Things I haven't understood(solved) yet}
+\head{Things to do}
 \vspace*{80pt}
 \begin{itemize}
-	\item \textbf{Getting the effective Hamiltonian preserving the symmetries}
+	\item \textbf{Getting the effective Hamiltonian in operator form}
 \vspace*{40pt}
-	\item \textbf{Solving the problem in one go (without needing to go into subspaces)}
-\vspace*{40pt}
-	\item \textbf{Different choices lead to different effective Hamiltonians, although the final spectrum is the same}
+	\item \textbf{Writing the Hamiltonian in terms of the pseudo-spins and applying the URG in terms of them}
 \end{itemize}
 \end{document}

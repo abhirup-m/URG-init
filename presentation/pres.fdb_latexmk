@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1595578657 "pres.tex" "pres.pdf" "pres" 1595578661
+["pdflatex"] 1595578657 "pres.tex" "pres.pdf" "pres" 1595877407
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1591545468 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1591545468 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm2488.tfm" 1591545468 1536 69ac9c659d7fec8ea6488bb99e0f2cd4 ""
@@ -177,13 +177,13 @@
   "plot.png" 1593853892 83186 4231d7b8cc3bbe8e57a7397e72d398d4 ""
   "pres.aux" 1595578661 746 0d7d6642a808407893a8f017db141877 "pdflatex"
   "pres.out" 1595578658 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "pres.tex" 1595578657 21864 16f0df595b85af59b1b0f31ea09a6c52 ""
+  "pres.tex" 1595877407 21864 16f0df595b85af59b1b0f31ea09a6c52 ""
   "seven1.png" 1595187295 8246 42a486adc8ed3755a8cbb6028cf3ecc7 ""
   "six.png" 1593620924 28439 159945382d77a9402e8e07465811f806 ""
   "three.png" 1593617863 10843 c437d68ac1f75bc91a94c4dbfcbcf68f ""
   "two.png" 1593617352 13010 1699864e2c93485c1d690f197a8f5e8f ""
   (generated)
-  "pres.aux"
   "pres.log"
-  "pres.out"
   "pres.pdf"
+  "pres.out"
+  "pres.aux"

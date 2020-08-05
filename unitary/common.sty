@@ -1,0 +1,64 @@
+\ProvidesPackage{common}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,amsmath,amssymb,braket,graphicx,enumitem,booktabs,multirow,xcolor,fancyhdr,mathtools,blkarray,booktabs,tcolorbox,caption}
+\usepackage[margin=0.5in]{geometry}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\leftmark}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\ham}{\ensuremath{\mathcal{H}}}
+\newcommand{\ii}[1]{\ensuremath{\int_{-\infty}^{\infty}{#1}\:}}
+\newcommand{\ol}[1]{\ensuremath \overline{#1}}
+\newcommand{\uu}[1]{\textsuperscript{#1}}
+\newcommand{\dd}[1]{\textsubscript{#1}}
+\renewcommand{\bf}[1]{\textbf{#1}}
+\renewcommand{\it}[1]{\textit{#1}}
+\newcommand{\rr}[1]{\ensuremath{\left({#1}\right)}}
+\newcommand{\il}[1]{\({#1}\)}
+\newcommand{\qq}[1]{\ensuremath{\left[{#1}\right]}}
+\newcommand{\cc}[1]{\ensuremath{\left\{{#1}\right\}}}
+\newcommand{\avg}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\nn}{\sum_{\avg{ij}}}
+\newcommand{\vt}[1]{\ensuremath{\vec{#1}}}
+\newcommand{\tf}{\ensuremath\therefore}
+\newcommand{\im}{\ensuremath\implies}
+\newcommand{\ex}[1]{\ensuremath\exp\rr{#1}}
+\newcommand{\fr}[2]{\ensuremath{\frac{#1}{#2}}}
+\newcommand{\pd}[2]{\ensuremath{\frac{\partial{#1}}{\partial{#2}}}}
+\newcommand{\pp}[1][]{\paragraph{#1}}
+\newcommand{\dv}[2]{\ensuremath{\frac{\:d#1}{\:d#2}}}
+\newcommand{\lm}[2]{\ensuremath{\lim_{{#1}\to{#2}}}}
+\newcommand{\cs}[1]{\ensuremath{\cos{\left(#1\right)}}}
+\newcommand{\sn}[1]{\ensuremath{\sin{\left(#1\right)}}}
+\newcommand{\C}[2]{\ensuremath{c_{{#1}{#2}}^\dagger}}
+\renewcommand{\c}[2]{\ensuremath{c_{{#1}{#2}}}}
+\newenvironment{zz}
+{\begin{equation} \begin{aligned}}
+{\end{aligned} \end{equation}}
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\beq}[1][]{\begin{equation}\label{#1}\begin{aligned}}
+\newcommand{\eeq}[0]{\end{aligned}\end{equation}}
+\newtheorem{theorem}{Theorem}
+\newcommand{\btm}{\begin{theorem}}
+\newcommand{\etm}{\end{theorem}}
+\newcommand{\bpf}{\begin{proof}}
+\newcommand{\epf}{\end{proof}}
+\newcommand{\btc}{\begin{tcolorbox}}
+\newcommand{\etc}{\end{tcolorbox}}
+\newcommand{\na}{\ensuremath{\hat n_{1\uparrow}}}
+\newcommand{\nb}{\ensuremath{\hat n_{1\downarrow}}}
+\newcommand{\nc}{\ensuremath{\hat n_{2\uparrow}}}
+\newcommand{\nd}{\ensuremath{\hat n_{2\downarrow}}}
+
+
+\newcommand{\ca}{\ensuremath{c_{1\uparrow}}}
+\newcommand{\cb}{\ensuremath{c_{1\downarrow}}}
+\newcommand{\cd}{\ensuremath{c_{2\uparrow}}}
+\newcommand{\ce}{\ensuremath{c_{2\downarrow}}}
+\newcommand{\ua}{\ensuremath{\uparrow}}
+\newcommand{\da}{\ensuremath{\downarrow}}
+\newcommand{\ra}{\ensuremath{\rightarrow}}
+\newcommand{\la}{\ensuremath{\leftarrow}}
+\newcommand{\comm}[1]{}
+

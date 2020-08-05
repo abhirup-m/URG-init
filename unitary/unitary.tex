@@ -1,0 +1,103 @@
+\documentclass[12pt]{report}
+\usepackage{common}
+\begin{document}
+The goal is to obtain the unitary transformation. In the half-filled subspace for the Hubbard dimer,
+\beq
+\ham = \bordermatrix{~ & \ket{\ua,\da} & \ket{\ua\da,0} & \ket{\da,\ua} & \ket{0,\ua\da} \cr
+	& 0 & t & 0 & -t \cr \\
+	& t & U & -t & 0 \cr \\
+	& 0 & -t & 0 & t\cr \\
+	& -t & 0 & t & U \cr}
+\eeq
+I have dropped the part of the Hamiltonian involving \il{\ket{\ua,\ua}} and \il{\ket{\da,\da}} because they are already decoupled and do not change under the RG. Notice that \il{\ham} can be written as 
+\beq
+	\ham = \bordermatrix{~ & \ket{n_{1\ua} = 1} & \ket{n_{1\ua}=0} \cr
+		& a & b \cr\\
+		& b & a \cr}
+\eeq
+Applying RG on this matrix,
+\begin{gather}
+H_e = H_h = a \\
+T = b\\
+\eta^\dagger = \fr{1}{E - H_e}c^\dagger_{1\ua} T = \fr{1}{E - a}c^\dagger_{1\ua}b\\
+\implies \eta  = b^\dagger c_{1\ua}\fr{1}{E - a}
+\end{gather}
+From properties of \il{\eta},
+\begin{gather}
+\hat n_{1\ua} = \eta^\dagger \eta = \fr{1}{E-a}c^\dagger_{1\ua}c_{1\ua}bb^\dagger\fr{1}{E-a} \\
+\implies(E-a)^2 \hat n_{1\ua} = \hat n_{1\ua}b^2
+\end{gather}
+I used \il{b = -t\sigma_x \implies b^\dagger = b}. The two solutions for \il{E} are
+\begin{gather}
+E -a = \pm b \\
+\implies E_\pm = a \pm b\\
+\implies \ham_\text{rotated} = \bordermatrix{~ & \ket{n_{1\ua} = 1} & \ket{n_{1\ua}=0} \cr
+		& a-b & 0 \cr
+		& 0 & a+b \cr}
+		=\begin{pmatrix}
+		  0 & 2t & 0 & 0 \\
+		  2t & U & 0 & 0 \\
+		  0 & 0 & 0 & 0 \\
+		  0 & 0 & 0 & U
+	  \end{pmatrix}
+\end{gather}
+For this step, the unitary is
+\beq
+U_1 = \fr{1}{\sqrt 2} \bordermatrix{~ & \ket{n_{1\ua} = 1} & \ket{n_{1\ua}=0} \cr
+				      & -1 & 1 \cr\\
+				      & 1 & 1 \cr}
+	= \fr{1}{\sqrt 2} \begin{pmatrix} \\ & -\mathbb{I}_{2\times 2} & \mathbb{I}_{2\times 2} &\\\\\\
+	& \mathbb{I}_{2\times 2} & \mathbb{I}_{2\times 2} & \\
+	&&&
+	\end{pmatrix}
+\eeq
+Taking a look at \il{\ham_\text{rotated}}, the lower block is diagonal. So, take the upper block as the new Hamiltonian,
+\begin{gather}
+\ham = \bordermatrix{~ &  \ket{0,\da} & \ket{\da,0}\cr
+	     & 0 & 2t \cr
+	     & 2t & U \cr}\\
+H_e = 0, H_h = U, T = 2t \\
+\eta^\dagger = \fr{1}{E - H_e} c_{1\da}^\dagger T = \fr{2t}{E} c_{1\da}^\dagger \\
+\eta = \fr{1}{E - H_h} T^\dagger c_{1\da} = \fr{2t}{E - U} c_{1\da}\\
+\hat n_{1\da} = \eta^\dagger \eta = \fr{4t^2}{E(E-U)}\hat n_{1\da}\\
+\implies E(E-U)=4t^2 \implies E = \fr{U\pm\Delta}{2}
+\end{gather}
+Therefore,
+\begin{gather}
+	\ham_{rotated} = \begin{pmatrix}\fr{U-\Delta}{2} & 0 \\ 0 & \fr{U+\Delta}{2} \end{pmatrix}\\
+		\mathcal{U} = \fr{1}{\mathcal N}\begin{pmatrix} 4t & 4t \\ U-\Delta & U+\Delta \end{pmatrix}
+	\end{gather}
+\il{\mathcal N^2}. Since this unitary acts only on the upper block, the complete unitary for this stage is
+\beq
+		U_2 = \begin{pmatrix} \mathcal{U} & 0_{2\times 2} \\
+		0_{2\times 2} & \mathbb{I}_{2\times 2}\end{pmatrix}
+\eeq
+The total unitary for the entire diagonalization process is
+\beq
+			U = U_1 \times U_2 = \begin{pmatrix} -\mathcal{U} & 1 \\
+			\mathcal{U} & 1 \end{pmatrix}
+\eeq
+To check whether these are correct, we can compute an eigenstate.
+\beq
+U\ket{\ua,\da} = \begin{pmatrix} -\mathcal{U} & 1 \\& \\ 
+	\mathcal{U} & 1 \end{pmatrix} \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} = \begin{bmatrix} -4t \\ -U+\Delta \\ 4t \\ U-\Delta \end{bmatrix} \sim 4t\rr{\ket{\ua,\da} - \ket{\da,\ua}}+(U-\Delta)\rr{\ket{\ua\da,0}-\ket{0,\da\ua}}
+\eeq
+This is a correct eigenstate. Now that we have the unitary transformaiton, the contention is that the following is the correct effective Hamiltonian:
+\beq
+\overline \ham = U\hat n_{2\ua}\hat n_{2\da} + \fr{U-\Delta}{2}\hat n_{1\ua}\hat n_{2\da}+ \fr{U+\Delta}{2}\hat n_{1\ua}\hat n_{1\da}
+\eeq
+This can be proved by showing that it is unitarily linked with the bare Hamiltonian by the same unitary transformation:
+\beq
+U \overline \ham U^T = \begin{pmatrix} -\mathcal{U} & 1 \\
+			\mathcal{U} & 1 \end{pmatrix}
+	\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U-\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}\begin{pmatrix} -\mathcal{U} & \mathcal{U} \\
+	1 & 1 \end{pmatrix} = \begin{pmatrix}
+	0 & t & 0 & -t  \\
+	t & U & -t & 0  \\
+	0 & -t & 0 & t \\
+-t & 0 & t & U \end{pmatrix} = \ham
+\eeq
+This proves that \il{\overline \ham} shares the symmetries of \il{\ham}.
+
+
+\end{document}

@@ -4,17 +4,21 @@ from sympy.matrices import Matrix
 from sympy import *
 U, t= symbols("U t")
 
-U=0.932
-t=0.578
+#U=0.932
+#t=0.578
 d = sqrt(U**2+16*t**2)
-H = Matrix([[0,t,0,-t],[t,U,-t,0],[0,-t,0,t],[-t,0,t,U]])
+#H = Matrix([[0,t,0,-t],[t,U,-t,0],[0,-t,0,t],[-t,0,t,U]])
 id = Matrix([[1,0],[0,1]])
 zero = Matrix([[0,0],[0,0]])
 P1 = Matrix([[-id,id],[id,id]])/sqrt(2)
 u = Matrix([[4*t/(U-d), 4*t/(U+d)],[1,1]])
 P2 = Matrix([[u,zero],[zero,id]])
-H1 = P1.T*H*P1
-H2 = P2.T*H1*P2
+#H1 = P1.T*H*P1
+#H2 = P2.T*H1*P2
 P = P1*P2
-Hb = P.T*H*P
-pprint (Hb)
+#Hb = P.T*H*P
+H2 = Matrix([[0, 2*t],[2*t,U]])
+V1 = H2.eigenvects()[0][2][0]
+V2 = H2.eigenvects()[1][2][0]
+pprint (V1)
+pprint (V2)

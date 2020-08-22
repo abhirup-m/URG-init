@@ -1,0 +1,16 @@
+\documentclass[17pt]{extarticle}
+\usepackage{common}
+\begin{document}
+\beq
+\rho_1 &= \fr{1}{2(1+\alpha^{-2})}\qq{\underbrace{\ket{\ua}\bra{\ua}+ \ket{\da}\bra{\da}}_\text{singlet part} + \overbrace{\alpha^{-2}\rr{\ket{\ua\da}\bra{\ua\da} + \ket{0}\bra{0}}}^\text{doublon-holon part}}\\
+\eeq
+Projecting out the doublon-holon part,
+\beq
+\rho_\text{sing} = \fr{1}{2(1+\alpha^{-2})}\rr{\ket{\ua}\bra{\ua}+ \ket{\da}\bra{\da}}
+\eeq
+To make trace 1, drop the \il{\alpha^{-2}} in denominator.
+\beq
+\rho_\text{sing} = \fr{1}{2}\rr{\ket{\ua}\bra{\ua}+ \ket{\da}\bra{\da}}
+\eeq
+Is this the procedure you meant? Is it all right to throw the \il{\alpha} part in order to renormalise the \il{\rho_\text{sing}}?
+\end{document}

@@ -11,24 +11,10 @@
 	\vspace{10pt}
 \bf{\Huge{Unitary Renormalization Group Approach to the Hubbard Dimer and Anderson Molecule}}\\
 	\vspace{50pt}
-	\Large{Author: \bf{Abhirup Mukherjee}}\\
-	\bf{\Large{{(18IP014)}}}\\
-	\vspace{20pt}
-	\Large{Supervisor: \bf{Dr. Siddhartha Lal}}\\
-	\vspace{50pt}
-	\bf{\Large{IPhD. 4\uu{th} Semester Project Report}}\\
-	\vspace{20pt}
-	\bf{\Large{Department of Physical Sciences}}\\
-	\vspace{20pt}
-	\bf{\Large{Indian Institute of Science Education and Research, Kolkata}}\\
-
 \end{center}
 
 \end{titlepage}
 
-\section*{Acknowledgements}
-This project would not have been possible without the help of several people. First and foremost, I would like to thank my supervisor, Dr. Siddhartha Lal, for allowing me to join his group and work on this project as a way to familiarize myself with the method demonstrated in this report, and of course for designing the project itself. A huge thank you also goes to Anirban Mukherjee, my senior in the group, for helping me out when I was starting with the method. I also thank Siddhartha Patra, another senior in the group, for discussions on some topics I was finding hard to understand. I also want to acknowledge the fruitful discussions I had with my friend at IIT Bombay, Dibyanandan Bhowmick.
-\newpage
 \section*{Abstract}
 The power of exact analytical methods over numerical or approximate methods is that they give more comprehensive answers and explanations. Take for example the difference between a wavefunction obtained from exact diagonalization and a plot of the wavefunction obtained from numerical analysis. While the latter gives you an idea, the former gives you the complete thing. In this report, I follow a similar theme: I explore an exact method in a condensed matter setting. This exact method (a unitary renormalization group method) is used to solve two toy models - the Hubbard dimer and Anderson molecule). The focus is to showcase this method rather than learning about the models, because the models are exactly diagonalizable anyway. It is seen that the solutions the URG match exactly with the exact diagonalization results. A comparison is also drawn with a similar block-diagonalization method- the Schrieffer-Wolff transformation. It is seen that while the SW transformation is perturbative and one must truncate the expansion at some point to get something out of it, the URG is exact.
 \newpage
@@ -690,7 +676,7 @@ We get the following block decomposition of the Hamiltonian.
 Define an operator \(\hat{P_{N\sigma}} = \un^\dagger \no \un\). This is the roated version of the number operator. What this does will be apparent from the following demonstration.
 \beq
 \qq{\hml, \hat{P_{N\sigma}}} &= \qq{\hml,\un^\dagger \no \un} = \hml\un^\dagger \no \un - \un^\dagger \no \un \hml \\
-&= \un^\dagger \overline{\hml}\no\un - \un^\dagger \no \overline{\hml} \un = \un^\dagger \qq{\hml, \no} \un \\
+&= \un^\dagger \overline{\hml}\no\un - \un^\dagger \no \overline{\hml} \un = \un^\dagger \qq{\ol \hml, \no} \un \\
 &= 0 
 \eeq
 We see that \(\hat{P_{N\sigma}}\) is the operator that commutes with the original Hamiltonian. Note that here we are not transforming the Hamiltonian. Instead we are changing the single particle basis; \(\hat{P_{N\sigma}}\) is not the single-particle occupation basis \(\no\), rather a unitarily transformed version of that.This operator projects out the eigensubspaces of the diagonal Hamlitonian. \(\no\hml\no\) will project out the subspace of the Hamiltonian in which the particle states are occupied, but since the \(\hml\) is not diagonal, these will not be the eigensubspace. Instead, \(\hat{P_{N\sigma}}\hml\hat{P_{N\sigma}}\) will project out the eigensubspace.
@@ -2014,8 +2000,167 @@ All orders are kept in the rotation (non-perturbative), as seen in the \il{\Delt
 \fbox{\includegraphics[width=\textwidth]{./com_plot}}
 \end{figure}
 
-\newpage
+\section{Effective Hamiltonian}
+The goal is to obtain the unitary transformation. In the half-filled subspace for the Hubbard dimer,
+\beq
+\ham = \bordermatrix{~ & \ket{\ua,\da} & \ket{\ua\da,0} & \ket{\da,\ua} & \ket{0,\ua\da} \cr
+	& 0 & t & 0 & -t \cr \\
+	& t & U & -t & 0 \cr \\
+	& 0 & -t & 0 & t\cr \\
+	& -t & 0 & t & U \cr}
+\eeq
+I have dropped the part of the Hamiltonian involving \il{\ket{\ua,\ua}} and \il{\ket{\da,\da}} because they are already decoupled and do not change under the RG. Notice that \il{\ham} can be written as 
+\beq
+	\ham = \bordermatrix{~ & \ket{n_{1\ua} = 1} & \ket{n_{1\ua}=0} \cr
+		& a & b \cr\\
+		& b & a \cr}
+\eeq
+Applying RG on this matrix,
+\begin{gather}
+H_e = H_h = a \\
+T = b\\
+\eta^\dagger = \fr{1}{E - H_e}c^\dagger_{1\ua} T = \fr{1}{E - a}c^\dagger_{1\ua}b\\
+\implies \eta  = b^\dagger c_{1\ua}\fr{1}{E - a}
+\end{gather}
+From properties of \il{\eta},
+\begin{gather}
+\hat n_{1\ua} = \eta^\dagger \eta = \fr{1}{E-a}c^\dagger_{1\ua}c_{1\ua}bb^\dagger\fr{1}{E-a} \\
+\implies(E-a)^2 \hat n_{1\ua} = \hat n_{1\ua}b^2
+\end{gather}
+I used \il{b = -t\sigma_x \implies b^\dagger = b}. The two solutions for \il{E} are
+\begin{gather}
+E -a = \pm b \\
+\implies E_\pm = a \pm b\\
+\implies \ham_\text{rotated} = \bordermatrix{~ & \ket{n_{1\ua} = 1} & \ket{n_{1\ua}=0} \cr
+		& a-b & 0 \cr
+		& 0 & a+b \cr}
+		=\begin{pmatrix}
+		  0 & 2t & 0 & 0 \\
+		  2t & U & 0 & 0 \\
+		  0 & 0 & 0 & 0 \\
+		  0 & 0 & 0 & U
+	  \end{pmatrix}
+\end{gather}
+For this step, the unitary is
+\beq
+U_1 = \fr{1}{\sqrt 2} \bordermatrix{~ & \ket{n_{1\ua} = 1} & \ket{n_{1\ua}=0} \cr
+				      & -1 & 1 \cr\\
+				      & 1 & 1 \cr}
+	= \fr{1}{\sqrt 2} \begin{pmatrix} \\ & -\mathbb{I}_{2\times 2} & \mathbb{I}_{2\times 2} &\\\\\\
+	& \mathbb{I}_{2\times 2} & \mathbb{I}_{2\times 2} & \\
+	&&&
+	\end{pmatrix}
+\eeq
+Taking a look at \il{\ham_\text{rotated}}, the lower block is diagonal. So, take the upper block as the new Hamiltonian,
+\begin{gather}
+\ham = \bordermatrix{~ &  \ket{0,\da} & \ket{\da,0}\cr
+	     & 0 & 2t \cr
+	     & 2t & U \cr}\\
+H_e = 0, H_h = U, T = 2t \\
+\eta^\dagger = \fr{1}{E - H_e} c_{1\da}^\dagger T = \fr{2t}{E} c_{1\da}^\dagger \\
+\eta = \fr{1}{E - H_h} T^\dagger c_{1\da} = \fr{2t}{E - U} c_{1\da}\\
+\hat n_{1\da} = \eta^\dagger \eta = \fr{4t^2}{E(E-U)}\hat n_{1\da}\\
+\implies E(E-U)=4t^2 \implies E = \fr{U\pm\Delta}{2}
+\end{gather}
+Therefore,
+\begin{gather}
+	\ham_{rotated} = \begin{pmatrix}\fr{U-\Delta}{2} & 0 \\ 0 & \fr{U+\Delta}{2} \end{pmatrix}\\
+	\mathcal{U} = \begin{pmatrix} \fr{4t}{U-\Delta} & \fr{4t}{U+\Delta} \\ 1 &1 \end{pmatrix}
+	\end{gather}
+\il{N_\pm^2 = \Delta\rr{\Delta\pm U}}. Since this unitary acts only on the upper block, the complete unitary for this stage is
+\beq
+		U_2 = \begin{pmatrix} \mathcal{U} & 0_{2\times 2} \\
+		0_{2\times 2} & \mathbb{I}_{2\times 2}\end{pmatrix}
+\eeq
+The total unitary for the entire diagonalization process is
+\beq
+U = U_1 \times U_2 = \fr{1}{\sqrt 2}\begin{pmatrix}
+	-\mathcal{U} & 1 \\
+	\mathcal{U} & 1
+	\end{pmatrix}
+\eeq
+To check whether these are correct, we can compute the eigenstates. The eigenstates of the unitarily rotated Hamiltonian are just the fermionic degrees of freedom \il{\ket{n_{i\sigma}}}. The eigenstates of the bare Hamiltonian are hence obtained by rotating these states:
+\beq
+			\overline {\ket{\psi_1}}=U\ket{\ua,\da} = \fr{1}{\sqrt 2}\begin{pmatrix} -\mathcal{U} & 1 \\& \\ 
+				\mathcal{U} & 1 \end{pmatrix} \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} &= \fr{1}{\sqrt 2}\begin{bmatrix} -\fr{4t}{U-\Delta} \\ -1 \\ \fr{4t}{U-\Delta} \\ 1 \end{bmatrix} \sim \fr{1}{\sqrt 2}\cc{\fr{4t}{U-\Delta}\rr{\ket{\ua,\da} - \ket{\da,\ua}}+\rr{\ket{\ua\da,0}-\ket{0,\da\ua}}}\\
+				\overline {\ket{\psi_2}}=U\ket{\ua,\da} &=  \fr{1}{\sqrt 2}\begin{bmatrix} -\fr{4t}{U+\Delta} \\ -1 \\ \fr{4t}{U+\Delta} \\ 1 \end{bmatrix} \sim \fr{1}{\sqrt 2}\cc{\fr{4t}{U+\Delta}\rr{\ket{\ua,\da} - \ket{\da,\ua}}+\rr{\ket{\ua\da,0}-\ket{0,\da\ua}}} \\
+				\overline {\ket{\psi_3}}=U\ket{\ua,\da} &=  \begin{bmatrix} 1 \\ 0 \\ 1 \\ 0 \end{bmatrix} \sim \fr{1}{\sqrt 2}\rr{\ket{\ua,\da} + \ket{\da,\ua}}\\
+				\overline {\ket{\psi_4}}=U\ket{\ua,\da} &= \begin{bmatrix} 0 \\ 1 \\ 0 \\ 1 \end{bmatrix} \sim \fr{1}{\sqrt 2}\cc{\ket{\ua\da,0} + \ket{0,\ua\da}}
+\eeq
+Now that we have the unitary transformaiton, the contention is that the following is the correct effective Hamiltonian:
+\beq
+\overline \ham = U\hat n_{2\ua}\hat n_{2\da} + \fr{U-\Delta}{2}\hat n_{1\ua}\hat n_{2\da}+ \fr{U+\Delta}{2}\hat n_{1\ua}\hat n_{1\da}
+\eeq
+\subsubsection*{Matching eigenvalues}
+To check that this gives the correct eigenvalues, I operate this on the states which should be its eigenstates, that is, the decoupled degrees of freedom \il{\ket{n_{i\sigma}}}:
+\beq
+\ol \ham \ket{\ua,\da}&=\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} = \fr{U-\Delta}{2}\\
+\ol \ham \ket{\ua\da,0}&=\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix} = \fr{U+\Delta}{2}\\
+\ol \ham \ket{\da,\ua}&=\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix} = 0\\
+\ol \ham \ket{0,\ua\da}&=\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix} = U\\
+\eeq
+Next is a proof that \il{\ol \ham} is unitarily linked with the bare Hamiltonian by the same unitary transformation:
+\beq
+U \overline \ham U^{-1} = U	\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix} U^{-1} = \begin{pmatrix}
+	0 & t & 0 & -t  \\
+	t & U & -t & 0  \\
+	0 & -t & 0 & t \\
+-t & 0 & t & U \end{pmatrix} = \ham
+\eeq
+This proves that \il{\overline \ham} shares the symmetries of \il{\ham}.\\\\
 
-\section*{Conclusions}
-Although a proper estimation of the advantages and problems offered by this method (URG) can only be inferred after applying it to many-body problems, a naive discussion is presented here. One thing that stands out is the ease of obtaining the eigenvalues and eigenfunctions. One just eeds to select the proper subspaces and they are done. Compare this with the exact diagonalization method where one may run into complications if they are to diagonalize a \il{3\times3} or \il{4\times4} block. Even the Anderson molecule, with lower symmetry (and hence higher computational difficulty), which posed some complication during exact diagonalization, was relatively easier to solve using the URG. Schrieffer-Wolff transformation,despite being a neat technique, does not really compare to a method that can give exact solutions. One might argue that the SW transformation filters out the low energy states, but that is also possible using the URG, as shown by Anirban Mukherjee and co. in various problems like the two-dimensional Hubbard model and the quantum kagome antiferromagnet.
+\subsubsection*{Rotated spin-inversion operator}
+The spin-inversion operator in the original basis is
+\beq
+T = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & -1 & 0 & 0\\ 1 & 0 & 0 & 0\\0& 0 & 0 & -1 \end{pmatrix} = \begin{pmatrix} a & a + \mathbb{I} \\ a + \mathbb{I} & a \end{pmatrix}
+\eeq
+where \il{a = \begin{pmatrix} 0 & 0 \\ 0 & -1 \end{pmatrix}}.
+To see the nature of the rotated spin-inversion operator,
+\beq
+	\ol{T} = U^{-1} T U = \begin{pmatrix} -\mathbb{I} & 0 \\ 0 & \sigma_z \end{pmatrix}
+\eeq
+To see that \il{\ol T} commutes with \il{\ol H},
+\beq
+\bar T \bar H &= \begin{pmatrix}-\mathbb{I} & 0 \\ 0 & \sigma_z \end{pmatrix}\begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}  = \begin{pmatrix} -\fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & -\fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -U \end{pmatrix}\\
+\bar H \bar T &= \begin{pmatrix} \fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & \fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & U \end{pmatrix}  \begin{pmatrix}-\mathbb{I} & 0 \\ 0 & \sigma_z \end{pmatrix} = \begin{pmatrix} -\fr{U-\Delta}{2} & 0 & 0 & 0 \\ 0 & -\fr{U+\Delta}{2} & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -U \end{pmatrix}
+\eeq
+
+\subsection*{Entanglement}
+\beq
+\ket{GS} = \fr{1}{\sqrt{2\rr{1+\alpha^{-2}}}}\qq{\ket{\ua,\da}-\ket{\da,\ua} +\alpha^{-1}\rr{\ket{0,\ua\da} - \ket{\ua\da,0}}}
+\eeq
+To determine the entanglement between the two states, I compute the von Neumann entropy of the reduced density matrix of the site 1 obtained by tracing out site 2.
+\beq
+\rho &= \ket{GS}\bra{GS}\\
+\rho_1 &= \sum_{\ket{x}_2}\bra{x}\rho\ket{x}
+\eeq
+where the sum is over all the configurations of the second site: \il{\{\ket{x}\} = \{\ket{0},\ket{\ua},\ket{\da},\ket{\ua\da}\}}
+\beq
+\bra{0}_2 \rho \ket{0}_2 &= \fr{\alpha^{-2}}{2(1+\alpha^{-2})}\ket{\ua\da}\bra{\ua\da}\\
+\bra{\ua}_2 \rho \ket{\ua}_2 &= \fr{1}{2(1+\alpha^{-2})}\ket{\da}\bra{\da}\\
+\bra{\da}_2 \rho \ket{\da}_2 &= \fr{1}{2(1+\alpha^{-2})}\ket{\ua}\bra{\ua}\\
+\bra{\ua\da}_2 \rho \ket{\ua\da}_2 &= \fr{\alpha^{-2}}{2(1+\alpha^{-2})}\ket{0}\bra{0}\\
+\eeq
+Therefore,
+\beq
+\rho_1 &= \fr{1}{2(1+\alpha^{-2})}\qq{\ket{\ua}\bra{\ua}+ \ket{\da}\bra{\da} + \alpha^{-2}\rr{\ket{\ua\da}\bra{\ua\da} + \ket{0}\bra{0}}}\\
+       &=\fr{1}{2(1+\alpha^{-2})}\begin{pmatrix}1 & & & \\ & 1 & & \\ & & \alpha^{-2} & \\ & & & \alpha^{-2} \end{pmatrix}
+\eeq
+The von Neumann entropy is given by \il{S_1 = -\sum_i \lambda_i \log \lambda_i}, where \il{\lambda_i} are the eigenvalues.
+\beq
+S &= -\fr{1}{2(1+\alpha^{-2})}\times 2 \times \qq{\ln \fr{1}{2(1+\alpha^{-2})} + \alpha^{-2}\ln \fr{\alpha^{-2}}{2(1+\alpha^{-2})}}\\
+  &=\fr{1}{(1+\alpha^{-2})}\qq{\ln \rr{2+2\alpha^{-2}} + \alpha^{-2}\ln \rr{2+2\alpha^{2}}}
+\eeq
+\begin{center}
+	\includegraphics*[scale=0.4]{S1.png}
+\end{center}
+The entropy is maximum (\il{\log 4}) at \il{\fr{U}{4t} = 0} and minimum (\il{\log 2}) at \il{\fr{U}{4t} \ra \infty}. This is expected for the following reason: At \il{U = 0}, the ground state becomes an equal admixture of all four states. If a measurement is performed on site 2, site 1 ends up in any one of the four possible configurations (\il{\ket{0},\ket{\ua},\ket{\da},\ket{\ua\da}}), with equal probability. The fact that the probabilities are equal means the resultant state will be maximally entangled, which leads to the entropy taking the form \il{\log N}, where \il{N} is the dimension of the reduced Hilbert space. Since site 1 can go into four possible states,  the value of \il{N}  is 4, and we get \il{S_1 = \log 4}.\\\\
+For \il{U=\infty}, the ground state is just a singlet (\il{\ket{\ua,\da} - \ket{\da,\ua}}), that is, an equal admixture of two states. This means that on measuring site 2, site 1 now has only two options to choose from, \il{\ket{\ua}} or \il{\ket{\da}}, the doublon-holon states are out of the picture. This reduces the dimension of the available Hilbert space to 2, and we get \il{\log 2}.
+
+To find the entanglement content of just the singlet part, I can project out the doublon-holon part from the density matrix.
+\beq
+\rho_{sg} = \fr{1}{2}\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}
+\eeq
+The entropy will just be \il{\log 2}. Projecting out the singlet part and keeping the doublon-holon part will give the same entropy.
+
 \end{document}
